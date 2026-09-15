@@ -2835,6 +2835,7 @@ if (typeof render公會 === 'function') {
 @media(max-width:960px){.recruitResults{grid-template-columns:repeat(2,1fr)}.v8-rate-grid{grid-template-columns:1fr 1fr}.sg-inventory{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.v8-showcase-grid{grid-template-columns:1fr}.v8-rate-grid{grid-template-columns:1fr}.v8-recruit-tabs{position:static;margin-bottom:14px;flex-wrap:wrap}.v8-result-art{height:120px}.sg-inventory{grid-template-columns:repeat(2,1fr)}}
 </style>
+<!-- V8 assets are split into GitHub-friendly batches: 01_core, 02_gear_a, 03_gear_b, 04_fashion. Each contains fewer than 100 files. -->
 <script id="v8-art-script">
 (function(){
   window.V8_RECRUIT_TAB = window.V8_RECRUIT_TAB || 'hero';
@@ -2869,12 +2870,12 @@ if (typeof render公會 === 'function') {
   function h(s){s=String(s||'');let x=0;for(let i=0;i<s.length;i++)x=((x<<5)-x)+s.charCodeAt(i),x|=0;return Math.abs(x)}
   function pickWeighted(table){let r=Math.random(),acc=0;for(const [k,p] of table){acc+=p;if(r<=acc)return k}return table[table.length-1][0]}
   function baseClass(name){const n=(typeof v4NormalizeClass==='function'?v4NormalizeClass(name||''):String(name||''));if(/法師|牧師/.test(n))return 'mage';if(/弓箭|遊俠/.test(n))return 'archer';if(/盜賊|刺客/.test(n))return 'rogue';return 'warrior'}
-  function heroArt(a){const cls=baseClass(a?.class_name);const pool=HERO_POOLS[cls]||HERO_POOLS.warrior;const key=[a?.name||'',a?.class_name||'',a?.rarity||''].join('|');return `assets_v8/heroes/${pool[h(key)%pool.length]}.png`}
-  function monsterArt(zone=1,kind=0,boss=false){if(boss)return `assets_v8/monsters/${BOSS_POOLS[zone]||'m23'}.png`;const pool=MONSTER_POOLS[zone]||MONSTER_POOLS[1];return `assets_v8/monsters/${pool[(Number(kind)||0)%pool.length]}.png`}
+  function heroArt(a){const cls=baseClass(a?.class_name);const pool=HERO_POOLS[cls]||HERO_POOLS.warrior;const key=[a?.name||'',a?.class_name||'',a?.rarity||''].join('|');return `assets_v8/01_core/heroes/${pool[h(key)%pool.length]}.png`}
+  function monsterArt(zone=1,kind=0,boss=false){if(boss)return `assets_v8/01_core/monsters/${BOSS_POOLS[zone]||'m23'}.png`;const pool=MONSTER_POOLS[zone]||MONSTER_POOLS[1];return `assets_v8/01_core/monsters/${pool[(Number(kind)||0)%pool.length]}.png`}
   function gearSlot(slot){return (typeof v41SlotName==='function'?v41SlotName(slot):slot)||'主武器'}
-  function gearArt(x){const slot=gearSlot(x?.slot);const pool=GEAR_SLOT_POOLS[slot]||GEAR_SLOT_POOLS['主武器'];const seed=`${slot}|${x?.rarity||''}|${x?.item_level||1}|${x?.id||''}`;return `assets_v8/gear/${pool[h(seed)%pool.length]}.png`}
-  function fashionArt(x){const seed=`${x?.name||''}|${x?.fashion_type||''}|${x?.rarity||''}`;return `assets_v8/fashion/${FASHION_ART[h(seed)%FASHION_ART.length]}.png`}
-  function buildingArt(k){return `assets_v8/buildings/${BUILDING_ART[k]||'b01'}.png`}
+  function gearArt(x){const slot=gearSlot(x?.slot);const pool=GEAR_SLOT_POOLS[slot]||GEAR_SLOT_POOLS['主武器'];const seed=`${slot}|${x?.rarity||''}|${x?.item_level||1}|${x?.id||''}`;const id=pool[h(seed)%pool.length]; const num=parseInt(id.slice(1),10); return `assets_v8/${num<=72?'02_gear_a':'03_gear_b'}/${id}.png`}
+  function fashionArt(x){const seed=`${x?.name||''}|${x?.fashion_type||''}|${x?.rarity||''}`;return `assets_v8/04_fashion/${FASHION_ART[h(seed)%FASHION_ART.length]}.png`}
+  function buildingArt(k){return `assets_v8/01_core/buildings/${BUILDING_ART[k]||'b01'}.png`}
   function v8Rates(tab){return tab==='hero'?HERO_RATES:tab==='gear'?GEAR_RATES:FASHION_RATES}
   function v8RateLabel(tab){return v8Rates(tab).map(([k,p])=>`<div class="v8-rate-pill"><b class="rar-${(V4_RARITY_ZH&&V4_RARITY_ZH[k])||k}">${(V4_RARITY_ZH&&V4_RARITY_ZH[k])||k}</b>${(p*100).toFixed(p<.01?1: p<.1?1:0)}%</div>`).join('')}
   function v8TabMeta(tab){

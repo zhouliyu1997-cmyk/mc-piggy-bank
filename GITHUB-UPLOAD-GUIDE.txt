@@ -1,0 +1,18 @@
+V8 GitHub 網頁上傳建議順序
+==========================
+
+已重新整理 assets_v8，每一批都少於 100 個檔案：
+
+01_core      56 files  -> heroes / monsters / buildings
+02_gear_a    72 files  -> gear g001–g072
+03_gear_b    72 files  -> gear g073–g144
+04_fashion   32 files  -> fashion
+
+建議：
+1. 先把根目錄主要檔案上傳 / 覆蓋（index.html、sw.js 等）。
+2. 在 GitHub repo 建立 / 進入 assets_v8 資料夾。
+3. 分 4 次上傳：01_core → 02_gear_a → 03_gear_b → 04_fashion。
+4. 每一批 commit 一次，避免 GitHub Web uploader 因檔案太多卡住。
+5. 全部完成後再等 GitHub Pages deployment 變綠，最後 Ctrl+Shift+R。
+
+注意：不要自行改資料夾名稱；index.html 已經依照上述路徑更新。
