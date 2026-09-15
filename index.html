@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fff7f1">
+<title>M&C的小豬撲滿</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="./config.js"></script>
+<style>
+:root{--bg:#fff8f2;--card:#fff;--ink:#2d2825;--muted:#82766f;--line:#ebdfd7;--pink:#ed8796;--orange:#f1aa61;--green:#67a67e;--red:#d76262;--shadow:0 12px 32px rgba(78,55,40,.09)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;background:radial-gradient(circle at top left,#ffe1e7,transparent 30%),radial-gradient(circle at top right,#fff0ce,transparent 26%),var(--bg);color:var(--ink);min-height:100vh}
+button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1160px;margin:auto;padding:16px 16px 90px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;background:rgba(255,255,255,.9);border:1px solid #fff;padding:15px 17px;border-radius:20px;box-shadow:var(--shadow);position:sticky;top:8px;z-index:20;backdrop-filter:blur(10px)}
+.brand{display:flex;align-items:center;gap:11px}.pig{width:48px;height:48px;border-radius:16px;background:linear-gradient(145deg,#ffc5cd,#ed8796);display:grid;place-items:center;font-size:27px}.brand h1{margin:0;font-size:21px}.brand small{color:var(--muted)}.status{font-size:12px;color:var(--green);font-weight:800}.nav{display:flex;gap:5px;background:#f6eee8;padding:5px;border-radius:12px}.nav button{border:0;background:none;padding:8px 12px;border-radius:8px;color:var(--muted);font-weight:800}.nav button.active{background:#fff;color:var(--ink);box-shadow:0 4px 10px rgba(70,45,30,.08)}
+.page{display:none;margin-top:15px}.page.active{display:block}.hero,.panel,.card{background:rgba(255,255,255,.96);border:1px solid #fff;border-radius:20px;box-shadow:var(--shadow)}.hero{padding:19px}.heroTop{display:flex;justify-content:space-between;gap:12px}.eyebrow{color:var(--muted);font-size:11px;font-weight:900}.hero h2{font-size:28px;margin:6px 0}.count{text-align:right;background:#fff0f2;padding:10px 13px;border-radius:14px}.count strong{display:block;font-size:21px}.count span{font-size:10px;color:var(--muted)}.progress{height:13px;background:#f1e7e2;border-radius:99px;overflow:hidden;margin-top:15px}.progress div{height:100%;background:linear-gradient(90deg,var(--pink),var(--orange));width:0}.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin-top:6px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.card{padding:14px}.label{font-size:11px;color:var(--muted);font-weight:850}.value{font-size:21px;font-weight:900;margin-top:6px}.sub{font-size:10px;color:var(--muted);margin-top:4px}.people{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.person{padding:16px}.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.share{font-size:11px;background:#f6eee8;border-radius:99px;padding:5px 8px}.personMoney{font-size:23px;font-weight:900;margin:10px 0 3px}.bar{height:7px;background:#f2e9e4;border-radius:99px;overflow:hidden;margin-top:10px}.bar div{height:100%;background:var(--pink)}
+.panel{padding:17px;margin-top:12px}.panel h3{margin:0;font-size:17px}.panel p{margin:4px 0 0;color:var(--muted);font-size:11px}.toolbar{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.btn{border:0;border-radius:10px;padding:9px 12px;background:var(--pink);color:#fff;font-weight:850}.btn.secondary{background:#f4ece7;color:var(--ink)}.btn.green{background:var(--green)}.btn.red{background:#fff0f0;color:var(--red)}.btn.small{padding:6px 8px;font-size:11px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.field label{display:block;font-size:11px;color:var(--muted);font-weight:850;margin-bottom:5px}.field input,.field select{width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff}.stack{display:flex;flex-direction:column;gap:8px;margin-top:10px}.item{display:grid;grid-template-columns:1fr auto;gap:9px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:11px;background:#fffaf7}.item small{display:block;color:var(--muted);margin-top:3px}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:12px;margin-top:12px}table{border-collapse:collapse;width:100%;min-width:1100px;background:#fff}th,td{padding:9px;border-bottom:1px solid #f1e8e2;text-align:left;font-size:11px}th{background:#fff8f3;color:var(--muted)}td.num{text-align:right}.empty{text-align:center;padding:25px;color:var(--muted)}.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:10px}.total{padding:10px;background:#fff8f3;border:1px solid var(--line);border-radius:11px}.total span{display:block;color:var(--muted);font-size:10px}.total strong{font-size:17px}.chart{height:270px}
+.modalBg{position:fixed;inset:0;background:rgba(38,32,29,.38);display:none;place-items:center;padding:15px;z-index:50}.modalBg.show{display:grid}.modal{width:min(760px,100%);max-height:92vh;overflow:auto;background:#fff;padding:20px;border-radius:20px}.actions{display:flex;justify-content:flex-end;gap:7px;margin-top:14px}.hint{font-size:11px;color:var(--muted);margin:5px 0 13px}.notice{font-size:11px;padding:10px 12px;background:#fff4dc;border:1px solid #f0dcae;border-radius:10px;color:#755719}
+.gate{max-width:620px;margin:50px auto;background:#fff;border-radius:24px;padding:22px;box-shadow:var(--shadow)}.gate h2{margin:0}.gateTabs{display:flex;gap:6px;background:#f6eee8;padding:5px;border-radius:11px;margin:15px 0}.gateTabs button{flex:1;border:0;background:none;padding:8px;border-radius:8px;font-weight:800}.gateTabs button.active{background:#fff}.bottom{display:none}
+@media(max-width:820px){.app{padding:9px 9px 82px}.top{position:static}.nav{display:none}.brand small{display:none}.kpis{grid-template-columns:repeat(2,1fr)}.people,.grid,.grid3,.totals{grid-template-columns:1fr}.chart{height:230px}.bottom{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.97);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom));z-index:40}.bottom button{border:0;background:none;padding:5px;color:var(--muted);font-size:10px;font-weight:850}.bottom .ico{display:block;font-size:19px}.bottom button.active{color:var(--pink)}}
+</style>
+</head>
+<body>
+<div id="gate" class="gate">
+  <div class="brand"><div class="pig">🐷</div><div><h1>M&C的小豬撲滿</h1><small>共享雲端版</small></div></div>
+  <h2 style="margin-top:20px">建立或加入共同撲滿</h2>
+  <p style="color:var(--muted);font-size:12px">你和女友使用相同的「房間代碼＋密碼」即可看到同一份即時資料。</p>
+  <div class="gateTabs"><button id="tabJoin" class="active" onclick="switchGate('join')">加入</button><button id="tabCreate" onclick="switchGate('create')">建立</button></div>
+  <div class="grid">
+    <div class="field"><label>你的顯示名稱</label><input id="gName" placeholder="例如 M"></div>
+    <div id="createNameWrap" class="field" style="display:none"><label>撲滿名稱</label><input id="gRoomName" value="M&C的小豬撲滿"></div>
+    <div class="field"><label>房間代碼</label><input id="gCode" placeholder="例如 MC2026"></div>
+    <div class="field"><label>共同密碼</label><input id="gPass" type="password" placeholder="至少 4 碼"></div>
+  </div>
+  <button class="btn green" style="width:100%;margin-top:13px" onclick="submitGate()">進入共同撲滿</button>
+  <div id="gateMsg" class="hint"></div>
+</div>
+
+<div id="app" class="app" style="display:none">
+<header class="top">
+  <div class="brand"><div class="pig">🐷</div><div><h1 id="roomTitle">M&C的小豬撲滿</h1><small id="roomCode"></small></div></div>
+  <div class="status" id="syncStatus">● 即時同步</div>
+  <nav class="nav"><button id="nHome" class="active" onclick="showPage('home')">首頁</button><button id="nRecords" onclick="showPage('records')">紀錄</button><button id="nSettings" onclick="showPage('settings')">設定</button></nav>
+</header>
+
+<section id="homePage" class="page active">
+  <div class="hero">
+    <div class="heroTop"><div><div class="eyebrow">SHARED SAVING GOAL</div><h2 id="remain">還差 NT$0</h2><div class="sub" id="goalDateText">尚未設定目標日期</div></div><div class="count"><strong id="days">—</strong><span>距離目標日</span></div></div>
+    <div class="progress"><div id="prog"></div></div><div class="meta"><span id="saved">已存 NT$0</span><span id="pct">0%</span><span id="goal">目標 NT$0</span></div>
+  </div>
+  <div class="kpis">
+    <div class="card"><div class="label">💰 累積台幣</div><div class="value" id="kTwd">NT$0</div><div class="sub">依每筆當天匯率保存</div></div>
+    <div class="card"><div class="label">🇦🇺 累積澳幣</div><div class="value" id="kAud">A$0</div><div class="sub">所有工作收入</div></div>
+    <div class="card"><div class="label">⏱ 累積工時</div><div class="value" id="kHours">0 h</div><div class="sub">共同工時</div></div>
+    <div class="card"><div class="label">📅 本月收入</div><div class="value" id="kMonth">A$0</div><div class="sub" id="kMonthTwd">NT$0</div></div>
+  </div>
+  <div id="people" class="people"></div>
+  <div class="panel"><h3>📈 每月薪資</h3><p>最近 6 個月，依打工人比較 AUD 收入。</p><div class="chart"><canvas id="salaryChart"></canvas></div></div>
+</section>
+
+<section id="recordsPage" class="page">
+  <div class="panel">
+    <div class="toolbar">
+      <div class="row"><button class="btn secondary small" onclick="shiftMonth(-1)">←</button><strong id="monthTitle"></strong><button class="btn secondary small" onclick="shiftMonth(1)">→</button><input id="monthPick" type="month" onchange="pickMonth(this.value)" style="padding:6px;border:1px solid var(--line);border-radius:8px"></div>
+      <button class="btn" onclick="openEntry()">＋ 新增紀錄</button>
+    </div>
+    <div class="tablewrap"><table><thead><tr><th>日期</th><th>人</th><th>店鋪</th><th>崗位</th><th>Award</th><th>日別</th><th>工時</th><th>倍率</th><th>套用時薪</th><th>AUD</th><th>匯率</th><th>TWD</th><th>操作</th></tr></thead><tbody id="tbody"></tbody></table></div>
+    <div class="totals"><div class="total"><span>本月工時</span><strong id="mHours">0</strong></div><div class="total"><span>本月 AUD</span><strong id="mAud">A$0</strong></div><div class="total"><span>本月 TWD</span><strong id="mTwd">NT$0</strong></div></div>
+  </div>
+</section>
+
+<section id="settingsPage" class="page">
+  <div class="panel"><div class="toolbar"><div><h3>🎯 共同目標</h3><p>這裡的修改會立即同步給另一個人。</p></div><button class="btn green" onclick="saveGoal()">儲存</button></div>
+    <div class="grid" style="margin-top:10px"><div class="field"><label>總目標 TWD</label><input id="goalInput" type="number"></div><div class="field"><label>目標日期</label><input id="dateInput" type="date"></div></div>
+  </div>
+  <div class="panel"><h3>👫 打工人</h3><div class="row" style="margin-top:10px"><div class="field" style="flex:1"><label>名字</label><input id="workerInput" placeholder="M / C"></div><button class="btn" onclick="addWorker()">新增</button></div><div id="workerList" class="stack"></div></div>
+  <div class="panel"><h3>🏪 工作設定</h3><p>只要設定「店鋪、崗位、平日實際時薪、Award、僱用類型、Level」。週六／週日／PH 倍率由系統按官方 Award 規則自動套用，不需要你手填。</p>
+    <div class="grid3" style="margin-top:10px">
+      <div class="field"><label>店鋪</label><input id="jStore"></div><div class="field"><label>崗位</label><input id="jRole"></div><div class="field"><label>平日實際時薪 AUD</label><input id="jRate" type="number" step="0.01"></div>
+      <div class="field"><label>Award</label><select id="jAward"><option value="FAST_FOOD">Fast Food Industry Award</option><option value="RESTAURANT">Restaurant Industry Award</option><option value="HOSPITALITY">Hospitality Industry (General) Award</option><option value="RETAIL">General Retail Industry Award</option></select></div>
+      <div class="field"><label>Employment</label><select id="jEmp"><option value="CASUAL">Casual</option><option value="PART_TIME">Part-time</option><option value="FULL_TIME">Full-time</option></select></div>
+      <div class="field"><label>Level</label><select id="jLevel"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+    </div>
+    <div class="notice" style="margin-top:10px">目前內建規則版本：2026-07-01 Fair Work。此版本處理你要求的 Weekday / Saturday / Sunday / Public Holiday。夜間 loading、overtime、split shift 等不在這個簡化版自動計算範圍。</div>
+    <button class="btn" style="margin-top:10px" onclick="addJob()">新增工作</button><div id="jobList" class="stack"></div>
+  </div>
+  <div class="panel"><h3>💱 匯率</h3><p>每次新增紀錄會從 Frankfurter 免費 API 取得 AUD→TWD；每筆紀錄會把該匯率快照保存，不會因未來匯率變動而重算。</p><div class="value" id="fxNow">—</div></div>
+  <div class="panel"><div class="toolbar"><div><h3>🔐 共同撲滿</h3><p id="shareText"></p></div><button class="btn red" onclick="leaveRoom()">離開此裝置</button></div></div>
+</section>
+</div>
+
+<nav class="bottom" id="bottom" style="display:none"><button id="bHome" class="active" onclick="showPage('home')"><span class="ico">🏠</span>首頁</button><button id="bRecords" onclick="showPage('records')"><span class="ico">🧾</span>紀錄</button><button id="bSettings" onclick="showPage('settings')"><span class="ico">⚙️</span>設定</button></nav>
+
+<div id="modalBg" class="modalBg" onclick="if(event.target===this)closeEntry()"><div class="modal">
+<h3>新增打工紀錄</h3><div class="hint">日期會自動判斷平日、週六、週日；Public Holiday 會嘗試用澳洲假日資料自動判斷，仍可手動切換。</div>
+<div class="grid">
+  <div class="field"><label>日期</label><input id="eDate" type="date" onchange="autoDayType()"></div>
+  <div class="field"><label>打工人</label><select id="eWorker"></select></div>
+  <div class="field"><label>工作</label><select id="eJob" onchange="preview()"></select></div>
+  <div class="field"><label>日別</label><select id="eDay" onchange="preview()"><option value="WEEKDAY">平日</option><option value="SATURDAY">週六</option><option value="SUNDAY">週日</option><option value="PUBLIC_HOLIDAY">Public Holiday</option></select></div>
+  <div class="field"><label>工時</label><input id="eHours" type="number" step="0.25" oninput="preview()"></div>
+  <div class="field"><label>AUD→TWD 匯率</label><input id="eFx" type="number" step="0.0001" oninput="preview()"></div>
+</div>
+<div class="totals"><div class="total"><span>倍率</span><strong id="pMult">×1.00</strong></div><div class="total"><span>套用時薪</span><strong id="pRate">A$0</strong></div><div class="total"><span>預估收入</span><strong id="pIncome">A$0 / NT$0</strong></div></div>
+<div class="actions"><button class="btn secondary" onclick="closeEntry()">取消</button><button class="btn green" onclick="saveEntry()">儲存</button></div>
+</div></div>
+
+<script>
+const RULE_VERSION='FWO_2026-07-01';
+const cfg=window.MC_CONFIG||{};
+let sb,roomId=null,room=null,workers=[],jobs=[],entries=[],channel=null,chart=null,viewMonth=new Date();viewMonth.setDate(1);let gateMode='join';
+
+function moneyAUD(v){return new Intl.NumberFormat('en-AU',{style:'currency',currency:'AUD'}).format(Number(v)||0)}
+function moneyTWD(v){return new Intl.NumberFormat('zh-TW',{style:'currency',currency:'TWD',maximumFractionDigits:0}).format(Number(v)||0)}
+function localDate(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function mk(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`}
+function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function totals(a=entries){return a.reduce((x,e)=>({hours:x.hours+Number(e.hours),aud:x.aud+Number(e.aud_income),twd:x.twd+Number(e.twd_income)}),{hours:0,aud:0,twd:0})}
+function awardName(c){return ({FAST_FOOD:'Fast Food',RESTAURANT:'Restaurant',HOSPITALITY:'Hospitality',RETAIL:'Retail'})[c]||c}
+
+function penaltyMultiplier(award,emp,level,day){
+  level=Number(level)||1;
+  if(day==='WEEKDAY') return 1;
+  const casual=emp==='CASUAL';
+  if(casual){
+    if(day==='SATURDAY') return 1.20;           // 150% / casual ordinary 125%
+    if(day==='PUBLIC_HOLIDAY') return 2.00;     // 250% / casual ordinary 125%
+    if(day==='SUNDAY'){
+      if(award==='FAST_FOOD') return level===1?1.20:1.40;
+      if(award==='RESTAURANT') return level<=2?1.20:1.40;
+      if(award==='HOSPITALITY'||award==='RETAIL') return 1.40;
+    }
+  }else{
+    if(day==='SATURDAY') return 1.25;
+    if(day==='PUBLIC_HOLIDAY') return 2.25;
+    if(day==='SUNDAY'){
+      if(award==='FAST_FOOD') return level===1?1.25:1.50;
+      return 1.50;
+    }
+  }
+  return 1;
+}
+
+async function init(){
+  if(!cfg.SUPABASE_URL||cfg.SUPABASE_URL.includes('PASTE_')){document.getElementById('gateMsg').textContent='尚未設定 Supabase。請先依 README 修改 config.js。';return}
+  sb=supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_ANON_KEY);
+  let {data:{session}}=await sb.auth.getSession();
+  if(!session){const r=await sb.auth.signInAnonymously();if(r.error){gateMsg.textContent='匿名登入失敗：'+r.error.message;return}}
+  const saved=localStorage.getItem('mc_room_id');
+  if(saved){roomId=saved;const ok=await loadRoom();if(ok){enterApp();return}else localStorage.removeItem('mc_room_id')}
+}
+function switchGate(m){gateMode=m;tabJoin.classList.toggle('active',m==='join');tabCreate.classList.toggle('active',m==='create');createNameWrap.style.display=m==='create'?'block':'none'}
+async function submitGate(){
+  const name=gName.value.trim(),code=gCode.value.trim(),pass=gPass.value;
+  if(!name||!code||pass.length<4){gateMsg.textContent='請填名字、房間代碼與至少 4 碼密碼。';return}
+  gateMsg.textContent='連線中…';
+  let res;
+  if(gateMode==='create')res=await sb.rpc('create_piggy_room',{p_name:gRoomName.value,p_code:code,p_password:pass,p_display_name:name});
+  else res=await sb.rpc('join_piggy_room',{p_code:code,p_password:pass,p_display_name:name});
+  if(res.error){gateMsg.textContent='失敗：'+res.error.message;return}
+  roomId=res.data;localStorage.setItem('mc_room_id',roomId);
+  if(await loadRoom())enterApp();
+}
+async function loadRoom(){
+  const rr=await sb.from('rooms').select('*').eq('id',roomId).maybeSingle();if(rr.error||!rr.data)return false;room=rr.data;
+  const [w,j,e]=await Promise.all([sb.from('workers').select('*').eq('room_id',roomId).order('created_at'),sb.from('jobs').select('*').eq('room_id',roomId).order('created_at'),sb.from('entries').select('*').eq('room_id',roomId).order('work_date')]);
+  workers=w.data||[];jobs=j.data||[];entries=e.data||[];return true;
+}
+function enterApp(){gate.style.display='none';app.style.display='block';bottom.style.display='';roomTitle.textContent=room.name;roomCode.textContent='房間：'+room.code;shareText.textContent=`分享網站網址給女友，輸入房間代碼「${room.code}」與你們的共同密碼即可加入。`;goalInput.value=room.goal_twd||'';dateInput.value=room.target_date||'';renderAll();subscribe()}
+function subscribe(){
+  if(channel)sb.removeChannel(channel);
+  channel=sb.channel('mc-'+roomId).on('postgres_changes',{event:'*',schema:'public',table:'entries',filter:'room_id=eq.'+roomId},reload)
+    .on('postgres_changes',{event:'*',schema:'public',table:'workers',filter:'room_id=eq.'+roomId},reload)
+    .on('postgres_changes',{event:'*',schema:'public',table:'jobs',filter:'room_id=eq.'+roomId},reload)
+    .on('postgres_changes',{event:'UPDATE',schema:'public',table:'rooms',filter:'id=eq.'+roomId},reload).subscribe();
+}
+async function reload(){syncStatus.textContent='● 同步中';await loadRoom();renderAll();setTimeout(()=>syncStatus.textContent='● 即時同步',350)}
+function showPage(p){['home','records','settings'].forEach(x=>{document.getElementById(x+'Page').classList.toggle('active',x===p);document.getElementById('n'+x[0].toUpperCase()+x.slice(1))?.classList.toggle('active',x===p);document.getElementById('b'+x[0].toUpperCase()+x.slice(1))?.classList.toggle('active',x===p)});if(p==='settings')renderSettings();if(p==='records')renderRecords()}
+
+function renderAll(){renderHome();renderRecords();renderSettings()}
+function renderHome(){
+  const t=totals(),goalN=Number(room.goal_twd)||0,rem=Math.max(0,goalN-t.twd),pc=goalN?Math.min(100,t.twd/goalN*100):0;
+  remain.textContent='還差 '+moneyTWD(rem);saved.textContent='已存 '+moneyTWD(t.twd);goal.textContent='目標 '+moneyTWD(goalN);pct.textContent=pc.toFixed(1)+'%';prog.style.width=pc+'%';
+  if(room.target_date){let a=new Date();a.setHours(0,0,0,0);let b=new Date(room.target_date+'T00:00:00'),d=Math.ceil((b-a)/86400000);days.textContent=d>=0?d+' 天':'已過 '+Math.abs(d)+' 天';goalDateText.textContent='目標日期 '+room.target_date}else{days.textContent='—';goalDateText.textContent='尚未設定目標日期'}
+  kTwd.textContent=moneyTWD(t.twd);kAud.textContent=moneyAUD(t.aud);kHours.textContent=t.hours.toFixed(1)+' h';
+  const mt=totals(entries.filter(e=>e.work_date.startsWith(mk(new Date()))));kMonth.textContent=moneyAUD(mt.aud);kMonthTwd.textContent=moneyTWD(mt.twd);
+  people.innerHTML=workers.length?workers.map(w=>{const wt=totals(entries.filter(e=>e.worker_id===w.id)),s=t.twd?wt.twd/t.twd*100:0;return `<div class="card person"><div class="row"><strong>${esc(w.name)}</strong><span class="share">${s.toFixed(1)}% 貢獻</span></div><div class="personMoney">${moneyTWD(wt.twd)}</div><div class="sub">${moneyAUD(wt.aud)} · ${wt.hours.toFixed(1)} h</div><div class="bar"><div style="width:${s}%"></div></div></div>`}).join(''):'<div class="card empty">先到設定新增 M 和 C。</div>';
+  drawChart();
+}
+function drawChart(){
+  const months=[...new Set(entries.map(e=>e.work_date.slice(0,7)))].sort().slice(-6),ctx=document.getElementById('salaryChart');
+  if(chart)chart.destroy();
+  chart=new Chart(ctx,{type:'bar',data:{labels:months.map(x=>x.slice(5)+'月'),datasets:workers.slice(0,4).map(w=>({label:w.name,data:months.map(m=>totals(entries.filter(e=>e.worker_id===w.id&&e.work_date.startsWith(m))).aud)}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},scales:{y:{beginAtZero:true}}}})
+}
+function renderRecords(){
+  const key=mk(viewMonth);monthTitle.textContent=`${viewMonth.getFullYear()} 年 ${viewMonth.getMonth()+1} 月`;monthPick.value=key;
+  const a=entries.filter(e=>e.work_date.startsWith(key)).sort((x,y)=>x.work_date.localeCompare(y.work_date));
+  tbody.innerHTML=a.length?a.map(e=>`<tr><td>${e.work_date}</td><td>${esc(e.worker_name)}</td><td>${esc(e.store)}</td><td>${esc(e.role)}</td><td>${awardName(e.award_code)}</td><td>${e.day_type}</td><td class="num">${Number(e.hours).toFixed(2)}</td><td class="num">×${Number(e.penalty_multiplier).toFixed(2)}</td><td class="num">${moneyAUD(e.applied_hourly_rate)}</td><td class="num">${moneyAUD(e.aud_income)}</td><td class="num">${Number(e.fx_aud_twd).toFixed(4)}</td><td class="num">${moneyTWD(e.twd_income)}</td><td><button class="btn red small" onclick="deleteEntry('${e.id}')">刪除</button></td></tr>`).join(''):'<tr><td colspan="13" class="empty">這個月還沒有紀錄。</td></tr>';
+  const t=totals(a);mHours.textContent=t.hours.toFixed(2)+' h';mAud.textContent=moneyAUD(t.aud);mTwd.textContent=moneyTWD(t.twd)
+}
+function shiftMonth(n){viewMonth.setMonth(viewMonth.getMonth()+n);renderRecords()}function pickMonth(v){if(!v)return;const[y,m]=v.split('-').map(Number);viewMonth=new Date(y,m-1,1);renderRecords()}
+function renderSettings(){
+  goalInput.value=room.goal_twd||'';dateInput.value=room.target_date||'';
+  workerList.innerHTML=workers.map(w=>`<div class="item"><div><strong>${esc(w.name)}</strong></div><button class="btn red small" onclick="delWorker('${w.id}')">刪除</button></div>`).join('');
+  jobList.innerHTML=jobs.map(j=>`<div class="item"><div><strong>${esc(j.store)} · ${esc(j.role)}</strong><small>${moneyAUD(j.base_rate)}/h · ${awardName(j.award_code)} · ${j.employment_type} · Level ${j.level_no}</small></div><button class="btn red small" onclick="delJob('${j.id}')">刪除</button></div>`).join('')
+}
+async function saveGoal(){await sb.from('rooms').update({goal_twd:Number(goalInput.value)||0,target_date:dateInput.value||null}).eq('id',roomId)}
+async function addWorker(){const n=workerInput.value.trim();if(!n)return;await sb.from('workers').insert({room_id:roomId,name:n});workerInput.value=''}
+async function delWorker(id){if(entries.some(e=>e.worker_id===id))return alert('這位打工人已有歷史紀錄，為避免破壞資料，目前不允許刪除。');await sb.from('workers').delete().eq('id',id)}
+async function addJob(){if(!jStore.value.trim()||!jRole.value.trim()||!Number(jRate.value))return alert('請填完整工作資料');await sb.from('jobs').insert({room_id:roomId,store:jStore.value.trim(),role:jRole.value.trim(),base_rate:Number(jRate.value),award_code:jAward.value,employment_type:jEmp.value,level_no:Number(jLevel.value)});jStore.value='';jRole.value='';jRate.value=''}
+async function delJob(id){if(entries.some(e=>e.job_id===id))return alert('這份工作已有歷史紀錄，為避免破壞資料，目前不允許刪除。');await sb.from('jobs').delete().eq('id',id)}
+
+async function fetchFx(date=null){
+  try{
+    let url=date?`https://api.frankfurter.dev/v2/rate/aud/twd?date=${date}`:`https://api.frankfurter.dev/v2/rate/aud/twd`;
+    const r=await fetch(url);if(!r.ok)throw 0;const j=await r.json(),rate=Number(j.rate);if(!rate)throw 0;fxNow.textContent=`1 AUD = ${rate.toFixed(4)} TWD`;return rate;
+  }catch(e){alert('目前無法取得自動匯率，請稍後再試或手動輸入。');return null}
+}
+async function isNSWPublicHoliday(date){
+  try{
+    const y=date.slice(0,4),r=await fetch(`https://date.nager.at/api/v3/PublicHolidays/${y}/AU`);if(!r.ok)return false;
+    const a=await r.json();return a.some(h=>h.date===date && (!h.counties || h.counties.includes('AU-NSW')));
+  }catch(e){return false}
+}
+async function autoDayType(){
+  const date=eDate.value;if(!date)return;
+  const ph=await isNSWPublicHoliday(date);if(ph)eDay.value='PUBLIC_HOLIDAY';else{const d=new Date(date+'T12:00:00').getDay();eDay.value=d===6?'SATURDAY':d===0?'SUNDAY':'WEEKDAY'}preview()
+}
+async function openEntry(){
+  if(!workers.length||!jobs.length)return alert('請先新增打工人與工作設定');
+  eDate.value=localDate();eWorker.innerHTML=workers.map(w=>`<option value="${w.id}">${esc(w.name)}</option>`).join('');eJob.innerHTML=jobs.map(j=>`<option value="${j.id}">${esc(j.store)} · ${esc(j.role)}</option>`).join('');eHours.value='';await autoDayType();eFx.value=(await fetchFx(eDate.value))||'';preview();modalBg.classList.add('show')
+}
+function closeEntry(){modalBg.classList.remove('show')}
+function preview(){
+  const j=jobs.find(x=>x.id===eJob.value);if(!j)return;const mult=penaltyMultiplier(j.award_code,j.employment_type,j.level_no,eDay.value),rate=Number(j.base_rate)*mult,h=Number(eHours.value)||0,fx=Number(eFx.value)||0;pMult.textContent='×'+mult.toFixed(2);pRate.textContent=moneyAUD(rate);pIncome.textContent=`${moneyAUD(rate*h)} / ${moneyTWD(rate*h*fx)}`
+}
+async function saveEntry(){
+  const w=workers.find(x=>x.id===eWorker.value),j=jobs.find(x=>x.id===eJob.value),h=Number(eHours.value),fx=Number(eFx.value);if(!w||!j||!eDate.value||!h||!fx)return alert('請填完整');
+  const mult=penaltyMultiplier(j.award_code,j.employment_type,j.level_no,eDay.value),rate=Number(j.base_rate)*mult,audN=rate*h,twdN=audN*fx;
+  const {data:{user}}=await sb.auth.getUser();
+  const payload={room_id:roomId,worker_id:w.id,job_id:j.id,work_date:eDate.value,hours:h,day_type:eDay.value,fx_aud_twd:fx,worker_name:w.name,store:j.store,role:j.role,base_rate:j.base_rate,award_code:j.award_code,employment_type:j.employment_type,level_no:j.level_no,rule_version:RULE_VERSION,penalty_multiplier:mult,applied_hourly_rate:rate,aud_income:audN,twd_income:twdN,created_by:user.id};
+  const r=await sb.from('entries').insert(payload);if(r.error)return alert(r.error.message);closeEntry();const[y,m]=eDate.value.split('-').map(Number);viewMonth=new Date(y,m-1,1)
+}
+async function deleteEntry(id){if(confirm('確定刪除這筆紀錄？'))await sb.from('entries').delete().eq('id',id)}
+function leaveRoom(){localStorage.removeItem('mc_room_id');location.reload()}
+init();
+</script>
+</body>
+</html>
