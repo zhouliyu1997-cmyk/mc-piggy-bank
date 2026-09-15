@@ -1,5 +1,5 @@
 
-const CACHE = "mc-piggy-pwa-v14-v5-1-data-sync";
+const CACHE = "mc-piggy-pwa-v15-v6-longterm";
 const APP_SHELL = [
   "./",
   "./index.html",

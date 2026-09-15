@@ -382,6 +382,28 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
   .sg-inventory{grid-template-columns:repeat(2,1fr)}.sg-world-map{grid-template-columns:1fr}.recruitResults{grid-template-columns:repeat(2,1fr)}
 }
 
+
+/* ===== V6 長期版：8 區域 / 難度循環 / HP / 低掉寶 ===== */
+.sg-battlefield[data-biome="forest"]{background:linear-gradient(180deg,#233846 0,#1d3035 47%,#15251c 48%,#101712 100%)}
+.sg-battlefield[data-biome="mine"]{background:linear-gradient(180deg,#2b2731 0,#171820 47%,#241b17 48%,#0e0d10 100%)}
+.sg-battlefield[data-biome="village"]{background:linear-gradient(180deg,#333648 0,#1d202b 47%,#28231f 48%,#121011 100%)}
+.sg-battlefield[data-biome="mist"]{background:linear-gradient(180deg,#2a3b4b 0,#1b2a35 47%,#1c2829 48%,#0e1516 100%)}
+.sg-battlefield[data-biome="fortress"]{background:linear-gradient(180deg,#392f3d 0,#24202a 47%,#2a2223 48%,#120f12 100%)}
+.sg-battlefield[data-biome="frost"]{background:linear-gradient(180deg,#526b7d 0,#334b5b 46%,#d8e1e8 47%,#7d909c 100%)}
+.sg-battlefield[data-biome="desert"]{background:linear-gradient(180deg,#8a6743 0,#624930 46%,#c49858 47%,#725233 100%)}
+.sg-battlefield[data-biome="abyss"]{background:radial-gradient(circle at 70% 14%,rgba(159,73,218,.28),transparent 18%),linear-gradient(180deg,#241d3c 0,#151328 46%,#19131f 47%,#08070c 100%)}
+
+.v6-team-hp{position:absolute;left:12px;top:12px;z-index:14;display:flex;gap:5px;flex-direction:column;width:min(305px,43%)}
+.v6-hp-row{display:grid;grid-template-columns:72px 1fr 60px;gap:5px;align-items:center;padding:4px 6px;background:#080b11df;border:1px solid #303a4b;border-radius:8px;font-size:8px}
+.v6-hp-track{height:7px;border-radius:99px;background:#291419;overflow:hidden}
+.v6-hp-track i{display:block;height:100%;background:linear-gradient(90deg,#42a567,#7bd895);transition:.15s}
+.v6-ko{opacity:.38;filter:grayscale(1)}
+.v6-difficulty{display:flex;gap:5px;flex-wrap:wrap;margin:7px 0 10px}
+.v6-difficulty span{border:1px solid #394355;background:#10151e;border-radius:99px;padding:4px 8px;font-size:8px;color:#9da7b8}
+.v6-difficulty .on{border-color:#a45f87;background:#321e33;color:#fff}
+.v6-loot-rule{margin:8px 0;padding:8px 9px;border:1px solid #2d3746;border-radius:8px;background:#0a0e14;color:#9ea7b6;font-size:8px;line-height:1.55}
+.v6-zone-tag{display:inline-block;margin-top:4px;padding:3px 6px;border:1px solid #384253;border-radius:99px;font-size:7px;color:#b6c0d0}
+
 </style>
 </head>
 <body>
@@ -481,7 +503,7 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
                 <div class="sg-mountain m1"></div><div class="sg-mountain m2"></div>
                 <div class="sg-ruin r1"></div><div class="sg-ruin r2"></div>
                 <div class="sg-ground"></div>
-                <div class="sg-combo"><b id="v4ComboCount">0</b><span>連擊</span></div>
+                <div id="v6TeamHp" class="v6-team-hp"></div><div class="sg-combo"><b id="v4ComboCount">0</b><span>連擊</span></div>
                 <div id="heroLane" class="sg-hero-lane"></div>
                 <div id="monsterWrap" class="sg-monster-lane"></div>
                 <div id="damageLayer" class="damageLayer"></div>
@@ -608,7 +630,7 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
           <div class="sg-inventory-layout">
             <section id="v5GearDetail" class="sg-panel sg-gear-detail"></section>
             <section class="sg-panel">
-              <div class="sg-loot-tabs">
+              <div class="v6-loot-rule">掉寶規則：普通前期小怪只會掉普通／優秀裝備；高稀有裝備主要來自 Boss、更高難度與鑽石裝備池。每個區域與難度都有自己的裝備池，避免前期直接畢業。</div><div class="sg-loot-tabs">
                 <button class="active" onclick="v5SetLootMode('gear',this)">戰鬥裝備</button>
                 <button onclick="v5SetLootMode('fashion',this)">特殊時裝</button>
               </div>
@@ -624,7 +646,7 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
           </div>
           <div class="sg-world-layout">
             <section class="sg-panel">
-              <div class="sg-panel-title"><span>世界地圖</span><small>5 大區域 · 50 關</small></div>
+              <div class="sg-panel-title"><span>世界地圖</span><small>8 大區域 · 5 難度循環</small></div><div id="v6DifficultyBar" class="v6-difficulty"></div>
               <div id="worldStages" class="sg-world-map"></div>
             </section>
             <section class="sg-panel">
@@ -2059,6 +2081,337 @@ showPage=function(p){
       render公會();
     }).catch(console.error);
   }
+};
+
+
+/* ==========================================================
+   星痕公會 V6 長期平衡版
+   設計方向：暗黑式難度循環 + 區域掉落池 + 卡關養成
+   ========================================================== */
+
+const V6_DIFFICULTIES=[
+ {id:1,name:'普通',hp:1,atk:1,gold:1,drop:1},
+ {id:2,name:'困難',hp:4.2,atk:2.4,gold:1.65,drop:1.15},
+ {id:3,name:'非常困難',hp:13.5,atk:5.3,gold:2.45,drop:1.32},
+ {id:4,name:'夢魘',hp:44,atk:12.5,gold:3.8,drop:1.52},
+ {id:5,name:'地獄',hp:155,atk:31,gold:5.9,drop:1.75}
+];
+
+const V6_ZONES=[
+ {name:'翠谷森林',subtitle:'被魔力侵蝕的古老森林',theme:'forest',set:'翠風',
+  mobs:['森牙哥布林','黑鬃魔狼','毒孢妖','腐木精'],
+  bosses:['哥布林戰酋','赤牙狼王','腐冠菇母','枯木巨靈','荊棘獵手','魔藤女王','獸骨祭司','森林暴君','古樹守望者','翠谷魔王']},
+ {name:'廢棄礦坑',subtitle:'失控礦脈與古代機巧',theme:'mine',set:'黑鐵',
+  mobs:['裂晶礦鼠','骸骨礦工','岩甲獸','熔核傀儡'],
+  bosses:['礦坑屠夫','黑鐵監工','裂晶巨蟲','熔岩石像','機巧守衛','深層掘獸','赤鐵暴君','晶核魔像','古礦守護者','地脈巨神']},
+ {name:'遺忘村落',subtitle:'亡靈佔據的舊王國邊境',theme:'village',set:'亡國',
+  mobs:['飢渴亡魂','骸骨劍兵','詛咒稻草人','墓園女妖'],
+  bosses:['無首騎士','墓園伯爵','縫合巨獸','哀嚎女爵','亡國劍豪','黑棺司祭','死鐘執行者','蒼白領主','王墓守門人','失落王魂']},
+ {name:'迷霧森林',subtitle:'月色無法穿透的獵殺之地',theme:'mist',set:'月影',
+  mobs:['月影魔狼','霧蛛','夜行樹妖','幻霧獵手'],
+  bosses:['月牙獵王','蛛后瑟芮','百目樹妖','霧刃追獵者','月蝕巨狼','森獄魔女','黯霧騎士','夢魘獵犬','古月祭司','迷霧之主']},
+ {name:'古代要塞',subtitle:'深淵軍勢佔領的失落城塞',theme:'fortress',set:'要塞',
+  mobs:['黑甲魔兵','深淵弩手','咒火術士','墮落守衛'],
+  bosses:['黑鐵將軍','深淵炮手','焚城術士','墮落聖騎','破城巨像','血旗統帥','惡魔執政官','王座守衛','深淵大公','終焉統帥']},
+ {name:'霜境冰原',subtitle:'終年暴雪覆蓋的北境極地',theme:'frost',set:'霜冠',
+  mobs:['霜牙狼','冰晶妖','雪原亡兵','寒霜巨獸'],
+  bosses:['雪原獵王','冰晶女皇','寒甲巨人','霜翼龍獸','凍土祭司','白夜魔狼','極寒騎士','永凍守衛','冰冠君主','霜境之王']},
+ {name:'赤砂荒漠',subtitle:'埋藏古代文明的灼熱沙海',theme:'desert',set:'赤砂',
+  mobs:['赤砂蠍','荒漠盜匪','石像守衛','炎蛇'],
+  bosses:['沙海盜王','赤甲蠍后','巨像監察者','炎蛇王','黃沙祭司','古墓劍聖','灼日巨獸','沙暴魔靈','赤砂法老','太陽暴君']},
+ {name:'星墜深淵',subtitle:'星痕力量失控後形成的終極禁地',theme:'abyss',set:'星墜',
+  mobs:['星蝕魔','虛空獵手','深淵騎士','裂界法師'],
+  bosses:['星蝕獸王','虛空行刑者','深淵賢者','裂界巨像','墮星騎士','終末獵王','虛無大公','星骸守門人','深淵皇帝','星墜魔神']}
+];
+
+function v6Diff(){return V6_DIFFICULTIES[Math.max(0,Math.min(4,Number(gameMeta?.difficulty||1)-1))]}
+
+function stageInfo(){
+ const z=Math.max(1,Math.min(V6_ZONES.length,Number(gameMeta?.stage_zone||1)));
+ const n=Math.max(1,Math.min(10,Number(gameMeta?.stage_number||1)));
+ const zone=V6_ZONES[z-1],d=v6Diff();
+ const hp=360*Math.pow(3.08,z-1)*Math.pow(1.37,n-1)*d.hp;
+ const gold=Math.max(2,Math.round(2.15*Math.pow(1.82,z-1)*Math.pow(1.12,n-1)*d.gold));
+ return {z,n,zone,hp:Math.round(hp),gold,bossHp:Math.round(hp*(22+n*1.35)),bossGold:Math.round(gold*(30+n*2)),label:`${z}-${n}`,boss:zone.bosses[n-1],difficulty:d}
+}
+
+/* 小怪掉寶率刻意壓低；Boss 才是主要自然裝備來源 */
+function dropChance(){
+ const d=v6Diff(),z=stageInfo().z;
+ return Math.min(.012, .0008*d.drop*(1+z*.06)*(1+buildingLv('blacksmith')*.018))
+}
+function v6BossDropChance(){
+ const d=v6Diff(),z=stageInfo().z;
+ return Math.min(.32,.045*d.drop*(1+z*.035)*(1+buildingLv('blacksmith')*.012))
+}
+
+/* 稀有度上限依難度與區域限制 */
+function v6AllowedRarities(isBoss=false){
+ const diff=Number(gameMeta?.difficulty||1),z=stageInfo().z;
+ if(!isBoss){
+   if(diff===1 && z<=3)return ['COMMON','UNCOMMON'];
+   if(diff===1)return ['COMMON','UNCOMMON','RARE'];
+   if(diff===2)return ['COMMON','UNCOMMON','RARE'];
+   if(diff===3)return ['UNCOMMON','RARE','EPIC'];
+   if(diff===4)return ['RARE','EPIC','LEGENDARY'];
+   return ['RARE','EPIC','LEGENDARY'];
+ }
+ if(diff===1)return z<=4?['UNCOMMON','RARE']:['UNCOMMON','RARE','EPIC'];
+ if(diff===2)return ['RARE','EPIC'];
+ if(diff===3)return ['RARE','EPIC','LEGENDARY'];
+ if(diff===4)return ['EPIC','LEGENDARY','MYTHIC'];
+ return ['EPIC','LEGENDARY','MYTHIC'];
+}
+function v6RollRarity(allowed,isBoss=false){
+ const w=isBoss
+   ? {COMMON:0,UNCOMMON:52,RARE:38,EPIC:8.5,LEGENDARY:1.4,MYTHIC:.1}
+   : {COMMON:69,UNCOMMON:27,RARE:3.6,EPIC:.36,LEGENDARY:.038,MYTHIC:.002};
+ const pool=allowed.map(r=>[r,w[r]||.01]),total=pool.reduce((s,x)=>s+x[1],0);
+ let x=Math.random()*total;
+ for(const [r,n] of pool){x-=n;if(x<=0)return r}
+ return pool[pool.length-1][0]
+}
+
+/* 區域 + 難度決定裝備等級與可掉裝備 */
+function v4GearRoll(isBoss=false){
+ const rank=v6RollRarity(v6AllowedRarities(isBoss),isBoss);
+ const slotPool=V4_GEAR_CATALOG.filter(x=>x.rarity===rank);
+ const t=slotPool[Math.floor(Math.random()*slotPool.length)]||V4_GEAR_CATALOG[0];
+ const s=stageInfo(),diff=Number(gameMeta?.difficulty||1),itemLv=(diff-1)*100+(s.z-1)*10+s.n;
+ const mult=(V41_RARITY_MULT?.[rank]||1);
+ return {...t,item_level:itemLv,atk:Math.round((6+itemLv*1.15+t.base_atk*.32)*mult),
+   atk_speed:Number((Math.random()*.010*mult).toFixed(3)),
+   crit:Number((Math.random()*.006*mult).toFixed(3)),
+   gold_find:Number((Math.random()*.009*mult).toFixed(3)),
+   zone_set:s.zone.set}
+}
+async function generateEquipmentDrop(mult=1,boss=false){
+ const chance=boss?v6BossDropChance():dropChance();
+ if(Math.random()>chance)return false;
+ const g=v4GearRoll(boss);g.atk=Math.round(g.atk*mult);
+ const r=await sb.from('game_equipment').insert({
+   room_id:roomId,slot:g.slot,rarity:g.rarity,item_level:g.item_level,
+   atk:g.atk,atk_speed:g.atk_speed,crit:g.crit,gold_find:g.gold_find,equipped:false
+ });
+ return !r.error
+}
+
+/* 冒險家血量與反擊 */
+function v6HeroMaxHp(a){
+ const lv=Number(a.level||1),rar=(V41_RARITY_MULT?.[a.rarity]||1),cls=v4NormalizeClass(a.class_name);
+ const cm=cls==='戰士'?1.35:cls==='法師'?.82:cls==='弓箭手'?1:.92;
+ return Math.round((300+lv*62)*rar*cm)
+}
+function v6HeroHp(a){return a.knocked_out?0:Math.max(0,Number(a.current_hp??v6HeroMaxHp(a)))}
+function v6AllKo(){const p=party();return p.length>0&&p.every(a=>a.knocked_out||v6HeroHp(a)<=0)}
+
+async function v6DamageParty(dt,boss=false){
+ const alive=party().filter(a=>!a.knocked_out&&v6HeroHp(a)>0);if(!alive.length)return;
+ const s=stageInfo(),d=v6Diff();
+ const hit=(boss?64:8.5)*Math.pow(2.08,s.z-1)*Math.pow(1.17,s.n-1)*d.atk*dt;
+ const target=alive[Math.floor(Math.random()*alive.length)],max=v6HeroMaxHp(target),next=Math.max(0,v6HeroHp(target)-hit);
+ target.current_hp=next;target.max_hp=max;
+ if(next<=0){target.knocked_out=true;target.injury_until=new Date(Date.now()+10*60*1000).toISOString()}
+ if(Math.random()<.10||next<=0){
+   await sb.from('game_adventurers').update({
+     current_hp:next,max_hp:max,knocked_out:next<=0,
+     injury_until:next<=0?target.injury_until:null
+   }).eq('id',target.id)
+ }
+}
+async function v6RecoverParty(){
+ for(const a of gameAdventurers){
+   if(a.knocked_out&&a.injury_until&&new Date(a.injury_until)<=new Date()){
+     const max=v6HeroMaxHp(a);a.knocked_out=false;a.current_hp=max;a.max_hp=max;a.injury_until=null;
+     await sb.from('game_adventurers').update({knocked_out:false,current_hp:max,max_hp:max,injury_until:null}).eq('id',a.id)
+   }else if(!a.knocked_out&&(a.current_hp==null||a.max_hp==null)){
+     const max=v6HeroMaxHp(a);a.current_hp=max;a.max_hp=max
+   }
+ }
+}
+
+/* 每關 50 隻；同時最多 3 隻，死亡後再輪流補怪 */
+function v4EnsureWave(){
+ if(v4BossMode||v4Wave.length)return;
+ const s=stageInfo();
+ v4Wave=Array.from({length:3},(_,i)=>({id:`m${Date.now()}-${i}`,kind:(i+v4WaveSeed)%4,hp:s.hp,max:s.hp,x:16+i*25,y:8+(i%2)*22}));
+ v4WaveSeed++
+}
+function v6RefillWave(){
+ if(v4BossMode)return;
+ const kills=Number(gameMeta?.stage_kills||0)+v4KillBuffer,remain=50-(kills%50);
+ const s=stageInfo();
+ while(v4Wave.length<3&&v4Wave.length<remain){
+   const i=v4Wave.length;
+   v4Wave.push({id:`m${Date.now()}-${Math.random()}`,kind:(v4WaveSeed+i)%4,hp:s.hp,max:s.hp,x:16+i*25,y:8+(i%2)*22})
+ }
+}
+
+async function v4MobDefeated(m){
+ const el=document.getElementById(m.id);if(el)el.classList.add('dead');
+ v4Wave=v4Wave.filter(x=>x!==m);v4Combo++;
+ const s=stageInfo();v4GoldBuffer+=s.gold;v4KillBuffer++;
+ lootBurst.textContent=`+${s.gold.toLocaleString()} 金幣`;lootBurst.classList.remove('show');void lootBurst.offsetWidth;lootBurst.classList.add('show');
+ await generateEquipmentDrop(1,false);
+ setTimeout(v6RefillWave,300)
+}
+
+async function battleTick(){
+ if(!room||!gameMeta||!battleAnimOn||!document.getElementById('guildPage')?.classList.contains('active'))return;
+ await v6RecoverParty();
+ if(v6AllKo()){battleAnimOn=false;gameToastMsg('隊伍全滅：等待傷勢恢復後再繼續。');renderBattle();return}
+
+ const now=Date.now(),dt=Math.min(1,(now-lastBattleTick)/1000);lastBattleTick=now;
+ const p=party().filter(a=>!a.knocked_out&&v6HeroHp(a)>0);if(!p.length)return;
+ const attacker=p[Math.floor(Math.random()*p.length)],crit=Math.random()<.15,skill=Math.random()<.10;
+ let dmg=partyDps()*dt*(skill?1.65:1)*(crit?1.5:1);
+ v4AnimateHero(attacker,skill);v4SpawnDamage(dmg,crit);
+
+ if(v4BossMode){
+   v4BossHp-=dmg;await v6DamageParty(dt,true);
+   if(v6AllKo()){battleAnimOn=false;renderBattle();return}
+   if(v4BossHp<=0)await v4BossDefeated();else renderBattle();
+   return
+ }
+
+ v4EnsureWave();
+ const target=v4Wave[Math.floor(Math.random()*v4Wave.length)];
+ if(skill)for(const m of v4Wave)m.hp-=dmg*.38;else target.hp-=dmg;
+ await v6DamageParty(dt,false);
+
+ for(const m of [...v4Wave])if(m.hp<=0)await v4MobDefeated(m);
+ v6RefillWave();
+
+ const totalKills=Number(gameMeta.stage_kills||0)+v4KillBuffer;
+ if(totalKills>0&&totalKills%50===0){
+   await v4FlushBattle();
+   await challengeBoss();
+   return
+ }
+ renderBattle();
+ if(now-v4LastFlush>10000)await v4FlushBattle()
+}
+
+async function challengeBoss(){
+ await v4FlushBattle();
+ const kills=Number(gameMeta.stage_kills||0);
+ if(!(kills>0&&kills%50===0))return;
+ const s=stageInfo();v4BossMode=true;v4BossMax=s.bossHp;v4BossHp=s.bossHp;v4Wave=[];renderBattle()
+}
+async function v4BossDefeated(){
+ const s=stageInfo();v4BossMode=false;v4Combo+=30;
+ let nz=s.z,nn=s.n+1,nd=Number(gameMeta.difficulty||1);
+ if(nn>10){nn=1;nz++}
+ if(nz>V6_ZONES.length){nz=1;nd=Math.min(5,nd+1)}
+ const upd={
+   idle_gold:Number(gameMeta.idle_gold||0)+s.bossGold,
+   stage_zone:nz,stage_number:nn,stage_kills:0,difficulty:nd,
+   last_seen:new Date().toISOString(),updated_at:new Date().toISOString()
+ };
+ await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};
+ await generateEquipmentDrop(1.15,true);
+ for(const a of gameAdventurers){
+   if(!a.knocked_out){
+     const max=v6HeroMaxHp(a),hp=Math.min(max,v6HeroHp(a)+max*.25);a.current_hp=hp;a.max_hp=max;
+     await sb.from('game_adventurers').update({current_hp:hp,max_hp:max}).eq('id',a.id)
+   }
+ }
+ v4Wave=[];v4BossHp=0;v4BossMax=0;gameToastMsg(`擊破首領「${s.boss}」！`);render公會()
+}
+
+function v6RenderHp(){
+ const box=document.getElementById('v6TeamHp');if(!box)return;
+ box.innerHTML=party().map(a=>{const max=v6HeroMaxHp(a),hp=v6HeroHp(a),pct=max?Math.max(0,Math.min(100,hp/max*100)):0;return `<div class="v6-hp-row ${a.knocked_out?'v6-ko':''}"><b>${esc(a.name)}</b><div class="v6-hp-track"><i style="width:${pct}%"></i></div><span>${a.knocked_out?'倒地':Math.ceil(hp)+'/'+max}</span></div>`}).join('')
+}
+
+function renderBattle(){
+ const s=stageInfo();v4EnsureWave();battleArena.dataset.biome=s.zone.theme;
+ stageName.textContent=`${s.zone.name} · ${s.label}`;
+ stageSub.textContent=`${s.difficulty.name} · ${s.zone.subtitle} · ${v4BossMode?s.boss:'怪物波次'}`;
+ stageBadge.textContent=`${s.difficulty.name} ${s.label}`;
+ const kills=Number(gameMeta.stage_kills||0)+v4KillBuffer,k=kills%50;
+ battleKills.textContent=kills;battleGps.textContent=formatBig(stageGoldPerSec());battleDropRate.textContent=(dropChance()*100).toFixed(2)+'%';battleProgress.textContent=`${k} / 50`;bossTrackFill.style.width=(k/50*100)+'%';
+ bossBtn.disabled=true;bossUnlockText.textContent=v4BossMode?'首領戰鬥中':'每 50 隻自動挑戰首領';
+ document.getElementById('v4ComboCount').textContent=v4Combo;v6RenderHp();
+
+ heroLane.innerHTML=party().map(a=>`<div class="v4BattleHero ${a.knocked_out?'v6-ko':''}" id="bh${a.id}">${v4SvgHero(a,'battle')}<div class="v4HeroLabel">${esc(a.name)} · Lv.${a.level}</div></div>`).join('');
+ if(v4BossMode){
+   monsterWrap.innerHTML=`<div class="v4BossHp"><b>${s.boss}</b><div class="bar"><i style="width:${Math.max(0,v4BossHp/v4BossMax*100)}%"></i></div></div><div class="v4Mob v4BossMob" id="v4boss" style="right:7%;bottom:0">${v4MobSvg(0,true,s.z)}</div>`
+ }else{
+   monsterWrap.innerHTML=v4Wave.map(m=>`<div class="v4Mob" id="${m.id}" style="left:${m.x}%;bottom:${m.y}%">${v4MobSvg(m.kind,false,s.z)}</div>`).join('')
+ }
+ const first=party()[0];v4SkillBar.innerHTML=first?v4UnlockedSkills(first).slice(-5).map((sk,i)=>`<div class="v4SkillIcon" title="${sk.name}">${['✦','✧','✹','✷','✴'][i%5]}<small>${sk.name}</small></div>`).join(''):'';
+ battlePartyList.innerHTML=party().map(a=>`<div class="v4PartyItem ${a.knocked_out?'v6-ko':''}"><div class="v4PartyAvatar">${v4SvgHero(a,'mini')}</div><div><b>${esc(a.name)} · ${v4JobName(a)}</b><small>Lv.${a.level} · ${V4_RARITY_ZH[a.rarity]||'普通'}</small></div><div class="v4Power">${a.knocked_out?'倒地':formatBig(heroPower(a))}</div></div>`).join('');
+ battlePauseBtn.textContent=battleAnimOn?'暫停動畫':'繼續動畫';
+ if(offlinePending){offlineDuration.textContent=formatDuration(offlinePending.seconds);offlineGold.textContent=Math.floor((offlinePending.gold||0)+(offlinePending.salvageGold||0)).toLocaleString();offlineLoot.textContent=`預估 ${offlinePending.materialized??0} 件`;claimOfflineBtn.disabled=false}else{offlineDuration.textContent='—';offlineGold.textContent='0';offlineLoot.textContent='—';claimOfflineBtn.disabled=true}
+}
+
+function renderWorldIdle(){
+ const s=stageInfo(),bar=document.getElementById('v6DifficultyBar');
+ if(bar)bar.innerHTML=V6_DIFFICULTIES.map(d=>`<span class="${d.id===Number(gameMeta.difficulty||1)?'on':''}">${d.name}</span>`).join('');
+ let cards='';
+ V6_ZONES.forEach((z,zi)=>{for(let n=1;n<=10;n++){
+   const current=(zi+1===s.z&&n===s.n);
+   const unlocked=(zi+1<s.z)||(zi+1===s.z&&n<=s.n)||(Number(gameMeta.difficulty||1)>1);
+   cards+=`<div class="v4WorldStage ${unlocked?'':'locked'} ${current?'current':''}"><h4>${zi+1}-${n} · ${z.name}</h4><p>${z.subtitle}</p><span class="v6-zone-tag">${z.set}裝備池</span><div class="bossName">首領：${z.bosses[n-1]}</div></div>`
+ }});
+ worldStages.innerHTML=cards;
+ idleMilestones.innerHTML=v4MilestoneData().map(m=>{const claimed=gameClaims.some(x=>x.milestone_key===m.key);return `<div class="v4Milestone ${m.ok?'done':''} ${claimed?'claimed':''}"><div style="display:flex;justify-content:space-between;gap:8px"><div><b>${m.name}</b><small>${m.cond}</small><small class="rar-史詩">獎勵 ◆${m.reward} 星痕鑽石</small></div>${m.ok&&!claimed?`<button class="sg-btn primary" onclick="v4ClaimMilestone('${m.key}')">領取</button>`:claimed?'<span>✓</span>':''}</div></div>`}).join('')
+}
+
+/* 五個月導向：讓升級不會前幾天全開完 */
+function heroLevelCost(a){
+ const lv=Number(a.level||1);
+ return Math.max(1500,Math.round(1500*Math.pow(1.185,lv-1)*(1-Math.min(.25,buildingLv('training')*.007))))
+}
+function v4BuildingCost(k,lv){
+ const base={guildhall:28000,tavern:32000,training:36000,blacksmith:44000,warehouse:40000,arcane:52000,portal:62000,atelier:72000}[k]||36000;
+ return Math.round(base*Math.pow(1.39,lv))
+}
+function stageGoldPerSec(){
+ const s=stageInfo(),p=party(),alive=Math.max(0,p.filter(a=>!a.knocked_out&&v6HeroHp(a)>0).length);
+ if(!p.length||!alive)return 0;
+ const survival=alive/p.length;
+ return (partyDps()*survival/Math.max(1,s.hp)*s.gold)*(1+Math.min(.38,buildingLv('warehouse')*.008)+Math.min(.16,buildingLv('portal')*.003))
+}
+
+/* 離線收益不封頂，但以卡關模型打折，避免關掉網站就無限跨 Boss */
+function prepareOfflineRewards(){
+ if(!gameMeta)return;
+ const last=new Date(gameMeta.last_seen||new Date()).getTime(),seconds=Math.max(0,(Date.now()-last)/1000);
+ if(seconds<30){offlinePending=null;return}
+ const efficiency=.38;
+ const gold=stageGoldPerSec()*seconds*efficiency;
+ const expectedKills=(partyDps()/Math.max(1,stageInfo().hp))*seconds*efficiency;
+ const items=Math.floor(expectedKills*dropChance());
+ const materialized=Math.min(items,80),salvaged=Math.max(0,items-materialized),salvageGold=salvaged*45;
+ offlinePending={seconds,gold,items,materialized,salvaged,salvageGold}
+}
+
+
+/* V6 遊戲初始化：只補遊戲欄位與 HP */
+const _v6PreviousEnsureGameInitialized=ensureGameInitialized;
+ensureGameInitialized=async function(){
+  await _v6PreviousEnsureGameInitialized();
+  if(!gameMeta)return;
+
+  const patch={};
+  if(!gameMeta.difficulty)patch.difficulty=1;
+  if(gameMeta.auto_boss==null)patch.auto_boss=true;
+  if(gameMeta.current_wave==null)patch.current_wave=1;
+  if(Object.keys(patch).length){
+    await sb.from('game_meta').update(patch).eq('room_id',roomId);
+    gameMeta={...gameMeta,...patch}
+  }
+
+  for(const a of gameAdventurers){
+    const max=v6HeroMaxHp(a);
+    if(a.max_hp==null||a.current_hp==null){
+      a.max_hp=max;a.current_hp=max;a.knocked_out=false;
+      await sb.from('game_adventurers').update({max_hp:max,current_hp:max,knocked_out:false}).eq('id',a.id)
+    }
+  }
+  v4Wave=[];v4BossMode=false;render公會()
 };
 
 function leaveRoom(){localStorage.removeItem('mc_room_id');location.reload()}
