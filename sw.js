@@ -1,5 +1,5 @@
 
-const CACHE = "mc-piggy-pwa-v13-v5-runtime-fix";
+const CACHE = "mc-piggy-pwa-v14-v5-1-data-sync";
 const APP_SHELL = [
   "./",
   "./index.html",
