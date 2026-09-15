@@ -1,5 +1,5 @@
 
-const CACHE = "mc-piggy-pwa-v5-guild";
+const CACHE = "mc-piggy-pwa-v6-idle-rpg";
 const APP_SHELL = [
   "./",
   "./index.html",

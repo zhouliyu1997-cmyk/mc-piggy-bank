@@ -86,6 +86,37 @@ linear-gradient(45deg,rgba(63,91,48,.18) 25%,transparent 25%) 0 0/48px 48px}
 }
 @media(max-width:430px){.adventurerGrid,.recruitList{grid-template-columns:1fr}.gres{min-width:92px}.gameTitle h2{font-size:25px}}
 
+
+/* ===== Idle RPG V2 ===== */
+.idleGameShell{background:#141210;border-radius:22px;overflow:hidden;color:#f2e7d2;box-shadow:0 18px 45px rgba(0,0,0,.18)}
+.idleTopbar{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 16px;background:linear-gradient(180deg,#201a15,#17130f);border-bottom:1px solid #3a2d23}
+.idleKicker{font-size:9px;letter-spacing:.18em;color:#caa967;font-weight:900}.idleTitle{font-family:Georgia,serif;font-size:22px;color:#f5e6c7;margin-top:3px}
+.idleCurrencies{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.idleCurrency{min-width:104px;background:#2a211a;border:1px solid #49392b;border-radius:12px;padding:7px 9px;display:grid;grid-template-columns:auto 1fr;gap:0 6px;align-items:center}.idleCurrency span{grid-row:1/3;font-size:18px}.idleCurrency b{font-size:14px}.idleCurrency small{font-size:8px;color:#ae9c82}
+.idleTabs{display:flex;gap:6px;padding:9px;background:#17130f;border-bottom:1px solid #3a2d23;overflow:auto;position:sticky;top:0;z-index:7}.idleTabs button{background:#2a211a;border:1px solid transparent;color:#c7b69a;border-radius:9px;padding:8px 10px;white-space:nowrap;font-size:10px;font-weight:900}.idleTabs button.active{background:#d4ae64;color:#1c160f}
+.idleView{display:none;padding:12px;background:linear-gradient(180deg,#1d1814,#161310)}.idleView.active{display:block}
+.battleLayout{display:grid;grid-template-columns:1.35fr .65fr;gap:12px}.battleStageCard,.idlePanel{background:linear-gradient(180deg,#29211b,#201a15);border:1px solid #49392d;border-radius:16px;padding:12px}.stageHeader{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.stageKicker{font-size:8px;letter-spacing:.15em;color:#af9470}.stageHeader h3{margin:2px 0 1px;font-family:Georgia,serif;font-size:20px}.stageSub{font-size:9px;color:#b9a88e}.stageBadge{background:#3b2e23;border:1px solid #695039;padding:7px 10px;border-radius:10px;font-weight:900}
+.battleArena{position:relative;height:430px;margin-top:10px;border-radius:14px;overflow:hidden;border:1px solid #44382e;background:#263729}
+.battleBackdrop{position:absolute;inset:0;background:linear-gradient(180deg,#6a7a75 0 30%,#738b69 30% 58%,#586342 58% 100%)}.battleBackdrop:before{content:"";position:absolute;left:-10%;right:-10%;bottom:35%;height:120px;background:radial-gradient(ellipse at 10% 100%,#2f4e38 0 28%,transparent 29%),radial-gradient(ellipse at 30% 100%,#35583d 0 28%,transparent 29%),radial-gradient(ellipse at 55% 100%,#2e4b36 0 28%,transparent 29%),radial-gradient(ellipse at 80% 100%,#34553c 0 28%,transparent 29%)}.battleBackdrop:after{content:"";position:absolute;inset:auto 0 0;height:43%;background:linear-gradient(180deg,#6c734d,#5b5f42)}
+.heroLane{position:absolute;left:4%;bottom:12%;width:52%;display:flex;gap:10px;align-items:flex-end;z-index:3}.battleHero{position:relative;width:64px;height:92px;display:flex;align-items:flex-end;justify-content:center;transition:transform .15s}.battleHero .char{font-size:46px;filter:drop-shadow(0 4px 3px rgba(0,0,0,.32));animation:heroIdle 1.6s ease-in-out infinite}.battleHero.attacking{animation:heroDash .35s ease-out}.battleHero.cast .char{animation:heroCast .45s ease-out}@keyframes heroIdle{50%{transform:translateY(-3px)}}@keyframes heroDash{50%{transform:translateX(42px) scale(1.05)}}@keyframes heroCast{50%{transform:scale(1.15) rotate(-6deg)}}.heroNameTag{position:absolute;bottom:-16px;font-size:8px;background:rgba(18,15,12,.72);padding:2px 5px;border-radius:6px;color:#e8d9bf}
+.monsterWrap{position:absolute;right:10%;bottom:14%;z-index:3;text-align:center;width:170px}.monsterSprite{font-size:72px;filter:drop-shadow(0 5px 4px rgba(0,0,0,.35));animation:monsterIdle 1.2s ease-in-out infinite}.monsterSprite.hit{animation:monsterHit .2s}.monsterSprite.dead{animation:monsterDead .45s forwards}@keyframes monsterIdle{50%{transform:translateY(-4px)}}@keyframes monsterHit{50%{transform:translateX(8px) rotate(4deg);filter:brightness(1.7)}}@keyframes monsterDead{to{transform:translateY(35px) scale(.3) rotate(18deg);opacity:0}}
+.monsterInfo{margin-top:3px}.monsterName{font-size:10px;font-weight:900;text-shadow:0 1px 3px #000}.monsterHp{height:9px;background:#271d19;border:1px solid #6a4236;border-radius:99px;overflow:hidden}.monsterHp i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#9b3f39,#cf6a57);transition:.15s}.monsterHpText{font-size:8px;margin-top:2px}
+.damageLayer{position:absolute;inset:0;pointer-events:none;z-index:5}.dmg{position:absolute;font-weight:1000;color:#ffe09a;text-shadow:0 2px 3px #000;font-size:15px;animation:dmgFloat .8s ease-out forwards}@keyframes dmgFloat{to{transform:translateY(-45px) scale(1.15);opacity:0}}
+.lootBurst{position:absolute;right:14%;bottom:30%;z-index:5;font-size:11px;font-weight:900;color:#f2cf7a;opacity:0}.lootBurst.show{animation:lootPop .9s ease-out}@keyframes lootPop{0%{opacity:0;transform:translateY(8px)}20%{opacity:1}100%{opacity:0;transform:translateY(-38px)}}
+.battleStats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:9px}.battleStats>div{background:#211a15;border:1px solid #403226;border-radius:10px;padding:7px}.battleStats span{display:block;font-size:8px;color:#9f8d73}.battleStats b{display:block;margin-top:2px;font-size:12px}
+.bossTrack{margin-top:9px}.bossTrackTop{display:flex;justify-content:space-between;font-size:8px;color:#b8a78c}.bossTrackBar{height:7px;background:#2a221c;border-radius:99px;overflow:hidden;margin-top:4px}.bossTrackBar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#9e7441,#e0bb64);transition:.25s}.battleButtons{display:flex;gap:7px;margin-top:9px}
+.battleSide{display:flex;flex-direction:column;gap:12px}.idlePanel h3{font-family:Georgia,serif;margin:0;font-size:16px}.idlePanel p{font-size:9px;color:#ab9a81;line-height:1.5;margin:4px 0 0}.offlineBox{display:grid;gap:6px;margin-top:10px}.offlineBox>div{display:flex;justify-content:space-between;background:#211a15;border-radius:9px;padding:7px}.offlineBox span{font-size:8px;color:#9f8d75}.offlineBox b{font-size:10px}.battlePartyList{display:grid;gap:6px;margin-top:8px}.partyMini{display:flex;gap:8px;align-items:center;background:#211a15;border-radius:9px;padding:7px}.partyMini .ico{font-size:22px}.partyMini b{font-size:10px}.partyMini small{display:block;color:#a9987f;font-size:8px}
+.idleBtn{background:#33281f;border:1px solid #5b4633;color:#e7d4b3;border-radius:9px;padding:8px 10px;font-size:10px;font-weight:900}.idleBtn.primary{background:#bc8c49;border-color:#d6aa67;color:#1e160f}.idleBtn.big{padding:11px 15px;font-size:11px}.idleBtn:disabled{opacity:.4}
+.panelHead{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.miniBadge{background:#3c2f24;border:1px solid #5a4635;padding:5px 8px;border-radius:9px;font-size:9px}
+.idleHeroGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.heroCard{background:#211a15;border:1px solid #403126;border-radius:12px;padding:8px;position:relative;overflow:hidden}.heroPortrait{height:88px;display:grid;place-items:center;font-size:43px;border-radius:9px;background:linear-gradient(135deg,#3d4a50,#625543)}.heroCard h4{margin:6px 0 1px}.heroMeta{font-size:8px;color:#aa987f}.rarityPill{font-size:7px;letter-spacing:.08em;padding:2px 5px;border-radius:99px;background:#2e261f}.r-COMMON{color:#b9b9b9}.r-UNCOMMON{color:#86b77e}.r-RARE{color:#74aee0}.r-EPIC{color:#b58be5}.r-LEGENDARY{color:#efc66d}.r-MYTHIC{color:#ff8b7b;text-shadow:0 0 6px rgba(255,118,98,.4)}
+.heroStats{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}.heroStats div{background:#191511;border-radius:7px;padding:4px;font-size:8px}.heroStats b{display:block;font-size:9px}
+.recruitLayout{display:grid;grid-template-columns:1fr .9fr;gap:12px}.recruitBanner{position:relative;min-height:420px;border-radius:16px;border:1px solid #5a4433;overflow:hidden;padding:18px;background:radial-gradient(circle at 50% 15%,rgba(225,189,111,.26),transparent 28%),linear-gradient(160deg,#443150,#211922 62%,#191511);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.recruitGlow{position:absolute;width:250px;height:250px;border-radius:50%;border:1px solid rgba(235,202,126,.25);box-shadow:0 0 70px rgba(192,128,214,.18);animation:recruitSpin 14s linear infinite}@keyframes recruitSpin{to{transform:rotate(360deg)}}.recruitTitle{font-family:Georgia,serif;font-size:28px;z-index:1}.recruitSub{max-width:460px;font-size:9px;color:#c2b19a;margin-top:7px;z-index:1}.pityRow{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin-top:14px;z-index:1}.pityRow div{font-size:8px;background:rgba(24,18,20,.66);border:1px solid #684d5e;border-radius:99px;padding:5px 8px}.recruitButtons{display:flex;gap:8px;margin-top:18px;z-index:1}.recruitCounter{font-size:9px;color:#b9a587;margin-top:10px;z-index:1}.recruitShowcase{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:9px}.showHero{background:#211a15;border-radius:10px;padding:7px;border:1px solid #44352a}.showHero .pic{font-size:28px}.showHero b{font-size:9px}.showHero small{display:block;font-size:7px}
+.guildIdleGrid,.worldLayout{display:grid;grid-template-columns:1.15fr .85fr;gap:12px}.idleBuildingList{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:9px}.idleBuilding{background:#211a15;border:1px solid #403126;border-radius:10px;padding:8px}.idleBuilding .row2{display:flex;justify-content:space-between;gap:8px}.idleBuilding small{font-size:7px;color:#9f8d75}.idleMasters{display:grid;gap:8px;margin-top:9px}.masterIdle{display:flex;gap:10px;align-items:center;background:#211a15;border-radius:10px;padding:8px}.masterIdle .portrait{font-size:31px}.masterIdle b{display:block}.masterIdle small{font-size:8px;color:#a9987f}
+.lootInventory{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:10px}.lootItem{background:#211a15;border:1px solid #403126;border-radius:10px;padding:7px}.lootIcon{font-size:28px}.lootItem b{font-size:9px}.lootItem small{display:block;font-size:7px;color:#a9987f}
+.worldStages{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:9px}.worldStage{background:#211a15;border:1px solid #403126;border-radius:10px;padding:8px}.worldStage.current{border-color:#c08d4a}.worldStage.locked{opacity:.4}.worldStage b{font-size:10px}.worldStage small{display:block;font-size:7px;color:#a9987f}.idleMilestones{display:grid;gap:7px;margin-top:9px}.idleMilestone{background:#211a15;border:1px solid #403126;border-radius:10px;padding:8px}.idleMilestone.done{border-color:#8f774a}.idleMilestone b{font-size:9px}.idleMilestone small{display:block;font-size:7px;color:#a9987f}
+.recruitOverlay{position:fixed;inset:0;background:rgba(14,10,9,.82);z-index:100;display:none;place-items:center;padding:15px}.recruitOverlay.show{display:grid}.recruitResultCard{width:min(760px,100%);max-height:90vh;overflow:auto;background:#211913;border:1px solid #6d5038;border-radius:18px;padding:15px;text-align:center}.recruitResultTitle{font-family:Georgia,serif;font-size:22px}.recruitResults{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:12px 0}.recruitResult{background:#18130f;border:1px solid #423126;border-radius:10px;padding:8px;animation:resultPop .35s ease-out}@keyframes resultPop{from{transform:scale(.7);opacity:0}}.recruitResult .pic{font-size:34px}.recruitResult b{display:block;font-size:9px}.recruitResult small{font-size:7px}
+@media(max-width:900px){.battleLayout,.recruitLayout,.guildIdleGrid,.worldLayout{grid-template-columns:1fr}.idleHeroGrid{grid-template-columns:repeat(2,1fr)}.lootInventory{grid-template-columns:repeat(3,1fr)}.battleArena{height:380px}}
+@media(max-width:520px){.idleTopbar{align-items:flex-start;flex-direction:column}.idleCurrencies{justify-content:flex-start}.battleStats{grid-template-columns:repeat(2,1fr)}.battleArena{height:340px}.heroLane{width:60%;gap:4px}.battleHero{width:48px}.battleHero .char{font-size:36px}.monsterSprite{font-size:58px}.recruitButtons{flex-direction:column}.recruitResults{grid-template-columns:repeat(2,1fr)}.lootInventory{grid-template-columns:repeat(2,1fr)}.worldStages{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -138,82 +169,171 @@ linear-gradient(45deg,rgba(63,91,48,.18) 25%,transparent 25%) 0 0/48px 48px}
 </section>
 
 
+
 <section id="guildPage" class="page">
-<div class="gameShell">
-  <div class="gameHero">
-    <div class="gameTitle">
-      <div class="kicker">M&C ADVENTURERS' GUILD</div>
-      <h2>暮光山谷冒險者公會</h2>
-      <p>你們真實工作的每一小時，都會成為這個世界的發展力量。真實薪資只用來計算遊戲額度；在遊戲裡消耗資源不會影響真正的存款。</p>
+<div class="idleGameShell">
+  <div class="idleTopbar">
+    <div class="idleBrand">
+      <div class="idleKicker">M&C GUILD — IDLE RPG</div>
+      <div class="idleTitle">暮光山谷冒險者公會</div>
     </div>
-    <div class="gameResources">
-      <div class="gres"><span>🪙 Guild Gold</span><strong id="gGold">0</strong></div>
-      <div class="gres"><span>🏅 Contribution</span><strong id="gContribution">0</strong></div>
-      <div class="gres"><span>🎖 Reputation</span><strong id="gReputation">0</strong></div>
-      <div class="gres"><span>🪵 Wood</span><strong id="gWood">0</strong></div>
-      <div class="gres"><span>⛏ Iron</span><strong id="gIron">0</strong></div>
-      <div class="gres"><span>🪨 Stone</span><strong id="gStone">0</strong></div>
-      <div class="gres"><span>🔮 Crystal</span><strong id="gCrystal">0</strong></div>
-    </div>
-    <div class="guildXp">
-      <div class="guildXpHead"><span id="gLevel">Guild Lv.1</span><span id="gXpLabel">0 / 150 EXP</span></div>
-      <div class="guildXpTrack"><div id="gXpFill" class="guildXpFill"></div></div>
+    <div class="idleCurrencies">
+      <div class="idleCurrency"><span>💎</span><b id="idlePremium">0</b><small>Guild Crystal</small></div>
+      <div class="idleCurrency"><span>🪙</span><b id="idleGold">0</b><small>Idle Gold</small></div>
+      <div class="idleCurrency"><span>⚔️</span><b id="idleDps">0</b><small>DPS</small></div>
+      <div class="idleCurrency"><span>⭐</span><b id="idleGuildLevel">Lv.1</b><small>Guild</small></div>
     </div>
   </div>
 
-  <div class="gameTabs">
-    <button id="gtBase" class="active" onclick="showGuildTab('base')">🏰 基地</button>
-    <button id="gtMasters" onclick="showGuildTab('masters')">👑 公會長</button>
-    <button id="gtAdventurers" onclick="showGuildTab('adventurers')">🛡 冒險者</button>
-    <button id="gtExplore" onclick="showGuildTab('explore')">🗺 遠征</button>
-    <button id="gtWorld" onclick="showGuildTab('world')">✨ 世界事件</button>
+  <div class="idleTabs">
+    <button id="itBattle" class="active" onclick="showIdleTab('battle')">⚔ Battle</button>
+    <button id="itHeroes" onclick="showIdleTab('heroes')">🛡 Heroes</button>
+    <button id="itRecruit" onclick="showIdleTab('recruit')">✨ Recruit</button>
+    <button id="itGuild" onclick="showIdleTab('guild')">🏰 Guild</button>
+    <button id="itLoot" onclick="showIdleTab('loot')">🎒 Loot</button>
+    <button id="itWorld" onclick="showIdleTab('world')">🌍 World</button>
   </div>
 
-  <div id="gvBase" class="gameView active">
-    <div class="gameGrid2">
-      <div class="gamePanel">
-        <div class="row"><div><h3>公會基地</h3><p>拖曳建築（桌面）或先點建築、再點空地（手機）來重新規劃基地。</p></div><button class="gbtn primary" onclick="toggleBuildCatalog()">＋ 建設</button></div>
-        <div id="baseScene" class="baseScene">
-          <div class="cloud c1"></div><div class="cloud c2"></div>
-          <div id="plotGrid" class="plotGrid"></div>
+  <div id="ivBattle" class="idleView active">
+    <div class="battleLayout">
+      <div class="battleStageCard">
+        <div class="stageHeader">
+          <div>
+            <div class="stageKicker">CURRENT STAGE</div>
+            <h3 id="stageName">Greenvale 1-1</h3>
+            <div class="stageSub" id="stageSub">翠谷森林 · Goblin Scout</div>
+          </div>
+          <div class="stageBadge" id="stageBadge">1-1</div>
+        </div>
+
+        <div id="battleArena" class="battleArena">
+          <div class="battleBackdrop backForest"></div>
+          <div id="heroLane" class="heroLane"></div>
+          <div id="monsterWrap" class="monsterWrap">
+            <div id="monsterSprite" class="monsterSprite">👺</div>
+            <div class="monsterInfo">
+              <div class="monsterName" id="monsterName">Goblin Scout</div>
+              <div class="monsterHp"><i id="monsterHpBar"></i></div>
+              <div class="monsterHpText" id="monsterHpText">100 / 100</div>
+            </div>
+          </div>
+          <div id="damageLayer" class="damageLayer"></div>
+          <div id="lootBurst" class="lootBurst"></div>
+        </div>
+
+        <div class="battleStats">
+          <div><span>擊殺</span><b id="battleKills">0</b></div>
+          <div><span>Gold / sec</span><b id="battleGps">0</b></div>
+          <div><span>掉寶率</span><b id="battleDropRate">0%</b></div>
+          <div><span>進度</span><b id="battleProgress">0 / 10</b></div>
+        </div>
+
+        <div class="bossTrack">
+          <div class="bossTrackTop">
+            <span>關卡進度</span>
+            <span id="bossUnlockText">擊殺 10 隻後挑戰 Boss</span>
+          </div>
+          <div class="bossTrackBar"><i id="bossTrackFill"></i></div>
+        </div>
+
+        <div class="battleButtons">
+          <button class="idleBtn" onclick="toggleBattlePause()" id="battlePauseBtn">⏸ 暫停動畫</button>
+          <button class="idleBtn primary" onclick="challengeBoss()" id="bossBtn" disabled>👑 挑戰 Boss</button>
         </div>
       </div>
-      <div class="gamePanel">
-        <h3 id="buildSideTitle">建設與管理</h3>
-        <p id="buildSideDesc">選擇基地中的建築，可查看升級內容；或從下方建設新設施。</p>
-        <div id="buildingCatalog" class="catalog"></div>
-        <div id="buildingInfo" class="buildInfo"></div>
+
+      <div class="battleSide">
+        <div class="idlePanel">
+          <h3>掛機收益</h3>
+          <p>離線時間沒有上限。重新開啟網站時會依據離線期間與當前隊伍效率計算收益。</p>
+          <div class="offlineBox">
+            <div><span>上次離線</span><b id="offlineDuration">—</b></div>
+            <div><span>累積 Gold</span><b id="offlineGold">0</b></div>
+            <div><span>累積素材</span><b id="offlineLoot">—</b></div>
+          </div>
+          <button class="idleBtn primary" id="claimOfflineBtn" onclick="claimOfflineRewards()">領取離線收益</button>
+        </div>
+        <div class="idlePanel">
+          <h3>隊伍</h3>
+          <div id="battlePartyList" class="battlePartyList"></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div id="gvMasters" class="gameView">
-    <div class="gamePanel"><h3>雙公會長</h3><p>M 與 C 的公會長等級直接由各自真實工作時數成長。1 小時 = 10 Master EXP。</p><div id="masterCards" class="gCards"></div></div>
-  </div>
-
-  <div id="gvAdventurers" class="gameView">
-    <div class="gameGrid2">
-      <div class="gamePanel"><div class="row"><div><h3>冒險者名冊</h3><p>冒險者不會永久死亡；戰敗可能受傷，需要時間休息。</p></div><span id="advCount" class="tag"></span></div><div id="adventurerGrid" class="adventurerGrid"></div></div>
-      <div class="gamePanel"><h3>酒館招募</h3><p>招募使用 Reputation，不消耗你們真實工作換來的 Guild Gold。</p><div id="recruitList" class="recruitList"></div></div>
+  <div id="ivHeroes" class="idleView">
+    <div class="idlePanel">
+      <div class="panelHead"><div><h3>冒險者</h3><p>組隊、升級與強化。更高 DPS 會直接提高掛機打怪速度與 Gold 收益。</p></div><div id="heroCountBadge" class="miniBadge"></div></div>
+      <div id="idleHeroGrid" class="idleHeroGrid"></div>
     </div>
   </div>
 
-  <div id="gvExplore" class="gameView">
-    <div class="gameGrid2">
-      <div class="gamePanel"><h3>冒險區域</h3><p>派遣後使用真實時間倒數。第一個「新手巡邏」只需 2 分鐘，方便你們測試。</p><div id="zoneList" class="zoneList"></div></div>
-      <div class="gamePanel"><h3>進行中的遠征</h3><p>關掉網站也會繼續計時，完成後再回來領取資源。</p><div id="expeditionList" class="expeditions"></div></div>
+  <div id="ivRecruit" class="idleView">
+    <div class="recruitLayout">
+      <div class="recruitBanner">
+        <div class="recruitGlow"></div>
+        <div class="recruitTitle">星輝召集令</div>
+        <div class="recruitSub">使用你們真實工作換來的 Guild Crystal 招募冒險者。六種稀有度，含保底。</div>
+        <div class="pityRow">
+          <div>10 抽至少 Rare</div><div>40 抽至少 Epic</div><div>100 抽至少 Legendary</div>
+        </div>
+        <div class="recruitButtons">
+          <button class="idleBtn primary big" onclick="doRecruit(1)">單抽 · 💎100</button>
+          <button class="idleBtn primary big" onclick="doRecruit(10)">十連 · 💎900</button>
+        </div>
+        <div class="recruitCounter" id="recruitCounter">總抽數 0</div>
+      </div>
+      <div class="idlePanel">
+        <h3>可能出現的冒險者</h3>
+        <div id="recruitShowcase" class="recruitShowcase"></div>
+      </div>
     </div>
   </div>
 
-  <div id="gvWorld" class="gameView">
-    <div class="gamePanel"><h3>現實里程碑 → 世界事件</h3><p>你們真實累積存款達到里程碑時，這個世界會出現永久變化與新內容。</p><div id="milestoneList" class="milestoneList"></div></div>
+  <div id="ivGuild" class="idleView">
+    <div class="guildIdleGrid">
+      <div class="idlePanel">
+        <h3>公會基地</h3>
+        <p>普通建設與升級使用冒險者掛機打怪取得的 Idle Gold 與素材。</p>
+        <div id="idleBuildingList" class="idleBuildingList"></div>
+      </div>
+      <div class="idlePanel">
+        <h3>Guild Masters</h3>
+        <div id="idleMasters" class="idleMasters"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ivLoot" class="idleView">
+    <div class="idlePanel">
+      <div class="panelHead"><div><h3>戰利品與裝備</h3><p>怪物有機率掉落裝備。裝備目前先做數值與稀有度，後續可加換裝立繪。</p></div><button class="idleBtn" onclick="autoEquipBest()">一鍵最佳裝備</button></div>
+      <div id="lootInventory" class="lootInventory"></div>
+    </div>
+  </div>
+
+  <div id="ivWorld" class="idleView">
+    <div class="worldLayout">
+      <div class="idlePanel">
+        <h3>破關地圖</h3>
+        <p>每個區域包含多個關卡。擊殺小怪達標後挑戰 Boss，勝利才能進到下一關。</p>
+        <div id="worldStages" class="worldStages"></div>
+      </div>
+      <div class="idlePanel">
+        <h3>現實里程碑 → 世界事件</h3>
+        <div id="idleMilestones" class="idleMilestones"></div>
+      </div>
+    </div>
   </div>
 </div>
 </section>
 
-<div id="gameToast" class="gameToast"></div>
-<div id="gameModalBg" class="gameModalBg" onclick="if(event.target===this)closeGameModal()"><div class="gameModal" id="gameModal"></div></div>
-
+<div id="recruitOverlay" class="recruitOverlay" onclick="if(event.target===this)closeRecruitOverlay()">
+  <div class="recruitResultCard">
+    <div class="recruitResultTitle">召集結果</div>
+    <div id="recruitResults" class="recruitResults"></div>
+    <button class="idleBtn primary" onclick="closeRecruitOverlay()">收下</button>
+  </div>
+</div>
 <section id="settingsPage" class="page">
   <div class="panel"><div class="toolbar"><div><h3>🎯 共同目標</h3><p>這裡的修改會立即同步給另一個人。</p></div><button class="btn green" onclick="saveGoal()">儲存</button></div>
     <div class="grid" style="margin-top:10px"><div class="field"><label>總目標 TWD</label><input id="goalInput" type="number"></div><div class="field"><label>目標日期</label><input id="dateInput" type="date"></div></div>
@@ -253,7 +373,7 @@ linear-gradient(45deg,rgba(63,91,48,.18) 25%,transparent 25%) 0 0/48px 48px}
 <script>
 const RULE_VERSION='FWO_2026-07-01';
 const cfg=window.MC_CONFIG||{};
-let sb,roomId=null,room=null,workers=[],jobs=[],entries=[],gameState=null,gameBuildings=[],gameAdventurers=[],gameExpeditions=[],gameSpend=[],channel=null,chart=null,viewMonth=new Date();viewMonth.setDate(1);let gateMode='join';let selectedBuildingId=null,buildCatalogOpen=true,guildTicker=null;
+let sb,roomId=null,room=null,workers=[],jobs=[],entries=[],gameState=null,gameBuildings=[],gameAdventurers=[],gameExpeditions=[],gameSpend=[],gameMeta=null,gameEquipment=[],channel=null,chart=null,viewMonth=new Date();viewMonth.setDate(1);let gateMode='join';let selectedBuildingId=null,buildCatalogOpen=true,guildTicker=null;let idleTicker=null,battleAnimOn=true,currentMonsterHp=0,currentMonsterMaxHp=0,offlinePending=null,lastBattleTick=Date.now();
 
 function moneyAUD(v){return new Intl.NumberFormat('en-AU',{style:'currency',currency:'AUD'}).format(Number(v)||0)}
 function moneyTWD(v){return new Intl.NumberFormat('zh-TW',{style:'currency',currency:'TWD',maximumFractionDigits:0}).format(Number(v)||0)}
@@ -308,7 +428,7 @@ async function submitGate(){
 }
 async function loadRoom(){
   const rr=await sb.from('rooms').select('*').eq('id',roomId).maybeSingle();if(rr.error||!rr.data)return false;room=rr.data;
-  const [w,j,e,gs,gb,ga,gx,gsp]=await Promise.all([
+  const [w,j,e,gs,gb,ga,gx,gsp,gm,ge]=await Promise.all([
     sb.from('workers').select('*').eq('room_id',roomId).order('created_at'),
     sb.from('jobs').select('*').eq('room_id',roomId).order('created_at'),
     sb.from('entries').select('*').eq('room_id',roomId).order('work_date'),
@@ -316,10 +436,13 @@ async function loadRoom(){
     sb.from('game_buildings').select('*').eq('room_id',roomId).order('built_at'),
     sb.from('game_adventurers').select('*').eq('room_id',roomId).order('recruited_at'),
     sb.from('game_expeditions').select('*').eq('room_id',roomId).order('created_at',{ascending:false}),
-    sb.from('game_spend').select('*').eq('room_id',roomId).order('created_at')
+    sb.from('game_spend').select('*').eq('room_id',roomId).order('created_at'),
+    sb.from('game_meta').select('*').eq('room_id',roomId).maybeSingle(),
+    sb.from('game_equipment').select('*').eq('room_id',roomId).order('created_at',{ascending:false})
   ]);
   workers=w.data||[];jobs=j.data||[];entries=e.data||[];
   gameState=gs.data||null;gameBuildings=gb.data||[];gameAdventurers=ga.data||[];gameExpeditions=gx.data||[];gameSpend=gsp.data||[];
+  gameMeta=gm.data||null;gameEquipment=ge.data||[];
   return true;
 }
 async function enterApp(){gate.style.display='none';app.style.display='block';bottom.style.display='';roomTitle.textContent=room.name;roomCode.textContent='房間：'+room.code;shareText.textContent=`分享網站網址給女友，輸入房間代碼「${room.code}」與你們的共同密碼即可加入。`;goalInput.value=room.goal_twd||'';dateInput.value=room.target_date||'';await ensureGameInitialized();renderAll();subscribe();startGuildTicker()}
@@ -333,6 +456,8 @@ function subscribe(){
     .on('postgres_changes',{event:'*',schema:'public',table:'game_adventurers',filter:'room_id=eq.'+roomId},reload)
     .on('postgres_changes',{event:'*',schema:'public',table:'game_expeditions',filter:'room_id=eq.'+roomId},reload)
     .on('postgres_changes',{event:'*',schema:'public',table:'game_spend',filter:'room_id=eq.'+roomId},reload)
+    .on('postgres_changes',{event:'*',schema:'public',table:'game_meta',filter:'room_id=eq.'+roomId},reload)
+    .on('postgres_changes',{event:'*',schema:'public',table:'game_equipment',filter:'room_id=eq.'+roomId},reload)
     .on('postgres_changes',{event:'UPDATE',schema:'public',table:'rooms',filter:'id=eq.'+roomId},reload).subscribe();
 }
 async function reload(){syncStatus.textContent='● 同步中';await loadRoom();renderAll();setTimeout(()=>syncStatus.textContent='● 即時同步',350)}
@@ -582,6 +707,210 @@ function renderGuild(){
  renderBase();renderMasters();renderAdventurers();renderExplore();renderWorld()
 }
 function startGuildTicker(){if(guildTicker)clearInterval(guildTicker);guildTicker=setInterval(()=>{if(document.getElementById('guildPage')?.classList.contains('active')){renderExpeditions();for(const a of gameAdventurers){if(Number(a.fatigue||0)>0&&!isAdvBusy(a.id)&&Math.random()<.03)sb.from('game_adventurers').update({fatigue:Math.max(0,Number(a.fatigue)-1)}).eq('id',a.id)}}},1000)}
+
+
+/* ===== Idle RPG V2 logic overrides ===== */
+const IDLE_ROSTER=[
+{name:'Alden',class_name:'Warrior',rarity:'COMMON',emoji:'🗡️',base:12,speed:1.00},
+{name:'Nia',class_name:'Ranger',rarity:'COMMON',emoji:'🏹',base:10,speed:1.18},
+{name:'Brom',class_name:'Guardian',rarity:'COMMON',emoji:'🛡️',base:9,speed:.88},
+{name:'Tess',class_name:'Rogue',rarity:'COMMON',emoji:'🗡',base:11,speed:1.25},
+{name:'Milo',class_name:'Priest',rarity:'COMMON',emoji:'✨',base:8,speed:1.00},
+{name:'Erin',class_name:'Mage',rarity:'COMMON',emoji:'🪄',base:13,speed:.92},
+{name:'Rowan',class_name:'Warrior',rarity:'UNCOMMON',emoji:'⚔️',base:18,speed:1.04},
+{name:'Lyra',class_name:'Ranger',rarity:'UNCOMMON',emoji:'🏹',base:17,speed:1.25},
+{name:'Cedric',class_name:'Guardian',rarity:'UNCOMMON',emoji:'🛡️',base:15,speed:.92},
+{name:'Faye',class_name:'Priest',rarity:'UNCOMMON',emoji:'✨',base:14,speed:1.04},
+{name:'Darius',class_name:'Warrior',rarity:'RARE',emoji:'⚔️',base:27,speed:1.08},
+{name:'Elena',class_name:'Ranger',rarity:'RARE',emoji:'🏹',base:25,speed:1.34},
+{name:'Mira',class_name:'Priest',rarity:'RARE',emoji:'🌟',base:22,speed:1.08},
+{name:'Torin',class_name:'Guardian',rarity:'RARE',emoji:'🛡️',base:24,speed:.98},
+{name:'Kael',class_name:'Rogue',rarity:'EPIC',emoji:'🥷',base:38,speed:1.45},
+{name:'Selene',class_name:'Mage',rarity:'EPIC',emoji:'🔮',base:42,speed:1.00},
+{name:'Iris',class_name:'Summoner',rarity:'EPIC',emoji:'🦊',base:36,speed:1.20},
+{name:'Varo',class_name:'Berserker',rarity:'EPIC',emoji:'🪓',base:44,speed:.95},
+{name:'Aurelia',class_name:'Paladin',rarity:'LEGENDARY',emoji:'⚜️',base:60,speed:1.10},
+{name:'Orion',class_name:'Spellblade',rarity:'LEGENDARY',emoji:'🌠',base:66,speed:1.18},
+{name:'Nyx',class_name:'Shadow',rarity:'LEGENDARY',emoji:'🌑',base:63,speed:1.38},
+{name:'Seraphine',class_name:'Archmage',rarity:'MYTHIC',emoji:'🪽',base:94,speed:1.24},
+{name:'Draven',class_name:'Dragon Knight',rarity:'MYTHIC',emoji:'🐉',base:102,speed:1.10},
+{name:'Elysia',class_name:'Oracle',rarity:'MYTHIC',emoji:'👁️',base:88,speed:1.40}
+];
+const RARITY_MULT={COMMON:1,UNCOMMON:1.22,RARE:1.65,EPIC:2.35,LEGENDARY:3.5,MYTHIC:5.3};
+const RARITY_RATE={COMMON:.52,UNCOMMON:.25,RARE:.14,EPIC:.06,LEGENDARY:.025,MYTHIC:.005};
+const STAGE_ZONES=[
+ {name:'Greenvale Forest',zh:'翠谷森林',monster:'Goblin Scout',boss:'Goblin Chieftain',emoji:'👺',bossEmoji:'👹',baseHp:120,baseGold:5},
+ {name:'Abandoned Mine',zh:'廢棄礦坑',monster:'Cave Rat',boss:'Stone Golem',emoji:'🐀',bossEmoji:'🗿',baseHp:420,baseGold:12},
+ {name:'Forgotten Village',zh:'遺忘村落',monster:'Restless Dead',boss:'Bone Knight',emoji:'💀',bossEmoji:'☠️',baseHp:1200,baseGold:28},
+ {name:'Mistwood',zh:'迷霧森林',monster:'Dire Wolf',boss:'Moonfang Alpha',emoji:'🐺',bossEmoji:'🐺',baseHp:3600,baseGold:65},
+ {name:'Ancient Fortress',zh:'古代要塞',monster:'Dark Soldier',boss:'Fallen Commander',emoji:'🛡️',bossEmoji:'👿',baseHp:11000,baseGold:150}
+];
+const IDLE_BUILDINGS=[
+ {key:'guildhall',name:'公會大廳',icon:'🏰',base:200,desc:'提高全體冒險者 2% ATK / Lv'},
+ {key:'tavern',name:'旅人酒館',icon:'🍺',base:350,desc:'提高招募後冒險者初始等級'},
+ {key:'training',name:'訓練場',icon:'⚔️',base:500,desc:'冒險者升級成本 -3% / Lv'},
+ {key:'blacksmith',name:'鐵匠鋪',icon:'⚒️',base:800,desc:'裝備掉落率 +1% / Lv'},
+ {key:'warehouse',name:'公會倉庫',icon:'📦',base:1100,desc:'掛機 Gold +3% / Lv'},
+ {key:'arcane',name:'魔法工坊',icon:'🔮',base:1700,desc:'Boss 戰傷害 +4% / Lv'}
+];
+async function ensureGameInitialized(){
+ if(!roomId)return;
+ if(!gameState)await sb.from('game_state').upsert({room_id:roomId,reputation:0,wood:0,iron:0,stone:0,crystal:0,game_xp_bonus:0},{onConflict:'room_id'});
+ if(!gameMeta)await sb.from('game_meta').upsert({room_id:roomId,premium_spent:0,recruit_count:0,stage_zone:1,stage_number:1,stage_kills:0,idle_gold:0,last_seen:new Date().toISOString(),paused:false},{onConflict:'room_id'});
+ if(gameAdventurers.length===0){
+   await sb.from('game_adventurers').insert([
+    {room_id:roomId,name:'Rowan',class_name:'Warrior',rarity:'UNCOMMON',level:1,xp:0,fatigue:0,traits:['創會先鋒']},
+    {room_id:roomId,name:'Lyra',class_name:'Ranger',rarity:'UNCOMMON',level:1,xp:0,fatigue:0,traits:['創會先鋒']}
+   ])
+ }
+ await loadRoom();
+ prepareOfflineRewards();
+}
+function showIdleTab(t){['battle','heroes','recruit','guild','loot','world'].forEach(x=>{document.getElementById('iv'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===t);document.getElementById('it'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===t)});renderGuild()}
+function premiumEarned(){return Math.floor(totals().aud*4)}
+function premiumAvailable(){return Math.max(0,premiumEarned()-Number(gameMeta?.premium_spent||0))}
+function equippedAtk(heroId){return gameEquipment.filter(x=>x.owner_adventurer_id===heroId&&x.equipped).reduce((a,x)=>a+Number(x.atk||0),0)}
+function heroTemplate(a){return IDLE_ROSTER.find(x=>x.name===a.name)||{base:12,speed:1,emoji:advEmoji(a),rarity:a.rarity,class_name:a.class_name}}
+function heroPower(a){const t=heroTemplate(a),lvl=Number(a.level||1),b=t.base||12;return (b*Math.pow(1.12,lvl-1)+equippedAtk(a.id))*RARITY_MULT[a.rarity||'COMMON']}
+function buildingLv(k){return Number(gameBuildings.find(b=>b.building_type===k)?.level||0)}
+function party(){return [...gameAdventurers].sort((a,b)=>heroPower(b)-heroPower(a)).slice(0,5)}
+function partyDps(){let d=party().reduce((s,a)=>{const t=heroTemplate(a);return s+heroPower(a)*(t.speed||1)},0);d*=1+buildingLv('guildhall')*.02;return Math.max(1,d)}
+function stageInfo(){
+ const z=Math.max(1,Number(gameMeta?.stage_zone||1)),n=Math.max(1,Number(gameMeta?.stage_number||1)),zone=STAGE_ZONES[Math.min(STAGE_ZONES.length-1,z-1)];
+ const hp=Math.round(zone.baseHp*Math.pow(1.24,n-1)*Math.pow(2.7,z-1));
+ const gold=Math.round(zone.baseGold*Math.pow(1.18,n-1)*Math.pow(2.1,z-1));
+ return {z,n,zone,hp,gold,bossHp:Math.round(hp*8),bossGold:Math.round(gold*16),label:`${z}-${n}`};
+}
+function currentGold(){return Number(gameMeta?.idle_gold||0)}
+function stageGoldPerSec(){const s=stageInfo(),d=partyDps(),killsPerSec=d/s.hp;return killsPerSec*s.gold*(1+buildingLv('warehouse')*.03)}
+function dropChance(){return Math.min(.35,.03+buildingLv('blacksmith')*.01)}
+function renderGuild(){
+ if(!room||!gameMeta)return;
+ idlePremium.textContent=premiumAvailable().toLocaleString();
+ idleGold.textContent=Math.floor(currentGold()).toLocaleString();
+ idleDps.textContent=formatBig(partyDps());
+ idleGuildLevel.textContent=`Lv.${levelFromXp(Math.floor(totals().hours*10+entries.length*10))}`;
+ renderBattle();renderHeroes();renderRecruit();renderIdleGuild();renderLoot();renderWorldIdle()
+}
+function formatBig(n){if(n>=1e9)return(n/1e9).toFixed(1)+'B';if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return Math.round(n).toString()}
+function renderBattle(){
+ const s=stageInfo();stageName.textContent=`${s.zone.name} ${s.label}`;stageSub.textContent=`${s.zone.zh} · ${s.zone.monster}`;stageBadge.textContent=s.label;monsterName.textContent=s.zone.monster;monsterSprite.textContent=s.zone.emoji;
+ if(!currentMonsterMaxHp||currentMonsterMaxHp!==s.hp){currentMonsterMaxHp=s.hp;currentMonsterHp=s.hp}
+ monsterHpBar.style.width=Math.max(0,currentMonsterHp/currentMonsterMaxHp*100)+'%';monsterHpText.textContent=`${Math.ceil(currentMonsterHp).toLocaleString()} / ${currentMonsterMaxHp.toLocaleString()}`;
+ const kills=Number(gameMeta.stage_kills||0);battleKills.textContent=kills;battleGps.textContent=formatBig(stageGoldPerSec());battleDropRate.textContent=Math.round(dropChance()*100)+'%';battleProgress.textContent=`${kills%10} / 10`;bossTrackFill.style.width=((kills%10)/10*100)+'%';
+ const ready=(kills>0&&kills%10===0);bossBtn.disabled=!ready;bossUnlockText.textContent=ready?'Boss 已出現！':'擊殺 10 隻後挑戰 Boss';
+ heroLane.innerHTML=party().map((a,i)=>`<div class="battleHero" id="bh${a.id}"><div class="char">${heroTemplate(a).emoji||advEmoji(a)}</div><div class="heroNameTag">${esc(a.name)}</div></div>`).join('');
+ battlePartyList.innerHTML=party().map(a=>`<div class="partyMini"><div class="ico">${heroTemplate(a).emoji||advEmoji(a)}</div><div><b>${esc(a.name)} · Lv.${a.level}</b><small>${a.rarity} · DPS ${formatBig(heroPower(a)*(heroTemplate(a).speed||1))}</small></div></div>`).join('');
+ battlePauseBtn.textContent=battleAnimOn?'⏸ 暫停動畫':'▶️ 繼續動畫';
+ if(offlinePending){offlineDuration.textContent=formatDuration(offlinePending.seconds);offlineGold.textContent=Math.floor(offlinePending.gold).toLocaleString();offlineLoot.textContent=offlinePending.items+' 件裝備';claimOfflineBtn.disabled=false}else{offlineDuration.textContent='—';offlineGold.textContent='0';offlineLoot.textContent='—';claimOfflineBtn.disabled=true}
+}
+function toggleBattlePause(){battleAnimOn=!battleAnimOn;renderBattle()}
+function battleTick(){
+ if(!room||!gameMeta||!battleAnimOn||!document.getElementById('guildPage')?.classList.contains('active'))return;
+ const now=Date.now(),dt=Math.min(1.5,(now-lastBattleTick)/1000);lastBattleTick=now;
+ const dps=partyDps(),damage=dps*dt;currentMonsterHp-=damage;
+ animateHeroAttack();
+ if(currentMonsterHp<=0)monsterDefeated();
+ else renderBattle();
+}
+function animateHeroAttack(){
+ const p=party();if(!p.length)return;const a=p[Math.floor(Math.random()*p.length)],el=document.getElementById('bh'+a.id);if(el){el.classList.add(a.class_name==='Mage'||a.class_name==='Priest'?'cast':'attacking');setTimeout(()=>el.classList.remove('attacking','cast'),360)}
+ const wrap=document.getElementById('monsterSprite');if(wrap){wrap.classList.add('hit');setTimeout(()=>wrap.classList.remove('hit'),180)}
+ const dmg=document.createElement('div');dmg.className='dmg';dmg.textContent='-'+Math.max(1,Math.round(heroPower(a))).toLocaleString();dmg.style.left=(68+Math.random()*13)+'%';dmg.style.top=(38+Math.random()*18)+'%';damageLayer.appendChild(dmg);setTimeout(()=>dmg.remove(),850)
+}
+async function monsterDefeated(){
+ battleAnimOn=false;const s=stageInfo();monsterSprite.classList.add('dead');lootBurst.textContent=`+${s.gold} Gold`;lootBurst.classList.remove('show');void lootBurst.offsetWidth;lootBurst.classList.add('show');
+ let newGold=currentGold()+s.gold,newKills=Number(gameMeta.stage_kills||0)+1;
+ const upd={idle_gold:newGold,stage_kills:newKills,updated_at:new Date().toISOString(),last_seen:new Date().toISOString()};
+ await sb.from('game_meta').update(upd).eq('room_id',roomId);
+ if(Math.random()<dropChance())await generateEquipmentDrop();
+ gameMeta={...gameMeta,...upd};setTimeout(()=>{monsterSprite.classList.remove('dead');currentMonsterMaxHp=s.hp;currentMonsterHp=s.hp;battleAnimOn=true;renderGuild()},500)
+}
+function rollRarity(force=null){
+ if(force)return force;const r=Math.random();let c=0;for(const k of ['COMMON','UNCOMMON','RARE','EPIC','LEGENDARY','MYTHIC']){c+=RARITY_RATE[k];if(r<=c)return k}return'COMMON'
+}
+function pickHero(r){const pool=IDLE_ROSTER.filter(x=>x.rarity===r);return pool[Math.floor(Math.random()*pool.length)]}
+async function doRecruit(n){
+ const cost=n===10?900:100;if(premiumAvailable()<cost)return gameToastMsg('Guild Crystal 不足');
+ let baseCount=Number(gameMeta.recruit_count||0),results=[];
+ for(let i=1;i<=n;i++){
+   const pullNo=baseCount+i;let force=null;if(pullNo%100===0)force='LEGENDARY';else if(pullNo%40===0)force='EPIC';else if(pullNo%10===0)force='RARE';
+   let r=rollRarity(force);if(force==='RARE'&&!['RARE','EPIC','LEGENDARY','MYTHIC'].includes(r))r='RARE';if(force==='EPIC'&&!['EPIC','LEGENDARY','MYTHIC'].includes(r))r='EPIC';if(force==='LEGENDARY'&&!['LEGENDARY','MYTHIC'].includes(r))r='LEGENDARY';
+   const h=pickHero(r);results.push(h)
+ }
+ const rows=results.map(h=>({room_id:roomId,name:h.name,class_name:h.class_name,rarity:h.rarity,level:Math.max(1,buildingLv('tavern')),xp:0,fatigue:0,traits:[]}));
+ const ins=await sb.from('game_adventurers').insert(rows);if(ins.error)return alert(ins.error.message);
+ const upd={premium_spent:Number(gameMeta.premium_spent||0)+cost,recruit_count:baseCount+n,updated_at:new Date().toISOString()};await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};await loadRoom();showRecruitResults(results);renderGuild()
+}
+function showRecruitResults(results){recruitResults.innerHTML=results.map(h=>`<div class="recruitResult"><div class="pic">${h.emoji}</div><b>${h.name}</b><small class="r-${h.rarity}">${h.rarity}</small><small>${h.class_name}</small></div>`).join('');recruitOverlay.classList.add('show')}
+function closeRecruitOverlay(){recruitOverlay.classList.remove('show')}
+function renderRecruit(){
+ recruitCounter.textContent=`總抽數 ${Number(gameMeta?.recruit_count||0)} · 可用 💎 ${premiumAvailable().toLocaleString()}`;
+ recruitShowcase.innerHTML=IDLE_ROSTER.filter((_,i)=>i%3===0).slice(0,10).map(h=>`<div class="showHero"><div class="pic">${h.emoji}</div><b>${h.name}</b><small class="r-${h.rarity}">${h.rarity} · ${h.class_name}</small></div>`).join('')
+}
+function renderHeroes(){
+ heroCountBadge.textContent=`${gameAdventurers.length} 名`;
+ idleHeroGrid.innerHTML=[...gameAdventurers].sort((a,b)=>heroPower(b)-heroPower(a)).map(a=>{const p=heroPower(a),t=heroTemplate(a);return `<div class="heroCard"><div class="heroPortrait">${t.emoji||advEmoji(a)}</div><div class="row"><h4>${esc(a.name)}</h4><span class="rarityPill r-${a.rarity}">${a.rarity}</span></div><div class="heroMeta">${a.class_name} · Lv.${a.level}</div><div class="heroStats"><div><span>ATK</span><b>${formatBig(p)}</b></div><div><span>Speed</span><b>${(t.speed||1).toFixed(2)}</b></div></div><button class="idleBtn" style="width:100%;margin-top:6px" onclick="levelHero('${a.id}')">升級 · 🪙 ${heroLevelCost(a)}</button></div>`}).join('')
+}
+function heroLevelCost(a){return Math.round(80*Math.pow(1.22,Number(a.level||1)-1)*(1-buildingLv('training')*.03))}
+async function levelHero(id){
+ const a=gameAdventurers.find(x=>x.id===id),cost=heroLevelCost(a);if(currentGold()<cost)return gameToastMsg('Idle Gold 不足');
+ await sb.from('game_meta').update({idle_gold:currentGold()-cost,updated_at:new Date().toISOString()}).eq('room_id',roomId);
+ await sb.from('game_adventurers').update({level:Number(a.level||1)+1}).eq('id',id);gameMeta.idle_gold=currentGold()-cost;a.level=Number(a.level||1)+1;renderGuild()
+}
+function idleBuildingCost(k,lv){const d=IDLE_BUILDINGS.find(x=>x.key===k);return Math.round(d.base*Math.pow(1.8,lv))}
+async function upgradeIdleBuilding(k){
+ let b=gameBuildings.find(x=>x.building_type===k),lv=Number(b?.level||0),cost=idleBuildingCost(k,lv);if(currentGold()<cost)return gameToastMsg('Idle Gold 不足');
+ await sb.from('game_meta').update({idle_gold:currentGold()-cost}).eq('room_id',roomId);
+ if(b)await sb.from('game_buildings').update({level:lv+1}).eq('id',b.id);else await sb.from('game_buildings').insert({room_id:roomId,building_type:k,level:1,grid_x:0,grid_y:0});
+ gameMeta.idle_gold=currentGold()-cost;await loadRoom();renderGuild()
+}
+function renderIdleGuild(){
+ idleBuildingList.innerHTML=IDLE_BUILDINGS.map(d=>{const lv=buildingLv(d.key),cost=idleBuildingCost(d.key,lv);return `<div class="idleBuilding"><div class="row2"><div><b>${d.icon} ${d.name}</b><small>Lv.${lv}</small></div><button class="idleBtn primary" onclick="upgradeIdleBuilding('${d.key}')">升級</button></div><small>${d.desc}</small><div style="margin-top:5px;font-size:8px">🪙 ${cost.toLocaleString()}</div></div>`}).join('');
+ idleMasters.innerHTML=workers.slice(0,2).map((w,i)=>{const t=totals(entries.filter(e=>e.worker_id===w.id)),lv=masterLevelFromXp(Math.floor(t.hours*10));return `<div class="masterIdle"><div class="portrait">${i===0?'🧭':'👑'}</div><div><b>${esc(w.name)} · Guild Master Lv.${lv}</b><small>真實工作 ${t.hours.toFixed(1)} h · 永久被動成長</small></div></div>`}).join('')
+}
+async function generateEquipmentDrop(mult=1){
+ const s=stageInfo(),rar=rollRarity(),slots=['Weapon','Helmet','Armor','Ring','Boots'],slot=slots[Math.floor(Math.random()*slots.length)],rm=RARITY_MULT[rar];
+ const row={room_id:roomId,slot,rarity:rar,item_level:s.z*10+s.n,atk:Math.max(1,Math.round((s.z*6+s.n*2)*rm*mult)),atk_speed:Number((Math.random()*.04*rm).toFixed(3)),crit:Number((Math.random()*.02*rm).toFixed(3)),gold_find:Number((Math.random()*.03*rm).toFixed(3)),equipped:false};
+ await sb.from('game_equipment').insert(row)
+}
+function renderLoot(){
+ if(!gameEquipment.length){lootInventory.innerHTML='<div class="heroMeta">目前還沒有裝備。持續掛機打怪就有機會掉落。</div>';return}
+ lootInventory.innerHTML=gameEquipment.slice(0,60).map(x=>`<div class="lootItem"><div class="lootIcon">${x.slot==='Weapon'?'🗡️':x.slot==='Helmet'?'🪖':x.slot==='Armor'?'🥋':x.slot==='Ring'?'💍':'🥾'}</div><b class="r-${x.rarity}">${x.rarity} ${x.slot}</b><small>Lv.${x.item_level} · ATK +${x.atk}</small><small>${x.equipped?'✓ 已裝備':''}</small></div>`).join('')
+}
+async function autoEquipBest(){
+ const heroes=[...gameAdventurers].sort((a,b)=>heroPower(b)-heroPower(a)).slice(0,5);if(!heroes.length||!gameEquipment.length)return;
+ await sb.from('game_equipment').update({equipped:false,owner_adventurer_id:null}).eq('room_id',roomId);
+ const slots=['Weapon','Helmet','Armor','Ring','Boots'];let idx=0;
+ for(const h of heroes)for(const slot of slots){const best=[...gameEquipment].filter(x=>x.slot===slot).sort((a,b)=>b.atk-a.atk)[idx%Math.max(1,gameEquipment.filter(x=>x.slot===slot).length)];if(best){await sb.from('game_equipment').update({equipped:true,owner_adventurer_id:h.id}).eq('id',best.id)}}
+ await loadRoom();renderGuild();gameToastMsg('已自動裝備較佳裝備')
+}
+async function challengeBoss(){
+ const s=stageInfo(),kills=Number(gameMeta.stage_kills||0);if(!(kills>0&&kills%10===0))return;
+ const bossHp=s.bossHp,bossDmg=partyDps()*(1+buildingLv('arcane')*.04),seconds=bossHp/bossDmg;
+ if(seconds>30)return gameToastMsg(`戰力不足，預估需要 ${seconds.toFixed(1)} 秒，Boss 限時 30 秒`);
+ monsterName.textContent=s.zone.boss;monsterSprite.textContent=s.zone.bossEmoji;currentMonsterMaxHp=bossHp;currentMonsterHp=bossHp;
+ const gain=s.bossGold;let nz=Number(gameMeta.stage_zone||1),nn=Number(gameMeta.stage_number||1)+1;if(nn>10){nn=1;nz=Math.min(STAGE_ZONES.length,nz+1)}
+ const upd={idle_gold:currentGold()+gain,stage_zone:nz,stage_number:nn,stage_kills:0,updated_at:new Date().toISOString()};await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};await generateEquipmentDrop(2.5);await loadRoom();currentMonsterMaxHp=0;currentMonsterHp=0;gameToastMsg(`Boss 擊破！+${gain.toLocaleString()} Gold，進入下一關`);renderGuild()
+}
+function renderWorldIdle(){
+ const curZ=Number(gameMeta.stage_zone||1),curN=Number(gameMeta.stage_number||1);
+ let out='';STAGE_ZONES.forEach((z,zi)=>{for(let n=1;n<=10;n++){const locked=(zi+1>curZ)||(zi+1===curZ&&n>curN),current=(zi+1===curZ&&n===curN);out+=`<div class="worldStage ${locked?'locked':''} ${current?'current':''}"><b>${zi+1}-${n} · ${z.zh}</b><small>${n===10?'Boss 關卡':'普通關卡'}${current?' · CURRENT':''}</small></div>`}});worldStages.innerHTML=out;
+ const t=totals(),goal=Number(room.goal_twd||0),pct=goal?t.twd/goal*100:0;const ms=[['🌲','北境林道',t.twd>=50000,'累積 NT$50,000'],['🐉','古龍傳聞',t.twd>=100000,'累積 NT$100,000'],['🏘️','公會城市擴建',t.twd>=200000,'累積 NT$200,000'],['🗺️','第二章',pct>=50,'存錢目標 50%'],['🏆','M&C 紀念慶典',pct>=100&&goal>0,'存錢目標 100%']];idleMilestones.innerHTML=ms.map(x=>`<div class="idleMilestone ${x[2]?'done':''}"><b>${x[0]} ${x[1]}</b><small>${x[2]?'✓ 已解鎖 · ':''}${x[3]}</small></div>`).join('')
+}
+function prepareOfflineRewards(){
+ if(!gameMeta)return;const last=new Date(gameMeta.last_seen||new Date()).getTime(),now=Date.now(),seconds=Math.max(0,(now-last)/1000);if(seconds<30){offlinePending=null;return}
+ const gps=stageGoldPerSec(),gold=gps*seconds,items=Math.floor(seconds/300*dropChance());
+ offlinePending={seconds,gold,items};
+}
+async function claimOfflineRewards(){
+ if(!offlinePending)return;
+ const addGold=offlinePending.gold;for(let i=0;i<Math.min(offlinePending.items,50);i++)await generateEquipmentDrop();
+ const now=new Date().toISOString(),upd={idle_gold:currentGold()+addGold,last_seen:now,offline_claimed_at:now,updated_at:now};await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};offlinePending=null;await loadRoom();renderGuild();gameToastMsg(`離線收益 +${Math.floor(addGold).toLocaleString()} Gold`)
+}
+function formatDuration(sec){sec=Math.floor(sec);const d=Math.floor(sec/86400),h=Math.floor(sec%86400/3600),m=Math.floor(sec%3600/60);return d?`${d}天 ${h}小時`:h?`${h}小時 ${m}分`:`${m}分`}
+function startGuildTicker(){if(guildTicker)clearInterval(guildTicker);if(idleTicker)clearInterval(idleTicker);lastBattleTick=Date.now();idleTicker=setInterval(battleTick,700);guildTicker=setInterval(async()=>{if(gameMeta){const now=new Date().toISOString();await sb.from('game_meta').update({last_seen:now}).eq('room_id',roomId);gameMeta.last_seen=now}},15000)}
+window.addEventListener('beforeunload',()=>{if(sb&&roomId&&gameMeta)sb.from('game_meta').update({last_seen:new Date().toISOString()}).eq('room_id',roomId)})
 
 function renderHome(){
   const t=totals(),goalN=Number(room.goal_twd)||0,rem=Math.max(0,goalN-t.twd),pc=goalN?Math.min(100,t.twd/goalN*100):0;

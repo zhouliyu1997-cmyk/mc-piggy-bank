@@ -112,3 +112,55 @@ exception when duplicate_object then null; end $$;
 do $$ begin
   alter publication supabase_realtime add table public.game_spend;
 exception when duplicate_object then null; end $$;
+
+
+-- Idle RPG V2 additions
+create table if not exists public.game_meta (
+  room_id uuid primary key references public.rooms(id) on delete cascade,
+  premium_spent integer not null default 0,
+  recruit_count integer not null default 0,
+  stage_zone integer not null default 1,
+  stage_number integer not null default 1,
+  stage_kills integer not null default 0,
+  idle_gold numeric not null default 0,
+  last_seen timestamptz not null default now(),
+  offline_claimed_at timestamptz,
+  paused boolean not null default false,
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.game_equipment (
+  id uuid primary key default gen_random_uuid(),
+  room_id uuid not null references public.rooms(id) on delete cascade,
+  owner_adventurer_id uuid references public.game_adventurers(id) on delete set null,
+  slot text not null,
+  rarity text not null,
+  item_level integer not null default 1,
+  atk integer not null default 0,
+  atk_speed numeric not null default 0,
+  crit numeric not null default 0,
+  gold_find numeric not null default 0,
+  equipped boolean not null default false,
+  created_at timestamptz not null default now()
+);
+
+alter table public.game_meta enable row level security;
+alter table public.game_equipment enable row level security;
+
+drop policy if exists game_meta_all on public.game_meta;
+create policy game_meta_all on public.game_meta for all
+using (public.is_room_member(room_id))
+with check (public.is_room_member(room_id));
+
+drop policy if exists game_equipment_all on public.game_equipment;
+create policy game_equipment_all on public.game_equipment for all
+using (public.is_room_member(room_id))
+with check (public.is_room_member(room_id));
+
+do $$ begin
+  alter publication supabase_realtime add table public.game_meta;
+exception when duplicate_object then null; end $$;
+
+do $$ begin
+  alter publication supabase_realtime add table public.game_equipment;
+exception when duplicate_object then null; end $$;

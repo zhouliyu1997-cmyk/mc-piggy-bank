@@ -105,3 +105,8 @@ window.MC_CONFIG = {
 先在 Supabase SQL Editor 執行 `guild-game-migration.sql`，再把新版 `index.html` 與 `sw.js` 上傳 GitHub Pages。
 
 遊戲換算：A$1 真實收入 = 4 Guild Gold；1 真實工作小時 = 1 Contribution；1 小時 = 10 Guild EXP，另每筆真實工作紀錄 +10 Guild EXP。遊戲消耗不會改變真實存款。
+
+
+## Idle RPG V2
+
+核心改動：真實收入轉 Guild Crystal；冒險者自動打怪產生 Idle Gold；關卡制、Boss、離線收益無時間上限、六稀有度 24 名冒險者、抽卡保底、裝備掉落、DPS 成長、建築升級。
