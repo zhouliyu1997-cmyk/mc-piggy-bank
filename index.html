@@ -27,7 +27,65 @@ button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1160px;mar
 .tablewrap{overflow:auto;border:1px solid var(--line);border-radius:12px;margin-top:12px}table{border-collapse:collapse;width:100%;min-width:1100px;background:#fff}th,td{padding:9px;border-bottom:1px solid #f1e8e2;text-align:left;font-size:11px}th{background:#fff8f3;color:var(--muted)}td.num{text-align:right}.empty{text-align:center;padding:25px;color:var(--muted)}.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:10px}.total{padding:10px;background:#fff8f3;border:1px solid var(--line);border-radius:11px}.total span{display:block;color:var(--muted);font-size:10px}.total strong{font-size:17px}.chart{height:270px}
 .modalBg{position:fixed;inset:0;background:rgba(38,32,29,.38);display:none;place-items:center;padding:15px;z-index:50}.modalBg.show{display:grid}.modal{width:min(760px,100%);max-height:92vh;overflow:auto;background:#fff;padding:20px;border-radius:20px}.actions{display:flex;justify-content:flex-end;gap:7px;margin-top:14px}.hint{font-size:11px;color:var(--muted);margin:5px 0 13px}.notice{font-size:11px;padding:10px 12px;background:#fff4dc;border:1px solid #f0dcae;border-radius:10px;color:#755719}
 .gate{max-width:620px;margin:50px auto;background:#fff;border-radius:24px;padding:22px;box-shadow:var(--shadow)}.gate h2{margin:0}.gateTabs{display:flex;gap:6px;background:#f6eee8;padding:5px;border-radius:11px;margin:15px 0}.gateTabs button{flex:1;border:0;background:none;padding:8px;border-radius:8px;font-weight:800}.gateTabs button.active{background:#fff}.bottom{display:none}
-@media(max-width:820px){.app{padding:9px 9px 82px}.top{position:static}.nav{display:none}.brand small{display:none}.kpis{grid-template-columns:repeat(2,1fr)}.people,.grid,.grid3,.totals{grid-template-columns:1fr}.chart{height:230px}.bottom{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.97);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom));z-index:40}.bottom button{border:0;background:none;padding:5px;color:var(--muted);font-size:10px;font-weight:850}.bottom .ico{display:block;font-size:19px}.bottom button.active{color:var(--pink)}}
+@media(max-width:820px){.app{padding:9px 9px 82px}.top{position:static}.nav{display:none}.brand small{display:none}.kpis{grid-template-columns:repeat(2,1fr)}.people,.grid,.grid3,.totals{grid-template-columns:1fr}.chart{height:230px}.bottom{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.97);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom));z-index:40}.bottom button{border:0;background:none;padding:5px;color:var(--muted);font-size:10px;font-weight:850}.bottom .ico{display:block;font-size:19px}.bottom button.active{color:var(--pink)}}
+
+/* ===== M&C Adventurers' Guild ===== */
+.gameShell{--g-ink:#f7ead2;--g-muted:#c9b897;--g-panel:#211d19;--g-panel2:#2d261f;--g-line:#4b3c2f;--g-gold:#e9bb62;--g-green:#82aa74;--g-red:#c87468;--g-blue:#7197ac;color:var(--g-ink);background:linear-gradient(180deg,#171512,#252019);border-radius:22px;overflow:hidden;box-shadow:0 18px 50px rgba(42,27,17,.16)}
+.gameHero{position:relative;min-height:210px;padding:20px;background:
+radial-gradient(circle at 78% 20%,rgba(255,211,128,.22),transparent 22%),
+linear-gradient(180deg,rgba(21,29,32,.18),rgba(18,14,11,.72)),
+linear-gradient(135deg,#4c5a55,#6c5a43 48%,#352c25);overflow:hidden}
+.gameHero:before{content:"";position:absolute;left:-5%;right:-5%;bottom:-36px;height:120px;background:
+radial-gradient(ellipse at 15% 80%,#263d2b 0 22%,transparent 23%),
+radial-gradient(ellipse at 38% 75%,#304932 0 26%,transparent 27%),
+radial-gradient(ellipse at 65% 76%,#243b2a 0 27%,transparent 28%),
+radial-gradient(ellipse at 88% 80%,#2f4932 0 22%,transparent 23%);opacity:.95}
+.gameHero:after{content:"";position:absolute;right:42px;top:25px;width:58px;height:58px;border-radius:50%;background:#f4d9a2;box-shadow:0 0 32px rgba(244,217,162,.42);animation:moonGlow 4s ease-in-out infinite}
+@keyframes moonGlow{50%{box-shadow:0 0 50px rgba(244,217,162,.6)}}
+.gameTitle{position:relative;z-index:2;max-width:620px}.gameTitle .kicker{font-size:10px;letter-spacing:.18em;color:#ecd39c;font-weight:900}.gameTitle h2{margin:6px 0 5px;font-family:Georgia,"Times New Roman",serif;font-size:30px;color:#fff5dc;text-shadow:0 2px 10px rgba(0,0,0,.35)}.gameTitle p{margin:0;color:#dfcfb4;font-size:12px;max-width:540px;line-height:1.55}
+.gameResources{position:relative;z-index:2;display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}.gres{background:rgba(18,15,12,.68);border:1px solid rgba(240,213,161,.18);border-radius:12px;padding:8px 10px;min-width:104px;backdrop-filter:blur(4px)}.gres span{display:block;color:#bcae97;font-size:9px}.gres strong{display:block;font-size:15px;margin-top:2px}
+.guildXp{position:relative;z-index:2;margin-top:13px;max-width:500px}.guildXpHead{display:flex;justify-content:space-between;font-size:10px;color:#d7c8ae}.guildXpTrack{height:8px;background:rgba(0,0,0,.35);border:1px solid rgba(236,206,154,.2);border-radius:99px;overflow:hidden;margin-top:5px}.guildXpFill{height:100%;background:linear-gradient(90deg,#c89248,#f1cf77);width:0;transition:.4s}
+.gameTabs{display:flex;gap:6px;padding:10px;background:#181511;border-bottom:1px solid #3f3329;overflow:auto}.gameTabs button{border:1px solid transparent;background:#2b241e;color:#cdbb9e;border-radius:10px;padding:8px 11px;white-space:nowrap;font-size:11px;font-weight:850}.gameTabs button.active{color:#1f1913;background:#dfbd78}
+.gameView{display:none;padding:14px;background:linear-gradient(180deg,#252019,#1b1814)}.gameView.active{display:block}
+.gameGrid2{display:grid;grid-template-columns:1.25fr .75fr;gap:12px}.gamePanel{background:linear-gradient(180deg,#2b251f,#211d19);border:1px solid #4b3c2f;border-radius:16px;padding:13px;box-shadow:inset 0 1px rgba(255,255,255,.03)}.gamePanel h3{font-family:Georgia,"Times New Roman",serif;margin:0;color:#f5e7cc;font-size:16px}.gamePanel p{font-size:10px;color:#bbaa90;margin:4px 0 0;line-height:1.5}
+.baseToolbar{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.gbtn{border:1px solid #67523d;background:#3b3128;color:#f0ddbd;border-radius:9px;padding:7px 9px;font-size:10px;font-weight:850}.gbtn.primary{background:#b88747;border-color:#d0a15e;color:#1d1712}.gbtn:disabled{opacity:.45;cursor:not-allowed}
+.baseScene{position:relative;min-height:465px;border:1px solid #4c4435;border-radius:15px;overflow:hidden;background:
+linear-gradient(180deg,rgba(105,138,142,.65) 0 30%,transparent 30%),
+linear-gradient(180deg,#697e74 0 28%,#5e7354 28% 37%,#8a7c55 37% 100%)}
+.baseScene:before{content:"";position:absolute;inset:32% 0 0;background:
+linear-gradient(135deg,rgba(255,255,255,.04) 25%,transparent 25%) 0 0/36px 36px,
+linear-gradient(45deg,rgba(63,91,48,.18) 25%,transparent 25%) 0 0/48px 48px}
+.baseScene .cloud{position:absolute;width:80px;height:22px;border-radius:40px;background:rgba(247,238,215,.45);filter:blur(.3px);animation:cloudMove 18s linear infinite}.baseScene .cloud:after,.baseScene .cloud:before{content:"";position:absolute;background:inherit;border-radius:50%}.baseScene .cloud:before{width:32px;height:32px;left:14px;top:-12px}.baseScene .cloud:after{width:40px;height:40px;right:10px;top:-18px}.cloud.c1{top:38px;left:-90px}.cloud.c2{top:80px;left:-160px;animation-duration:25s;animation-delay:-6s;transform:scale(.7)}
+@keyframes cloudMove{to{left:110%}}
+.plotGrid{position:absolute;left:4%;right:4%;bottom:4%;top:36%;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:6px;transform:perspective(700px) rotateX(4deg)}
+.plot{position:relative;border:1px dashed rgba(250,231,190,.23);border-radius:10px;background:rgba(57,77,43,.18);min-height:88px;transition:.15s}.plot.buildMode:hover,.plot.buildMode.selectedTarget{background:rgba(225,191,119,.16);border-color:rgba(246,215,146,.6)}
+.building{position:absolute;inset:3px;display:flex;align-items:flex-end;justify-content:center;cursor:pointer;user-select:none;filter:drop-shadow(0 6px 4px rgba(0,0,0,.27));transition:transform .16s}.building:hover{transform:translateY(-4px)}.building.selected{outline:2px solid #f0c76e;border-radius:10px}
+.bArt{position:relative;width:82%;height:78%;min-height:70px}.bArt .body{position:absolute;left:12%;right:12%;bottom:8%;height:54%;border-radius:5px 5px 8px 8px;background:linear-gradient(90deg,#75614d,#a08a68 48%,#685443);border:2px solid #46382c}.bArt .roof{position:absolute;left:2%;right:2%;bottom:51%;height:36%;background:linear-gradient(135deg,#512f2b,#78433a);clip-path:polygon(50% 0,100% 100%,0 100%);filter:drop-shadow(0 3px 1px rgba(0,0,0,.25))}.bArt .door{position:absolute;width:18%;height:27%;bottom:9%;left:41%;background:#34261e;border-radius:8px 8px 2px 2px}.bArt .window{position:absolute;width:12%;height:14%;bottom:28%;background:#e7c777;box-shadow:0 0 7px rgba(240,196,98,.5)}.bArt .window.w1{left:24%}.bArt .window.w2{right:24%}.bLabel{position:absolute;bottom:0;left:5%;right:5%;text-align:center;background:rgba(23,19,15,.76);border:1px solid rgba(235,208,160,.16);border-radius:8px;padding:4px;font-size:9px;color:#f4e3c4;backdrop-filter:blur(3px)}
+.bArt.tavern .roof{background:linear-gradient(135deg,#733c2f,#9b5c3d)}.bArt.tavern:after{content:"🍺";position:absolute;right:5%;bottom:30%;font-size:17px;animation:swing 2.6s ease-in-out infinite;transform-origin:top center}@keyframes swing{50%{transform:rotate(7deg)}}
+.bArt.blacksmith .body{background:linear-gradient(90deg,#61564b,#80705e)}.bArt.blacksmith:after{content:"";position:absolute;right:10%;bottom:22%;width:12px;height:22px;background:#493a30;border-radius:2px;box-shadow:0 -12px 8px rgba(211,111,52,.35)}.bArt.blacksmith:before{content:"";position:absolute;right:13%;bottom:52%;width:7px;height:11px;border-radius:50%;background:rgba(203,117,73,.45);animation:smoke 2.4s infinite}@keyframes smoke{to{transform:translateY(-28px) scale(1.8);opacity:0}}
+.bArt.training .roof{background:linear-gradient(135deg,#405744,#66805d)}.bArt.training:after{content:"⚔";position:absolute;left:8%;top:20%;font-size:17px;color:#ded4c1}
+.bArt.infirmary .roof{background:linear-gradient(135deg,#ddd1b7,#bda98c)}.bArt.infirmary:after{content:"✚";position:absolute;right:11%;top:26%;font-size:18px;color:#a04c47}
+.bArt.warehouse .roof{background:linear-gradient(135deg,#5e4733,#8a6745)}.bArt.arcane .roof{background:linear-gradient(135deg,#49365f,#6b4e7e)}.bArt.arcane:after{content:"✦";position:absolute;right:14%;top:18%;font-size:20px;color:#c8a9ed;animation:twinkle 1.8s infinite}@keyframes twinkle{50%{opacity:.35;transform:scale(.78)}}
+.bArt.guildhall{width:96%;height:92%}.bArt.guildhall .body{height:62%;background:linear-gradient(90deg,#7b6850,#b09a74 45%,#756048)}.bArt.guildhall .roof{bottom:60%;height:34%;background:linear-gradient(135deg,#3f3540,#66505c)}.bArt.guildhall:after{content:"⚑";position:absolute;left:51%;top:-4%;font-size:22px;color:#d5b562;animation:flag 2.5s ease-in-out infinite}@keyframes flag{50%{transform:skewY(8deg)}}
+.catalog{display:grid;grid-template-columns:1fr;gap:7px;margin-top:9px}.catalogItem{border:1px solid #493c31;border-radius:11px;padding:9px;background:#251f1a}.catalogItem.locked{opacity:.55}.catalogItem .row{align-items:flex-start}.cost{font-size:9px;color:#d2bd98;margin-top:5px}
+.buildInfo{margin-top:9px;padding-top:9px;border-top:1px solid #493c31}.buildInfo .big{font-family:Georgia,serif;font-size:17px;color:#f4e1bb}
+.gCards{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:10px}.gCard{background:#251f1a;border:1px solid #4b3c2f;border-radius:13px;padding:11px}.gCard h4{margin:0;color:#f2dfbd}.gCard .tag{display:inline-block;margin-top:5px;font-size:9px;padding:3px 6px;border-radius:99px;background:#3a3027;color:#dbc5a4}
+.masterPortrait{height:88px;border-radius:10px;margin-bottom:8px;position:relative;overflow:hidden;background:linear-gradient(135deg,#5e604e,#2d3234)}.masterPortrait:before{content:"";position:absolute;width:46px;height:56px;border-radius:50% 50% 42% 42%;left:50%;top:17px;transform:translateX(-50%);background:linear-gradient(#dec3a3 0 38%,#5a4438 39% 100%);box-shadow:0 20px 0 -6px #2d2830}.masterPortrait:after{content:"⚜";position:absolute;left:50%;bottom:5px;transform:translateX(-50%);color:#e6c16c;font-size:19px}
+.adventurerGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.adv{background:linear-gradient(180deg,#2a241e,#211c18);border:1px solid #4b3d31;border-radius:13px;padding:9px;position:relative}.adv .portrait{height:84px;border-radius:9px;background:linear-gradient(135deg,#42505a,#675844);display:grid;place-items:center;font-size:40px;overflow:hidden}.adv .portrait span{animation:idleBob 2.4s ease-in-out infinite}@keyframes idleBob{50%{transform:translateY(-4px)}}.adv h4{margin:7px 0 2px}.rarity{font-size:8px;letter-spacing:.08em}.rarity.RARE{color:#79aeda}.rarity.EPIC{color:#b488e2}.rarity.LEGENDARY{color:#e3bc5f}.hpbar,.fatbar{height:5px;border-radius:99px;background:#3a3028;margin-top:5px;overflow:hidden}.hpbar i{display:block;height:100%;background:#72a66d}.fatbar i{display:block;height:100%;background:#bc8f59}.advStatus{font-size:9px;color:#bfaf94;margin-top:5px}
+.recruitList{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.zoneList{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:10px}.zone{min-height:140px;border:1px solid #4c3f33;border-radius:14px;padding:12px;position:relative;overflow:hidden;background:linear-gradient(160deg,#33483a,#1f2e27)}.zone.mine{background:linear-gradient(160deg,#50483f,#292622)}.zone.village{background:linear-gradient(160deg,#4d4246,#29252b)}.zone.fortress{background:linear-gradient(160deg,#494554,#292735)}.zone:before{content:"";position:absolute;inset:auto -20% -45% -20%;height:100px;border-radius:50%;background:rgba(11,22,12,.28)}.zone h4{position:relative;margin:0;font-size:15px}.zone p{position:relative}.missionBtns{position:relative;display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.expeditions{display:flex;flex-direction:column;gap:8px;margin-top:10px}.expedition{border:1px solid #4b3d32;border-radius:12px;background:#241f1a;padding:10px}.expedition.running{box-shadow:inset 3px 0 #7a9671}.expTop{display:flex;justify-content:space-between;gap:8px}.timer{font-weight:900;color:#e2c582}.expBar{height:7px;background:#3a3028;border-radius:99px;overflow:hidden;margin-top:7px}.expBar i{display:block;height:100%;background:linear-gradient(90deg,#718e69,#c2b36b);width:0;transition:.5s}
+.milestoneList{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}.milestone{border:1px solid #4b3d31;border-radius:12px;padding:10px;background:#251f1a}.milestone.unlocked{border-color:#9a7947;background:linear-gradient(135deg,#342b21,#2b251d)}.milestone .seal{font-size:24px;float:right}.milestone small{color:#b9a98e}
+.resourceNote{font-size:9px;color:#aa9a81;margin-top:7px}
+.gameToast{position:fixed;right:18px;bottom:85px;z-index:80;max-width:300px;background:#211c17;color:#f0ddbd;border:1px solid #735a3f;border-radius:12px;padding:10px 12px;box-shadow:0 12px 30px rgba(0,0,0,.25);display:none;font-size:11px}.gameToast.show{display:block;animation:toastIn .25s ease-out}@keyframes toastIn{from{transform:translateY(8px);opacity:0}}
+.gameModalBg{position:fixed;inset:0;background:rgba(18,14,11,.72);z-index:75;display:none;place-items:center;padding:15px}.gameModalBg.show{display:grid}.gameModal{width:min(520px,100%);max-height:88vh;overflow:auto;background:#262019;color:#f0dfc0;border:1px solid #5d4937;border-radius:17px;padding:15px}.gameModal h3{margin:0 0 8px;font-family:Georgia,serif}
+@media(max-width:820px){
+ .gameGrid2{grid-template-columns:1fr}.baseScene{min-height:420px}.plotGrid{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(4,1fr)}
+ .gCards,.zoneList,.milestoneList{grid-template-columns:1fr}.adventurerGrid,.recruitList{grid-template-columns:repeat(2,1fr)}
+ .gameTabs{position:sticky;top:0;z-index:8}.gameHero{min-height:230px}.gameHero:after{right:18px}
+}
+@media(max-width:430px){.adventurerGrid,.recruitList{grid-template-columns:1fr}.gres{min-width:92px}.gameTitle h2{font-size:25px}}
+
 </style>
 </head>
 <body>
@@ -50,7 +108,7 @@ button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1160px;mar
 <header class="top">
   <div class="brand"><div class="pig">🐷</div><div><h1 id="roomTitle">M&C的小豬撲滿</h1><small id="roomCode"></small></div></div>
   <div class="status" id="syncStatus">● 即時同步</div>
-  <nav class="nav"><button id="nHome" class="active" onclick="showPage('home')">首頁</button><button id="nRecords" onclick="showPage('records')">紀錄</button><button id="nSettings" onclick="showPage('settings')">設定</button></nav>
+  <nav class="nav"><button id="nHome" class="active" onclick="showPage('home')">首頁</button><button id="nRecords" onclick="showPage('records')">紀錄</button><button id="nGuild" onclick="showPage('guild')">⚔ 公會</button><button id="nSettings" onclick="showPage('settings')">設定</button></nav>
 </header>
 
 <section id="homePage" class="page active">
@@ -79,6 +137,83 @@ button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1160px;mar
   </div>
 </section>
 
+
+<section id="guildPage" class="page">
+<div class="gameShell">
+  <div class="gameHero">
+    <div class="gameTitle">
+      <div class="kicker">M&C ADVENTURERS' GUILD</div>
+      <h2>暮光山谷冒險者公會</h2>
+      <p>你們真實工作的每一小時，都會成為這個世界的發展力量。真實薪資只用來計算遊戲額度；在遊戲裡消耗資源不會影響真正的存款。</p>
+    </div>
+    <div class="gameResources">
+      <div class="gres"><span>🪙 Guild Gold</span><strong id="gGold">0</strong></div>
+      <div class="gres"><span>🏅 Contribution</span><strong id="gContribution">0</strong></div>
+      <div class="gres"><span>🎖 Reputation</span><strong id="gReputation">0</strong></div>
+      <div class="gres"><span>🪵 Wood</span><strong id="gWood">0</strong></div>
+      <div class="gres"><span>⛏ Iron</span><strong id="gIron">0</strong></div>
+      <div class="gres"><span>🪨 Stone</span><strong id="gStone">0</strong></div>
+      <div class="gres"><span>🔮 Crystal</span><strong id="gCrystal">0</strong></div>
+    </div>
+    <div class="guildXp">
+      <div class="guildXpHead"><span id="gLevel">Guild Lv.1</span><span id="gXpLabel">0 / 150 EXP</span></div>
+      <div class="guildXpTrack"><div id="gXpFill" class="guildXpFill"></div></div>
+    </div>
+  </div>
+
+  <div class="gameTabs">
+    <button id="gtBase" class="active" onclick="showGuildTab('base')">🏰 基地</button>
+    <button id="gtMasters" onclick="showGuildTab('masters')">👑 公會長</button>
+    <button id="gtAdventurers" onclick="showGuildTab('adventurers')">🛡 冒險者</button>
+    <button id="gtExplore" onclick="showGuildTab('explore')">🗺 遠征</button>
+    <button id="gtWorld" onclick="showGuildTab('world')">✨ 世界事件</button>
+  </div>
+
+  <div id="gvBase" class="gameView active">
+    <div class="gameGrid2">
+      <div class="gamePanel">
+        <div class="row"><div><h3>公會基地</h3><p>拖曳建築（桌面）或先點建築、再點空地（手機）來重新規劃基地。</p></div><button class="gbtn primary" onclick="toggleBuildCatalog()">＋ 建設</button></div>
+        <div id="baseScene" class="baseScene">
+          <div class="cloud c1"></div><div class="cloud c2"></div>
+          <div id="plotGrid" class="plotGrid"></div>
+        </div>
+      </div>
+      <div class="gamePanel">
+        <h3 id="buildSideTitle">建設與管理</h3>
+        <p id="buildSideDesc">選擇基地中的建築，可查看升級內容；或從下方建設新設施。</p>
+        <div id="buildingCatalog" class="catalog"></div>
+        <div id="buildingInfo" class="buildInfo"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gvMasters" class="gameView">
+    <div class="gamePanel"><h3>雙公會長</h3><p>M 與 C 的公會長等級直接由各自真實工作時數成長。1 小時 = 10 Master EXP。</p><div id="masterCards" class="gCards"></div></div>
+  </div>
+
+  <div id="gvAdventurers" class="gameView">
+    <div class="gameGrid2">
+      <div class="gamePanel"><div class="row"><div><h3>冒險者名冊</h3><p>冒險者不會永久死亡；戰敗可能受傷，需要時間休息。</p></div><span id="advCount" class="tag"></span></div><div id="adventurerGrid" class="adventurerGrid"></div></div>
+      <div class="gamePanel"><h3>酒館招募</h3><p>招募使用 Reputation，不消耗你們真實工作換來的 Guild Gold。</p><div id="recruitList" class="recruitList"></div></div>
+    </div>
+  </div>
+
+  <div id="gvExplore" class="gameView">
+    <div class="gameGrid2">
+      <div class="gamePanel"><h3>冒險區域</h3><p>派遣後使用真實時間倒數。第一個「新手巡邏」只需 2 分鐘，方便你們測試。</p><div id="zoneList" class="zoneList"></div></div>
+      <div class="gamePanel"><h3>進行中的遠征</h3><p>關掉網站也會繼續計時，完成後再回來領取資源。</p><div id="expeditionList" class="expeditions"></div></div>
+    </div>
+  </div>
+
+  <div id="gvWorld" class="gameView">
+    <div class="gamePanel"><h3>現實里程碑 → 世界事件</h3><p>你們真實累積存款達到里程碑時，這個世界會出現永久變化與新內容。</p><div id="milestoneList" class="milestoneList"></div></div>
+  </div>
+</div>
+</section>
+
+<div id="gameToast" class="gameToast"></div>
+<div id="gameModalBg" class="gameModalBg" onclick="if(event.target===this)closeGameModal()"><div class="gameModal" id="gameModal"></div></div>
+
 <section id="settingsPage" class="page">
   <div class="panel"><div class="toolbar"><div><h3>🎯 共同目標</h3><p>這裡的修改會立即同步給另一個人。</p></div><button class="btn green" onclick="saveGoal()">儲存</button></div>
     <div class="grid" style="margin-top:10px"><div class="field"><label>總目標 TWD</label><input id="goalInput" type="number"></div><div class="field"><label>目標日期</label><input id="dateInput" type="date"></div></div>
@@ -99,7 +234,7 @@ button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1160px;mar
 </section>
 </div>
 
-<nav class="bottom" id="bottom" style="display:none"><button id="bHome" class="active" onclick="showPage('home')"><span class="ico">🏠</span>首頁</button><button id="bRecords" onclick="showPage('records')"><span class="ico">🧾</span>紀錄</button><button id="bSettings" onclick="showPage('settings')"><span class="ico">⚙️</span>設定</button></nav>
+<nav class="bottom" id="bottom" style="display:none"><button id="bHome" class="active" onclick="showPage('home')"><span class="ico">🏠</span>首頁</button><button id="bRecords" onclick="showPage('records')"><span class="ico">🧾</span>紀錄</button><button id="bGuild" onclick="showPage('guild')"><span class="ico">⚔️</span>公會</button><button id="bSettings" onclick="showPage('settings')"><span class="ico">⚙️</span>設定</button></nav>
 
 <div id="modalBg" class="modalBg" onclick="if(event.target===this)closeEntry()"><div class="modal">
 <h3>新增打工紀錄</h3><div class="hint">日期會自動判斷平日、週六、週日；Public Holiday 會嘗試用澳洲假日資料自動判斷，仍可手動切換。</div>
@@ -118,7 +253,7 @@ button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1160px;mar
 <script>
 const RULE_VERSION='FWO_2026-07-01';
 const cfg=window.MC_CONFIG||{};
-let sb,roomId=null,room=null,workers=[],jobs=[],entries=[],channel=null,chart=null,viewMonth=new Date();viewMonth.setDate(1);let gateMode='join';
+let sb,roomId=null,room=null,workers=[],jobs=[],entries=[],gameState=null,gameBuildings=[],gameAdventurers=[],gameExpeditions=[],gameSpend=[],channel=null,chart=null,viewMonth=new Date();viewMonth.setDate(1);let gateMode='join';let selectedBuildingId=null,buildCatalogOpen=true,guildTicker=null;
 
 function moneyAUD(v){return new Intl.NumberFormat('en-AU',{style:'currency',currency:'AUD'}).format(Number(v)||0)}
 function moneyTWD(v){return new Intl.NumberFormat('zh-TW',{style:'currency',currency:'TWD',maximumFractionDigits:0}).format(Number(v)||0)}
@@ -173,21 +308,281 @@ async function submitGate(){
 }
 async function loadRoom(){
   const rr=await sb.from('rooms').select('*').eq('id',roomId).maybeSingle();if(rr.error||!rr.data)return false;room=rr.data;
-  const [w,j,e]=await Promise.all([sb.from('workers').select('*').eq('room_id',roomId).order('created_at'),sb.from('jobs').select('*').eq('room_id',roomId).order('created_at'),sb.from('entries').select('*').eq('room_id',roomId).order('work_date')]);
-  workers=w.data||[];jobs=j.data||[];entries=e.data||[];return true;
+  const [w,j,e,gs,gb,ga,gx,gsp]=await Promise.all([
+    sb.from('workers').select('*').eq('room_id',roomId).order('created_at'),
+    sb.from('jobs').select('*').eq('room_id',roomId).order('created_at'),
+    sb.from('entries').select('*').eq('room_id',roomId).order('work_date'),
+    sb.from('game_state').select('*').eq('room_id',roomId).maybeSingle(),
+    sb.from('game_buildings').select('*').eq('room_id',roomId).order('built_at'),
+    sb.from('game_adventurers').select('*').eq('room_id',roomId).order('recruited_at'),
+    sb.from('game_expeditions').select('*').eq('room_id',roomId).order('created_at',{ascending:false}),
+    sb.from('game_spend').select('*').eq('room_id',roomId).order('created_at')
+  ]);
+  workers=w.data||[];jobs=j.data||[];entries=e.data||[];
+  gameState=gs.data||null;gameBuildings=gb.data||[];gameAdventurers=ga.data||[];gameExpeditions=gx.data||[];gameSpend=gsp.data||[];
+  return true;
 }
-function enterApp(){gate.style.display='none';app.style.display='block';bottom.style.display='';roomTitle.textContent=room.name;roomCode.textContent='房間：'+room.code;shareText.textContent=`分享網站網址給女友，輸入房間代碼「${room.code}」與你們的共同密碼即可加入。`;goalInput.value=room.goal_twd||'';dateInput.value=room.target_date||'';renderAll();subscribe()}
+async function enterApp(){gate.style.display='none';app.style.display='block';bottom.style.display='';roomTitle.textContent=room.name;roomCode.textContent='房間：'+room.code;shareText.textContent=`分享網站網址給女友，輸入房間代碼「${room.code}」與你們的共同密碼即可加入。`;goalInput.value=room.goal_twd||'';dateInput.value=room.target_date||'';await ensureGameInitialized();renderAll();subscribe();startGuildTicker()}
 function subscribe(){
   if(channel)sb.removeChannel(channel);
   channel=sb.channel('mc-'+roomId).on('postgres_changes',{event:'*',schema:'public',table:'entries',filter:'room_id=eq.'+roomId},reload)
     .on('postgres_changes',{event:'*',schema:'public',table:'workers',filter:'room_id=eq.'+roomId},reload)
     .on('postgres_changes',{event:'*',schema:'public',table:'jobs',filter:'room_id=eq.'+roomId},reload)
+    .on('postgres_changes',{event:'*',schema:'public',table:'game_state',filter:'room_id=eq.'+roomId},reload)
+    .on('postgres_changes',{event:'*',schema:'public',table:'game_buildings',filter:'room_id=eq.'+roomId},reload)
+    .on('postgres_changes',{event:'*',schema:'public',table:'game_adventurers',filter:'room_id=eq.'+roomId},reload)
+    .on('postgres_changes',{event:'*',schema:'public',table:'game_expeditions',filter:'room_id=eq.'+roomId},reload)
+    .on('postgres_changes',{event:'*',schema:'public',table:'game_spend',filter:'room_id=eq.'+roomId},reload)
     .on('postgres_changes',{event:'UPDATE',schema:'public',table:'rooms',filter:'id=eq.'+roomId},reload).subscribe();
 }
 async function reload(){syncStatus.textContent='● 同步中';await loadRoom();renderAll();setTimeout(()=>syncStatus.textContent='● 即時同步',350)}
-function showPage(p){['home','records','settings'].forEach(x=>{document.getElementById(x+'Page').classList.toggle('active',x===p);document.getElementById('n'+x[0].toUpperCase()+x.slice(1))?.classList.toggle('active',x===p);document.getElementById('b'+x[0].toUpperCase()+x.slice(1))?.classList.toggle('active',x===p)});if(p==='settings')renderSettings();if(p==='records')renderRecords()}
+function showPage(p){['home','records','guild','settings'].forEach(x=>{document.getElementById(x+'Page').classList.toggle('active',x===p);document.getElementById('n'+x[0].toUpperCase()+x.slice(1))?.classList.toggle('active',x===p);document.getElementById('b'+x[0].toUpperCase()+x.slice(1))?.classList.toggle('active',x===p)});if(p==='settings')renderSettings();if(p==='records')renderRecords();if(p==='guild')renderGuild()}
 
-function renderAll(){renderHome();renderRecords();renderSettings()}
+function renderAll(){renderHome();renderRecords();renderSettings();renderGuild()}
+
+const GAME_BUILDINGS={
+  guildhall:{name:'公會大廳',icon:'🏰',req:1,base:{gold:0,contrib:0,wood:0,iron:0,stone:0},desc:'公會的核心。升級可提高基地規模與冒險者容量。'},
+  tavern:{name:'旅人酒館',icon:'🍺',req:2,base:{gold:300,contrib:3,wood:0,iron:0,stone:0},desc:'解鎖正式招募，讓更多冒險者加入公會。'},
+  training:{name:'訓練場',icon:'⚔️',req:3,base:{gold:600,contrib:5,wood:10,iron:0,stone:0},desc:'提高冒險者培養效率，未來可解鎖技能訓練。'},
+  blacksmith:{name:'鐵匠鋪',icon:'⚒️',req:4,base:{gold:1200,contrib:10,wood:20,iron:10,stone:0},desc:'製作與強化裝備。第一版先作為公會發展建築。'},
+  infirmary:{name:'療養所',icon:'✚',req:5,base:{gold:1500,contrib:12,wood:20,iron:0,stone:15},desc:'縮短冒險者受傷恢復時間。'},
+  warehouse:{name:'公會倉庫',icon:'📦',req:6,base:{gold:1800,contrib:15,wood:30,iron:0,stone:20},desc:'象徵公會物流能力，後續可擴大素材上限。'},
+  arcane:{name:'魔法工坊',icon:'🔮',req:7,base:{gold:2600,contrib:22,wood:20,iron:10,stone:20,crystal:5},desc:'研究魔晶與特殊遠征技術。'}
+};
+const GAME_ZONES=[
+  {id:'greenvale',name:'Greenvale Forest',zh:'翠谷森林',req:1,cls:'',missions:[
+    {id:'tutorial',name:'新手巡邏',mins:2,fatigue:5,reward:{wood:[4,8],reputation:[6,12],xp:[15,25]}},
+    {id:'patrol',name:'森林巡邏',mins:60,fatigue:12,reward:{wood:[8,15],stone:[1,4],reputation:[12,22],xp:[30,45]}}
+  ]},
+  {id:'mine',name:'Abandoned Mine',zh:'廢棄礦坑',req:4,cls:'mine',missions:[
+    {id:'delve',name:'礦坑勘探',mins:180,fatigue:20,reward:{iron:[5,10],stone:[7,14],reputation:[20,35],xp:[55,80]}}
+  ]},
+  {id:'village',name:'Forgotten Village',zh:'遺忘村落',req:7,cls:'village',missions:[
+    {id:'purge',name:'亡靈清掃',mins:360,fatigue:28,reward:{crystal:[1,3],wood:[10,18],reputation:[35,55],xp:[90,130]}}
+  ]},
+  {id:'fortress',name:'Ancient Fortress',zh:'古代要塞',req:10,cls:'fortress',missions:[
+    {id:'siege',name:'要塞遠征',mins:720,fatigue:38,reward:{crystal:[3,6],iron:[12,20],reputation:[65,90],xp:[160,220]}}
+  ]}
+];
+const RECRUIT_POOL=[
+ {name:'Roland',class_name:'Warrior',rarity:'COMMON',emoji:'🗡️',traits:['勇敢']},
+ {name:'Elena',class_name:'Ranger',rarity:'RARE',emoji:'🏹',traits:['夜行者']},
+ {name:'Mira',class_name:'Priest',rarity:'RARE',emoji:'✨',traits:['慈悲']},
+ {name:'Cedric',class_name:'Guardian',rarity:'COMMON',emoji:'🛡️',traits:['堅韌']},
+ {name:'Selene',class_name:'Mage',rarity:'EPIC',emoji:'🪄',traits:['學者']},
+ {name:'Kael',class_name:'Rogue',rarity:'EPIC',emoji:'🗡',traits:['敏捷']},
+ {name:'Aurelia',class_name:'Paladin',rarity:'LEGENDARY',emoji:'⚜️',traits:['誓約']}
+];
+function gameToastMsg(msg){const x=document.getElementById('gameToast');if(!x)return;x.textContent=msg;x.classList.add('show');clearTimeout(x._t);x._t=setTimeout(()=>x.classList.remove('show'),2600)}
+function showGuildTab(t){['base','masters','adventurers','explore','world'].forEach(x=>{document.getElementById('gv'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===t);document.getElementById('gt'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===t)});renderGuild()}
+function xpThresholdForLevel(l){if(l<=1)return 0;return Math.round(150*Math.pow(l-1,1.72))}
+function levelFromXp(xp){let l=1;while(l<20&&xp>=xpThresholdForLevel(l+1))l++;return l}
+function masterLevelFromXp(xp){return Math.max(1,Math.min(50,1+Math.floor(Math.sqrt(xp/80))))}
+function sumSpend(currency){return gameSpend.filter(s=>s.currency===currency).reduce((a,s)=>a+Number(s.amount||0),0)}
+function gameEconomy(){
+ const t=totals(),earnedGold=Math.floor(t.aud*4),earnedContrib=Math.floor(t.hours);
+ const xpReal=Math.floor(t.hours*10)+entries.length*10,bonus=Number(gameState?.game_xp_bonus||0),xp=xpReal+bonus;
+ return {
+   earnedGold,earnedContrib,
+   gold:Math.max(0,earnedGold-sumSpend('GOLD')),
+   contribution:Math.max(0,earnedContrib-sumSpend('CONTRIBUTION')),
+   reputation:Math.max(0,Number(gameState?.reputation||0)-sumSpend('REPUTATION')),
+   wood:Math.max(0,Number(gameState?.wood||0)-sumSpend('WOOD')),
+   iron:Math.max(0,Number(gameState?.iron||0)-sumSpend('IRON')),
+   stone:Math.max(0,Number(gameState?.stone||0)-sumSpend('STONE')),
+   crystal:Math.max(0,Number(gameState?.crystal||0)-sumSpend('CRYSTAL')),
+   xp,level:levelFromXp(xp)
+ };
+}
+async function ensureGameInitialized(){
+ if(!roomId)return;
+ if(!gameState){
+   await sb.from('game_state').upsert({room_id:roomId,reputation:120,wood:20,iron:8,stone:15,crystal:0,game_xp_bonus:0},{onConflict:'room_id'});
+ }
+ if(!gameBuildings.some(b=>b.building_type==='guildhall')){
+   await sb.from('game_buildings').insert({room_id:roomId,building_type:'guildhall',level:1,grid_x:1,grid_y:1});
+ }
+ if(gameAdventurers.length===0){
+   await sb.from('game_adventurers').insert([
+    {room_id:roomId,name:'Rowan',class_name:'Warrior',rarity:'COMMON',level:1,xp:0,fatigue:0,traits:['創會志願者']},
+    {room_id:roomId,name:'Lyra',class_name:'Ranger',rarity:'COMMON',level:1,xp:0,fatigue:0,traits:['創會志願者']}
+   ]);
+ }
+ await loadRoom();
+}
+function buildingCost(type,nextLevel=1){
+ const def=GAME_BUILDINGS[type],m=Math.max(1,nextLevel);
+ const scale=nextLevel<=1?1:Math.pow(1.85,nextLevel-1);
+ const out={};
+ for(const k of ['gold','contrib','wood','iron','stone','crystal'])out[k]=Math.ceil((def.base[k]||0)*scale);
+ return out;
+}
+function canPay(cost){
+ const e=gameEconomy();return e.gold>=cost.gold&&e.contribution>=cost.contrib&&e.wood>=cost.wood&&e.iron>=cost.iron&&e.stone>=cost.stone&&e.crystal>=cost.crystal
+}
+async function spendResources(cost,reason){
+ const rows=[];
+ const map={gold:'GOLD',contrib:'CONTRIBUTION',wood:'WOOD',iron:'IRON',stone:'STONE',crystal:'CRYSTAL'};
+ for(const [k,c] of Object.entries(map))if(Number(cost[k]||0)>0)rows.push({room_id:roomId,currency:c,amount:Number(cost[k]),reason});
+ if(rows.length){const r=await sb.from('game_spend').insert(rows);if(r.error)throw r.error}
+}
+function costText(c){const a=[];if(c.gold)a.push(`🪙${c.gold}`);if(c.contrib)a.push(`🏅${c.contrib}`);if(c.wood)a.push(`🪵${c.wood}`);if(c.iron)a.push(`⛏${c.iron}`);if(c.stone)a.push(`🪨${c.stone}`);if(c.crystal)a.push(`🔮${c.crystal}`);return a.join(' · ')||'免費'}
+function nextFreePlot(){
+ const used=new Set(gameBuildings.map(b=>`${b.grid_x},${b.grid_y}`));
+ for(let y=0;y<3;y++)for(let x=0;x<4;x++)if(!used.has(`${x},${y}`))return{x,y};
+ return null;
+}
+async function constructBuilding(type){
+ const def=GAME_BUILDINGS[type],eco=gameEconomy();if(eco.level<def.req)return gameToastMsg(`需要 Guild Lv.${def.req}`);
+ if(gameBuildings.some(b=>b.building_type===type))return gameToastMsg('這個建築已經存在');
+ const pos=nextFreePlot();if(!pos)return gameToastMsg('基地沒有空地了，先重新配置。');
+ const cost=buildingCost(type,1);if(!canPay(cost))return gameToastMsg('資源不足：'+costText(cost));
+ try{
+   await spendResources(cost,`建造 ${def.name}`);
+   const r=await sb.from('game_buildings').insert({room_id:roomId,building_type:type,level:1,grid_x:pos.x,grid_y:pos.y});
+   if(r.error)throw r.error;gameToastMsg(`${def.name} 建造完成！`);
+ }catch(e){alert(e.message)}
+}
+async function upgradeSelectedBuilding(){
+ const b=gameBuildings.find(x=>x.id===selectedBuildingId);if(!b)return;
+ if(b.level>=5)return gameToastMsg('第一版最高 Lv.5');
+ const cost=buildingCost(b.building_type,b.level+1);if(!canPay(cost))return gameToastMsg('升級資源不足：'+costText(cost));
+ try{await spendResources(cost,`升級 ${GAME_BUILDINGS[b.building_type].name} Lv.${b.level+1}`);await sb.from('game_buildings').update({level:b.level+1}).eq('id',b.id);gameToastMsg('升級完成！')}catch(e){alert(e.message)}
+}
+function toggleBuildCatalog(){buildCatalogOpen=!buildCatalogOpen;renderBase()}
+function buildingHTML(b){
+ const def=GAME_BUILDINGS[b.building_type]||GAME_BUILDINGS.guildhall;
+ return `<div class="building ${selectedBuildingId===b.id?'selected':''}" draggable="true" data-building="${b.id}" onclick="selectBuilding('${b.id}')" ondragstart="gameDragStart(event,'${b.id}')"><div class="bArt ${b.building_type}"><div class="roof"></div><div class="body"></div><div class="door"></div><i class="window w1"></i><i class="window w2"></i><div class="bLabel">${def.icon} ${def.name} Lv.${b.level}</div></div></div>`
+}
+function selectBuilding(id){selectedBuildingId=selectedBuildingId===id?null:id;renderBase()}
+function gameDragStart(ev,id){ev.dataTransfer.setData('text/plain',id)}
+async function moveBuilding(id,x,y){
+ const occupied=gameBuildings.find(b=>b.grid_x===x&&b.grid_y===y&&b.id!==id);if(occupied)return gameToastMsg('這格已經有建築');
+ await sb.from('game_buildings').update({grid_x:x,grid_y:y}).eq('id',id);selectedBuildingId=id;
+}
+async function plotClick(x,y){
+ if(!selectedBuildingId)return;
+ await moveBuilding(selectedBuildingId,x,y);
+}
+function renderBase(){
+ const grid=document.getElementById('plotGrid');if(!grid)return;
+ const maxY=window.innerWidth<=820?4:3,maxX=window.innerWidth<=820?3:4;
+ let out='';
+ for(let y=0;y<maxY;y++)for(let x=0;x<maxX;x++){
+  const b=gameBuildings.find(z=>z.grid_x===x&&z.grid_y===y);
+  out+=`<div class="plot buildMode" data-x="${x}" data-y="${y}" onclick="plotClick(${x},${y})" ondragover="event.preventDefault()" ondrop="event.preventDefault();moveBuilding(event.dataTransfer.getData('text/plain'),${x},${y})">${b?buildingHTML(b):''}</div>`;
+ }
+ grid.innerHTML=out;
+ const eco=gameEconomy();
+ const cat=document.getElementById('buildingCatalog');
+ if(cat)cat.innerHTML=buildCatalogOpen?Object.entries(GAME_BUILDINGS).filter(([k])=>k!=='guildhall').map(([k,d])=>{
+  const built=gameBuildings.some(b=>b.building_type===k),locked=eco.level<d.req,c=buildingCost(k,1);
+  return `<div class="catalogItem ${locked?'locked':''}"><div class="row"><div><strong>${d.icon} ${d.name}</strong><div class="sub">${d.desc}</div></div><button class="gbtn ${!built&&!locked?'primary':''}" ${built||locked?'disabled':''} onclick="constructBuilding('${k}')">${built?'已建造':locked?'Lv.'+d.req+' 解鎖':'建造'}</button></div><div class="cost">${costText(c)}</div></div>`
+ }).join(''):'';
+ const info=document.getElementById('buildingInfo'),b=gameBuildings.find(x=>x.id===selectedBuildingId);
+ if(info){
+  if(!b)info.innerHTML='<div class="resourceNote">提示：點選基地中的建築後，可以在這裡升級。</div>';
+  else{const d=GAME_BUILDINGS[b.building_type],c=buildingCost(b.building_type,b.level+1);info.innerHTML=`<div class="big">${d.icon} ${d.name} Lv.${b.level}</div><div class="sub" style="margin-top:5px">${d.desc}</div><div class="cost">下一級：${b.level>=5?'已達 V1 上限':costText(c)}</div><button class="gbtn primary" style="margin-top:8px" ${b.level>=5?'disabled':''} onclick="upgradeSelectedBuilding()">升級</button>`}
+ }
+}
+function renderMasters(){
+ const box=document.getElementById('masterCards');if(!box)return;
+ box.innerHTML=workers.length?workers.slice(0,2).map((w,i)=>{const t=totals(entries.filter(e=>e.worker_id===w.id)),xp=Math.floor(t.hours*10),lv=masterLevelFromXp(xp);return `<div class="gCard"><div class="masterPortrait"></div><div class="row"><div><h4>${esc(w.name)}</h4><div class="tag">Guild Master</div></div><strong>Lv.${lv}</strong></div><div class="sub" style="margin-top:7px">真實工時 ${t.hours.toFixed(1)} h · Master EXP ${xp}</div><div class="resourceNote">${i===0?'專精預告：戰略／建築／後勤':'專精預告：招募／財務／指揮'}</div></div>`}).join(''):'<div class="sub">請先新增 M 與 C。</div>';
+}
+function advEmoji(a){return ({Warrior:'🗡️',Ranger:'🏹',Priest:'✨',Guardian:'🛡️',Mage:'🪄',Rogue:'🗡',Paladin:'⚜️'})[a.class_name]||'🛡️'}
+function isAdvBusy(id){return gameExpeditions.some(e=>e.adventurer_id===id&&e.status==='ACTIVE'&&new Date(e.ends_at)>new Date())}
+function advStatus(a){if(a.injury_until&&new Date(a.injury_until)>new Date())return `受傷至 ${new Date(a.injury_until).toLocaleString('zh-TW',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}`;if(isAdvBusy(a.id))return'遠征中';if(Number(a.fatigue)>=80)return'非常疲累';return'待命'}
+function renderAdventurers(){
+ const box=document.getElementById('adventurerGrid');if(!box)return;
+ document.getElementById('advCount').textContent=`${gameAdventurers.length} 名`;
+ box.innerHTML=gameAdventurers.map(a=>`<div class="adv"><div class="portrait"><span>${advEmoji(a)}</span></div><div class="row"><h4>${esc(a.name)}</h4><span class="rarity ${a.rarity}">${a.rarity}</span></div><div class="sub">${a.class_name} · Lv.${a.level} · EXP ${a.xp}</div><div class="fatbar"><i style="width:${Math.min(100,Number(a.fatigue||0))}%"></i></div><div class="advStatus">${advStatus(a)}</div></div>`).join('');
+ renderRecruitList();
+}
+function recruitCandidates(){
+ const seed=(room?.code||'MC').split('').reduce((a,c)=>a+c.charCodeAt(0),0)+new Date().getDate();
+ const picks=[];for(let i=0;i<3;i++)picks.push(RECRUIT_POOL[(seed+i*3)%RECRUIT_POOL.length]);return picks
+}
+function repCost(r){return r==='COMMON'?40:r==='RARE'?80:r==='EPIC'?160:350}
+function renderRecruitList(){
+ const box=document.getElementById('recruitList');if(!box)return;
+ const tavern=gameBuildings.find(b=>b.building_type==='tavern'),eco=gameEconomy();
+ if(!tavern){box.innerHTML='<div class="sub">建造「旅人酒館」後可開始正式招募。創會時已免費加入兩名志願冒險者。</div>';return}
+ box.innerHTML=recruitCandidates().map((a,i)=>{const c=repCost(a.rarity);return `<div class="adv"><div class="portrait"><span>${a.emoji}</span></div><div class="row"><h4>${a.name}</h4><span class="rarity ${a.rarity}">${a.rarity}</span></div><div class="sub">${a.class_name} · ${a.traits.join('、')}</div><button class="gbtn primary" style="margin-top:7px;width:100%" ${eco.reputation<c?'disabled':''} onclick="recruitAdventurer(${i})">🎖 ${c} 招募</button></div>`}).join('')
+}
+async function recruitAdventurer(i){
+ const a=recruitCandidates()[i],c=repCost(a.rarity),eco=gameEconomy();if(eco.reputation<c)return gameToastMsg('Reputation 不足');
+ const sr=await sb.from('game_spend').insert({room_id:roomId,currency:'REPUTATION',amount:c,reason:`招募 ${a.name}`});if(sr.error)return alert(sr.error.message);
+ const r=await sb.from('game_adventurers').insert({room_id:roomId,name:a.name,class_name:a.class_name,rarity:a.rarity,level:1,xp:0,fatigue:0,traits:a.traits});if(r.error)return alert(r.error.message);gameToastMsg(`${a.name} 加入公會！`)
+}
+function missionRandom([min,max]){return Math.floor(min+Math.random()*(max-min+1))}
+function availableAdventurers(){return gameAdventurers.filter(a=>!isAdvBusy(a.id)&&!(a.injury_until&&new Date(a.injury_until)>new Date())&&Number(a.fatigue||0)<85)}
+function openMission(zoneId,missionId){
+ const zone=GAME_ZONES.find(z=>z.id===zoneId),m=zone?.missions.find(x=>x.id===missionId),eco=gameEconomy();if(!zone||!m)return;
+ if(eco.level<zone.req)return gameToastMsg(`需要 Guild Lv.${zone.req}`);
+ const av=availableAdventurers();
+ const modal=document.getElementById('gameModal'),bg=document.getElementById('gameModalBg');
+ modal.innerHTML=`<h3>${zone.zh} · ${m.name}</h3><p class="sub">時間：約 ${m.mins<60?m.mins+' 分鐘':(m.mins/60)+' 小時'} · 疲勞 +${m.fatigue}</p><div class="field" style="margin-top:10px"><label style="color:#ccb999">選擇冒險者</label><select id="missionAdv" style="width:100%;padding:10px;border-radius:9px;background:#181511;color:#f0ddbd;border:1px solid #5a4938">${av.map(a=>`<option value="${a.id}">${esc(a.name)} · ${a.class_name} Lv.${a.level} · 疲勞 ${a.fatigue}%</option>`).join('')}</select></div>${av.length?'':'<div class="aiCaution">目前沒有可出發的冒險者。</div>'}<div class="actions"><button class="gbtn" onclick="closeGameModal()">取消</button><button class="gbtn primary" ${av.length?'':'disabled'} onclick="startExpedition('${zoneId}','${missionId}')">出發</button></div>`;
+ bg.classList.add('show')
+}
+function closeGameModal(){document.getElementById('gameModalBg').classList.remove('show')}
+async function startExpedition(zoneId,missionId){
+ const zone=GAME_ZONES.find(z=>z.id===zoneId),m=zone.missions.find(x=>x.id===missionId),aid=document.getElementById('missionAdv').value,a=gameAdventurers.find(x=>x.id===aid);if(!a)return;
+ const now=new Date(),end=new Date(now.getTime()+m.mins*60000);
+ const reward={};
+ for(const [k,v] of Object.entries(m.reward))reward[k]=missionRandom(v);
+ const {data:{user}}=await sb.auth.getUser();
+ const r=await sb.from('game_expeditions').insert({room_id:roomId,adventurer_id:aid,zone:zoneId,mission_type:missionId,starts_at:now.toISOString(),ends_at:end.toISOString(),status:'ACTIVE',reward,created_by:user.id});
+ if(r.error)return alert(r.error.message);
+ await sb.from('game_adventurers').update({fatigue:Math.min(100,Number(a.fatigue||0)+m.fatigue)}).eq('id',aid);
+ closeGameModal();gameToastMsg(`${a.name} 已出發！`)
+}
+function expProgress(e){const s=new Date(e.starts_at).getTime(),en=new Date(e.ends_at).getTime(),n=Date.now();return Math.max(0,Math.min(100,(n-s)/(en-s)*100))}
+function formatRemain(ms){if(ms<=0)return'可領取';const sec=Math.ceil(ms/1000);if(sec<60)return`${sec}s`;const min=Math.ceil(sec/60);if(min<60)return`${min}m`;const h=Math.floor(min/60),m=min%60;return`${h}h ${m}m`}
+function renderExplore(){
+ const eco=gameEconomy(),zones=document.getElementById('zoneList');if(!zones)return;
+ zones.innerHTML=GAME_ZONES.map(z=>`<div class="zone ${z.cls} ${eco.level<z.req?'locked':''}"><h4>${z.zh}</h4><p>${z.name} · ${eco.level<z.req?'Guild Lv.'+z.req+' 解鎖':'已解鎖'}</p><div class="missionBtns">${z.missions.map(m=>`<button class="gbtn ${eco.level>=z.req?'primary':''}" ${eco.level<z.req?'disabled':''} onclick="openMission('${z.id}','${m.id}')">${m.name}<br><small>${m.mins<60?m.mins+'m':m.mins/60+'h'}</small></button>`).join('')}</div></div>`).join('');
+ renderExpeditions();
+}
+function renderExpeditions(){
+ const box=document.getElementById('expeditionList');if(!box)return;
+ const active=gameExpeditions.filter(e=>e.status==='ACTIVE');
+ if(!active.length){box.innerHTML='<div class="sub">目前沒有進行中的遠征。</div>';return}
+ box.innerHTML=active.map(e=>{const a=gameAdventurers.find(x=>x.id===e.adventurer_id),z=GAME_ZONES.find(x=>x.id===e.zone),m=z?.missions.find(x=>x.id===e.mission_type),done=Date.now()>=new Date(e.ends_at).getTime(),p=expProgress(e);return `<div class="expedition running"><div class="expTop"><div><strong>${esc(a?.name||'冒險者')} · ${z?.zh||e.zone}</strong><div class="sub">${m?.name||e.mission_type}</div></div><span class="timer">${formatRemain(new Date(e.ends_at)-new Date())}</span></div><div class="expBar"><i style="width:${p}%"></i></div>${done?`<button class="gbtn primary" style="margin-top:8px;width:100%" onclick="claimExpedition('${e.id}')">領取遠征成果</button>`:''}</div>`}).join('')
+}
+async function claimExpedition(id){
+ const e=gameExpeditions.find(x=>x.id===id);if(!e||e.status!=='ACTIVE'||Date.now()<new Date(e.ends_at).getTime())return;
+ const r=e.reward||{},updates={updated_at:new Date().toISOString()};for(const k of ['wood','iron','stone','crystal','reputation'])if(r[k])updates[k]=Number(gameState?.[k]||0)+Number(r[k]);
+ if(r.xp)updates.game_xp_bonus=Number(gameState?.game_xp_bonus||0)+Number(r.xp);
+ const ur=await sb.from('game_state').update(updates).eq('room_id',roomId);if(ur.error)return alert(ur.error.message);
+ const a=gameAdventurers.find(x=>x.id===e.adventurer_id);
+ let advXp=Number(a?.xp||0)+Number(r.xp||0),advLv=Number(a?.level||1);while(advXp>=advLv*100){advXp-=advLv*100;advLv++}
+ const injury=Math.random()<0.12?new Date(Date.now()+60*60*1000).toISOString():null;
+ await sb.from('game_adventurers').update({xp:advXp,level:advLv,injury_until:injury,fatigue:Math.max(0,Number(a?.fatigue||0)-5)}).eq('id',e.adventurer_id);
+ await sb.from('game_expeditions').update({status:'CLAIMED'}).eq('id',id);
+ const rewardText=Object.entries(r).map(([k,v])=>`${({wood:'🪵',iron:'⛏',stone:'🪨',crystal:'🔮',reputation:'🎖',xp:'⭐'})[k]||k} ${v}`).join(' · ');
+ gameToastMsg(`遠征完成：${rewardText}${injury?'（冒險者輕傷）':''}`)
+}
+function renderWorld(){
+ const t=totals(),goal=Number(room?.goal_twd||0),pct=goal?t.twd/goal*100:0;
+ const events=[
+  {title:'北境林道開啟',desc:'Greenvale 北部出現新的道路與探索傳聞。',ok:t.twd>=50000,req:'累積存款 NT$50,000',seal:'🌲'},
+  {title:'古龍甦醒的傳聞',desc:'商隊開始談論山脈深處的龍影。',ok:t.twd>=100000,req:'累積存款 NT$100,000',seal:'🐉'},
+  {title:'公會城市擴建',desc:'周邊居民開始依附公會，基地背景將逐步繁榮。',ok:t.twd>=200000,req:'累積存款 NT$200,000',seal:'🏘️'},
+  {title:'第二章：遠方國境',desc:'現實目標進度過半，世界進入第二章。',ok:pct>=50,req:'完成存錢目標 50%',seal:'🗺️'},
+  {title:'M&C 紀念慶典',desc:'完成總目標後，解鎖最終慶典與公會長雕像。',ok:pct>=100&&goal>0,req:'完成存錢目標 100%',seal:'🏆'}
+ ];
+ document.getElementById('milestoneList').innerHTML=events.map(x=>`<div class="milestone ${x.ok?'unlocked':''}"><span class="seal">${x.seal}</span><strong>${x.ok?'已解鎖 · ':''}${x.title}</strong><div class="sub" style="margin-top:5px">${x.desc}</div><small>${x.ok?'✓ ':''}${x.req}</small></div>`).join('')
+}
+function renderGuild(){
+ if(!document.getElementById('guildPage')||!room)return;
+ const e=gameEconomy();
+ gGold.textContent=e.gold.toLocaleString();gContribution.textContent=e.contribution.toLocaleString();gReputation.textContent=e.reputation.toLocaleString();gWood.textContent=e.wood;gIron.textContent=e.iron;gStone.textContent=e.stone;gCrystal.textContent=e.crystal;
+ const next=Math.min(20,e.level+1),curBase=xpThresholdForLevel(e.level),nextXp=e.level>=20?e.xp:xpThresholdForLevel(next),progress=e.level>=20?100:Math.max(0,Math.min(100,(e.xp-curBase)/(nextXp-curBase)*100));
+ gLevel.textContent=`Guild Lv.${e.level}`;gXpLabel.textContent=e.level>=20?`${e.xp} EXP · MAX`:`${e.xp-curBase} / ${nextXp-curBase} EXP`;gXpFill.style.width=progress+'%';
+ renderBase();renderMasters();renderAdventurers();renderExplore();renderWorld()
+}
+function startGuildTicker(){if(guildTicker)clearInterval(guildTicker);guildTicker=setInterval(()=>{if(document.getElementById('guildPage')?.classList.contains('active')){renderExpeditions();for(const a of gameAdventurers){if(Number(a.fatigue||0)>0&&!isAdvBusy(a.id)&&Math.random()<.03)sb.from('game_adventurers').update({fatigue:Math.max(0,Number(a.fatigue)-1)}).eq('id',a.id)}}},1000)}
+
 function renderHome(){
   const t=totals(),goalN=Number(room.goal_twd)||0,rem=Math.max(0,goalN-t.twd),pc=goalN?Math.min(100,t.twd/goalN*100):0;
   remain.textContent='還差 '+moneyTWD(rem);saved.textContent='已存 '+moneyTWD(t.twd);goal.textContent='目標 '+moneyTWD(goalN);pct.textContent=pc.toFixed(1)+'%';prog.style.width=pc+'%';

@@ -98,3 +98,10 @@ window.MC_CONFIG = {
 - allowances
 
 若你的 payslip 涉及以上項目，請不要把這個簡化計算器當作薪資法律判定工具。
+
+
+## 冒險者公會 V1
+
+先在 Supabase SQL Editor 執行 `guild-game-migration.sql`，再把新版 `index.html` 與 `sw.js` 上傳 GitHub Pages。
+
+遊戲換算：A$1 真實收入 = 4 Guild Gold；1 真實工作小時 = 1 Contribution；1 小時 = 10 Guild EXP，另每筆真實工作紀錄 +10 Guild EXP。遊戲消耗不會改變真實存款。
