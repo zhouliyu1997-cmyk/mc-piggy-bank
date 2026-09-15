@@ -1,5 +1,5 @@
 
-const CACHE = "mc-piggy-pwa-v12-webgame-ui";
+const CACHE = "mc-piggy-pwa-v13-v5-runtime-fix";
 const APP_SHELL = [
   "./",
   "./index.html",
