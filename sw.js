@@ -1,5 +1,5 @@
 
-const CACHE = "mc-piggy-pwa-v9-starfall-complete";
+const CACHE = "mc-piggy-pwa-v11-ui-economy-balance";
 const APP_SHELL = [
   "./",
   "./index.html",

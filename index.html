@@ -203,6 +203,101 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
 @media(max-width:1050px){.v4BattleGrid,.v4GuildBelow,.v4WorldGrid,.v4RecruitGrid{grid-template-columns:1fr}.v4HeroGrid{grid-template-columns:repeat(2,1fr)}.v4GuildScene{height:500px}.v4LootGrid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:700px){.v4Header{align-items:flex-start;flex-direction:column}.v4Currencies{justify-content:flex-start}.v4Arena{height:430px}.v4HeroLane{right:40%}.v4MonsterLane{left:54%}.v4BattleHero{width:65px;height:170px}.v4Mob{width:75px;height:110px}.v4HeroGrid{grid-template-columns:1fr}.v4LootGrid{grid-template-columns:repeat(2,1fr)}.v4BuildingList,.v4WorldStages{grid-template-columns:1fr}.v4GuildScene{height:420px}.v4BuildingNode{transform:scale(.75)}.recruitResults{grid-template-columns:repeat(2,1fr)}}
 
+
+/* ==========================================================
+   V4.1 視覺降噪 / 大字體 / 更清楚的遊戲介面
+   ========================================================== */
+.v4Shell{font-size:16px;line-height:1.5}
+.v4BrandMini{font-size:12px}.v4BrandTitle{font-size:34px}.v4BrandSub{font-size:13px}
+.v4Currency{min-width:138px;padding:11px 13px}.v4Currency b{font-size:18px}.v4Currency small{font-size:11px}
+.v4Tabs button{font-size:14px;padding:11px 15px}
+.v4StageTop h2{font-size:28px}.v4Eyebrow{font-size:11px}.v4StageTop p{font-size:12px}.v4StageBadge{font-size:15px}
+.v4Panel h3{font-size:21px}.v4Panel p{font-size:13px;line-height:1.65}
+.v4BattleStats small{font-size:11px}.v4BattleStats b{font-size:18px}
+.v4ProgressRow>div:first-child{font-size:11px}
+.v4Btn{font-size:13px;padding:10px 14px}
+.v4Offline span{font-size:11px}.v4Offline b{font-size:13px}
+.v4PartyItem b{font-size:12px}.v4PartyItem small{font-size:10px}.v4Power{font-size:12px}
+.v4Badge{font-size:12px}
+.v4HeroName h4{font-size:18px}.v4Rarity{font-size:10px}.v4ClassLine{font-size:12px}.v4NextJob{font-size:11px}
+.v4HeroStats span{font-size:10px}.v4HeroStats b{font-size:12px}.v4Skill{font-size:11px}.v4Skill button{font-size:10px}
+.v4EquipMini div{font-size:9px}
+.v4RecruitCopy h2{font-size:34px}.v4RecruitCopy p{font-size:13px}.v4Pity span{font-size:11px}.v4RecruitCounter{font-size:12px}
+.v4ShowHero b{font-size:12px}.v4ShowHero small{font-size:10px}
+.v4GuildSceneTitle span{font-size:20px}.v4GuildSceneTitle small{font-size:10px}
+.v4BuildingTag{font-size:11px}.v4BuildingCard h4{font-size:13px}.v4BuildingCard small{font-size:10px}.v4Unlock{font-size:10px}
+.v4LootTabs button{font-size:12px;padding:9px 13px}
+.v4LootCard b{font-size:12px}.v4LootCard small{font-size:10px}.v4LootCard button{font-size:10px}
+.v4WorldStage h4{font-size:13px}.v4WorldStage p{font-size:10px}.v4WorldStage .bossName{font-size:10px}
+.v4Milestone b{font-size:12px}.v4Milestone small{font-size:10px}.v4Milestone button{font-size:10px}
+.v4HeroLabel{font-size:10px}
+.v4SkillIcon{width:54px;height:54px;font-size:21px}.v4SkillIcon small{font-size:9px;margin-top:65px}
+
+/* 戰鬥背景不再直接使用複雜 UI 截圖，改成乾淨的暗黑場景 */
+.v4Arena{
+  background:
+    radial-gradient(ellipse at 72% 26%,rgba(105,77,148,.22),transparent 22%),
+    radial-gradient(ellipse at 18% 72%,rgba(50,97,83,.16),transparent 30%),
+    linear-gradient(180deg,#252b3d 0%,#191f2b 39%,#11151c 40%,#12151b 100%) !important;
+}
+.v4Arena:before{
+  content:"";position:absolute;left:-5%;right:-5%;bottom:25%;height:36%;
+  background:
+    radial-gradient(ellipse at 5% 100%,#111823 0 22%,transparent 23%),
+    radial-gradient(ellipse at 22% 100%,#17202b 0 25%,transparent 26%),
+    radial-gradient(ellipse at 44% 100%,#111823 0 27%,transparent 28%),
+    radial-gradient(ellipse at 68% 100%,#17202b 0 24%,transparent 25%),
+    radial-gradient(ellipse at 91% 100%,#101720 0 28%,transparent 29%);
+  opacity:.86;z-index:0
+}
+.v4Arena:after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:27%;
+  background:linear-gradient(180deg,#27252d,#171820);
+  clip-path:polygon(0 23%,15% 29%,31% 20%,47% 32%,64% 18%,82% 29%,100% 20%,100% 100%,0 100%);
+  z-index:0
+}
+.v4ArenaShade{background:linear-gradient(180deg,rgba(5,6,10,.03),rgba(6,8,13,.10) 45%,rgba(4,5,8,.20))}
+
+/* 基地背景保留城堡感，但把原圖的文字與細節壓暗，讓實體建築成為視覺主角 */
+.v4GuildBg{filter:blur(1.7px) brightness(.38) saturate(.60);transform:scale(1.025)}
+.v4GuildOverlay{background:linear-gradient(180deg,rgba(7,9,14,.32),rgba(7,9,14,.42) 48%,rgba(6,8,12,.68))}
+.v4BuildingSprite{height:125px}
+.v4BuildingTag{background:rgba(7,9,13,.92);padding:5px 9px}
+
+/* 招募頁也去除雜亂的截圖背景 */
+.v4RecruitHero{
+  background:
+    radial-gradient(circle at 76% 31%,rgba(151,84,204,.21),transparent 23%),
+    radial-gradient(circle at 82% 38%,rgba(238,116,165,.10),transparent 16%),
+    linear-gradient(145deg,#19131f,#0d0d14 65%,#12101b) !important;
+}
+.v4RecruitHero:before{
+  content:"✦";position:absolute;right:10%;top:15%;font-size:190px;color:rgba(188,119,255,.08);
+  text-shadow:0 0 55px rgba(187,105,255,.18)
+}
+
+/* 背包更好讀 */
+.v4LootGrid{grid-template-columns:repeat(4,1fr);gap:10px}
+.v4LootCard{padding:10px}
+.v4LootIcon{height:92px}
+.v4LootIcon svg{width:76px;height:76px}
+.v4SellRow{display:flex;gap:6px;margin-top:8px}
+.v4SellRow .v4Btn{flex:1;padding:7px 8px}
+.v4SellValue{color:#e9bc68!important;font-weight:800}
+.v4BulkActions{display:flex;gap:7px;flex-wrap:wrap}
+.v4EconomyNote{
+  margin:10px 0 0;padding:10px 12px;border:1px solid #343a49;border-radius:10px;
+  background:#0c1016;color:#aeb5c3;font-size:11px;line-height:1.6
+}
+.v4EconomyNote strong{color:#e1c27e}
+
+@media(max-width:850px){
+  .v4Shell{font-size:15px}
+  .v4BrandTitle{font-size:29px}
+  .v4Tabs button{font-size:13px}
+  .v4LootGrid{grid-template-columns:repeat(2,1fr)}
+}
+
 </style>
 </head>
 <body>
@@ -225,7 +320,7 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
 <header class="top">
   <div class="brand"><div class="pig">🐷</div><div><h1 id="roomTitle">M&C的小豬撲滿</h1><small id="roomCode"></small></div></div>
   <div class="status" id="syncStatus">● 即時同步</div>
-  <nav class="nav"><button id="nHome" class="active" onclick="showPage('home')">首頁</button><button id="nRecords" onclick="showPage('records')">紀錄</button><button id="nGuild" onclick="showPage('guild')">⚔ 公會</button><button id="nSettings" onclick="showPage('settings')">設定</button></nav>
+  <nav class="nav"><button id="nHome" class="active" onclick="showPage('home')">首頁</button><button id="nRecords" onclick="showPage('records')">紀錄</button><button id="n公會" onclick="showPage('guild')">⚔ 公會</button><button id="nSettings" onclick="showPage('settings')">設定</button></nav>
 </header>
 
 <section id="homePage" class="page active">
@@ -249,7 +344,8 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
       <div class="row"><button class="btn secondary small" onclick="shiftMonth(-1)">←</button><strong id="monthTitle"></strong><button class="btn secondary small" onclick="shiftMonth(1)">→</button><input id="monthPick" type="month" onchange="pickMonth(this.value)" style="padding:6px;border:1px solid var(--line);border-radius:8px"></div>
       <button class="btn" onclick="openEntry()">＋ 新增紀錄</button>
     </div>
-    <div class="tablewrap"><table><thead><tr><th>日期</th><th>人</th><th>店鋪</th><th>崗位</th><th>Award</th><th>日別</th><th>工時</th><th>倍率</th><th>套用時薪</th><th>AUD</th><th>匯率</th><th>TWD</th><th>操作</th></tr></thead><tbody id="tbody"></tbody></table></div>
+    <div style="font-size:10px;color:#8b7d76;margin:8px 0 2px">📅 新增紀錄先視為「預排班表」；只有按下「簽到」後，才會計入《星痕公會》的真實工作資源與里程碑。</div>
+    <div class="tablewrap"><table><thead><tr><th>簽到</th><th>日期</th><th>人</th><th>店鋪</th><th>崗位</th><th>Award</th><th>日別</th><th>工時</th><th>倍率</th><th>套用時薪</th><th>AUD</th><th>匯率</th><th>TWD</th><th>狀態</th><th>操作</th></tr></thead><tbody id="tbody"></tbody></table></div>
     <div class="totals"><div class="total"><span>本月工時</span><strong id="mHours">0</strong></div><div class="total"><span>本月 AUD</span><strong id="mAud">A$0</strong></div><div class="total"><span>本月 TWD</span><strong id="mTwd">NT$0</strong></div></div>
   </div>
 </section>
@@ -353,12 +449,12 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
         </div>
         <div class="v4Pity"><span>10 抽至少稀有</span><span>40 抽至少史詩</span><span>100 抽至少傳說</span></div>
         <div class="v4RecruitActions">
-          <button class="v4Btn primary" onclick="doRecruit(1)">角色單抽 ◆100</button>
-          <button class="v4Btn primary" onclick="doRecruit(10)">角色十連 ◆900</button>
-          <button class="v4Btn blue" onclick="doEquipmentGacha(10)">裝備十連 ◆650</button>
-          <button class="v4Btn violet" onclick="doFashionGacha(1)">時裝召喚 ◆500</button>
+          <button class="v4Btn primary" onclick="doRecruit(1)">角色單抽 ◆150</button>
+          <button class="v4Btn primary" onclick="doRecruit(10)">角色十連 ◆1300</button>
+          <button class="v4Btn blue" onclick="doEquipmentGacha(10)">裝備十連 ◆900</button>
+          <button class="v4Btn violet" onclick="doFashionGacha(1)">時裝召喚 ◆750</button>
         </div>
-        <div class="v4RecruitCounter" id="recruitCounter">累積招募 0 次</div>
+        <div class="v4RecruitCounter" id="recruitCounter">累積招募 0 次</div><div class="v4EconomyNote"><strong>平衡設計：</strong>平均時薪 A$25 時，工作 1 小時約獲得 50 星痕鑽石。角色單抽需要約 3 小時真實工作，十連約 26 小時；高稀有角色提供優勢，但角色等級、技能、建築與推圖仍必須依靠掛機資源。</div>
       </div>
       <div class="v4Panel">
         <h3>召集名單預覽</h3>
@@ -383,9 +479,13 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
 
   <div id="ivLoot" class="idleView v4View">
     <div class="v4LootTop">
-      <div><h3>裝備與時裝</h3><p>每位冒險家可以穿戴 8 個戰鬥裝備欄位，另有翅膀、光環、外觀武器與服裝。裝備與時裝會反映在角色與戰鬥畫面。</p></div>
-      <button class="v4Btn primary" onclick="autoEquipBest()">一鍵配置主力裝備</button>
+      <div><h3>裝備與時裝</h3><p>每位冒險家可以穿戴 8 個戰鬥裝備欄位。多餘裝備可以售出換成遠征金幣，避免背包無限堆積。</p></div>
+      <div class="v4BulkActions">
+        <button class="v4Btn" onclick="v4SellLowGear()">出售未裝備的普通／優秀裝備</button>
+        <button class="v4Btn primary" onclick="autoEquipBest()">一鍵配置主力裝備</button>
+      </div>
     </div>
+    <div class="v4EconomyNote"><strong>經濟規則：</strong>真實工作只產生「星痕鑽石」，用於角色／裝備／時裝召喚；升角色、技能、公會建築與推圖仍主要依靠冒險家掛機取得的「遠征金幣」。鑽石無法直接購買金幣，因此不會靠真實收入瞬間跳過主要養成。</div>
     <div class="v4LootTabs">
       <button class="active" onclick="v4LootMode='gear';renderLoot()">戰鬥裝備</button>
       <button onclick="v4LootMode='fashion';renderLoot()">特殊時裝</button>
@@ -410,7 +510,6 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
 </div>
 </section>
 
-<div id="gameToast" class="gameToast"></div>
 <div id="recruitOverlay" class="recruitOverlay" onclick="if(event.target===this)closeRecruitOverlay()">
   <div class="recruitResultCard">
     <div class="recruitResultTitle">星痕召集結果</div>
@@ -438,7 +537,7 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
 </section>
 </div>
 
-<nav class="bottom" id="bottom" style="display:none"><button id="bHome" class="active" onclick="showPage('home')"><span class="ico">🏠</span>首頁</button><button id="bRecords" onclick="showPage('records')"><span class="ico">🧾</span>紀錄</button><button id="bGuild" onclick="showPage('guild')"><span class="ico">⚔️</span>公會</button><button id="bSettings" onclick="showPage('settings')"><span class="ico">⚙️</span>設定</button></nav>
+<nav class="bottom" id="bottom" style="display:none"><button id="bHome" class="active" onclick="showPage('home')"><span class="ico">🏠</span>首頁</button><button id="bRecords" onclick="showPage('records')"><span class="ico">🧾</span>紀錄</button><button id="b公會" onclick="showPage('guild')"><span class="ico">⚔️</span>公會</button><button id="bSettings" onclick="showPage('settings')"><span class="ico">⚙️</span>設定</button></nav>
 
 <div id="modalBg" class="modalBg" onclick="if(event.target===this)closeEntry()"><div class="modal">
 <h3>新增打工紀錄</h3><div class="hint">日期會自動判斷平日、週六、週日；Public Holiday 會嘗試用澳洲假日資料自動判斷，仍可手動切換。</div>
@@ -1151,21 +1250,30 @@ function realWorkedTotals(list=null){
 function renderRecords(){
   const y=viewMonth.getFullYear(),m=viewMonth.getMonth(),monthKey=`${y}-${String(m+1).padStart(2,'0')}`;
   const rows=entries.filter(e=>String(e.work_date||'').startsWith(monthKey));
-  const tb=document.getElementById('recordsBody');
+
+  if(document.getElementById('monthTitle')) monthTitle.textContent=`${y} 年 ${m+1} 月`;
+  if(document.getElementById('monthPick')) monthPick.value=monthKey;
+
+  const tb=document.getElementById('tbody');
   if(!tb)return;
+
   tb.innerHTML=rows.length?rows.map(e=>{
     const w=workers.find(x=>x.id===e.worker_id),j=jobs.find(x=>x.id===e.job_id);
-    const isFuture=new Date(e.work_date+'T23:59:59')>new Date() && !e.checked_in;
+    const workDate=new Date(e.work_date+'T00:00:00');
+    const today=new Date(); today.setHours(0,0,0,0);
+    const isFuture=workDate>today && !e.checked_in;
+
     const btn=e.checked_in
       ? `<button class="checkinBtn done" onclick="toggleCheckin('${e.id}',false)"><span class="checkinDot"></span>已簽到</button>`
       : `<button class="checkinBtn ${isFuture?'future':''}" ${isFuture?'disabled title="工作日期還沒到"':''} onclick="toggleCheckin('${e.id}',true)"><span class="checkinDot"></span>簽到</button>`;
+
     return `<tr class="${e.checked_in?'checkedInRow':''}">
       <td>${btn}</td>
       <td>${esc(e.work_date||'')}</td>
-      <td>${esc(w?.name||'')}</td>
-      <td>${esc(j?.store||'')}</td>
-      <td>${esc(j?.role||'')}</td>
-      <td>${esc(j?.award_name||j?.award_code||'')}</td>
+      <td>${esc(w?.name||e.worker_name||'')}</td>
+      <td>${esc(j?.store||e.store||'')}</td>
+      <td>${esc(j?.role||e.role||'')}</td>
+      <td>${esc(j?.award_name||j?.award_code||e.award_code||'')}</td>
       <td>${esc(e.day_type||'')}</td>
       <td>${Number(e.hours||0).toFixed(2)}</td>
       <td>×${Number(e.penalty_multiplier||1).toFixed(2)}</td>
@@ -1174,15 +1282,14 @@ function renderRecords(){
       <td>${Number(e.fx_aud_twd||0).toFixed(4)}</td>
       <td>$${Math.round(Number(e.twd_income||0)).toLocaleString()}</td>
       <td><span class="statusTag ${e.checked_in?'worked':'planned'}">${e.checked_in?'已出勤':'預排'}</span></td>
-      <td><button class="danger small" onclick="deleteEntry('${e.id}')">刪除</button></td>
+      <td><button class="btn red small" onclick="deleteEntry('${e.id}')">刪除</button></td>
     </tr>`
   }).join(''):`<tr><td colspan="15" class="empty">這個月份還沒有紀錄。</td></tr>`;
 
   const mt=totals(rows);
-  const h=document.getElementById('monthHours'),a=document.getElementById('monthAud'),t=document.getElementById('monthTwd');
-  if(h)h.textContent=mt.hours.toFixed(2)+' h';
-  if(a)a.textContent='$'+mt.aud.toFixed(2);
-  if(t)t.textContent='$'+Math.round(mt.twd).toLocaleString();
+  if(document.getElementById('mHours')) mHours.textContent=mt.hours.toFixed(2)+' h';
+  if(document.getElementById('mAud')) mAud.textContent=moneyAUD(mt.aud);
+  if(document.getElementById('mTwd')) mTwd.textContent=moneyTWD(mt.twd);
 }
 function shiftMonth(n){viewMonth.setMonth(viewMonth.getMonth()+n);renderRecords()}function pickMonth(v){if(!v)return;const[y,m]=v.split('-').map(Number);viewMonth=new Date(y,m-1,1);renderRecords()}
 function renderSettings(){
@@ -1225,9 +1332,212 @@ async function saveEntry(){
   const mult=penaltyMultiplier(j.award_code,j.employment_type,j.level_no,eDay.value),rate=Number(j.base_rate)*mult,audN=rate*h,twdN=audN*fx;
   const {data:{user}}=await sb.auth.getUser();
   const payload={room_id:roomId,worker_id:w.id,job_id:j.id,work_date:eDate.value,hours:h,day_type:eDay.value,fx_aud_twd:fx,worker_name:w.name,store:j.store,role:j.role,base_rate:j.base_rate,award_code:j.award_code,employment_type:j.employment_type,level_no:j.level_no,rule_version:RULE_VERSION,penalty_multiplier:mult,applied_hourly_rate:rate,aud_income:audN,twd_income:twdN,created_by:user.id};
-  const r=await sb.from('entries').insert(payload);if(r.error)return alert(r.error.message);closeEntry();const[y,m]=eDate.value.split('-').map(Number);viewMonth=new Date(y,m-1,1)
+  const r=await sb.from('entries').insert(payload);if(r.error)return alert(r.error.message);
+  closeEntry();
+  const[y,m]=eDate.value.split('-').map(Number);viewMonth=new Date(y,m-1,1);
+  await loadRoom();
+  renderAll();
 }
-async function deleteEntry(id){if(confirm('確定刪除這筆紀錄？'))await sb.from('entries').delete().eq('id',id)}
+async function deleteEntry(id){if(confirm('確定刪除這筆紀錄？')){const r=await sb.from('entries').delete().eq('id',id);if(r.error)return alert(r.error.message);await loadRoom();renderAll()}}
+
+/* ==========================================================
+   V4.1 經濟平衡、裝備出售、中文舊裝備名稱
+   ========================================================== */
+
+/* 真實收入：A$1 = 2 星痕鑽石。
+   以 A$25/h 計算 = 約 50 鑽 / 小時。 */
+function premiumEarned(){return Math.floor(realWorkedTotals().aud*2)}
+function premiumAvailable(){return Math.max(0,premiumEarned()+Number(gameMeta?.premium_bonus||0)-Number(gameMeta?.premium_spent||0))}
+
+/* 稀有度仍有價值，但不讓單一神話角色直接把遊戲打穿。 */
+const V41_RARITY_MULT={COMMON:1,UNCOMMON:1.10,RARE:1.25,EPIC:1.45,LEGENDARY:1.75,MYTHIC:2.15};
+
+function heroPower(a){
+  const d=v4HeroDef(a),lv=Number(a.level||1),rar=V41_RARITY_MULT[a.rarity||d.rarity||'COMMON']||1;
+  let base=(d.base||22)*Math.pow(1.105,lv-1)*rar+equippedAtk(a.id);
+  base*=1+Math.min(.50,v4SkillBonus(a))+Math.min(.24,v4FashionBonus(a));
+  return base
+}
+function v4FashionBonus(a){
+  return v4EquippedFashion(a).reduce((s,x)=>s+Math.min(.06,Number(x.power_bonus||0)),0)
+}
+
+/* 初期約 2~4 Gold/s，成長主要來自角色、裝備、技能與建築。 */
+function stageInfo(){
+  const z=Math.max(1,Math.min(V4_ZONES.length,Number(gameMeta?.stage_zone||1))),n=Math.max(1,Math.min(10,Number(gameMeta?.stage_number||1)));
+  const zone=V4_ZONES[z-1];
+  const hp=Math.round(260*Math.pow(2.9,z-1)*Math.pow(1.33,n-1));
+  const gold=Math.max(2,Math.round(3*Math.pow(1.92,z-1)*Math.pow(1.16,n-1)));
+  return {z,n,zone,hp,gold,bossHp:Math.round(hp*(12+n*.85)),bossGold:Math.round(gold*(22+n*1.5)),label:`${z}-${n}`,boss:zone.bosses[n-1]}
+}
+function partyDps(){
+  let d=party().reduce((s,a)=>s+heroPower(a)*(v4HeroDef(a).speed||1),0);
+  d*=1+Math.min(.60,buildingLv('guildhall')*.012)+Math.min(.35,buildingLv('arcane')*.006);
+  return Math.max(1,d)
+}
+function stageGoldPerSec(){
+  const s=stageInfo(),gps=partyDps()/s.hp*s.gold;
+  return gps*(1+Math.min(.65,buildingLv('warehouse')*.012)+Math.min(.30,buildingLv('portal')*.006))
+}
+function dropChance(){return Math.min(.25,.015+buildingLv('blacksmith')*.0025)}
+
+/* 角色、技能與建築成本重新拉長養成曲線。 */
+function heroLevelCost(a){
+  return Math.max(500,Math.round(900*Math.pow(1.26,Number(a.level||1)-1)*(1-Math.min(.35,buildingLv('training')*.01))))
+}
+async function v4UpgradeSkill(heroId,key){
+  const a=gameAdventurers.find(x=>x.id===heroId),lv=v4SkillLevel(a,key),cost=Math.round(4500*Math.pow(1.58,lv-1));
+  if(currentGold()<cost)return gameToastMsg('遠征金幣不足');
+  await v4FlushBattle();
+  await sb.from('game_meta').update({idle_gold:Number(gameMeta.idle_gold||0)-cost}).eq('room_id',roomId);
+  await sb.from('game_skill_levels').upsert({room_id:roomId,adventurer_id:heroId,skill_key:key,skill_level:lv+1,updated_at:new Date().toISOString()},{onConflict:'room_id,adventurer_id,skill_key'});
+  gameMeta.idle_gold-=cost;await loadRoom();render公會()
+}
+function v4BuildingCost(k,lv){
+  const base={guildhall:12000,tavern:15000,training:18000,blacksmith:22000,warehouse:18000,arcane:26000,portal:32000,atelier:36000}[k]||18000;
+  return Math.round(base*Math.pow(1.62,lv))
+}
+
+/* 召喚成本：不提供直接購買金幣的功能。 */
+async function doRecruit(n){
+  const cost=n===10?1300:150;if(premiumAvailable()<cost)return gameToastMsg('星痕鑽石不足');
+  const base=Number(gameMeta.recruit_count||0),res=[];for(let i=1;i<=n;i++)res.push(v4RecruitHeroRoll(base+i));
+  const rows=res.map(h=>({room_id:roomId,name:h.name,class_name:h.class_name,rarity:h.rarity,level:1,xp:0,fatigue:0,traits:[]}));
+  const ins=await sb.from('game_adventurers').insert(rows);if(ins.error)return alert(ins.error.message);
+  const upd={premium_spent:Number(gameMeta.premium_spent||0)+cost,recruit_count:base+n,updated_at:new Date().toISOString()};
+  await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};await loadRoom();showRecruitResults(res);render公會()
+}
+async function doEquipmentGacha(n){
+  const cost=n===10?900:100;if(premiumAvailable()<cost)return gameToastMsg('星痕鑽石不足');
+  const rows=[];
+  for(let i=0;i<n;i++){const g=v4GearRoll();if(n===10&&i===n-1&&['COMMON','UNCOMMON'].includes(g.rarity))g.rarity='RARE';
+    rows.push({room_id:roomId,slot:g.slot,rarity:g.rarity,item_level:g.item_level,atk:g.atk,atk_speed:g.atk_speed,crit:g.crit,gold_find:g.gold_find,equipped:false})}
+  const ins=await sb.from('game_equipment').insert(rows);if(ins.error)return alert(ins.error.message);
+  const upd={premium_spent:Number(gameMeta.premium_spent||0)+cost};await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};await loadRoom();
+  gameToastMsg(`裝備十連完成，獲得 ${n} 件裝備`);render公會()
+}
+async function doFashionGacha(n=1){
+  const cost=750*n;if(premiumAvailable()<cost)return gameToastMsg('星痕鑽石不足');
+  const picks=Array.from({length:n},()=>V4_FASHION_CATALOG[Math.floor(Math.random()*V4_FASHION_CATALOG.length)]);
+  const rows=picks.map(f=>({room_id:roomId,fashion_type:f.type,name:f.name,rarity:f.rarity,power_bonus:Math.min(.06,f.bonus),equipped:false}));
+  const ins=await sb.from('game_fashion').insert(rows);if(ins.error)return alert(ins.error.message);
+  const upd={premium_spent:Number(gameMeta.premium_spent||0)+cost};await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};await loadRoom();gameToastMsg(`獲得時裝：${picks.map(x=>x.name).join('、')}`);render公會()
+}
+
+/* 裝備抽取的裝備等級只跟目前關卡走，不因課金直接跳到超高等級。 */
+function v4GearRoll(){
+  let r=Math.random(),rank=r<.002?'MYTHIC':r<.017?'LEGENDARY':r<.072?'EPIC':r<.22?'RARE':r<.52?'UNCOMMON':'COMMON';
+  const pool=V4_GEAR_CATALOG.filter(x=>x.rarity===rank),t=pool[Math.floor(Math.random()*pool.length)]||V4_GEAR_CATALOG[Math.floor(Math.random()*V4_GEAR_CATALOG.length)];
+  const s=stageInfo(),mult=V41_RARITY_MULT[rank]||1,itemLv=Math.max(1,(s.z-1)*10+s.n);
+  return {...t,item_level:itemLv,atk:Math.round((8+itemLv*2.2+t.base_atk*.45)*mult),atk_speed:Number((Math.random()*.016*mult).toFixed(3)),crit:Number((Math.random()*.012*mult).toFixed(3)),gold_find:Number((Math.random()*.018*mult).toFixed(3))}
+}
+
+/* 舊資料中的英文欄位轉成繁中。 */
+function v41SlotName(slot){
+  return ({Weapon:'主武器',Helmet:'頭盔',Armor:'盔甲',Ring:'項鍊',Boots:'鞋子',Gloves:'手套',Belt:'腰帶',Offhand:'副武器'})[slot]||slot
+}
+function v4GearName(x){
+  const slot=v41SlotName(x.slot),t=V4_GEAR_CATALOG.find(g=>g.slot===slot&&g.rarity===x.rarity);
+  return t?.name||`${V4_RARITY_ZH[x.rarity]||'普通'} ${slot}`
+}
+function v4GearIcon(x){
+  const normalized={...x,slot:v41SlotName(x.slot)};
+  const c=V4_RARITY_COLOR[x.rarity]||'#aaa',slot=normalized.slot;
+  let shape=slot==='主武器'?`<path d="M48 7 L59 18 L35 55 L27 48 Z" fill="${c}"/><rect x="23" y="46" width="25" height="6" rx="2" fill="#d4c6ab"/><rect x="31" y="51" width="7" height="14" rx="2" fill="#594638"/>`
+  :slot==='副武器'?`<path d="M15 18 L51 13 L57 47 L21 54 Z" fill="${c}" opacity=".85"/><path d="M26 25 L45 22 L47 40 L28 43 Z" fill="#161924"/>`
+  :slot==='頭盔'?`<path d="M14 42 Q18 10 35 9 Q55 10 59 42 L51 54 L20 54 Z" fill="${c}"/><path d="M23 30 L50 30 L47 38 L27 38 Z" fill="#12151c"/>`
+  :slot==='盔甲'?`<path d="M15 18 L29 9 L42 9 L57 18 L52 59 L20 59 Z" fill="${c}"/><path d="M29 9 L35 24 L42 9" fill="#202535"/>`
+  :slot==='手套'?`<path d="M16 20 L29 17 L35 42 L25 53 L17 46 Z" fill="${c}"/><path d="M39 17 L52 20 L51 46 L43 53 L36 42 Z" fill="${c}"/>`
+  :slot==='腰帶'?`<rect x="8" y="28" width="54" height="15" rx="5" fill="${c}"/><rect x="28" y="26" width="15" height="19" rx="3" fill="#d5ba6b"/>`
+  :slot==='鞋子'?`<path d="M13 17 L28 16 L31 47 L11 55 Z" fill="${c}"/><path d="M42 16 L57 17 L59 55 L39 47 Z" fill="${c}"/>`
+  :`<circle cx="35" cy="34" r="18" fill="none" stroke="${c}" stroke-width="7"/><path d="M35 48 L26 63 L44 63 Z" fill="${c}"/>`;
+  return `<svg viewBox="0 0 70 70">${shape}</svg>`
+}
+
+/* 裝備售出：出售價遠低於取得／養成價，主要用途是清背包和回收少量金幣。 */
+function v4SellValue(x){
+  const rarity={COMMON:1,UNCOMMON:1.35,RARE:2.1,EPIC:3.4,LEGENDARY:5.5,MYTHIC:9}[x.rarity]||1;
+  return Math.max(15,Math.round(4*Math.pow(Math.max(1,Number(x.item_level||1)),1.20)*rarity))
+}
+async function v4SellGear(id){
+  const x=gameEquipment.find(g=>g.id===id);if(!x)return;
+  if(x.equipped)return gameToastMsg('已裝備中的裝備不能直接售出');
+  const value=v4SellValue(x);
+  if(!confirm(`售出「${v4GearName(x)}」？\n可獲得 ${value.toLocaleString()} 遠征金幣。`))return;
+  await v4FlushBattle();
+  const del=await sb.from('game_equipment').delete().eq('id',id);if(del.error)return alert(del.error.message);
+  const newGold=Number(gameMeta.idle_gold||0)+value;
+  const up=await sb.from('game_meta').update({idle_gold:newGold}).eq('room_id',roomId);if(up.error)return alert(up.error.message);
+  gameMeta.idle_gold=newGold;gameEquipment=gameEquipment.filter(g=>g.id!==id);render公會();gameToastMsg(`售出裝備 +${value.toLocaleString()} 金幣`)
+}
+async function v4SellLowGear(){
+  const list=gameEquipment.filter(x=>!x.equipped&&['COMMON','UNCOMMON'].includes(x.rarity));
+  if(!list.length)return gameToastMsg('沒有可批量出售的普通／優秀未裝備裝備');
+  const value=list.reduce((s,x)=>s+v4SellValue(x),0);
+  if(!confirm(`要出售 ${list.length} 件普通／優秀未裝備裝備嗎？\n共可獲得 ${value.toLocaleString()} 遠征金幣。`))return;
+  await v4FlushBattle();
+  const ids=list.map(x=>x.id);
+  const del=await sb.from('game_equipment').delete().in('id',ids);if(del.error)return alert(del.error.message);
+  const newGold=Number(gameMeta.idle_gold||0)+value;
+  const up=await sb.from('game_meta').update({idle_gold:newGold}).eq('room_id',roomId);if(up.error)return alert(up.error.message);
+  gameMeta.idle_gold=newGold;gameEquipment=gameEquipment.filter(x=>!ids.includes(x.id));render公會();gameToastMsg(`批量出售 ${list.length} 件裝備 +${value.toLocaleString()} 金幣`)
+}
+
+/* 最終版背包 render：每件未裝備裝備都有售出按鈕。 */
+function renderLoot(){
+  document.querySelectorAll('.v4LootTabs button').forEach((b,i)=>b.classList.toggle('active',(i===0&&v4LootMode==='gear')||(i===1&&v4LootMode==='fashion')));
+  if(v4LootMode==='fashion'){
+    lootInventory.innerHTML=gameFashion.length?gameFashion.map(x=>`<div class="v4LootCard"><div class="v4LootIcon">${x.fashion_type==='WINGS'?'✦':x.fashion_type==='AURA'?'◎':x.fashion_type==='WEAPON_SKIN'?'⚔':'♟'}</div><b class="rar-${V4_RARITY_ZH[x.rarity]}">${x.name}</b><small>${V4_RARITY_ZH[x.rarity]} · 戰力 +${Math.round(Math.min(.06,Number(x.power_bonus||0))*100)}%</small><small>${x.equipped?'已裝備':''}</small><button class="v4Btn" onclick="v4EquipFashion('${x.id}')">裝到主力</button></div>`).join(''):'<div class="heroMeta">尚未取得特殊時裝，可從「招募」頁的時裝召喚獲得。</div>';return
+  }
+  lootInventory.innerHTML=gameEquipment.length?gameEquipment.slice(0,160).map(x=>{
+    const sell=v4SellValue(x);
+    return `<div class="v4LootCard"><div class="v4LootIcon">${v4GearIcon(x)}</div><b class="rar-${V4_RARITY_ZH[x.rarity]}">${v4GearName(x)}</b><small>${V4_RARITY_ZH[x.rarity]||'普通'} · Lv.${x.item_level} · 攻擊 +${x.atk}</small><small>${x.equipped?'✓ 已裝備':'未裝備'}</small><small class="v4SellValue">售價 ● ${sell.toLocaleString()}</small><div class="v4SellRow">${x.equipped?'<button class="v4Btn" disabled>使用中</button>':`<button class="v4Btn" onclick="v4SellGear('${x.id}')">售出</button>`}</div></div>`
+  }).join(''):'<div class="heroMeta">尚未取得裝備。戰鬥、首領與裝備召喚都會掉落。</div>'
+}
+
+/* 離線收益無時間上限。
+   為避免資料庫因幾個月離線一次建立數千筆裝備，最多實體產生 200 件，
+   超過的裝備掉落會自動折算成回收金幣，因此不會損失離線價值。 */
+function prepareOfflineRewards(){
+  if(!gameMeta)return;
+  const last=new Date(gameMeta.last_seen||new Date()).getTime(),seconds=Math.max(0,(Date.now()-last)/1000);
+  if(seconds<30){offlinePending=null;return}
+  const gold=stageGoldPerSec()*seconds;
+  const items=Math.floor(seconds/360*dropChance()*(1+buildingLv('portal')*.005));
+  const materialized=Math.min(items,200),salvaged=Math.max(0,items-materialized),salvageGold=salvaged*80;
+  offlinePending={seconds,gold,items,materialized,salvaged,salvageGold}
+}
+async function claimOfflineRewards(){
+  if(!offlinePending)return;const o=offlinePending;
+  for(let i=0;i<o.materialized;i++)await generateEquipmentDrop(1,false);
+  const totalGold=o.gold+o.salvageGold,now=new Date().toISOString(),upd={idle_gold:Number(gameMeta.idle_gold||0)+totalGold,last_seen:now,offline_claimed_at:now,updated_at:now};
+  await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};offlinePending=null;await loadRoom();render公會();
+  gameToastMsg(`離線收益 +${Math.floor(totalGold).toLocaleString()} 金幣 · ${o.materialized} 件裝備${o.salvaged?` · ${o.salvaged} 件自動回收`:''}`)
+}
+
+/* 更新戰鬥旁邊的離線資訊文字 */
+function renderBattle(){
+  const s=stageInfo();v4EnsureWave();
+  stageName.textContent=`${s.zone.name} · ${s.label}`;stageSub.textContent=`${s.zone.subtitle} · ${v4BossMode?s.boss:'怪物波次'}`;stageBadge.textContent=s.label;
+  battleKills.textContent=Number(gameMeta.stage_kills||0)+v4KillBuffer;battleGps.textContent=formatBig(stageGoldPerSec());battleDropRate.textContent=Math.round(dropChance()*100)+'%';
+  const k=(Number(gameMeta.stage_kills||0)+v4KillBuffer)%25;battleProgress.textContent=`${k} / 25`;bossTrackFill.style.width=(k/25*100)+'%';
+  const ready=(Number(gameMeta.stage_kills||0)+v4KillBuffer)>0&&((Number(gameMeta.stage_kills||0)+v4KillBuffer)%25===0);bossBtn.disabled=!ready||v4BossMode;bossUnlockText.textContent=v4BossMode?'首領戰鬥中':ready?'首領已出現！':`${k} / 25`;
+  document.getElementById('v4ComboCount').textContent=v4Combo;
+  heroLane.innerHTML=party().map(a=>`<div class="v4BattleHero" id="bh${a.id}">${v4SvgHero(a,'battle')}<div class="v4HeroLabel">${esc(a.name)} · Lv.${a.level}</div></div>`).join('');
+  if(v4BossMode){
+    monsterWrap.innerHTML=`<div class="v4BossHp"><b>${s.boss}</b><div class="bar"><i style="width:${Math.max(0,v4BossHp/v4BossMax*100)}%"></i></div></div><div class="v4Mob v4BossMob" id="v4boss" style="right:8%;bottom:0">${v4MobSvg(0,true,s.z)}</div>`
+  }else{
+    monsterWrap.innerHTML=v4Wave.map(m=>`<div class="v4Mob" id="${m.id}" style="left:${m.x}%;bottom:${m.y}%">${v4MobSvg(m.kind,false,s.z)}</div>`).join('')
+  }
+  const first=party()[0];v4SkillBar.innerHTML=first?v4UnlockedSkills(first).slice(-5).map((sk,i)=>`<div class="v4SkillIcon" title="${sk.name}">${['✦','✧','✹','✷','✴'][i%5]}<small>${sk.name}</small></div>`).join(''):'';
+  battlePartyList.innerHTML=party().map(a=>`<div class="v4PartyItem"><div class="v4PartyAvatar">${v4SvgHero(a,'mini')}</div><div><b>${esc(a.name)} · ${v4JobName(a)}</b><small>Lv.${a.level} · ${V4_RARITY_ZH[a.rarity]||'普通'}</small></div><div class="v4Power">${formatBig(heroPower(a)*(v4HeroDef(a).speed||1))}</div></div>`).join('');
+  battlePauseBtn.textContent=battleAnimOn?'暫停動畫':'繼續動畫';
+  if(offlinePending){
+    offlineDuration.textContent=formatDuration(offlinePending.seconds);offlineGold.textContent=Math.floor(offlinePending.gold+offlinePending.salvageGold).toLocaleString();
+    offlineLoot.textContent=offlinePending.salvaged?`${offlinePending.materialized} 件＋${offlinePending.salvaged} 件自動回收`:`${offlinePending.materialized} 件`;claimOfflineBtn.disabled=false
+  }else{offlineDuration.textContent='—';offlineGold.textContent='0';offlineLoot.textContent='—';claimOfflineBtn.disabled=true}
+}
+
 function leaveRoom(){localStorage.removeItem('mc_room_id');location.reload()}
 init();
 </script>
@@ -1240,6 +1550,5 @@ if ("serviceWorker" in navigator) {
 }
 </script>
 
-<script src="v4.js"></script>
 </body>
 </html>
