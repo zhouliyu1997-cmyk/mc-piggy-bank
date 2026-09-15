@@ -29,7 +29,7 @@ button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1160px;mar
 .gate{max-width:620px;margin:50px auto;background:#fff;border-radius:24px;padding:22px;box-shadow:var(--shadow)}.gate h2{margin:0}.gateTabs{display:flex;gap:6px;background:#f6eee8;padding:5px;border-radius:11px;margin:15px 0}.gateTabs button{flex:1;border:0;background:none;padding:8px;border-radius:8px;font-weight:800}.gateTabs button.active{background:#fff}.bottom{display:none}
 @media(max-width:820px){.app{padding:9px 9px 82px}.top{position:static}.nav{display:none}.brand small{display:none}.kpis{grid-template-columns:repeat(2,1fr)}.people,.grid,.grid3,.totals{grid-template-columns:1fr}.chart{height:230px}.bottom{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.97);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom));z-index:40}.bottom button{border:0;background:none;padding:5px;color:var(--muted);font-size:10px;font-weight:850}.bottom .ico{display:block;font-size:19px}.bottom button.active{color:var(--pink)}}
 
-/* ===== M&C Adventurers' Guild ===== */
+/* ===== M&C Adventurers' 公會 ===== */
 .gameShell{--g-ink:#f7ead2;--g-muted:#c9b897;--g-panel:#211d19;--g-panel2:#2d261f;--g-line:#4b3c2f;--g-gold:#e9bb62;--g-green:#82aa74;--g-red:#c87468;--g-blue:#7197ac;color:var(--g-ink);background:linear-gradient(180deg,#171512,#252019);border-radius:22px;overflow:hidden;box-shadow:0 18px 50px rgba(42,27,17,.16)}
 .gameHero{position:relative;min-height:210px;padding:20px;background:
 radial-gradient(circle at 78% 20%,rgba(255,211,128,.22),transparent 22%),
@@ -117,6 +117,92 @@ linear-gradient(45deg,rgba(63,91,48,.18) 25%,transparent 25%) 0 0/48px 48px}
 @media(max-width:900px){.battleLayout,.recruitLayout,.guildIdleGrid,.worldLayout{grid-template-columns:1fr}.idleHeroGrid{grid-template-columns:repeat(2,1fr)}.lootInventory{grid-template-columns:repeat(3,1fr)}.battleArena{height:380px}}
 @media(max-width:520px){.idleTopbar{align-items:flex-start;flex-direction:column}.idleCurrencies{justify-content:flex-start}.battleStats{grid-template-columns:repeat(2,1fr)}.battleArena{height:340px}.heroLane{width:60%;gap:4px}.battleHero{width:48px}.battleHero .char{font-size:36px}.monsterSprite{font-size:58px}.recruitButtons{flex-direction:column}.recruitResults{grid-template-columns:repeat(2,1fr)}.lootInventory{grid-template-columns:repeat(2,1fr)}.worldStages{grid-template-columns:1fr}}
 
+
+/* ===== 星痕公會 V3：日系暗黑 RPG ===== */
+.idleGameShell{background:radial-gradient(circle at 50% -10%,#242136 0,#17141f 34%,#0f0d13 100%);color:#f4efff}
+.idleTopbar{background:linear-gradient(180deg,#211a2d,#120f18);border-bottom:1px solid #4d3d63}
+.idleKicker{color:#a993ff}.idleTitle{font-size:26px;color:#fff0ff;text-shadow:0 0 18px rgba(177,133,255,.28)}
+.idleCurrency{background:linear-gradient(180deg,#201828,#15111b);border-color:#49395b;min-width:116px}.idleCurrency small{font-size:9px}.idleCurrency b{font-size:16px}
+.idleTabs{background:#120f18;border-bottom:1px solid #3b2f49}.idleTabs button{font-size:12px;padding:10px 13px;background:#201828;color:#cdbfe3}.idleTabs button.active{background:linear-gradient(135deg,#7450a8,#b17a5d);color:#fff}
+.idleView{background:linear-gradient(180deg,#17131d,#100d13);padding:14px}
+.battleStageCard,.idlePanel{background:linear-gradient(180deg,rgba(35,27,44,.98),rgba(20,16,27,.98));border-color:#4a3a5b;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.stageHeader h3{font-size:24px}.stageSub,.idlePanel p,.heroMeta,.partyMini small,.idleBuilding small,.worldStage small,.idleMilestone small{font-size:10px}
+.battleArena{height:500px;background:#17121d;border-color:#514266}
+.battleBackdrop{background:
+radial-gradient(circle at 78% 18%,rgba(141,92,190,.22),transparent 18%),
+linear-gradient(180deg,#302b46 0 28%,#1e2432 28% 58%,#17141c 58% 100%)}
+.battleBackdrop:before{background:
+radial-gradient(ellipse at 12% 100%,#181828 0 28%,transparent 29%),
+radial-gradient(ellipse at 35% 100%,#222139 0 30%,transparent 31%),
+radial-gradient(ellipse at 60% 100%,#171827 0 30%,transparent 31%),
+radial-gradient(ellipse at 85% 100%,#211f34 0 28%,transparent 29%)}
+.battleBackdrop:after{background:linear-gradient(180deg,rgba(64,50,73,.5),#1c1723)}
+.battleHero{width:78px;height:120px}.battleHero .char{font-size:56px}.heroNameTag{font-size:10px}
+.monsterSprite{font-size:88px}.monsterName{font-size:12px}.monsterHpText{font-size:9px}
+.dmg{font-size:22px;color:#fff1a8}.dmg.crit{font-size:28px;color:#ff9af0}
+.battleStats span{font-size:9px}.battleStats b{font-size:14px}
+.idleBtn{font-size:11px;padding:9px 12px}.idleBtn.primary{background:linear-gradient(135deg,#7045a1,#9c5e52);border-color:#b77b6f;color:#fff}
+.idleHeroGrid{grid-template-columns:repeat(3,1fr);gap:10px}.heroCard{padding:10px;background:linear-gradient(180deg,#211a2b,#17121e);border-color:#49385a}
+.heroPortrait{height:160px;font-size:58px;background:
+radial-gradient(circle at 50% 25%,rgba(185,143,255,.18),transparent 24%),
+linear-gradient(145deg,#2f2840,#15111d)}
+.heroCard h4{font-size:15px}.rarityPill{font-size:8px}
+.skillPreview{margin-top:7px;display:grid;gap:4px}.skillLine{background:#130f18;border:1px solid #392d46;border-radius:7px;padding:5px;font-size:9px;color:#ccbfe0}
+.jobPath{margin-top:7px;font-size:9px;color:#a993ff}
+.equipSlots{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:7px}.equipSlot{background:#120f17;border:1px solid #3a2e46;border-radius:7px;padding:4px;text-align:center;font-size:8px;min-height:34px}
+.idleBuildingList{grid-template-columns:repeat(2,1fr);gap:9px}.idleBuilding{background:linear-gradient(180deg,#201827,#16111b);border-color:#463657}.idleBuildingArt{height:120px;border-radius:10px;margin-bottom:7px;position:relative;overflow:hidden;background:linear-gradient(180deg,#2e2739,#19141e)}
+.idleBuildingArt:before{content:"";position:absolute;left:15%;right:15%;bottom:8%;height:48%;background:linear-gradient(180deg,#51415f,#2b2233);clip-path:polygon(15% 100%,15% 38%,30% 38%,30% 18%,47% 18%,50% 0,53% 18%,70% 18%,70% 38%,85% 38%,85% 100%);filter:drop-shadow(0 6px 8px rgba(0,0,0,.4))}
+.idleBuildingArt:after{content:"";position:absolute;left:50%;bottom:18%;width:18px;height:26px;transform:translateX(-50%);background:#d7a66d;box-shadow:0 0 18px rgba(232,165,94,.55)}
+.idleBuildingArt.tier2:before{background:linear-gradient(180deg,#6c4f78,#33243b)}.idleBuildingArt.tier3:before{background:linear-gradient(180deg,#8b6b99,#3c2948)}.idleBuildingArt.tier4:before{background:linear-gradient(180deg,#a879b4,#4d315a)}
+.recruitBanner{background:radial-gradient(circle at 50% 15%,rgba(156,106,255,.25),transparent 27%),linear-gradient(160deg,#34254a,#17111f 62%,#0f0c13)}.recruitTitle{font-size:32px}
+.recruitResults{grid-template-columns:repeat(5,1fr)}
+.worldStages{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.idleHeroGrid{grid-template-columns:repeat(2,1fr)}.battleArena{height:420px}}
+@media(max-width:560px){.idleHeroGrid{grid-template-columns:1fr}.worldStages{grid-template-columns:1fr}.heroPortrait{height:145px}}
+
+
+/* ===== 班表簽到 ===== */
+.checkinBtn{border:none;border-radius:10px;padding:6px 10px;font-size:10px;font-weight:900;white-space:nowrap;cursor:pointer;background:#f6e7ea;color:#a84c5b}
+.checkinBtn:hover{filter:brightness(.98)}
+.checkinBtn.done{background:#e6f4ea;color:#2e7d4f;border:1px solid #b9dec6}
+.checkinBtn.future{background:#eee9e7;color:#9b8d86;cursor:not-allowed}
+.checkinDot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:4px;background:#c9b8b0}
+.checkinBtn.done .checkinDot{background:#52a675}
+tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparent 30%)}
+.statusTag{font-size:9px;border-radius:99px;padding:3px 7px;font-weight:800;white-space:nowrap}
+.statusTag.planned{background:#f4ede9;color:#8e7d73}
+.statusTag.worked{background:#e4f3e8;color:#337b50}
+
+
+/* ================================
+   星痕公會 V4 — 日系暗黑割草 RPG
+   ================================ */
+.v4Shell{--bg:#0a0b10;--panel:#11141c;--panel2:#171b25;--line:#303747;--text:#f3f1f7;--muted:#a4a9b8;--gold:#e7b96c;--blue:#54bbff;--violet:#b66cff;--red:#ef5c64;background:radial-gradient(circle at 50% -15%,#232438 0,#0c0e14 42%,#07080c 100%);color:var(--text);border-radius:22px;overflow:hidden;box-shadow:0 20px 60px rgba(13,8,20,.26)}
+.v4Header{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:18px 20px;background:linear-gradient(180deg,rgba(21,23,33,.98),rgba(10,11,16,.98));border-bottom:1px solid #313546}
+.v4BrandMini{font-size:10px;letter-spacing:.22em;color:#ad9ad0;font-weight:900}.v4BrandTitle{font-family:Georgia,"Noto Serif TC",serif;font-size:30px;font-weight:900;letter-spacing:.08em;background:linear-gradient(180deg,#fff4de,#d9b987);-webkit-background-clip:text;color:transparent}.v4BrandSub{font-size:11px;color:#9499a8;margin-top:3px}
+.v4Currencies{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.v4Currency{min-width:125px;display:flex;gap:9px;align-items:center;padding:9px 11px;background:#11141c;border:1px solid #2d3240;border-radius:12px}.v4Currency>span{width:29px;height:29px;display:grid;place-items:center;border-radius:9px;background:#202638;font-size:16px}.v4Currency b{display:block;font-size:16px}.v4Currency small{display:block;font-size:9px;color:#8f95a4}.v4Currency.diamond>span{color:#67d5ff;box-shadow:inset 0 0 16px rgba(66,190,255,.14)}.v4Currency.gold>span{color:#f4c56c}.v4Currency.power>span{color:#ff7d81}.v4Currency.guild>span{color:#c997ff}
+.v4Tabs{display:flex;gap:5px;padding:9px 12px;background:#090a0f;border-bottom:1px solid #252a36;overflow:auto;position:sticky;top:0;z-index:25}.v4Tabs button{font-size:12px;font-weight:900;color:#aeb4c2;background:#131720;border:1px solid transparent;border-radius:9px;padding:10px 13px;white-space:nowrap}.v4Tabs button.active{color:#fff;background:linear-gradient(135deg,#584071,#923e59);border-color:#9b5c75;box-shadow:0 0 20px rgba(168,79,155,.13)}
+.v4View{padding:14px;background:transparent}.v4BattleGrid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,.45fr);gap:12px}.v4BattlePanel,.v4Panel{background:linear-gradient(180deg,rgba(18,21,29,.98),rgba(11,13,18,.98));border:1px solid #303644;border-radius:16px;padding:13px;box-shadow:0 12px 35px rgba(0,0,0,.18)}
+.v4StageTop{display:flex;justify-content:space-between;align-items:flex-start}.v4Eyebrow{font-size:9px;letter-spacing:.2em;color:#a289c4;font-weight:900}.v4StageTop h2{margin:3px 0 0;font-family:Georgia,"Noto Serif TC",serif;font-size:24px}.v4StageTop p{margin:2px 0 0;font-size:10px;color:#9299aa}.v4StageBadge{border:1px solid #5a456c;border-radius:11px;padding:9px 12px;background:#21192a;color:#f0dcff;font-weight:1000}
+.v4Arena{height:520px;position:relative;margin-top:10px;border:1px solid #3b4050;border-radius:15px;overflow:hidden;background:url("assets/battle_bg.jpg") center/cover no-repeat}.v4ArenaShade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,8,.15),rgba(4,5,8,.08) 50%,rgba(6,7,11,.48));z-index:0}.v4Combo{position:absolute;right:18px;top:18px;z-index:8;text-align:right;filter:drop-shadow(0 3px 3px #000)}.v4Combo span{display:block;font-size:34px;font-weight:1000;font-style:italic;color:#fff}.v4Combo small{display:block;color:#ffad5d;font-size:12px;font-weight:1000}
+.v4HeroLane{position:absolute;left:4%;right:47%;bottom:13%;height:52%;z-index:4;display:flex;align-items:flex-end;justify-content:space-around}.v4BattleHero{position:relative;width:92px;height:220px;display:flex;align-items:flex-end;justify-content:center;transform-origin:bottom center;filter:drop-shadow(0 9px 7px rgba(0,0,0,.45))}.v4BattleHero svg{width:100%;height:100%;overflow:visible}.v4BattleHero.attack{animation:v4Slash .32s ease-out}.v4BattleHero.cast{animation:v4Cast .55s ease-out}.v4BattleHero.skill{animation:v4SkillBurst .7s ease-out}@keyframes v4Slash{50%{transform:translateX(70px) scale(1.06)}}@keyframes v4Cast{45%{transform:translateY(-12px) scale(1.08);filter:drop-shadow(0 0 18px #8fc8ff)}}@keyframes v4SkillBurst{35%{transform:scale(1.18);filter:drop-shadow(0 0 30px #e57aff)}}.v4HeroLabel{position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);white-space:nowrap;background:rgba(8,9,13,.78);border:1px solid #383e4d;border-radius:99px;padding:3px 7px;font-size:9px}
+.v4MonsterLane{position:absolute;right:2%;left:49%;bottom:12%;height:56%;z-index:3}.v4Mob{position:absolute;width:105px;height:150px;filter:drop-shadow(0 8px 6px rgba(0,0,0,.48));transition:.15s}.v4Mob svg{width:100%;height:100%}.v4Mob.hit{animation:v4MobHit .18s}.v4Mob.dead{animation:v4MobDead .35s forwards}@keyframes v4MobHit{50%{transform:translateX(8px);filter:brightness(1.8)}}@keyframes v4MobDead{to{transform:translateY(30px) rotate(18deg) scale(.3);opacity:0}}
+.v4BossMob{width:190px;height:260px;right:8%!important;bottom:0!important}.v4BossHp{position:absolute;left:8%;right:8%;top:9%;z-index:9;text-align:center}.v4BossHp b{display:block;font-size:14px;text-shadow:0 2px 4px #000}.v4BossHp .bar{height:14px;border-radius:99px;background:#251017;border:1px solid #913a4d;overflow:hidden}.v4BossHp i{display:block;height:100%;background:linear-gradient(90deg,#a61e3b,#ef5d67);width:100%}
+.v4SkillBar{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);z-index:10;display:flex;gap:6px}.v4SkillIcon{width:48px;height:48px;border-radius:10px;border:1px solid #5f4b77;background:radial-gradient(circle,#6c3f85,#21172d);display:grid;place-items:center;font-size:18px;box-shadow:inset 0 0 16px rgba(190,103,255,.18),0 4px 10px rgba(0,0,0,.35)}.v4SkillIcon small{position:absolute;margin-top:58px;color:#d2c5e4;font-size:8px;white-space:nowrap}
+.damageLayer{position:absolute;inset:0;z-index:20;pointer-events:none}.dmg{position:absolute;font-size:22px;font-weight:1000;font-style:italic;color:#fff4a9;text-shadow:0 2px 4px #000,0 0 9px rgba(255,190,92,.6);animation:v4Dmg .72s forwards}@keyframes v4Dmg{to{transform:translateY(-65px) scale(1.18);opacity:0}}.dmg.crit{font-size:30px;color:#ff85ef}.lootBurst{position:absolute;right:26%;top:48%;z-index:20;color:#ffd26c;font-weight:1000;text-shadow:0 2px 4px #000;opacity:0}.lootBurst.show{animation:v4Loot 1.05s forwards}@keyframes v4Loot{15%{opacity:1;transform:translateY(-10px)}100%{opacity:0;transform:translateY(-70px)}}
+.v4BattleStats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:9px}.v4BattleStats>div{border:1px solid #2b303d;background:#0d1016;border-radius:10px;padding:8px 9px}.v4BattleStats small{display:block;font-size:9px;color:#8b92a1}.v4BattleStats b{display:block;margin-top:3px;font-size:15px}.v4ProgressRow{margin-top:9px}.v4ProgressRow>div:first-child{display:flex;justify-content:space-between;font-size:9px;color:#aaaebe}.v4Progress{height:8px;background:#171a22;border-radius:99px;overflow:hidden;margin-top:5px}.v4Progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#8d3c74,#f0a35c);transition:.25s}.v4BattleActions{display:flex;gap:7px;margin-top:9px}
+.v4Btn{border:1px solid #3d4454;background:#171b24;color:#e4e7ed;border-radius:9px;padding:9px 12px;font-size:11px;font-weight:900}.v4Btn:hover{filter:brightness(1.12)}.v4Btn:disabled{opacity:.35}.v4Btn.primary{background:linear-gradient(135deg,#724a9d,#a34e65);border-color:#a95d80;color:#fff}.v4Btn.blue{background:linear-gradient(135deg,#275c8b,#5364aa);border-color:#527bb0}.v4Btn.violet{background:linear-gradient(135deg,#57346f,#8d4e98);border-color:#8b63a1}.v4Btn.boss{background:linear-gradient(135deg,#812a3b,#b9553d);border-color:#c16952}.v4Btn.wide{width:100%;margin-top:9px}
+.v4SideCol{display:flex;flex-direction:column;gap:12px}.v4Panel h3{margin:0;font-family:Georgia,"Noto Serif TC",serif;font-size:18px}.v4Panel p{margin:5px 0 0;color:#9299a9;font-size:10px;line-height:1.55}.v4Offline{display:grid;gap:6px;margin-top:9px}.v4Offline>div{display:flex;justify-content:space-between;background:#0d1016;border:1px solid #272d39;border-radius:9px;padding:7px}.v4Offline span{font-size:9px;color:#8c93a2}.v4Offline b{font-size:11px}.v4Party{display:grid;gap:7px;margin-top:9px}.v4PartyItem{display:grid;grid-template-columns:46px 1fr auto;gap:8px;align-items:center;padding:7px;background:#0d1016;border:1px solid #272d39;border-radius:10px}.v4PartyAvatar{height:52px}.v4PartyItem b{font-size:10px}.v4PartyItem small{display:block;color:#949baa;font-size:8px}.v4Power{color:#f3c774;font-size:10px}
+.v4PanelHead,.v4LootTop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.v4Badge{font-size:10px;padding:6px 9px;border:1px solid #51405f;border-radius:9px;background:#1d1725;color:#c8b4de}.v4HeroGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:11px}.v4HeroCard{background:linear-gradient(180deg,#151923,#0d1016);border:1px solid #303646;border-radius:14px;overflow:hidden}.v4HeroPortrait{height:255px;position:relative;background:radial-gradient(circle at 50% 30%,rgba(117,76,150,.24),transparent 30%),linear-gradient(160deg,#242a38,#0f1118);display:grid;place-items:center}.v4HeroPortrait svg{height:96%;width:82%;filter:drop-shadow(0 11px 8px rgba(0,0,0,.45))}.v4HeroBody{padding:10px}.v4HeroName{display:flex;justify-content:space-between;gap:8px;align-items:center}.v4HeroName h4{margin:0;font-size:15px}.v4Rarity{font-size:8px;letter-spacing:.1em;font-weight:1000}.rar-普通{color:#c4c7ce}.rar-優秀{color:#78cb8d}.rar-稀有{color:#70b6ff}.rar-史詩{color:#c886ff}.rar-傳說{color:#ffcf66}.rar-神話{color:#ff748d;text-shadow:0 0 8px rgba(255,85,130,.5)}.v4ClassLine{font-size:10px;color:#a6adbb;margin-top:3px}.v4NextJob{font-size:9px;color:#b99add;margin-top:5px}.v4HeroStats{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:8px}.v4HeroStats div{background:#0a0d12;border:1px solid #252b36;border-radius:8px;padding:6px}.v4HeroStats span{display:block;font-size:8px;color:#858c9b}.v4HeroStats b{font-size:10px}.v4Skills{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:7px}.v4Skill{background:#17121f;border:1px solid #372b46;border-radius:8px;padding:6px;font-size:9px}.v4Skill button{float:right;border:0;background:#412d55;color:#fff;border-radius:5px;font-size:8px}.v4EquipMini{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:7px}.v4EquipMini div{min-height:35px;background:#090c11;border:1px solid #252b35;border-radius:6px;padding:4px;font-size:7px;color:#9299a8;text-align:center}.v4EquipMini div.on{border-color:#706084;color:#e8deef}
+.v4RecruitGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:12px}.v4RecruitHero{min-height:510px;border:1px solid #443651;border-radius:16px;padding:22px;position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(10,9,14,.95),rgba(10,9,14,.55)),url("assets/recruit_bg.jpg") 100% center/auto 100% no-repeat,#15111c}.v4RecruitHero:after{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(176,113,255,.17);border-radius:50%;right:-130px;top:40px;box-shadow:0 0 90px rgba(142,71,193,.16);animation:v4Rune 16s linear infinite}@keyframes v4Rune{to{transform:rotate(360deg)}}.v4RecruitCopy{position:relative;z-index:2;max-width:560px}.v4RecruitCopy h2{font-family:Georgia,"Noto Serif TC",serif;font-size:30px;margin:5px 0}.v4RecruitCopy p{font-size:11px;color:#a9a6b1;line-height:1.65}.v4Pity{position:relative;z-index:2;display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}.v4Pity span{border:1px solid #554261;background:#17111d;border-radius:99px;padding:5px 8px;font-size:9px;color:#d5c4df}.v4RecruitActions{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}.v4RecruitCounter{position:relative;z-index:2;margin-top:10px;font-size:10px;color:#aaa1b2}.v4Showcase{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:9px}.v4ShowHero{border:1px solid #2e3441;background:#0c0f15;border-radius:10px;padding:7px;display:grid;grid-template-columns:50px 1fr;gap:7px;align-items:center}.v4ShowHero .avatar{height:55px}.v4ShowHero b{font-size:10px}.v4ShowHero small{display:block;font-size:8px}
+.v4GuildScene{height:570px;border:1px solid #353b48;border-radius:16px;overflow:hidden;position:relative;background:#10131a}.v4GuildBg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.v4GuildOverlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,8,12,.05),rgba(7,8,12,.18) 55%,rgba(7,8,12,.56))}.v4GuildSceneTitle{position:absolute;left:16px;top:14px;z-index:10;padding:8px 10px;background:rgba(7,9,13,.72);border:1px solid #414757;border-radius:10px}.v4GuildSceneTitle span{display:block;font-family:Georgia,serif;font-size:16px}.v4GuildSceneTitle small{font-size:8px;color:#a0a6b3}.v4BuildingScene{position:absolute;inset:0;z-index:5}.v4BuildingNode{position:absolute;width:130px;text-align:center;cursor:pointer}.v4BuildingSprite{height:105px;filter:drop-shadow(0 9px 7px rgba(0,0,0,.5));transition:.2s}.v4BuildingNode:hover .v4BuildingSprite{transform:translateY(-6px) scale(1.05)}.v4BuildingTag{display:inline-block;background:rgba(8,10,14,.82);border:1px solid #4e5362;border-radius:8px;padding:4px 7px;font-size:9px;box-shadow:0 4px 12px rgba(0,0,0,.35)}.v4HubBattle{position:absolute;left:5%;right:5%;bottom:3%;height:22%;z-index:6;pointer-events:none;display:flex;justify-content:space-between;align-items:flex-end}.v4HubBattle .hubHero,.v4HubBattle .hubMob{height:105px;width:70px;filter:drop-shadow(0 5px 4px rgba(0,0,0,.45))}.v4HubBattle .hubHero{animation:v4HubFight 1.3s ease-in-out infinite}.v4HubBattle .hubMob{animation:v4HubMob 1.1s ease-in-out infinite}@keyframes v4HubFight{50%{transform:translateX(20px)}}@keyframes v4HubMob{50%{transform:translateX(-8px)}}
+.v4GuildBelow{display:grid;grid-template-columns:1.25fr .75fr;gap:12px;margin-top:12px}.v4BuildingList{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:9px}.v4BuildingCard{background:#0c0f15;border:1px solid #2c3240;border-radius:11px;padding:8px}.v4BuildingCardHead{display:flex;justify-content:space-between;gap:8px}.v4BuildingCard h4{margin:0;font-size:11px}.v4BuildingCard small{font-size:8px;color:#979eac}.v4Unlock{margin-top:5px;color:#bd9ce0;font-size:8px}
+.v4LootTop{padding:2px 2px 10px}.v4LootTabs{display:flex;gap:6px;margin-bottom:8px}.v4LootTabs button{border:1px solid #313746;background:#11151d;color:#9ea5b2;border-radius:8px;padding:7px 10px;font-size:10px}.v4LootTabs button.active{background:#332342;color:#fff}.v4LootGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.v4LootCard{background:#0c0f15;border:1px solid #2c3240;border-radius:11px;padding:8px}.v4LootIcon{height:78px;display:grid;place-items:center;background:radial-gradient(circle,#252b38,#11151c);border-radius:9px;margin-bottom:6px}.v4LootIcon svg{width:66px;height:66px}.v4LootCard b{display:block;font-size:10px}.v4LootCard small{display:block;font-size:8px;color:#969daa}.v4LootCard button{width:100%;margin-top:6px;padding:5px;font-size:8px}
+.v4WorldGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:12px}.v4WorldStages{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:9px}.v4WorldStage{position:relative;min-height:115px;border:1px solid #303745;border-radius:11px;overflow:hidden;padding:9px;background:linear-gradient(145deg,#19202a,#0d1015)}.v4WorldStage.current{border-color:#aa6f98;box-shadow:inset 0 0 20px rgba(172,79,150,.1)}.v4WorldStage.locked{opacity:.4}.v4WorldStage h4{margin:0;font-size:11px}.v4WorldStage p{font-size:8px;margin-top:4px}.v4WorldStage .bossName{position:absolute;left:9px;bottom:8px;font-size:8px;color:#d8948c}.v4Milestones{display:grid;gap:7px;margin-top:9px}.v4Milestone{border:1px solid #303745;background:#0d1016;border-radius:10px;padding:8px}.v4Milestone.done{border-color:#6d587e}.v4Milestone.claimed{opacity:.65}.v4MilestoneTop{display:flex;justify-content:space-between;gap:8px}.v4Milestone b{font-size:10px}.v4Milestone small{display:block;font-size:8px;color:#979dab;margin-top:3px}.v4Milestone .reward{color:#d0aeef}.v4Milestone button{font-size:8px;padding:5px 7px}
+.recruitOverlay{position:fixed;inset:0;background:rgba(4,4,8,.88);z-index:200;display:none;place-items:center;padding:15px}.recruitOverlay.show{display:grid}.recruitResultCard{width:min(900px,100%);max-height:90vh;overflow:auto;background:#0d1016;border:1px solid #4f3c5c;border-radius:18px;padding:15px;text-align:center}.recruitResultTitle{font-family:Georgia,serif;font-size:24px}.recruitResults{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:13px 0}.v4RecruitResult{background:#11151d;border:1px solid #303745;border-radius:10px;padding:7px}.v4RecruitResult .avatar{height:120px}.v4RecruitResult b{font-size:9px}.v4RecruitResult small{display:block;font-size:8px}
+@media(max-width:1050px){.v4BattleGrid,.v4GuildBelow,.v4WorldGrid,.v4RecruitGrid{grid-template-columns:1fr}.v4HeroGrid{grid-template-columns:repeat(2,1fr)}.v4GuildScene{height:500px}.v4LootGrid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:700px){.v4Header{align-items:flex-start;flex-direction:column}.v4Currencies{justify-content:flex-start}.v4Arena{height:430px}.v4HeroLane{right:40%}.v4MonsterLane{left:54%}.v4BattleHero{width:65px;height:170px}.v4Mob{width:75px;height:110px}.v4HeroGrid{grid-template-columns:1fr}.v4LootGrid{grid-template-columns:repeat(2,1fr)}.v4BuildingList,.v4WorldStages{grid-template-columns:1fr}.v4GuildScene{height:420px}.v4BuildingNode{transform:scale(.75)}.recruitResults{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 </head>
 <body>
@@ -170,168 +256,166 @@ linear-gradient(45deg,rgba(63,91,48,.18) 25%,transparent 25%) 0 0/48px 48px}
 
 
 
+
 <section id="guildPage" class="page">
-<div class="idleGameShell">
-  <div class="idleTopbar">
-    <div class="idleBrand">
-      <div class="idleKicker">M&C GUILD — IDLE RPG</div>
-      <div class="idleTitle">暮光山谷冒險者公會</div>
+<div class="v4Shell">
+  <header class="v4Header">
+    <div class="v4Brand">
+      <div class="v4BrandMini">M&C · STARFALL GUILD</div>
+      <div class="v4BrandTitle">星痕公會</div>
+      <div class="v4BrandSub">把平凡的每一天，變成傳奇的一部分。</div>
     </div>
-    <div class="idleCurrencies">
-      <div class="idleCurrency"><span>💎</span><b id="idlePremium">0</b><small>Guild Crystal</small></div>
-      <div class="idleCurrency"><span>🪙</span><b id="idleGold">0</b><small>Idle Gold</small></div>
-      <div class="idleCurrency"><span>⚔️</span><b id="idleDps">0</b><small>DPS</small></div>
-      <div class="idleCurrency"><span>⭐</span><b id="idleGuildLevel">Lv.1</b><small>Guild</small></div>
+    <div class="v4Currencies">
+      <div class="v4Currency diamond"><span>◆</span><div><b id="idlePremium">0</b><small>星痕鑽石</small></div></div>
+      <div class="v4Currency gold"><span>●</span><div><b id="idleGold">0</b><small>遠征金幣</small></div></div>
+      <div class="v4Currency power"><span>⚔</span><div><b id="idleDps">0</b><small>每秒傷害</small></div></div>
+      <div class="v4Currency guild"><span>✦</span><div><b id="idleGuildLevel">Lv.1</b><small>公會等級</small></div></div>
     </div>
-  </div>
+  </header>
 
-  <div class="idleTabs">
-    <button id="itBattle" class="active" onclick="showIdleTab('battle')">⚔ Battle</button>
-    <button id="itHeroes" onclick="showIdleTab('heroes')">🛡 Heroes</button>
-    <button id="itRecruit" onclick="showIdleTab('recruit')">✨ Recruit</button>
-    <button id="itGuild" onclick="showIdleTab('guild')">🏰 Guild</button>
-    <button id="itLoot" onclick="showIdleTab('loot')">🎒 Loot</button>
-    <button id="itWorld" onclick="showIdleTab('world')">🌍 World</button>
-  </div>
+  <nav class="v4Tabs">
+    <button id="itBattle" class="active" onclick="showIdleTab('battle')">⚔ 戰鬥</button>
+    <button id="itHeroes" onclick="showIdleTab('heroes')">♟ 冒險家</button>
+    <button id="itRecruit" onclick="showIdleTab('recruit')">✦ 招募</button>
+    <button id="itGuild" onclick="showIdleTab('guild')">♜ 公會基地</button>
+    <button id="itLoot" onclick="showIdleTab('loot')">◇ 裝備・時裝</button>
+    <button id="itWorld" onclick="showIdleTab('world')">◎ 世界・里程碑</button>
+  </nav>
 
-  <div id="ivBattle" class="idleView active">
-    <div class="battleLayout">
-      <div class="battleStageCard">
-        <div class="stageHeader">
-          <div>
-            <div class="stageKicker">CURRENT STAGE</div>
-            <h3 id="stageName">Greenvale 1-1</h3>
-            <div class="stageSub" id="stageSub">翠谷森林 · Goblin Scout</div>
-          </div>
-          <div class="stageBadge" id="stageBadge">1-1</div>
+  <div id="ivBattle" class="idleView active v4View">
+    <div class="v4BattleGrid">
+      <div class="v4BattlePanel">
+        <div class="v4StageTop">
+          <div><span class="v4Eyebrow">目前戰區</span><h2 id="stageName">翠谷森林 1-1</h2><p id="stageSub">怪物波次進行中</p></div>
+          <div class="v4StageBadge" id="stageBadge">1-1</div>
         </div>
 
-        <div id="battleArena" class="battleArena">
-          <div class="battleBackdrop backForest"></div>
-          <div id="heroLane" class="heroLane"></div>
-          <div id="monsterWrap" class="monsterWrap">
-            <div id="monsterSprite" class="monsterSprite">👺</div>
-            <div class="monsterInfo">
-              <div class="monsterName" id="monsterName">Goblin Scout</div>
-              <div class="monsterHp"><i id="monsterHpBar"></i></div>
-              <div class="monsterHpText" id="monsterHpText">100 / 100</div>
-            </div>
-          </div>
+        <div id="battleArena" class="v4Arena">
+          <div class="v4ArenaShade"></div>
+          <div class="v4Combo"><span id="v4ComboCount">0</span><small>連擊</small></div>
+          <div id="heroLane" class="v4HeroLane"></div>
+          <div id="monsterWrap" class="v4MonsterLane"></div>
           <div id="damageLayer" class="damageLayer"></div>
           <div id="lootBurst" class="lootBurst"></div>
+          <div class="v4SkillBar" id="v4SkillBar"></div>
         </div>
 
-        <div class="battleStats">
-          <div><span>擊殺</span><b id="battleKills">0</b></div>
-          <div><span>Gold / sec</span><b id="battleGps">0</b></div>
-          <div><span>掉寶率</span><b id="battleDropRate">0%</b></div>
-          <div><span>進度</span><b id="battleProgress">0 / 10</b></div>
+        <div class="v4BattleStats">
+          <div><small>本關擊殺</small><b id="battleKills">0</b></div>
+          <div><small>金幣 / 秒</small><b id="battleGps">0</b></div>
+          <div><small>裝備掉落</small><b id="battleDropRate">0%</b></div>
+          <div><small>怪物波次</small><b id="battleProgress">0 / 25</b></div>
         </div>
 
-        <div class="bossTrack">
-          <div class="bossTrackTop">
-            <span>關卡進度</span>
-            <span id="bossUnlockText">擊殺 10 隻後挑戰 Boss</span>
+        <div class="v4ProgressRow">
+          <div><span>擊殺 25 隻後挑戰本關首領</span><span id="bossUnlockText">0 / 25</span></div>
+          <div class="v4Progress"><i id="bossTrackFill"></i></div>
+        </div>
+        <div class="v4BattleActions">
+          <button class="v4Btn" onclick="toggleBattlePause()" id="battlePauseBtn">暫停動畫</button>
+          <button class="v4Btn boss" onclick="challengeBoss()" id="bossBtn" disabled>挑戰本關首領</button>
+        </div>
+      </div>
+
+      <aside class="v4SideCol">
+        <div class="v4Panel">
+          <h3>離線遠征收益</h3>
+          <p>無離線時間上限。離線多久，就依當時隊伍效率計算多久。</p>
+          <div class="v4Offline">
+            <div><span>離線時間</span><b id="offlineDuration">—</b></div>
+            <div><span>遠征金幣</span><b id="offlineGold">0</b></div>
+            <div><span>裝備戰利品</span><b id="offlineLoot">—</b></div>
           </div>
-          <div class="bossTrackBar"><i id="bossTrackFill"></i></div>
+          <button class="v4Btn primary wide" id="claimOfflineBtn" onclick="claimOfflineRewards()">領取全部收益</button>
         </div>
+        <div class="v4Panel">
+          <h3>主力隊伍</h3>
+          <div id="battlePartyList" class="v4Party"></div>
+        </div>
+      </aside>
+    </div>
+  </div>
 
-        <div class="battleButtons">
-          <button class="idleBtn" onclick="toggleBattlePause()" id="battlePauseBtn">⏸ 暫停動畫</button>
-          <button class="idleBtn primary" onclick="challengeBoss()" id="bossBtn" disabled>👑 挑戰 Boss</button>
+  <div id="ivHeroes" class="idleView v4View">
+    <div class="v4Panel">
+      <div class="v4PanelHead"><div><h3>冒險家名冊</h3><p>四大職業，Lv.30 / 60 / 90 / 120 轉職。每位冒險家都有獨立裝備與技能等級。</p></div><div class="v4Badge" id="heroCountBadge">0 名</div></div>
+      <div id="idleHeroGrid" class="v4HeroGrid"></div>
+    </div>
+  </div>
+
+  <div id="ivRecruit" class="idleView v4View">
+    <div class="v4RecruitGrid">
+      <div class="v4RecruitHero">
+        <div class="v4RecruitCopy">
+          <span class="v4Eyebrow">星夜召集</span>
+          <h2>讓新的羈絆回應星痕</h2>
+          <p>真實工作收入會轉換為星痕鑽石。鑽石可以用於角色、裝備與特殊時裝招募，但不會扣掉真正的存款。</p>
         </div>
+        <div class="v4Pity"><span>10 抽至少稀有</span><span>40 抽至少史詩</span><span>100 抽至少傳說</span></div>
+        <div class="v4RecruitActions">
+          <button class="v4Btn primary" onclick="doRecruit(1)">角色單抽 ◆100</button>
+          <button class="v4Btn primary" onclick="doRecruit(10)">角色十連 ◆900</button>
+          <button class="v4Btn blue" onclick="doEquipmentGacha(10)">裝備十連 ◆650</button>
+          <button class="v4Btn violet" onclick="doFashionGacha(1)">時裝召喚 ◆500</button>
+        </div>
+        <div class="v4RecruitCounter" id="recruitCounter">累積招募 0 次</div>
       </div>
-
-      <div class="battleSide">
-        <div class="idlePanel">
-          <h3>掛機收益</h3>
-          <p>離線時間沒有上限。重新開啟網站時會依據離線期間與當前隊伍效率計算收益。</p>
-          <div class="offlineBox">
-            <div><span>上次離線</span><b id="offlineDuration">—</b></div>
-            <div><span>累積 Gold</span><b id="offlineGold">0</b></div>
-            <div><span>累積素材</span><b id="offlineLoot">—</b></div>
-          </div>
-          <button class="idleBtn primary" id="claimOfflineBtn" onclick="claimOfflineRewards()">領取離線收益</button>
-        </div>
-        <div class="idlePanel">
-          <h3>隊伍</h3>
-          <div id="battlePartyList" class="battlePartyList"></div>
-        </div>
+      <div class="v4Panel">
+        <h3>召集名單預覽</h3>
+        <div id="recruitShowcase" class="v4Showcase"></div>
       </div>
     </div>
   </div>
 
-  <div id="ivHeroes" class="idleView">
-    <div class="idlePanel">
-      <div class="panelHead"><div><h3>冒險者</h3><p>組隊、升級與強化。更高 DPS 會直接提高掛機打怪速度與 Gold 收益。</p></div><div id="heroCountBadge" class="miniBadge"></div></div>
-      <div id="idleHeroGrid" class="idleHeroGrid"></div>
+  <div id="ivGuild" class="idleView v4View">
+    <div class="v4GuildScene">
+      <img src="assets/guild_hub.jpg" alt="" class="v4GuildBg">
+      <div class="v4GuildOverlay"></div>
+      <div id="v4BuildingScene" class="v4BuildingScene"></div>
+      <div id="v4HubBattle" class="v4HubBattle"></div>
+      <div class="v4GuildSceneTitle"><span>星痕領・公會基地</span><small>建築每 10 級進化外觀；特定等級會解鎖永久能力。</small></div>
+    </div>
+    <div class="v4GuildBelow">
+      <div class="v4Panel"><h3>基地建設</h3><div id="idleBuildingList" class="v4BuildingList"></div></div>
+      <div class="v4Panel"><h3>雙公會長</h3><div id="idleMasters" class="idleMasters"></div></div>
     </div>
   </div>
 
-  <div id="ivRecruit" class="idleView">
-    <div class="recruitLayout">
-      <div class="recruitBanner">
-        <div class="recruitGlow"></div>
-        <div class="recruitTitle">星輝召集令</div>
-        <div class="recruitSub">使用你們真實工作換來的 Guild Crystal 招募冒險者。六種稀有度，含保底。</div>
-        <div class="pityRow">
-          <div>10 抽至少 Rare</div><div>40 抽至少 Epic</div><div>100 抽至少 Legendary</div>
-        </div>
-        <div class="recruitButtons">
-          <button class="idleBtn primary big" onclick="doRecruit(1)">單抽 · 💎100</button>
-          <button class="idleBtn primary big" onclick="doRecruit(10)">十連 · 💎900</button>
-        </div>
-        <div class="recruitCounter" id="recruitCounter">總抽數 0</div>
-      </div>
-      <div class="idlePanel">
-        <h3>可能出現的冒險者</h3>
-        <div id="recruitShowcase" class="recruitShowcase"></div>
-      </div>
+  <div id="ivLoot" class="idleView v4View">
+    <div class="v4LootTop">
+      <div><h3>裝備與時裝</h3><p>每位冒險家可以穿戴 8 個戰鬥裝備欄位，另有翅膀、光環、外觀武器與服裝。裝備與時裝會反映在角色與戰鬥畫面。</p></div>
+      <button class="v4Btn primary" onclick="autoEquipBest()">一鍵配置主力裝備</button>
     </div>
+    <div class="v4LootTabs">
+      <button class="active" onclick="v4LootMode='gear';renderLoot()">戰鬥裝備</button>
+      <button onclick="v4LootMode='fashion';renderLoot()">特殊時裝</button>
+    </div>
+    <div id="lootInventory" class="v4LootGrid"></div>
   </div>
 
-  <div id="ivGuild" class="idleView">
-    <div class="guildIdleGrid">
-      <div class="idlePanel">
-        <h3>公會基地</h3>
-        <p>普通建設與升級使用冒險者掛機打怪取得的 Idle Gold 與素材。</p>
-        <div id="idleBuildingList" class="idleBuildingList"></div>
+  <div id="ivWorld" class="idleView v4View">
+    <div class="v4WorldGrid">
+      <div class="v4Panel">
+        <h3>世界關卡</h3>
+        <p>每一關都有自己的怪物波次與首領；每個區域的小怪與首領風格不同。</p>
+        <div id="worldStages" class="v4WorldStages"></div>
       </div>
-      <div class="idlePanel">
-        <h3>Guild Masters</h3>
-        <div id="idleMasters" class="idleMasters"></div>
-      </div>
-    </div>
-  </div>
-
-  <div id="ivLoot" class="idleView">
-    <div class="idlePanel">
-      <div class="panelHead"><div><h3>戰利品與裝備</h3><p>怪物有機率掉落裝備。裝備目前先做數值與稀有度，後續可加換裝立繪。</p></div><button class="idleBtn" onclick="autoEquipBest()">一鍵最佳裝備</button></div>
-      <div id="lootInventory" class="lootInventory"></div>
-    </div>
-  </div>
-
-  <div id="ivWorld" class="idleView">
-    <div class="worldLayout">
-      <div class="idlePanel">
-        <h3>破關地圖</h3>
-        <p>每個區域包含多個關卡。擊殺小怪達標後挑戰 Boss，勝利才能進到下一關。</p>
-        <div id="worldStages" class="worldStages"></div>
-      </div>
-      <div class="idlePanel">
+      <div class="v4Panel">
         <h3>現實里程碑 → 世界事件</h3>
-        <div id="idleMilestones" class="idleMilestones"></div>
+        <p>只有「已簽到」的真實班次會觸發。達成後可以領取鑽石、限定裝備、稱號與特殊外觀。</p>
+        <div id="idleMilestones" class="v4Milestones"></div>
       </div>
     </div>
   </div>
 </div>
 </section>
 
+<div id="gameToast" class="gameToast"></div>
 <div id="recruitOverlay" class="recruitOverlay" onclick="if(event.target===this)closeRecruitOverlay()">
   <div class="recruitResultCard">
-    <div class="recruitResultTitle">召集結果</div>
+    <div class="recruitResultTitle">星痕召集結果</div>
     <div id="recruitResults" class="recruitResults"></div>
-    <button class="idleBtn primary" onclick="closeRecruitOverlay()">收下</button>
+    <button class="v4Btn primary" onclick="closeRecruitOverlay()">收下</button>
   </div>
 </div>
 <section id="settingsPage" class="page">
@@ -373,7 +457,7 @@ linear-gradient(45deg,rgba(63,91,48,.18) 25%,transparent 25%) 0 0/48px 48px}
 <script>
 const RULE_VERSION='FWO_2026-07-01';
 const cfg=window.MC_CONFIG||{};
-let sb,roomId=null,room=null,workers=[],jobs=[],entries=[],gameState=null,gameBuildings=[],gameAdventurers=[],gameExpeditions=[],gameSpend=[],gameMeta=null,gameEquipment=[],channel=null,chart=null,viewMonth=new Date();viewMonth.setDate(1);let gateMode='join';let selectedBuildingId=null,buildCatalogOpen=true,guildTicker=null;let idleTicker=null,battleAnimOn=true,currentMonsterHp=0,currentMonsterMaxHp=0,offlinePending=null,lastBattleTick=Date.now();
+let sb,roomId=null,room=null,workers=[],jobs=[],entries=[],gameState=null,gameBuildings=[],gameAdventurers=[],gameExpeditions=[],gameSpend=[],gameMeta=null,gameEquipment=[],gameFashion=[],gameSkills=[],gameClaims=[],channel=null,chart=null,viewMonth=new Date();viewMonth.setDate(1);let gateMode='join';let selectedBuildingId=null,buildCatalogOpen=true,guildTicker=null;let idleTicker=null,battleAnimOn=true,currentMonsterHp=0,currentMonsterMaxHp=0,offlinePending=null,lastBattleTick=Date.now();
 
 function moneyAUD(v){return new Intl.NumberFormat('en-AU',{style:'currency',currency:'AUD'}).format(Number(v)||0)}
 function moneyTWD(v){return new Intl.NumberFormat('zh-TW',{style:'currency',currency:'TWD',maximumFractionDigits:0}).format(Number(v)||0)}
@@ -428,7 +512,7 @@ async function submitGate(){
 }
 async function loadRoom(){
   const rr=await sb.from('rooms').select('*').eq('id',roomId).maybeSingle();if(rr.error||!rr.data)return false;room=rr.data;
-  const [w,j,e,gs,gb,ga,gx,gsp,gm,ge]=await Promise.all([
+  const [w,j,e,gs,gb,ga,gx,gsp,gm,ge,gf,gsk,gc]=await Promise.all([
     sb.from('workers').select('*').eq('room_id',roomId).order('created_at'),
     sb.from('jobs').select('*').eq('room_id',roomId).order('created_at'),
     sb.from('entries').select('*').eq('room_id',roomId).order('work_date'),
@@ -438,14 +522,17 @@ async function loadRoom(){
     sb.from('game_expeditions').select('*').eq('room_id',roomId).order('created_at',{ascending:false}),
     sb.from('game_spend').select('*').eq('room_id',roomId).order('created_at'),
     sb.from('game_meta').select('*').eq('room_id',roomId).maybeSingle(),
-    sb.from('game_equipment').select('*').eq('room_id',roomId).order('created_at',{ascending:false})
+    sb.from('game_equipment').select('*').eq('room_id',roomId).order('created_at',{ascending:false}),
+    sb.from('game_fashion').select('*').eq('room_id',roomId).order('created_at',{ascending:false}),
+    sb.from('game_skill_levels').select('*').eq('room_id',roomId),
+    sb.from('game_milestone_claims').select('*').eq('room_id',roomId)
   ]);
   workers=w.data||[];jobs=j.data||[];entries=e.data||[];
   gameState=gs.data||null;gameBuildings=gb.data||[];gameAdventurers=ga.data||[];gameExpeditions=gx.data||[];gameSpend=gsp.data||[];
-  gameMeta=gm.data||null;gameEquipment=ge.data||[];
+  gameMeta=gm.data||null;gameEquipment=ge.data||[];gameFashion=gf.data||[];gameSkills=gsk.data||[];gameClaims=gc.data||[];
   return true;
 }
-async function enterApp(){gate.style.display='none';app.style.display='block';bottom.style.display='';roomTitle.textContent=room.name;roomCode.textContent='房間：'+room.code;shareText.textContent=`分享網站網址給女友，輸入房間代碼「${room.code}」與你們的共同密碼即可加入。`;goalInput.value=room.goal_twd||'';dateInput.value=room.target_date||'';await ensureGameInitialized();renderAll();subscribe();startGuildTicker()}
+async function enterApp(){gate.style.display='none';app.style.display='block';bottom.style.display='';roomTitle.textContent=room.name;roomCode.textContent='房間：'+room.code;shareText.textContent=`分享網站網址給女友，輸入房間代碼「${room.code}」與你們的共同密碼即可加入。`;goalInput.value=room.goal_twd||'';dateInput.value=room.target_date||'';await ensureGameInitialized();renderAll();subscribe();start公會Ticker()}
 function subscribe(){
   if(channel)sb.removeChannel(channel);
   channel=sb.channel('mc-'+roomId).on('postgres_changes',{event:'*',schema:'public',table:'entries',filter:'room_id=eq.'+roomId},reload)
@@ -458,12 +545,15 @@ function subscribe(){
     .on('postgres_changes',{event:'*',schema:'public',table:'game_spend',filter:'room_id=eq.'+roomId},reload)
     .on('postgres_changes',{event:'*',schema:'public',table:'game_meta',filter:'room_id=eq.'+roomId},reload)
     .on('postgres_changes',{event:'*',schema:'public',table:'game_equipment',filter:'room_id=eq.'+roomId},reload)
+    .on('postgres_changes',{event:'*',schema:'public',table:'game_fashion',filter:'room_id=eq.'+roomId},reload)
+    .on('postgres_changes',{event:'*',schema:'public',table:'game_skill_levels',filter:'room_id=eq.'+roomId},reload)
+    .on('postgres_changes',{event:'*',schema:'public',table:'game_milestone_claims',filter:'room_id=eq.'+roomId},reload)
     .on('postgres_changes',{event:'UPDATE',schema:'public',table:'rooms',filter:'id=eq.'+roomId},reload).subscribe();
 }
 async function reload(){syncStatus.textContent='● 同步中';await loadRoom();renderAll();setTimeout(()=>syncStatus.textContent='● 即時同步',350)}
-function showPage(p){['home','records','guild','settings'].forEach(x=>{document.getElementById(x+'Page').classList.toggle('active',x===p);document.getElementById('n'+x[0].toUpperCase()+x.slice(1))?.classList.toggle('active',x===p);document.getElementById('b'+x[0].toUpperCase()+x.slice(1))?.classList.toggle('active',x===p)});if(p==='settings')renderSettings();if(p==='records')renderRecords();if(p==='guild')renderGuild()}
+function showPage(p){['home','records','guild','settings'].forEach(x=>{document.getElementById(x+'Page').classList.toggle('active',x===p);document.getElementById('n'+x[0].toUpperCase()+x.slice(1))?.classList.toggle('active',x===p);document.getElementById('b'+x[0].toUpperCase()+x.slice(1))?.classList.toggle('active',x===p)});if(p==='settings')renderSettings();if(p==='records')renderRecords();if(p==='guild')render公會()}
 
-function renderAll(){renderHome();renderRecords();renderSettings();renderGuild()}
+function renderAll(){renderHome();renderRecords();renderSettings();render公會()}
 
 const GAME_BUILDINGS={
   guildhall:{name:'公會大廳',icon:'🏰',req:1,base:{gold:0,contrib:0,wood:0,iron:0,stone:0},desc:'公會的核心。升級可提高基地規模與冒險者容量。'},
@@ -499,7 +589,7 @@ const RECRUIT_POOL=[
  {name:'Aurelia',class_name:'Paladin',rarity:'LEGENDARY',emoji:'⚜️',traits:['誓約']}
 ];
 function gameToastMsg(msg){const x=document.getElementById('gameToast');if(!x)return;x.textContent=msg;x.classList.add('show');clearTimeout(x._t);x._t=setTimeout(()=>x.classList.remove('show'),2600)}
-function showGuildTab(t){['base','masters','adventurers','explore','world'].forEach(x=>{document.getElementById('gv'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===t);document.getElementById('gt'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===t)});renderGuild()}
+function show公會Tab(t){['base','masters','adventurers','explore','world'].forEach(x=>{document.getElementById('gv'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===t);document.getElementById('gt'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===t)});render公會()}
 function xpThresholdForLevel(l){if(l<=1)return 0;return Math.round(150*Math.pow(l-1,1.72))}
 function levelFromXp(xp){let l=1;while(l<20&&xp>=xpThresholdForLevel(l+1))l++;return l}
 function masterLevelFromXp(xp){return Math.max(1,Math.min(50,1+Math.floor(Math.sqrt(xp/80))))}
@@ -558,7 +648,7 @@ function nextFreePlot(){
  return null;
 }
 async function constructBuilding(type){
- const def=GAME_BUILDINGS[type],eco=gameEconomy();if(eco.level<def.req)return gameToastMsg(`需要 Guild Lv.${def.req}`);
+ const def=GAME_BUILDINGS[type],eco=gameEconomy();if(eco.level<def.req)return gameToastMsg(`需要 公會 Lv.${def.req}`);
  if(gameBuildings.some(b=>b.building_type===type))return gameToastMsg('這個建築已經存在');
  const pos=nextFreePlot();if(!pos)return gameToastMsg('基地沒有空地了，先重新配置。');
  const cost=buildingCost(type,1);if(!canPay(cost))return gameToastMsg('資源不足：'+costText(cost));
@@ -612,7 +702,7 @@ function renderBase(){
 }
 function renderMasters(){
  const box=document.getElementById('masterCards');if(!box)return;
- box.innerHTML=workers.length?workers.slice(0,2).map((w,i)=>{const t=totals(entries.filter(e=>e.worker_id===w.id)),xp=Math.floor(t.hours*10),lv=masterLevelFromXp(xp);return `<div class="gCard"><div class="masterPortrait"></div><div class="row"><div><h4>${esc(w.name)}</h4><div class="tag">Guild Master</div></div><strong>Lv.${lv}</strong></div><div class="sub" style="margin-top:7px">真實工時 ${t.hours.toFixed(1)} h · Master EXP ${xp}</div><div class="resourceNote">${i===0?'專精預告：戰略／建築／後勤':'專精預告：招募／財務／指揮'}</div></div>`}).join(''):'<div class="sub">請先新增 M 與 C。</div>';
+ box.innerHTML=workers.length?workers.slice(0,2).map((w,i)=>{const t=realWorkedTotals(realWorkedEntries().filter(e=>e.worker_id===w.id)),xp=Math.floor(t.hours*10),lv=masterLevelFromXp(xp);return `<div class="gCard"><div class="masterPortrait"></div><div class="row"><div><h4>${esc(w.name)}</h4><div class="tag">公會 Master</div></div><strong>Lv.${lv}</strong></div><div class="sub" style="margin-top:7px">真實工時 ${t.hours.toFixed(1)} h · Master EXP ${xp}</div><div class="resourceNote">${i===0?'專精預告：戰略／建築／後勤':'專精預告：招募／財務／指揮'}</div></div>`}).join(''):'<div class="sub">請先新增 M 與 C。</div>';
 }
 function advEmoji(a){return ({Warrior:'🗡️',Ranger:'🏹',Priest:'✨',Guardian:'🛡️',Mage:'🪄',Rogue:'🗡',Paladin:'⚜️'})[a.class_name]||'🛡️'}
 function isAdvBusy(id){return gameExpeditions.some(e=>e.adventurer_id===id&&e.status==='ACTIVE'&&new Date(e.ends_at)>new Date())}
@@ -643,7 +733,7 @@ function missionRandom([min,max]){return Math.floor(min+Math.random()*(max-min+1
 function availableAdventurers(){return gameAdventurers.filter(a=>!isAdvBusy(a.id)&&!(a.injury_until&&new Date(a.injury_until)>new Date())&&Number(a.fatigue||0)<85)}
 function openMission(zoneId,missionId){
  const zone=GAME_ZONES.find(z=>z.id===zoneId),m=zone?.missions.find(x=>x.id===missionId),eco=gameEconomy();if(!zone||!m)return;
- if(eco.level<zone.req)return gameToastMsg(`需要 Guild Lv.${zone.req}`);
+ if(eco.level<zone.req)return gameToastMsg(`需要 公會 Lv.${zone.req}`);
  const av=availableAdventurers();
  const modal=document.getElementById('gameModal'),bg=document.getElementById('gameModalBg');
  modal.innerHTML=`<h3>${zone.zh} · ${m.name}</h3><p class="sub">時間：約 ${m.mins<60?m.mins+' 分鐘':(m.mins/60)+' 小時'} · 疲勞 +${m.fatigue}</p><div class="field" style="margin-top:10px"><label style="color:#ccb999">選擇冒險者</label><select id="missionAdv" style="width:100%;padding:10px;border-radius:9px;background:#181511;color:#f0ddbd;border:1px solid #5a4938">${av.map(a=>`<option value="${a.id}">${esc(a.name)} · ${a.class_name} Lv.${a.level} · 疲勞 ${a.fatigue}%</option>`).join('')}</select></div>${av.length?'':'<div class="aiCaution">目前沒有可出發的冒險者。</div>'}<div class="actions"><button class="gbtn" onclick="closeGameModal()">取消</button><button class="gbtn primary" ${av.length?'':'disabled'} onclick="startExpedition('${zoneId}','${missionId}')">出發</button></div>`;
@@ -665,7 +755,7 @@ function expProgress(e){const s=new Date(e.starts_at).getTime(),en=new Date(e.en
 function formatRemain(ms){if(ms<=0)return'可領取';const sec=Math.ceil(ms/1000);if(sec<60)return`${sec}s`;const min=Math.ceil(sec/60);if(min<60)return`${min}m`;const h=Math.floor(min/60),m=min%60;return`${h}h ${m}m`}
 function renderExplore(){
  const eco=gameEconomy(),zones=document.getElementById('zoneList');if(!zones)return;
- zones.innerHTML=GAME_ZONES.map(z=>`<div class="zone ${z.cls} ${eco.level<z.req?'locked':''}"><h4>${z.zh}</h4><p>${z.name} · ${eco.level<z.req?'Guild Lv.'+z.req+' 解鎖':'已解鎖'}</p><div class="missionBtns">${z.missions.map(m=>`<button class="gbtn ${eco.level>=z.req?'primary':''}" ${eco.level<z.req?'disabled':''} onclick="openMission('${z.id}','${m.id}')">${m.name}<br><small>${m.mins<60?m.mins+'m':m.mins/60+'h'}</small></button>`).join('')}</div></div>`).join('');
+ zones.innerHTML=GAME_ZONES.map(z=>`<div class="zone ${z.cls} ${eco.level<z.req?'locked':''}"><h4>${z.zh}</h4><p>${z.name} · ${eco.level<z.req?'公會 Lv.'+z.req+' 解鎖':'已解鎖'}</p><div class="missionBtns">${z.missions.map(m=>`<button class="gbtn ${eco.level>=z.req?'primary':''}" ${eco.level<z.req?'disabled':''} onclick="openMission('${z.id}','${m.id}')">${m.name}<br><small>${m.mins<60?m.mins+'m':m.mins/60+'h'}</small></button>`).join('')}</div></div>`).join('');
  renderExpeditions();
 }
 function renderExpeditions(){
@@ -688,7 +778,7 @@ async function claimExpedition(id){
  gameToastMsg(`遠征完成：${rewardText}${injury?'（冒險者輕傷）':''}`)
 }
 function renderWorld(){
- const t=totals(),goal=Number(room?.goal_twd||0),pct=goal?t.twd/goal*100:0;
+ const t=realWorkedTotals(),goal=Number(room?.goal_twd||0),pct=goal?t.twd/goal*100:0;
  const events=[
   {title:'北境林道開啟',desc:'Greenvale 北部出現新的道路與探索傳聞。',ok:t.twd>=50000,req:'累積存款 NT$50,000',seal:'🌲'},
   {title:'古龍甦醒的傳聞',desc:'商隊開始談論山脈深處的龍影。',ok:t.twd>=100000,req:'累積存款 NT$100,000',seal:'🐉'},
@@ -698,15 +788,15 @@ function renderWorld(){
  ];
  document.getElementById('milestoneList').innerHTML=events.map(x=>`<div class="milestone ${x.ok?'unlocked':''}"><span class="seal">${x.seal}</span><strong>${x.ok?'已解鎖 · ':''}${x.title}</strong><div class="sub" style="margin-top:5px">${x.desc}</div><small>${x.ok?'✓ ':''}${x.req}</small></div>`).join('')
 }
-function renderGuild(){
+function render公會(){
  if(!document.getElementById('guildPage')||!room)return;
  const e=gameEconomy();
  gGold.textContent=e.gold.toLocaleString();gContribution.textContent=e.contribution.toLocaleString();gReputation.textContent=e.reputation.toLocaleString();gWood.textContent=e.wood;gIron.textContent=e.iron;gStone.textContent=e.stone;gCrystal.textContent=e.crystal;
  const next=Math.min(20,e.level+1),curBase=xpThresholdForLevel(e.level),nextXp=e.level>=20?e.xp:xpThresholdForLevel(next),progress=e.level>=20?100:Math.max(0,Math.min(100,(e.xp-curBase)/(nextXp-curBase)*100));
- gLevel.textContent=`Guild Lv.${e.level}`;gXpLabel.textContent=e.level>=20?`${e.xp} EXP · MAX`:`${e.xp-curBase} / ${nextXp-curBase} EXP`;gXpFill.style.width=progress+'%';
+ gLevel.textContent=`公會 Lv.${e.level}`;gXpLabel.textContent=e.level>=20?`${e.xp} EXP · MAX`:`${e.xp-curBase} / ${nextXp-curBase} EXP`;gXpFill.style.width=progress+'%';
  renderBase();renderMasters();renderAdventurers();renderExplore();renderWorld()
 }
-function startGuildTicker(){if(guildTicker)clearInterval(guildTicker);guildTicker=setInterval(()=>{if(document.getElementById('guildPage')?.classList.contains('active')){renderExpeditions();for(const a of gameAdventurers){if(Number(a.fatigue||0)>0&&!isAdvBusy(a.id)&&Math.random()<.03)sb.from('game_adventurers').update({fatigue:Math.max(0,Number(a.fatigue)-1)}).eq('id',a.id)}}},1000)}
+function start公會Ticker(){if(guildTicker)clearInterval(guildTicker);guildTicker=setInterval(()=>{if(document.getElementById('guildPage')?.classList.contains('active')){renderExpeditions();for(const a of gameAdventurers){if(Number(a.fatigue||0)>0&&!isAdvBusy(a.id)&&Math.random()<.03)sb.from('game_adventurers').update({fatigue:Math.max(0,Number(a.fatigue)-1)}).eq('id',a.id)}}},1000)}
 
 
 /* ===== Idle RPG V2 logic overrides ===== */
@@ -766,8 +856,8 @@ async function ensureGameInitialized(){
  await loadRoom();
  prepareOfflineRewards();
 }
-function showIdleTab(t){['battle','heroes','recruit','guild','loot','world'].forEach(x=>{document.getElementById('iv'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===t);document.getElementById('it'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===t)});renderGuild()}
-function premiumEarned(){return Math.floor(totals().aud*4)}
+function showIdleTab(t){['battle','heroes','recruit','guild','loot','world'].forEach(x=>{document.getElementById('iv'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===t);document.getElementById('it'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===t)});render公會()}
+function premiumEarned(){return Math.floor(realWorkedTotals().aud*4)}
 function premiumAvailable(){return Math.max(0,premiumEarned()-Number(gameMeta?.premium_spent||0))}
 function equippedAtk(heroId){return gameEquipment.filter(x=>x.owner_adventurer_id===heroId&&x.equipped).reduce((a,x)=>a+Number(x.atk||0),0)}
 function heroTemplate(a){return IDLE_ROSTER.find(x=>x.name===a.name)||{base:12,speed:1,emoji:advEmoji(a),rarity:a.rarity,class_name:a.class_name}}
@@ -784,13 +874,13 @@ function stageInfo(){
 function currentGold(){return Number(gameMeta?.idle_gold||0)}
 function stageGoldPerSec(){const s=stageInfo(),d=partyDps(),killsPerSec=d/s.hp;return killsPerSec*s.gold*(1+buildingLv('warehouse')*.03)}
 function dropChance(){return Math.min(.35,.03+buildingLv('blacksmith')*.01)}
-function renderGuild(){
+function render公會(){
  if(!room||!gameMeta)return;
  idlePremium.textContent=premiumAvailable().toLocaleString();
  idleGold.textContent=Math.floor(currentGold()).toLocaleString();
  idleDps.textContent=formatBig(partyDps());
- idleGuildLevel.textContent=`Lv.${levelFromXp(Math.floor(totals().hours*10+entries.length*10))}`;
- renderBattle();renderHeroes();renderRecruit();renderIdleGuild();renderLoot();renderWorldIdle()
+ idle公會Level.textContent=`Lv.${levelFromXp(Math.floor(realWorkedTotals().hours*10+realWorkedEntries().length*10))}`;
+ renderBattle();renderHeroes();renderRecruit();renderIdle公會();renderLoot();renderWorldIdle()
 }
 function formatBig(n){if(n>=1e9)return(n/1e9).toFixed(1)+'B';if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return Math.round(n).toString()}
 function renderBattle(){
@@ -800,7 +890,7 @@ function renderBattle(){
  const kills=Number(gameMeta.stage_kills||0);battleKills.textContent=kills;battleGps.textContent=formatBig(stageGoldPerSec());battleDropRate.textContent=Math.round(dropChance()*100)+'%';battleProgress.textContent=`${kills%10} / 10`;bossTrackFill.style.width=((kills%10)/10*100)+'%';
  const ready=(kills>0&&kills%10===0);bossBtn.disabled=!ready;bossUnlockText.textContent=ready?'Boss 已出現！':'擊殺 10 隻後挑戰 Boss';
  heroLane.innerHTML=party().map((a,i)=>`<div class="battleHero" id="bh${a.id}"><div class="char">${heroTemplate(a).emoji||advEmoji(a)}</div><div class="heroNameTag">${esc(a.name)}</div></div>`).join('');
- battlePartyList.innerHTML=party().map(a=>`<div class="partyMini"><div class="ico">${heroTemplate(a).emoji||advEmoji(a)}</div><div><b>${esc(a.name)} · Lv.${a.level}</b><small>${a.rarity} · DPS ${formatBig(heroPower(a)*(heroTemplate(a).speed||1))}</small></div></div>`).join('');
+ battlePartyList.innerHTML=party().map(a=>`<div class="partyMini"><div class="ico">${heroTemplate(a).emoji||advEmoji(a)}</div><div><b>${esc(a.name)} · Lv.${a.level}</b><small>${a.rarity} · 每秒傷害 ${formatBig(heroPower(a)*(heroTemplate(a).speed||1))}</small></div></div>`).join('');
  battlePauseBtn.textContent=battleAnimOn?'⏸ 暫停動畫':'▶️ 繼續動畫';
  if(offlinePending){offlineDuration.textContent=formatDuration(offlinePending.seconds);offlineGold.textContent=Math.floor(offlinePending.gold).toLocaleString();offlineLoot.textContent=offlinePending.items+' 件裝備';claimOfflineBtn.disabled=false}else{offlineDuration.textContent='—';offlineGold.textContent='0';offlineLoot.textContent='—';claimOfflineBtn.disabled=true}
 }
@@ -824,14 +914,14 @@ async function monsterDefeated(){
  const upd={idle_gold:newGold,stage_kills:newKills,updated_at:new Date().toISOString(),last_seen:new Date().toISOString()};
  await sb.from('game_meta').update(upd).eq('room_id',roomId);
  if(Math.random()<dropChance())await generateEquipmentDrop();
- gameMeta={...gameMeta,...upd};setTimeout(()=>{monsterSprite.classList.remove('dead');currentMonsterMaxHp=s.hp;currentMonsterHp=s.hp;battleAnimOn=true;renderGuild()},500)
+ gameMeta={...gameMeta,...upd};setTimeout(()=>{monsterSprite.classList.remove('dead');currentMonsterMaxHp=s.hp;currentMonsterHp=s.hp;battleAnimOn=true;render公會()},500)
 }
 function rollRarity(force=null){
  if(force)return force;const r=Math.random();let c=0;for(const k of ['COMMON','UNCOMMON','RARE','EPIC','LEGENDARY','MYTHIC']){c+=RARITY_RATE[k];if(r<=c)return k}return'COMMON'
 }
 function pickHero(r){const pool=IDLE_ROSTER.filter(x=>x.rarity===r);return pool[Math.floor(Math.random()*pool.length)]}
 async function doRecruit(n){
- const cost=n===10?900:100;if(premiumAvailable()<cost)return gameToastMsg('Guild Crystal 不足');
+ const cost=n===10?900:100;if(premiumAvailable()<cost)return gameToastMsg('星痕鑽石 不足');
  let baseCount=Number(gameMeta.recruit_count||0),results=[];
  for(let i=1;i<=n;i++){
    const pullNo=baseCount+i;let force=null;if(pullNo%100===0)force='LEGENDARY';else if(pullNo%40===0)force='EPIC';else if(pullNo%10===0)force='RARE';
@@ -840,7 +930,7 @@ async function doRecruit(n){
  }
  const rows=results.map(h=>({room_id:roomId,name:h.name,class_name:h.class_name,rarity:h.rarity,level:Math.max(1,buildingLv('tavern')),xp:0,fatigue:0,traits:[]}));
  const ins=await sb.from('game_adventurers').insert(rows);if(ins.error)return alert(ins.error.message);
- const upd={premium_spent:Number(gameMeta.premium_spent||0)+cost,recruit_count:baseCount+n,updated_at:new Date().toISOString()};await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};await loadRoom();showRecruitResults(results);renderGuild()
+ const upd={premium_spent:Number(gameMeta.premium_spent||0)+cost,recruit_count:baseCount+n,updated_at:new Date().toISOString()};await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};await loadRoom();showRecruitResults(results);render公會()
 }
 function showRecruitResults(results){recruitResults.innerHTML=results.map(h=>`<div class="recruitResult"><div class="pic">${h.emoji}</div><b>${h.name}</b><small class="r-${h.rarity}">${h.rarity}</small><small>${h.class_name}</small></div>`).join('');recruitOverlay.classList.add('show')}
 function closeRecruitOverlay(){recruitOverlay.classList.remove('show')}
@@ -854,20 +944,20 @@ function renderHeroes(){
 }
 function heroLevelCost(a){return Math.round(80*Math.pow(1.22,Number(a.level||1)-1)*(1-buildingLv('training')*.03))}
 async function levelHero(id){
- const a=gameAdventurers.find(x=>x.id===id),cost=heroLevelCost(a);if(currentGold()<cost)return gameToastMsg('Idle Gold 不足');
+ const a=gameAdventurers.find(x=>x.id===id),cost=heroLevelCost(a);if(currentGold()<cost)return gameToastMsg('遠征金幣 不足');
  await sb.from('game_meta').update({idle_gold:currentGold()-cost,updated_at:new Date().toISOString()}).eq('room_id',roomId);
- await sb.from('game_adventurers').update({level:Number(a.level||1)+1}).eq('id',id);gameMeta.idle_gold=currentGold()-cost;a.level=Number(a.level||1)+1;renderGuild()
+ await sb.from('game_adventurers').update({level:Number(a.level||1)+1}).eq('id',id);gameMeta.idle_gold=currentGold()-cost;a.level=Number(a.level||1)+1;render公會()
 }
 function idleBuildingCost(k,lv){const d=IDLE_BUILDINGS.find(x=>x.key===k);return Math.round(d.base*Math.pow(1.8,lv))}
 async function upgradeIdleBuilding(k){
- let b=gameBuildings.find(x=>x.building_type===k),lv=Number(b?.level||0),cost=idleBuildingCost(k,lv);if(currentGold()<cost)return gameToastMsg('Idle Gold 不足');
+ let b=gameBuildings.find(x=>x.building_type===k),lv=Number(b?.level||0),cost=idleBuildingCost(k,lv);if(currentGold()<cost)return gameToastMsg('遠征金幣 不足');
  await sb.from('game_meta').update({idle_gold:currentGold()-cost}).eq('room_id',roomId);
  if(b)await sb.from('game_buildings').update({level:lv+1}).eq('id',b.id);else await sb.from('game_buildings').insert({room_id:roomId,building_type:k,level:1,grid_x:0,grid_y:0});
- gameMeta.idle_gold=currentGold()-cost;await loadRoom();renderGuild()
+ gameMeta.idle_gold=currentGold()-cost;await loadRoom();render公會()
 }
-function renderIdleGuild(){
+function renderIdle公會(){
  idleBuildingList.innerHTML=IDLE_BUILDINGS.map(d=>{const lv=buildingLv(d.key),cost=idleBuildingCost(d.key,lv);return `<div class="idleBuilding"><div class="row2"><div><b>${d.icon} ${d.name}</b><small>Lv.${lv}</small></div><button class="idleBtn primary" onclick="upgradeIdleBuilding('${d.key}')">升級</button></div><small>${d.desc}</small><div style="margin-top:5px;font-size:8px">🪙 ${cost.toLocaleString()}</div></div>`}).join('');
- idleMasters.innerHTML=workers.slice(0,2).map((w,i)=>{const t=totals(entries.filter(e=>e.worker_id===w.id)),lv=masterLevelFromXp(Math.floor(t.hours*10));return `<div class="masterIdle"><div class="portrait">${i===0?'🧭':'👑'}</div><div><b>${esc(w.name)} · Guild Master Lv.${lv}</b><small>真實工作 ${t.hours.toFixed(1)} h · 永久被動成長</small></div></div>`}).join('')
+ idleMasters.innerHTML=workers.slice(0,2).map((w,i)=>{const t=realWorkedTotals(realWorkedEntries().filter(e=>e.worker_id===w.id)),lv=masterLevelFromXp(Math.floor(t.hours*10));return `<div class="masterIdle"><div class="portrait">${i===0?'🧭':'👑'}</div><div><b>${esc(w.name)} · 公會 Master Lv.${lv}</b><small>真實工作 ${t.hours.toFixed(1)} h · 永久被動成長</small></div></div>`}).join('')
 }
 async function generateEquipmentDrop(mult=1){
  const s=stageInfo(),rar=rollRarity(),slots=['Weapon','Helmet','Armor','Ring','Boots'],slot=slots[Math.floor(Math.random()*slots.length)],rm=RARITY_MULT[rar];
@@ -883,7 +973,7 @@ async function autoEquipBest(){
  await sb.from('game_equipment').update({equipped:false,owner_adventurer_id:null}).eq('room_id',roomId);
  const slots=['Weapon','Helmet','Armor','Ring','Boots'];let idx=0;
  for(const h of heroes)for(const slot of slots){const best=[...gameEquipment].filter(x=>x.slot===slot).sort((a,b)=>b.atk-a.atk)[idx%Math.max(1,gameEquipment.filter(x=>x.slot===slot).length)];if(best){await sb.from('game_equipment').update({equipped:true,owner_adventurer_id:h.id}).eq('id',best.id)}}
- await loadRoom();renderGuild();gameToastMsg('已自動裝備較佳裝備')
+ await loadRoom();render公會();gameToastMsg('已自動裝備較佳裝備')
 }
 async function challengeBoss(){
  const s=stageInfo(),kills=Number(gameMeta.stage_kills||0);if(!(kills>0&&kills%10===0))return;
@@ -891,12 +981,38 @@ async function challengeBoss(){
  if(seconds>30)return gameToastMsg(`戰力不足，預估需要 ${seconds.toFixed(1)} 秒，Boss 限時 30 秒`);
  monsterName.textContent=s.zone.boss;monsterSprite.textContent=s.zone.bossEmoji;currentMonsterMaxHp=bossHp;currentMonsterHp=bossHp;
  const gain=s.bossGold;let nz=Number(gameMeta.stage_zone||1),nn=Number(gameMeta.stage_number||1)+1;if(nn>10){nn=1;nz=Math.min(STAGE_ZONES.length,nz+1)}
- const upd={idle_gold:currentGold()+gain,stage_zone:nz,stage_number:nn,stage_kills:0,updated_at:new Date().toISOString()};await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};await generateEquipmentDrop(2.5);await loadRoom();currentMonsterMaxHp=0;currentMonsterHp=0;gameToastMsg(`Boss 擊破！+${gain.toLocaleString()} Gold，進入下一關`);renderGuild()
+ const upd={idle_gold:currentGold()+gain,stage_zone:nz,stage_number:nn,stage_kills:0,updated_at:new Date().toISOString()};await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};await generateEquipmentDrop(2.5);await loadRoom();currentMonsterMaxHp=0;currentMonsterHp=0;gameToastMsg(`Boss 擊破！+${gain.toLocaleString()} Gold，進入下一關`);render公會()
 }
 function renderWorldIdle(){
  const curZ=Number(gameMeta.stage_zone||1),curN=Number(gameMeta.stage_number||1);
- let out='';STAGE_ZONES.forEach((z,zi)=>{for(let n=1;n<=10;n++){const locked=(zi+1>curZ)||(zi+1===curZ&&n>curN),current=(zi+1===curZ&&n===curN);out+=`<div class="worldStage ${locked?'locked':''} ${current?'current':''}"><b>${zi+1}-${n} · ${z.zh}</b><small>${n===10?'Boss 關卡':'普通關卡'}${current?' · CURRENT':''}</small></div>`}});worldStages.innerHTML=out;
- const t=totals(),goal=Number(room.goal_twd||0),pct=goal?t.twd/goal*100:0;const ms=[['🌲','北境林道',t.twd>=50000,'累積 NT$50,000'],['🐉','古龍傳聞',t.twd>=100000,'累積 NT$100,000'],['🏘️','公會城市擴建',t.twd>=200000,'累積 NT$200,000'],['🗺️','第二章',pct>=50,'存錢目標 50%'],['🏆','M&C 紀念慶典',pct>=100&&goal>0,'存錢目標 100%']];idleMilestones.innerHTML=ms.map(x=>`<div class="idleMilestone ${x[2]?'done':''}"><b>${x[0]} ${x[1]}</b><small>${x[2]?'✓ 已解鎖 · ':''}${x[3]}</small></div>`).join('')
+ let out='';STAGE_ZONES.forEach((z,zi)=>{for(let n=1;n<=10;n++){const locked=(zi+1>curZ)||(zi+1===curZ&&n>curN),current=(zi+1===curZ&&n===curN);out+=`<div class="worldStage ${locked?'locked':''} ${current?'current':''}"><b>${zi+1}-${n} · ${z.zh}</b><small>${n===10?'區域首領關卡':'怪物波次關卡'}${current?' · 目前':''}</small></div>`}});worldStages.innerHTML=out;
+ const worked=realWorkedEntries();
+ const sorted=[...worked].sort((a,b)=>new Date(a.work_date)-new Date(b.work_date));
+ const t=realWorkedTotals(),goal=Number(room.goal_twd||0),pct=goal?t.twd/goal*100:0;
+ const uniqueDays=[...new Set(sorted.map(e=>e.work_date))];
+ let streak=0,maxStreak=0,prev=null;
+ for(const d of uniqueDays){const dt=new Date(d+'T00:00:00');if(prev&&((dt-prev)/86400000===1))streak++;else streak=1;maxStreak=Math.max(maxStreak,streak);prev=dt}
+ const byDay={};for(const e of worked){byDay[e.work_date]=byDay[e.work_date]||{h:0,aud:0};byDay[e.work_date].h+=Number(e.hours||0);byDay[e.work_date].aud+=Number(e.aud_income||0)}
+ const maxDayHours=Math.max(0,...Object.values(byDay).map(x=>x.h));
+ const maxDayAud=Math.max(0,...Object.values(byDay).map(x=>x.aud));
+ const byWeek={};for(const e of worked){const d=new Date(e.work_date+'T00:00:00');const monday=new Date(d);monday.setDate(d.getDate()-((d.getDay()+6)%7));const k=monday.toISOString().slice(0,10);byWeek[k]=byWeek[k]||{h:0,aud:0};byWeek[k].h+=Number(e.hours||0);byWeek[k].aud+=Number(e.aud_income||0)}
+ const maxWeekHours=Math.max(0,...Object.values(byWeek).map(x=>x.h));
+ const maxWeekAud=Math.max(0,...Object.values(byWeek).map(x=>x.aud));
+ const ms=[
+ ['🔥','連續奮戰 3 日',maxStreak>=3,'連續工作 3 天','💎 +80'],
+ ['🔥','連續奮戰 7 日',maxStreak>=7,'連續工作 7 天','限定稱號＋💎150'],
+ ['📅','百日公會紀錄',uniqueDays.length>=100,'累積工作 100 天','限定裝備箱'],
+ ['⏱️','長戰時刻',maxDayHours>=10,'單日工時達 10 小時','特殊藥劑'],
+ ['💰','豐收之日',maxDayAud>=300,'單日收入 A$300','💎100'],
+ ['⚔️','鋼鐵週',maxWeekHours>=40,'單週工時 40 小時','史詩裝備箱'],
+ ['💎','星痕週',maxWeekAud>=1200,'單週收入 A$1,200','💎300'],
+ ['🌲','北境林道',t.twd>=50000,'累積存款 NT$50,000','特殊地圖事件'],
+ ['🐉','古龍傳聞',t.twd>=100000,'累積存款 NT$100,000','Boss 挑戰券'],
+ ['🏘️','公會城市擴建',t.twd>=200000,'累積存款 NT$200,000','基地外觀'],
+ ['🗺️','第二章',pct>=50,'存錢目標 50%','章節解鎖'],
+ ['🏆','M&C 星痕慶典',pct>=100&&goal>0,'存錢目標 100%','限定翅膀＋稱號']
+ ];
+ idleMilestones.innerHTML=ms.map(x=>`<div class="idleMilestone ${x[2]?'done':''}"><b>${x[0]} ${x[1]}</b><small>${x[2]?'✓ 已達成 · ':''}${x[3]}</small><small style="color:#b79aff">獎勵：${x[4]}</small></div>`).join('')
 }
 function prepareOfflineRewards(){
  if(!gameMeta)return;const last=new Date(gameMeta.last_seen||new Date()).getTime(),now=Date.now(),seconds=Math.max(0,(now-last)/1000);if(seconds<30){offlinePending=null;return}
@@ -906,11 +1022,77 @@ function prepareOfflineRewards(){
 async function claimOfflineRewards(){
  if(!offlinePending)return;
  const addGold=offlinePending.gold;for(let i=0;i<Math.min(offlinePending.items,50);i++)await generateEquipmentDrop();
- const now=new Date().toISOString(),upd={idle_gold:currentGold()+addGold,last_seen:now,offline_claimed_at:now,updated_at:now};await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};offlinePending=null;await loadRoom();renderGuild();gameToastMsg(`離線收益 +${Math.floor(addGold).toLocaleString()} Gold`)
+ const now=new Date().toISOString(),upd={idle_gold:currentGold()+addGold,last_seen:now,offline_claimed_at:now,updated_at:now};await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};offlinePending=null;await loadRoom();render公會();gameToastMsg(`離線收益 +${Math.floor(addGold).toLocaleString()} Gold`)
 }
 function formatDuration(sec){sec=Math.floor(sec);const d=Math.floor(sec/86400),h=Math.floor(sec%86400/3600),m=Math.floor(sec%3600/60);return d?`${d}天 ${h}小時`:h?`${h}小時 ${m}分`:`${m}分`}
-function startGuildTicker(){if(guildTicker)clearInterval(guildTicker);if(idleTicker)clearInterval(idleTicker);lastBattleTick=Date.now();idleTicker=setInterval(battleTick,700);guildTicker=setInterval(async()=>{if(gameMeta){const now=new Date().toISOString();await sb.from('game_meta').update({last_seen:now}).eq('room_id',roomId);gameMeta.last_seen=now}},15000)}
+function start公會Ticker(){if(guildTicker)clearInterval(guildTicker);if(idleTicker)clearInterval(idleTicker);lastBattleTick=Date.now();idleTicker=setInterval(battleTick,700);guildTicker=setInterval(async()=>{if(gameMeta){const now=new Date().toISOString();await sb.from('game_meta').update({last_seen:now}).eq('room_id',roomId);gameMeta.last_seen=now}},15000)}
 window.addEventListener('beforeunload',()=>{if(sb&&roomId&&gameMeta)sb.from('game_meta').update({last_seen:new Date().toISOString()}).eq('room_id',roomId)})
+
+
+/* ===== 星痕公會 V3 資料 ===== */
+const V3_HEROES=[{"name": "亞修", "class_name": "戰士", "rarity_zh": "普通", "emoji": "🗡️", "base": 22, "speed": 1.0}, {"name": "凜夜", "class_name": "法師", "rarity_zh": "稀有", "emoji": "🔮", "base": 28, "speed": 0.95}, {"name": "賽德", "class_name": "弓箭手", "rarity_zh": "傳說", "emoji": "🏹", "base": 28, "speed": 1.31}, {"name": "雷昂", "class_name": "盜賊", "rarity_zh": "優秀", "emoji": "🗡", "base": 29, "speed": 1.47}, {"name": "黑羽", "class_name": "戰士", "rarity_zh": "史詩", "emoji": "🗡️", "base": 30, "speed": 1.12}, {"name": "蒼真", "class_name": "法師", "rarity_zh": "普通", "emoji": "🔮", "base": 36, "speed": 0.92}, {"name": "凱洛", "class_name": "弓箭手", "rarity_zh": "稀有", "emoji": "🏹", "base": 36, "speed": 1.28}, {"name": "夜刃", "class_name": "盜賊", "rarity_zh": "神話", "emoji": "🗡", "base": 23, "speed": 1.44}, {"name": "艾德", "class_name": "戰士", "rarity_zh": "優秀", "emoji": "🗡️", "base": 24, "speed": 1.09}, {"name": "赫爾", "class_name": "法師", "rarity_zh": "傳說", "emoji": "🔮", "base": 30, "speed": 1.04}, {"name": "奧蘭", "class_name": "弓箭手", "rarity_zh": "普通", "emoji": "🏹", "base": 30, "speed": 1.25}, {"name": "梵恩", "class_name": "盜賊", "rarity_zh": "史詩", "emoji": "🗡", "base": 31, "speed": 1.41}, {"name": "羅剎", "class_name": "戰士", "rarity_zh": "神話", "emoji": "🗡️", "base": 32, "speed": 1.06}, {"name": "炎牙", "class_name": "法師", "rarity_zh": "稀有", "emoji": "🔮", "base": 38, "speed": 1.01}, {"name": "希爾妲", "class_name": "弓箭手", "rarity_zh": "傳說", "emoji": "🏹", "base": 24, "speed": 1.37}, {"name": "露緹亞", "class_name": "盜賊", "rarity_zh": "優秀", "emoji": "🗡", "base": 25, "speed": 1.38}, {"name": "賽蕾娜", "class_name": "戰士", "rarity_zh": "史詩", "emoji": "🗡️", "base": 26, "speed": 1.03}, {"name": "霧華", "class_name": "法師", "rarity_zh": "普通", "emoji": "🔮", "base": 32, "speed": 0.98}, {"name": "伊莉絲", "class_name": "弓箭手", "rarity_zh": "稀有", "emoji": "🏹", "base": 32, "speed": 1.34}, {"name": "艾蕾娜", "class_name": "盜賊", "rarity_zh": "傳說", "emoji": "🗡", "base": 33, "speed": 1.5}, {"name": "星璃", "class_name": "戰士", "rarity_zh": "優秀", "emoji": "🗡️", "base": 34, "speed": 1.0}, {"name": "莉雅", "class_name": "法師", "rarity_zh": "史詩", "emoji": "🔮", "base": 26, "speed": 0.95}, {"name": "月詠", "class_name": "弓箭手", "rarity_zh": "普通", "emoji": "🏹", "base": 26, "speed": 1.31}, {"name": "緋音", "class_name": "盜賊", "rarity_zh": "稀有", "emoji": "🗡", "base": 27, "speed": 1.47}, {"name": "薇奧拉", "class_name": "戰士", "rarity_zh": "神話", "emoji": "🗡️", "base": 28, "speed": 1.12}, {"name": "洛希亞", "class_name": "法師", "rarity_zh": "優秀", "emoji": "🔮", "base": 34, "speed": 0.92}, {"name": "蒼月", "class_name": "弓箭手", "rarity_zh": "傳說", "emoji": "🏹", "base": 34, "speed": 1.28}, {"name": "奈菈", "class_name": "盜賊", "rarity_zh": "普通", "emoji": "🗡", "base": 35, "speed": 1.44}, {"name": "艾爾文", "class_name": "戰士", "rarity_zh": "史詩", "emoji": "🗡️", "base": 22, "speed": 1.09}, {"name": "菲歐娜", "class_name": "法師", "rarity_zh": "神話", "emoji": "🔮", "base": 28, "speed": 1.04}, {"name": "亞緹斯", "class_name": "弓箭手", "rarity_zh": "稀有", "emoji": "🏹", "base": 28, "speed": 1.25}, {"name": "修恩", "class_name": "盜賊", "rarity_zh": "傳說", "emoji": "🗡", "base": 29, "speed": 1.41}, {"name": "塔莉亞", "class_name": "戰士", "rarity_zh": "優秀", "emoji": "🗡️", "base": 30, "speed": 1.06}, {"name": "克羅伊", "class_name": "法師", "rarity_zh": "史詩", "emoji": "🔮", "base": 36, "speed": 1.01}, {"name": "諾艾爾", "class_name": "弓箭手", "rarity_zh": "普通", "emoji": "🏹", "base": 36, "speed": 1.37}, {"name": "瑟菲", "class_name": "盜賊", "rarity_zh": "稀有", "emoji": "🗡", "base": 23, "speed": 1.38}, {"name": "瑞恩", "class_name": "戰士", "rarity_zh": "傳說", "emoji": "🗡️", "base": 24, "speed": 1.03}, {"name": "卡西爾", "class_name": "法師", "rarity_zh": "優秀", "emoji": "🔮", "base": 30, "speed": 0.98}, {"name": "伊芙琳", "class_name": "弓箭手", "rarity_zh": "史詩", "emoji": "🏹", "base": 30, "speed": 1.34}, {"name": "迪恩", "class_name": "盜賊", "rarity_zh": "普通", "emoji": "🗡", "base": 31, "speed": 1.5}, {"name": "露娜", "class_name": "戰士", "rarity_zh": "稀有", "emoji": "🗡️", "base": 32, "speed": 1.0}, {"name": "維克", "class_name": "法師", "rarity_zh": "神話", "emoji": "🔮", "base": 38, "speed": 0.95}, {"name": "烏爾", "class_name": "弓箭手", "rarity_zh": "優秀", "emoji": "🏹", "base": 24, "speed": 1.31}, {"name": "瑪瑙", "class_name": "盜賊", "rarity_zh": "傳說", "emoji": "🗡", "base": 25, "speed": 1.47}, {"name": "凱因", "class_name": "戰士", "rarity_zh": "普通", "emoji": "🗡️", "base": 26, "speed": 1.12}, {"name": "艾斯塔", "class_name": "法師", "rarity_zh": "史詩", "emoji": "🔮", "base": 32, "speed": 0.92}, {"name": "澪", "class_name": "弓箭手", "rarity_zh": "神話", "emoji": "🏹", "base": 32, "speed": 1.28}, {"name": "緋月", "class_name": "盜賊", "rarity_zh": "稀有", "emoji": "🗡", "base": 33, "speed": 1.44}, {"name": "白夜", "class_name": "戰士", "rarity_zh": "傳說", "emoji": "🗡️", "base": 34, "speed": 1.09}, {"name": "紫苑", "class_name": "法師", "rarity_zh": "優秀", "emoji": "🔮", "base": 26, "speed": 1.04}, {"name": "奧菲莉亞", "class_name": "弓箭手", "rarity_zh": "史詩", "emoji": "🏹", "base": 26, "speed": 1.25}, {"name": "賽勒斯", "class_name": "盜賊", "rarity_zh": "普通", "emoji": "🗡", "base": 27, "speed": 1.41}, {"name": "雷文", "class_name": "戰士", "rarity_zh": "稀有", "emoji": "🗡️", "base": 28, "speed": 1.06}, {"name": "阿爾忒", "class_name": "法師", "rarity_zh": "傳說", "emoji": "🔮", "base": 34, "speed": 1.01}, {"name": "薩菲爾", "class_name": "弓箭手", "rarity_zh": "優秀", "emoji": "🏹", "base": 34, "speed": 1.37}, {"name": "伊格尼斯", "class_name": "盜賊", "rarity_zh": "史詩", "emoji": "🗡", "base": 35, "speed": 1.38}];
+const V3_EQUIPMENT=[{"name": "星蝕大劍", "slot": "主武器", "rarity": "普通", "level": 1, "atk": 8, "crit": 0.0, "speed": 0.0}, {"name": "星蝕魔導書", "slot": "副武器", "rarity": "優秀", "level": 2, "atk": 11, "crit": 0.005, "speed": 0.004}, {"name": "星蝕風帽", "slot": "頭盔", "rarity": "稀有", "level": 3, "atk": 14, "crit": 0.01, "speed": 0.008}, {"name": "星蝕夜行衣", "slot": "盔甲", "rarity": "史詩", "level": 4, "atk": 17, "crit": 0.015, "speed": 0.012}, {"name": "星蝕戰手", "slot": "手套", "rarity": "普通", "level": 5, "atk": 20, "crit": 0.02, "speed": 0.016}, {"name": "星蝕秘術腰帶", "slot": "腰帶", "rarity": "優秀", "level": 6, "atk": 23, "crit": 0.025, "speed": 0.02}, {"name": "星蝕疾風靴", "slot": "鞋子", "rarity": "稀有", "level": 7, "atk": 26, "crit": 0.03, "speed": 0.024}, {"name": "星蝕暗影墜飾", "slot": "項鍊", "rarity": "傳說", "level": 8, "atk": 29, "crit": 0.035, "speed": 0.0}, {"name": "夜燼大劍", "slot": "主武器", "rarity": "普通", "level": 9, "atk": 32, "crit": 0.04, "speed": 0.004}, {"name": "夜燼魔導書", "slot": "副武器", "rarity": "優秀", "level": 10, "atk": 35, "crit": 0.0, "speed": 0.008}, {"name": "夜燼風帽", "slot": "頭盔", "rarity": "史詩", "level": 11, "atk": 38, "crit": 0.005, "speed": 0.012}, {"name": "夜燼夜行衣", "slot": "盔甲", "rarity": "傳說", "level": 12, "atk": 41, "crit": 0.01, "speed": 0.016}, {"name": "夜燼戰手", "slot": "手套", "rarity": "普通", "level": 13, "atk": 44, "crit": 0.015, "speed": 0.02}, {"name": "夜燼秘術腰帶", "slot": "腰帶", "rarity": "稀有", "level": 14, "atk": 47, "crit": 0.02, "speed": 0.024}, {"name": "夜燼疾風靴", "slot": "鞋子", "rarity": "史詩", "level": 15, "atk": 50, "crit": 0.025, "speed": 0.0}, {"name": "夜燼暗影墜飾", "slot": "項鍊", "rarity": "傳說", "level": 16, "atk": 53, "crit": 0.03, "speed": 0.004}, {"name": "蒼雷大劍", "slot": "主武器", "rarity": "優秀", "level": 17, "atk": 56, "crit": 0.035, "speed": 0.008}, {"name": "蒼雷魔導書", "slot": "副武器", "rarity": "稀有", "level": 18, "atk": 8, "crit": 0.04, "speed": 0.012}, {"name": "蒼雷風帽", "slot": "頭盔", "rarity": "史詩", "level": 19, "atk": 11, "crit": 0.0, "speed": 0.016}, {"name": "蒼雷夜行衣", "slot": "盔甲", "rarity": "普通", "level": 20, "atk": 14, "crit": 0.005, "speed": 0.02}, {"name": "蒼雷戰手", "slot": "手套", "rarity": "優秀", "level": 21, "atk": 17, "crit": 0.01, "speed": 0.024}, {"name": "蒼雷秘術腰帶", "slot": "腰帶", "rarity": "稀有", "level": 22, "atk": 20, "crit": 0.015, "speed": 0.0}, {"name": "蒼雷疾風靴", "slot": "鞋子", "rarity": "史詩", "level": 23, "atk": 23, "crit": 0.02, "speed": 0.004}, {"name": "蒼雷暗影墜飾", "slot": "項鍊", "rarity": "普通", "level": 24, "atk": 26, "crit": 0.025, "speed": 0.008}, {"name": "緋月大劍", "slot": "主武器", "rarity": "優秀", "level": 25, "atk": 29, "crit": 0.03, "speed": 0.012}, {"name": "緋月魔導書", "slot": "副武器", "rarity": "稀有", "level": 26, "atk": 32, "crit": 0.035, "speed": 0.016}, {"name": "緋月風帽", "slot": "頭盔", "rarity": "傳說", "level": 27, "atk": 35, "crit": 0.04, "speed": 0.02}, {"name": "緋月夜行衣", "slot": "盔甲", "rarity": "普通", "level": 28, "atk": 38, "crit": 0.0, "speed": 0.024}, {"name": "緋月戰手", "slot": "手套", "rarity": "優秀", "level": 29, "atk": 41, "crit": 0.005, "speed": 0.0}, {"name": "緋月秘術腰帶", "slot": "腰帶", "rarity": "史詩", "level": 30, "atk": 44, "crit": 0.01, "speed": 0.004}, {"name": "緋月疾風靴", "slot": "鞋子", "rarity": "傳說", "level": 31, "atk": 47, "crit": 0.015, "speed": 0.008}, {"name": "緋月暗影墜飾", "slot": "項鍊", "rarity": "普通", "level": 32, "atk": 50, "crit": 0.02, "speed": 0.012}, {"name": "冥河大劍", "slot": "主武器", "rarity": "稀有", "level": 33, "atk": 53, "crit": 0.025, "speed": 0.016}, {"name": "冥河魔導書", "slot": "副武器", "rarity": "史詩", "level": 34, "atk": 56, "crit": 0.03, "speed": 0.02}, {"name": "冥河風帽", "slot": "頭盔", "rarity": "傳說", "level": 35, "atk": 8, "crit": 0.035, "speed": 0.024}, {"name": "冥河夜行衣", "slot": "盔甲", "rarity": "優秀", "level": 36, "atk": 11, "crit": 0.04, "speed": 0.0}, {"name": "冥河戰手", "slot": "手套", "rarity": "稀有", "level": 37, "atk": 14, "crit": 0.0, "speed": 0.004}, {"name": "冥河秘術腰帶", "slot": "腰帶", "rarity": "史詩", "level": 38, "atk": 17, "crit": 0.005, "speed": 0.008}, {"name": "冥河疾風靴", "slot": "鞋子", "rarity": "普通", "level": 39, "atk": 20, "crit": 0.01, "speed": 0.012}, {"name": "冥河暗影墜飾", "slot": "項鍊", "rarity": "優秀", "level": 40, "atk": 23, "crit": 0.015, "speed": 0.016}, {"name": "霜鋒大劍", "slot": "主武器", "rarity": "稀有", "level": 41, "atk": 26, "crit": 0.02, "speed": 0.02}, {"name": "霜鋒魔導書", "slot": "副武器", "rarity": "史詩", "level": 42, "atk": 29, "crit": 0.025, "speed": 0.024}, {"name": "霜鋒風帽", "slot": "頭盔", "rarity": "普通", "level": 43, "atk": 32, "crit": 0.03, "speed": 0.0}, {"name": "霜鋒夜行衣", "slot": "盔甲", "rarity": "優秀", "level": 44, "atk": 35, "crit": 0.035, "speed": 0.004}, {"name": "霜鋒戰手", "slot": "手套", "rarity": "稀有", "level": 45, "atk": 38, "crit": 0.04, "speed": 0.008}, {"name": "霜鋒秘術腰帶", "slot": "腰帶", "rarity": "傳說", "level": 46, "atk": 41, "crit": 0.0, "speed": 0.012}, {"name": "霜鋒疾風靴", "slot": "鞋子", "rarity": "普通", "level": 47, "atk": 44, "crit": 0.005, "speed": 0.016}, {"name": "霜鋒暗影墜飾", "slot": "項鍊", "rarity": "優秀", "level": 48, "atk": 47, "crit": 0.01, "speed": 0.02}, {"name": "黑曜大劍", "slot": "主武器", "rarity": "史詩", "level": 49, "atk": 50, "crit": 0.015, "speed": 0.024}, {"name": "黑曜魔導書", "slot": "副武器", "rarity": "傳說", "level": 50, "atk": 53, "crit": 0.02, "speed": 0.0}, {"name": "黑曜風帽", "slot": "頭盔", "rarity": "普通", "level": 1, "atk": 56, "crit": 0.025, "speed": 0.004}, {"name": "黑曜夜行衣", "slot": "盔甲", "rarity": "稀有", "level": 2, "atk": 8, "crit": 0.03, "speed": 0.008}, {"name": "黑曜戰手", "slot": "手套", "rarity": "史詩", "level": 3, "atk": 11, "crit": 0.035, "speed": 0.012}, {"name": "黑曜秘術腰帶", "slot": "腰帶", "rarity": "傳說", "level": 4, "atk": 14, "crit": 0.04, "speed": 0.016}, {"name": "黑曜疾風靴", "slot": "鞋子", "rarity": "優秀", "level": 5, "atk": 17, "crit": 0.0, "speed": 0.02}, {"name": "黑曜暗影墜飾", "slot": "項鍊", "rarity": "稀有", "level": 6, "atk": 20, "crit": 0.005, "speed": 0.024}, {"name": "聖痕大劍", "slot": "主武器", "rarity": "史詩", "level": 7, "atk": 23, "crit": 0.01, "speed": 0.0}, {"name": "聖痕魔導書", "slot": "副武器", "rarity": "普通", "level": 8, "atk": 26, "crit": 0.015, "speed": 0.004}, {"name": "聖痕風帽", "slot": "頭盔", "rarity": "優秀", "level": 9, "atk": 29, "crit": 0.02, "speed": 0.008}, {"name": "聖痕夜行衣", "slot": "盔甲", "rarity": "稀有", "level": 10, "atk": 32, "crit": 0.025, "speed": 0.012}, {"name": "聖痕戰手", "slot": "手套", "rarity": "史詩", "level": 11, "atk": 35, "crit": 0.03, "speed": 0.016}, {"name": "聖痕秘術腰帶", "slot": "腰帶", "rarity": "普通", "level": 12, "atk": 38, "crit": 0.035, "speed": 0.02}, {"name": "聖痕疾風靴", "slot": "鞋子", "rarity": "優秀", "level": 13, "atk": 41, "crit": 0.04, "speed": 0.024}, {"name": "聖痕暗影墜飾", "slot": "項鍊", "rarity": "稀有", "level": 14, "atk": 44, "crit": 0.0, "speed": 0.0}, {"name": "裂空大劍", "slot": "主武器", "rarity": "傳說", "level": 15, "atk": 47, "crit": 0.005, "speed": 0.004}, {"name": "裂空魔導書", "slot": "副武器", "rarity": "普通", "level": 16, "atk": 50, "crit": 0.01, "speed": 0.008}, {"name": "裂空風帽", "slot": "頭盔", "rarity": "優秀", "level": 17, "atk": 53, "crit": 0.015, "speed": 0.012}, {"name": "裂空夜行衣", "slot": "盔甲", "rarity": "史詩", "level": 18, "atk": 56, "crit": 0.02, "speed": 0.016}, {"name": "裂空戰手", "slot": "手套", "rarity": "傳說", "level": 19, "atk": 8, "crit": 0.025, "speed": 0.02}, {"name": "裂空秘術腰帶", "slot": "腰帶", "rarity": "普通", "level": 20, "atk": 11, "crit": 0.03, "speed": 0.024}, {"name": "裂空疾風靴", "slot": "鞋子", "rarity": "稀有", "level": 21, "atk": 14, "crit": 0.035, "speed": 0.0}, {"name": "裂空暗影墜飾", "slot": "項鍊", "rarity": "史詩", "level": 22, "atk": 17, "crit": 0.04, "speed": 0.004}, {"name": "幽魂大劍", "slot": "主武器", "rarity": "傳說", "level": 23, "atk": 20, "crit": 0.0, "speed": 0.008}, {"name": "幽魂魔導書", "slot": "副武器", "rarity": "優秀", "level": 24, "atk": 23, "crit": 0.005, "speed": 0.012}, {"name": "幽魂風帽", "slot": "頭盔", "rarity": "稀有", "level": 25, "atk": 26, "crit": 0.01, "speed": 0.016}, {"name": "幽魂夜行衣", "slot": "盔甲", "rarity": "史詩", "level": 26, "atk": 29, "crit": 0.015, "speed": 0.02}, {"name": "幽魂戰手", "slot": "手套", "rarity": "普通", "level": 27, "atk": 32, "crit": 0.02, "speed": 0.024}, {"name": "幽魂秘術腰帶", "slot": "腰帶", "rarity": "優秀", "level": 28, "atk": 35, "crit": 0.025, "speed": 0.0}, {"name": "幽魂疾風靴", "slot": "鞋子", "rarity": "稀有", "level": 29, "atk": 38, "crit": 0.03, "speed": 0.004}, {"name": "幽魂暗影墜飾", "slot": "項鍊", "rarity": "史詩", "level": 30, "atk": 41, "crit": 0.035, "speed": 0.008}, {"name": "天隕大劍", "slot": "主武器", "rarity": "普通", "level": 31, "atk": 44, "crit": 0.04, "speed": 0.012}, {"name": "天隕魔導書", "slot": "副武器", "rarity": "優秀", "level": 32, "atk": 47, "crit": 0.0, "speed": 0.016}, {"name": "天隕風帽", "slot": "頭盔", "rarity": "稀有", "level": 33, "atk": 50, "crit": 0.005, "speed": 0.02}, {"name": "天隕夜行衣", "slot": "盔甲", "rarity": "傳說", "level": 34, "atk": 53, "crit": 0.01, "speed": 0.024}, {"name": "天隕戰手", "slot": "手套", "rarity": "普通", "level": 35, "atk": 56, "crit": 0.015, "speed": 0.0}, {"name": "天隕秘術腰帶", "slot": "腰帶", "rarity": "優秀", "level": 36, "atk": 8, "crit": 0.02, "speed": 0.004}, {"name": "天隕疾風靴", "slot": "鞋子", "rarity": "史詩", "level": 37, "atk": 11, "crit": 0.025, "speed": 0.008}, {"name": "天隕暗影墜飾", "slot": "項鍊", "rarity": "傳說", "level": 38, "atk": 14, "crit": 0.03, "speed": 0.012}];
+const V3_JOB_PATHS={"戰士": [{"lv": 30, "name": "劍鬥士", "skills": ["旋風斬", "戰意爆發", "破甲斬"]}, {"lv": 60, "name": "狂戰領主", "skills": ["血怒風暴", "斷嶽斬", "不屈戰魂"]}, {"lv": 90, "name": "黑曜劍皇", "skills": ["終焉十字", "魔神化", "劍域"]}, {"lv": 120, "name": "星痕武神", "skills": ["天墜斬", "戰神領域", "不滅鬥志"]}], "法師": [{"lv": 30, "name": "元素使", "skills": ["炎爆術", "冰霜新星", "雷鏈"]}, {"lv": 60, "name": "秘法導師", "skills": ["隕石雨", "虛空雷獄", "魔力增幅"]}, {"lv": 90, "name": "深淵賢者", "skills": ["黑洞", "靈魂灼燒", "禁咒"]}, {"lv": 120, "name": "星界魔皇", "skills": ["星墜天災", "時間停滯", "無限魔力"]}], "弓箭手": [{"lv": 30, "name": "遊俠", "skills": ["連環箭", "穿透射擊", "獵人印記"]}, {"lv": 60, "name": "風暴神射", "skills": ["箭雨", "風神步", "弱點狙擊"]}, {"lv": 90, "name": "蒼穹獵王", "skills": ["天翔箭陣", "追魂矢", "鷹眼領域"]}, {"lv": 120, "name": "星痕聖弓", "skills": ["星河箭雨", "終極狙殺", "無盡箭魂"]}], "盜賊": [{"lv": 30, "name": "影行者", "skills": ["背刺", "毒刃", "瞬步"]}, {"lv": 60, "name": "夜刃宗師", "skills": ["影舞連斬", "致命毒霧", "暗殺標記"]}, {"lv": 90, "name": "冥影君王", "skills": ["幻影分身", "千刃夜雨", "死角掌握"]}, {"lv": 120, "name": "星痕夜皇", "skills": ["無月絕殺", "影界降臨", "瞬獄連閃"]}]};
+const V3_SLOTS=["主武器", "副武器", "頭盔", "盔甲", "手套", "腰帶", "鞋子", "項鍊"];
+
+function v3RarityClass(r){
+  const m={'普通':'COMMON','優秀':'UNCOMMON','稀有':'RARE','史詩':'EPIC','傳說':'LEGENDARY','神話':'MYTHIC'};
+  return m[r]||'COMMON';
+}
+function v3HeroDef(a){
+  return V3_HEROES.find(x=>x.name===a.name)||{name:a.name,class_name:a.class_name,rarity_zh:a.rarity,emoji:advEmoji(a),base:18,speed:1};
+}
+function v3JobStage(a){
+  const path=V3_JOB_PATHS[a.class_name]||[];
+  let current={lv:1,name:a.class_name,skills:[]};
+  for(const p of path)if(Number(a.level||1)>=p.lv)current=p;
+  return current;
+}
+function v3NextJob(a){
+  return (V3_JOB_PATHS[a.class_name]||[]).find(p=>Number(a.level||1)<p.lv)||null;
+}
+function v3Skills(a){
+  const cur=v3JobStage(a);
+  const base={'戰士':['重斬','戰吼'],'法師':['魔法飛彈','魔力護盾'],'弓箭手':['連射','鷹眼'],'盜賊':['雙刃斬','疾走']}[a.class_name]||[];
+  return [...base,...(cur.skills||[])].slice(-4);
+}
+function renderHeroes(){
+  heroCountBadge.textContent=`${gameAdventurers.length} 名冒險家`;
+  idleHeroGrid.innerHTML=[...gameAdventurers].sort((a,b)=>heroPower(b)-heroPower(a)).map(a=>{
+    const d=v3HeroDef(a),p=heroPower(a),job=v3JobStage(a),next=v3NextJob(a),skills=v3Skills(a);
+    const eq=gameEquipment.filter(x=>x.owner_adventurer_id===a.id&&x.equipped);
+    const slots=V3_SLOTS.map(s=>{const e=eq.find(x=>x.slot===s);return `<div class="equipSlot">${e?'◆':'◇'}<br>${s}</div>`}).join('');
+    return `<div class="heroCard">
+      <div class="heroPortrait">${d.emoji}</div>
+      <div class="row"><h4>${esc(a.name)}</h4><span class="rarityPill r-${v3RarityClass(d.rarity_zh)}">${d.rarity_zh}</span></div>
+      <div class="heroMeta">${a.class_name} → ${job.name} · Lv.${a.level}</div>
+      <div class="jobPath">${next?`Lv.${next.lv} 可轉職：${next.name}`:'已達目前最高轉職'}</div>
+      <div class="heroStats"><div><span>攻擊</span><b>${formatBig(p)}</b></div><div><span>攻速</span><b>${(d.speed||1).toFixed(2)}</b></div></div>
+      <div class="skillPreview">${skills.map(s=>`<div class="skillLine">✦ ${s}</div>`).join('')}</div>
+      <div class="equipSlots">${slots}</div>
+      <button class="idleBtn" style="width:100%;margin-top:7px" onclick="levelHero('${a.id}')">升級 · 🪙 ${heroLevelCost(a).toLocaleString()}</button>
+    </div>`
+  }).join('')
+}
+function renderRecruit(){
+  recruitCounter.textContent=`累積招募 ${Number(gameMeta?.recruit_count||0)} 次 · 可用 💎 ${premiumAvailable().toLocaleString()}`;
+  recruitShowcase.innerHTML=V3_HEROES.filter((_,i)=>i%5===0).slice(0,12).map(h=>`<div class="showHero"><div class="pic">${h.emoji}</div><b>${h.name}</b><small class="r-${v3RarityClass(h.rarity_zh)}">${h.rarity_zh} · ${h.class_name}</small></div>`).join('')
+}
+function renderLoot(){
+  if(!gameEquipment.length){lootInventory.innerHTML='<div class="heroMeta">尚未獲得裝備。持續戰鬥、Boss 與裝備招募都能取得。</div>';return}
+  lootInventory.innerHTML=gameEquipment.slice(0,80).map(x=>`<div class="lootItem"><div class="lootIcon">${x.slot==='主武器'?'🗡️':x.slot==='副武器'?'🔱':x.slot==='頭盔'?'🪖':x.slot==='盔甲'?'🥋':x.slot==='手套'?'🧤':x.slot==='腰帶'?'🧷':x.slot==='鞋子'?'🥾':'💠'}</div><b class="r-${v3RarityClass(x.rarity)}">${x.rarity} · ${x.slot}</b><small>Lv.${x.item_level} · 攻擊 +${x.atk}</small><small>${x.equipped?'✓ 已裝備':''}</small></div>`).join('')
+}
+function renderIdleGuild(){
+  idleBuildingList.innerHTML=IDLE_BUILDINGS.map(d=>{
+    const lv=buildingLv(d.key),cost=idleBuildingCost(d.key,lv),tier=Math.min(4,Math.floor(lv/10)+1);
+    let unlock='Lv.5：被動效果提升';
+    if(lv>=10)unlock='Lv.10：外觀進化＋特殊能力';
+    if(lv>=20)unlock='Lv.20：外觀再進化＋功能強化';
+    if(lv>=30)unlock='Lv.30：高階公會能力';
+    return `<div class="idleBuilding"><div class="idleBuildingArt tier${tier}"></div><div class="row2"><div><b>${d.icon} ${d.name}</b><small>Lv.${lv}</small></div><button class="idleBtn primary" onclick="upgradeIdleBuilding('${d.key}')">升級</button></div><small>${d.desc}</small><div style="margin-top:5px;font-size:9px;color:#a993ff">${unlock}</div><div style="margin-top:6px;font-size:9px">🪙 ${cost.toLocaleString()}</div></div>`
+  }).join('');
+  idleMasters.innerHTML=workers.slice(0,2).map((w,i)=>{const t=realWorkedTotals(realWorkedEntries().filter(e=>e.worker_id===w.id)),lv=masterLevelFromXp(Math.floor(t.hours*10));return `<div class="masterIdle"><div class="portrait">${i===0?'🜲':'✦'}</div><div><b>${esc(w.name)} · 公會長 Lv.${lv}</b><small>真實工作 ${t.hours.toFixed(1)} 小時 · 永久被動成長</small></div></div>`}).join('')
+}
 
 function renderHome(){
   const t=totals(),goalN=Number(room.goal_twd)||0,rem=Math.max(0,goalN-t.twd),pc=goalN?Math.min(100,t.twd/goalN*100):0;
@@ -926,11 +1108,81 @@ function drawChart(){
   if(chart)chart.destroy();
   chart=new Chart(ctx,{type:'bar',data:{labels:months.map(x=>x.slice(5)+'月'),datasets:workers.slice(0,4).map(w=>({label:w.name,data:months.map(m=>totals(entries.filter(e=>e.worker_id===w.id&&e.work_date.startsWith(m))).aud)}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},scales:{y:{beginAtZero:true}}}})
 }
+
+async function toggleCheckin(entryId,shouldCheckIn){
+  const e=entries.find(x=>x.id===entryId); if(!e)return;
+
+  if(shouldCheckIn){
+    const workEnd=new Date(e.work_date+'T23:59:59');
+    if(workEnd>new Date()){
+      alert('這是未來的班表，工作日期到達後才能簽到。');
+      return;
+    }
+    if(!confirm(`確認這班真的有去上班嗎？\n\n${e.work_date} · ${Number(e.hours||0).toFixed(2)} 小時\n\n簽到後才會計入《星痕公會》的真實工作資料。`))return;
+    const {data:{user}}=await sb.auth.getUser();
+    const now=new Date().toISOString();
+    const r=await sb.from('entries').update({
+      checked_in:true,
+      checked_in_at:now,
+      checked_in_by:user?.id||null
+    }).eq('id',entryId);
+    if(r.error){alert(r.error.message);return}
+    e.checked_in=true;e.checked_in_at=now;e.checked_in_by=user?.id||null;
+    gameToastMsg?.('✓ 已簽到，這班現在會計入星痕公會');
+  }else{
+    if(!confirm('要取消這筆簽到嗎？\n取消後，這班會從遊戲的真實工作統計中移除。'))return;
+    const r=await sb.from('entries').update({
+      checked_in:false,
+      checked_in_at:null,
+      checked_in_by:null
+    }).eq('id',entryId);
+    if(r.error){alert(r.error.message);return}
+    e.checked_in=false;e.checked_in_at=null;e.checked_in_by=null;
+  }
+  renderAll();
+}
+function realWorkedEntries(){
+  return entries.filter(e=>e.checked_in===true);
+}
+function realWorkedTotals(list=null){
+  return totals(list||realWorkedEntries());
+}
+
 function renderRecords(){
-  const key=mk(viewMonth);monthTitle.textContent=`${viewMonth.getFullYear()} 年 ${viewMonth.getMonth()+1} 月`;monthPick.value=key;
-  const a=entries.filter(e=>e.work_date.startsWith(key)).sort((x,y)=>x.work_date.localeCompare(y.work_date));
-  tbody.innerHTML=a.length?a.map(e=>`<tr><td>${e.work_date}</td><td>${esc(e.worker_name)}</td><td>${esc(e.store)}</td><td>${esc(e.role)}</td><td>${awardName(e.award_code)}</td><td>${e.day_type}</td><td class="num">${Number(e.hours).toFixed(2)}</td><td class="num">×${Number(e.penalty_multiplier).toFixed(2)}</td><td class="num">${moneyAUD(e.applied_hourly_rate)}</td><td class="num">${moneyAUD(e.aud_income)}</td><td class="num">${Number(e.fx_aud_twd).toFixed(4)}</td><td class="num">${moneyTWD(e.twd_income)}</td><td><button class="btn red small" onclick="deleteEntry('${e.id}')">刪除</button></td></tr>`).join(''):'<tr><td colspan="13" class="empty">這個月還沒有紀錄。</td></tr>';
-  const t=totals(a);mHours.textContent=t.hours.toFixed(2)+' h';mAud.textContent=moneyAUD(t.aud);mTwd.textContent=moneyTWD(t.twd)
+  const y=viewMonth.getFullYear(),m=viewMonth.getMonth(),monthKey=`${y}-${String(m+1).padStart(2,'0')}`;
+  const rows=entries.filter(e=>String(e.work_date||'').startsWith(monthKey));
+  const tb=document.getElementById('recordsBody');
+  if(!tb)return;
+  tb.innerHTML=rows.length?rows.map(e=>{
+    const w=workers.find(x=>x.id===e.worker_id),j=jobs.find(x=>x.id===e.job_id);
+    const isFuture=new Date(e.work_date+'T23:59:59')>new Date() && !e.checked_in;
+    const btn=e.checked_in
+      ? `<button class="checkinBtn done" onclick="toggleCheckin('${e.id}',false)"><span class="checkinDot"></span>已簽到</button>`
+      : `<button class="checkinBtn ${isFuture?'future':''}" ${isFuture?'disabled title="工作日期還沒到"':''} onclick="toggleCheckin('${e.id}',true)"><span class="checkinDot"></span>簽到</button>`;
+    return `<tr class="${e.checked_in?'checkedInRow':''}">
+      <td>${btn}</td>
+      <td>${esc(e.work_date||'')}</td>
+      <td>${esc(w?.name||'')}</td>
+      <td>${esc(j?.store||'')}</td>
+      <td>${esc(j?.role||'')}</td>
+      <td>${esc(j?.award_name||j?.award_code||'')}</td>
+      <td>${esc(e.day_type||'')}</td>
+      <td>${Number(e.hours||0).toFixed(2)}</td>
+      <td>×${Number(e.penalty_multiplier||1).toFixed(2)}</td>
+      <td>$${Number(e.applied_hourly_rate||0).toFixed(2)}</td>
+      <td>$${Number(e.aud_income||0).toFixed(2)}</td>
+      <td>${Number(e.fx_aud_twd||0).toFixed(4)}</td>
+      <td>$${Math.round(Number(e.twd_income||0)).toLocaleString()}</td>
+      <td><span class="statusTag ${e.checked_in?'worked':'planned'}">${e.checked_in?'已出勤':'預排'}</span></td>
+      <td><button class="danger small" onclick="deleteEntry('${e.id}')">刪除</button></td>
+    </tr>`
+  }).join(''):`<tr><td colspan="15" class="empty">這個月份還沒有紀錄。</td></tr>`;
+
+  const mt=totals(rows);
+  const h=document.getElementById('monthHours'),a=document.getElementById('monthAud'),t=document.getElementById('monthTwd');
+  if(h)h.textContent=mt.hours.toFixed(2)+' h';
+  if(a)a.textContent='$'+mt.aud.toFixed(2);
+  if(t)t.textContent='$'+Math.round(mt.twd).toLocaleString();
 }
 function shiftMonth(n){viewMonth.setMonth(viewMonth.getMonth()+n);renderRecords()}function pickMonth(v){if(!v)return;const[y,m]=v.split('-').map(Number);viewMonth=new Date(y,m-1,1);renderRecords()}
 function renderSettings(){
@@ -988,5 +1240,6 @@ if ("serviceWorker" in navigator) {
 }
 </script>
 
+<script src="v4.js"></script>
 </body>
 </html>

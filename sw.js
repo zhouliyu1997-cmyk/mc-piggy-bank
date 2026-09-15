@@ -1,8 +1,12 @@
 
-const CACHE = "mc-piggy-pwa-v6-idle-rpg";
+const CACHE = "mc-piggy-pwa-v9-starfall-complete";
 const APP_SHELL = [
   "./",
   "./index.html",
+  "./v4.js",
+  "./assets/guild_hub.jpg",
+  "./assets/battle_bg.jpg",
+  "./assets/recruit_bg.jpg",
   "./config.js",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
