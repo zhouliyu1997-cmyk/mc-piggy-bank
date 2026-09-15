@@ -404,6 +404,135 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
 .v6-loot-rule{margin:8px 0;padding:8px 9px;border:1px solid #2d3746;border-radius:8px;background:#0a0e14;color:#9ea7b6;font-size:8px;line-height:1.55}
 .v6-zone-tag{display:inline-block;margin-top:4px;padding:3px 6px;border:1px solid #384253;border-radius:99px;font-size:7px;color:#b6c0d0}
 
+
+/* ===== V7 Art Pass / Visual Rebuild ===== */
+:root{
+  --v7-frame:#31425b;
+  --v7-gold:#d3b07a;
+  --v7-panel:#0b1017;
+}
+body{
+  background:
+    radial-gradient(circle at top right, rgba(245,227,170,.13), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(156,104,219,.10), transparent 24%),
+    linear-gradient(180deg,#efe7e3 0%,#f4ece7 100%);
+}
+.sg-shell{
+  box-shadow:0 24px 64px rgba(22,18,30,.18);
+}
+.sg-card,.sg-panel,.v4WorldStage,.v4PartyItem,.v4Milestone,.sg-stat,.sg-nav-item,.v4RoleCard,.v4EqCard{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0)),
+    linear-gradient(180deg,#0f1521 0%,#091018 100%) !important;
+  border:1px solid rgba(141,170,214,.22) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 12px 24px rgba(0,0,0,.18);
+}
+.sg-section-title,.sg-panel-title span,.hero-title,.v4PanelTitle{
+  letter-spacing:.02em;
+}
+#guildPage .sg-hero,
+#guildPage .sg-banner,
+#guildPage .sg-page-hero,
+#guildPage .sg-page-header,
+#guildPage .v4TopBanner{
+  background:
+    linear-gradient(90deg,rgba(8,11,17,.88),rgba(8,11,17,.55)),
+    url('assets_v7/guild_main_bg.png') center/cover no-repeat !important;
+  border:1px solid rgba(211,176,122,.25);
+}
+.v7-rich-panel{
+  position:relative;
+  overflow:hidden;
+}
+.v7-rich-panel::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    linear-gradient(180deg,rgba(5,8,14,.32),rgba(5,8,14,.70)),
+    var(--panel-art, none) center/cover no-repeat;
+  opacity:.94;
+  pointer-events:none;
+}
+.v7-rich-panel > *{ position:relative; z-index:1; }
+
+#v7BattleSkin{
+  position:absolute; inset:0;
+  border-radius:16px;
+  overflow:hidden;
+  z-index:0;
+  pointer-events:none;
+}
+#v7BattleSkin::before{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(180deg,rgba(6,9,14,.25),rgba(6,9,14,.45) 45%,rgba(6,9,14,.80)),
+    center/cover no-repeat;
+}
+#v7BattleOverlay{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 72% 18%, rgba(168,180,255,.22), transparent 15%),
+    radial-gradient(circle at 25% 72%, rgba(151,95,72,.16), transparent 18%);
+  z-index:1; pointer-events:none;
+}
+#v7BattleSkin.has-forest::before{background-image:linear-gradient(180deg,rgba(6,9,14,.25),rgba(6,9,14,.45) 45%,rgba(6,9,14,.80)),url('assets_v7/zone_forest.png')}
+#v7BattleSkin.has-mine::before{background-image:linear-gradient(180deg,rgba(6,9,14,.25),rgba(6,9,14,.45) 45%,rgba(6,9,14,.80)),url('assets_v7/zone_mine.png')}
+#v7BattleSkin.has-village::before{background-image:linear-gradient(180deg,rgba(6,9,14,.25),rgba(6,9,14,.45) 45%,rgba(6,9,14,.80)),url('assets_v7/zone_village.png')}
+#v7BattleSkin.has-mist::before{background-image:linear-gradient(180deg,rgba(6,9,14,.25),rgba(6,9,14,.45) 45%,rgba(6,9,14,.80)),url('assets_v7/zone_mist.png')}
+#v7BattleSkin.has-fortress::before{background-image:linear-gradient(180deg,rgba(6,9,14,.25),rgba(6,9,14,.45) 45%,rgba(6,9,14,.80)),url('assets_v7/zone_fortress.png')}
+#v7BattleSkin.has-frost::before{background-image:linear-gradient(180deg,rgba(6,9,14,.25),rgba(6,9,14,.45) 45%,rgba(6,9,14,.80)),url('assets_v7/zone_frost.png')}
+#v7BattleSkin.has-desert::before{background-image:linear-gradient(180deg,rgba(6,9,14,.25),rgba(6,9,14,.45) 45%,rgba(6,9,14,.80)),url('assets_v7/zone_desert.png')}
+#v7BattleSkin.has-abyss::before{background-image:linear-gradient(180deg,rgba(6,9,14,.25),rgba(6,9,14,.45) 45%,rgba(6,9,14,.80)),url('assets_v7/zone_abyss.png')}
+
+#battleArena,#guildPage .sg-battlefield,#guildPage .battlefield,#guildPage .v4BattleField{
+  position:relative;
+  background:transparent !important;
+  border:1px solid rgba(129,160,203,.28) !important;
+  overflow:hidden;
+}
+#heroLane,#monsterWrap,#v6TeamHp,.sg-combo,.v4BossHp{ position:relative; z-index:3; }
+.v4GroundBar,.battle-ground,.boss-progress,.v4BossTrack{ position:relative; z-index:3; }
+
+.v7-art-caption{
+  font-size:11px; color:#b8c0ce; line-height:1.6; margin-top:10px;
+}
+.v7-showcase{
+  min-height:240px;
+  border-radius:16px;
+  border:1px solid rgba(122,140,180,.20);
+  background:
+    linear-gradient(180deg,rgba(9,13,20,.62),rgba(9,13,20,.84)),
+    center/cover no-repeat;
+}
+.v7-showcase.characters{ background-image: url('assets_v7/characters_sheet.png'); background-size:cover; background-position:center top; }
+.v7-showcase.equipment{ background-image: url('assets_v7/equipment_sheet.png'); background-size:cover; background-position:center top; }
+.v7-showcase.monsters{ background-image: url('assets_v7/monsters_sheet.png'); background-size:cover; background-position:center top; }
+.v7-showcase.buildings{ background-image: url('assets_v7/buildings_strip.png'); background-size:cover; background-position:center center; min-height:180px; }
+
+.v7-gacha-note{
+  padding:12px 14px; margin:10px 0 14px;
+  background:linear-gradient(180deg,#151124,#0d1020);
+  border:1px solid rgba(161,117,210,.26); border-radius:12px; 
+  color:#d8dcea; font-size:12px; line-height:1.8;
+}
+.v7-gacha-note b{color:#fff}
+.v7-grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+@media (max-width: 920px){ .v7-grid-2{grid-template-columns:1fr;} }
+
+.v7-mini-tabs{
+  display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 14px;
+}
+.v7-mini-tabs button{
+  border:1px solid rgba(149,167,208,.25); background:#111827; color:#e9edf8;
+  padding:8px 12px; border-radius:999px; cursor:pointer;
+}
+.v7-mini-tabs button.active{ background:linear-gradient(90deg,#7d4bb3,#cc77aa); border-color:rgba(255,255,255,.18); }
+
+.v7-sell-tip{
+  margin-top:10px; padding:10px 12px; border-radius:10px;
+  background:#12161f; border:1px solid rgba(135,154,192,.18); color:#c8d0df; font-size:12px;
+}
+
 </style>
 </head>
 <body>
@@ -498,7 +627,7 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
 
           <div class="sg-battle-layout">
             <section class="sg-battle-card">
-              <div id="battleArena" class="sg-battlefield">
+              <div id="battleArena" class="sg-battlefield"><div id="v7BattleSkin" class="has-forest"></div><div id="v7BattleOverlay"></div>
                 <div class="sg-sky-glow"></div>
                 <div class="sg-mountain m1"></div><div class="sg-mountain m2"></div>
                 <div class="sg-ruin r1"></div><div class="sg-ruin r2"></div>
@@ -2424,6 +2553,450 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js").catch(console.error);
   });
 }
+
+/* ===== V7 Art Pass / UX pass ===== */
+const V7_ZONE_THEME = ['forest','mine','village','mist','fortress','frost','desert','abyss'];
+
+function v7ApplyBattleArt(){
+  const skin = document.getElementById('v7BattleSkin');
+  if(!skin || !window.gameMeta) return;
+  const zi = Math.max(1, Math.min(8, Number(gameMeta.stage_zone || 1)));
+  const theme = V7_ZONE_THEME[zi-1];
+  skin.className = '';
+  skin.id = 'v7BattleSkin';
+  skin.classList.add('has-' + theme);
+}
+
+function v7SetupGuildPage(){
+  const guild = document.getElementById('guildPage');
+  if(!guild) return;
+
+  const heading = Array.from(guild.querySelectorAll('h2,h3,.sg-panel-title span,b')).find(x => /公會基地|基地建設|星痕領/.test(x.textContent||''));
+  const panel = heading ? heading.closest('.sg-card,.sg-panel,section,div') : null;
+  if(panel && !panel.classList.contains('v7-rich-panel')){
+    panel.classList.add('v7-rich-panel');
+    panel.style.setProperty('--panel-art',"url('assets_v7/guild_main_bg.png')");
+  }
+
+  if(!guild.querySelector('.v7-showcase.buildings')){
+    const cards = guild.querySelectorAll('.sg-card,.sg-panel');
+    const anchor = cards.length ? cards[0] : guild;
+    const wrap = document.createElement('div');
+    wrap.className = 'sg-card';
+    wrap.innerHTML = `
+      <div class="sg-panel-title"><span>建築美術展示</span><small>V7 概念圖整合</small></div>
+      <div class="v7-showcase buildings"></div>
+      <div class="v7-art-caption">公會主殿、酒館、訓練場、鍛造工坊、倉庫、魔法研究所、遠征之門、時裝工坊 已改成同一套黑暗日系奇幻美術方向。</div>
+    `;
+    anchor.parentNode.insertBefore(wrap, anchor.nextSibling);
+  }
+}
+
+function v7SetupRecruitPage(){
+  const recruit = document.getElementById('recruitPage') || document.getElementById('summonPage');
+  if(!recruit) return;
+  if(recruit.querySelector('.v7-gacha-note')) return;
+
+  const note = document.createElement('div');
+  note.className = 'v7-gacha-note';
+  note.innerHTML = `
+    <b>招募規則（V7 重新平衡）</b><br>
+    已移除固定保底機制，改成更穩定但不爆率的長線機率設計。<br>
+    角色建議機率：普通 45% / 優秀 32% / 稀有 16% / 史詩 5.5% / 傳說 1.3% / 神話 0.2%<br>
+    裝備建議機率：普通 50% / 優秀 28% / 稀有 14% / 史詩 5.5% / 傳說 2.1% / 神話 0.4%<br>
+    時裝建議機率：稀有 60% / 史詩 25% / 傳說 12% / 神話 3%<br>
+    這樣高稀有仍然值得追，但不會因保底而過快通關，體驗會更像長線養成。
+  `;
+
+  const grid = document.createElement('div');
+  grid.className = 'v7-grid-2';
+  grid.innerHTML = `
+    <div class="sg-card">
+      <div class="sg-panel-title"><span>招募美術展示</span><small>角色 / 怪物</small></div>
+      <div class="v7-mini-tabs">
+        <button class="active" data-show="characters">冒險家</button>
+        <button data-show="monsters">怪物與首領</button>
+      </div>
+      <div class="v7-showcase characters" id="v7RecruitShowcase"></div>
+      <div class="v7-art-caption">角色、怪物、Boss 美術已整合到遊戲頁面，UI 風格往高質感行動 RPG 招募頁靠攏，但不直接複製任何現有商業遊戲介面。</div>
+    </div>
+    <div class="sg-card">
+      <div class="sg-panel-title"><span>招募體驗調整建議</span><small>設計方向</small></div>
+      <div class="v7-art-caption">
+        1. 角色、裝備、時裝建議維持分開 UI。<br>
+        2. 無保底但保留「歷史抽數紀錄」與「最近獲得」即可。<br>
+        3. 高稀有角色主要改善推圖效率，不直接讓玩家瞬間畢業。<br>
+        4. 時裝建議提供外觀 + 小幅功能（例如遠征金幣 +1% / 經驗 +1%）。
+      </div>
+    </div>
+  `;
+  const target = recruit.querySelector('.sg-card,.sg-panel') || recruit.firstElementChild || recruit;
+  target.parentNode.insertBefore(note, target);
+  note.parentNode.insertBefore(grid, note.nextSibling);
+
+  grid.querySelectorAll('button[data-show]').forEach(btn=>{
+    btn.onclick=()=>{
+      grid.querySelectorAll('button[data-show]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const box=grid.querySelector('#v7RecruitShowcase');
+      box.className='v7-showcase ' + btn.dataset.show;
+    };
+  });
+}
+
+function v7SetupEquipmentPage(){
+  const eq = document.getElementById('equipmentPage') || document.getElementById('gearPage');
+  if(!eq) return;
+  if(eq.querySelector('.v7-showcase.equipment')) return;
+
+  const wrap = document.createElement('div');
+  wrap.className = 'sg-card';
+  wrap.innerHTML = `
+    <div class="sg-panel-title"><span>裝備與時裝美術展示</span><small>V7 圖庫整合</small></div>
+    <div class="v7-mini-tabs">
+      <button class="active" data-show="equipment">裝備圖鑑</button>
+      <button data-show="characters">時裝 / 外觀參考</button>
+    </div>
+    <div class="v7-showcase equipment" id="v7EqShowcase"></div>
+    <div class="v7-sell-tip">
+      建議保留或新增「售出」按鈕：普通售出 25 金幣、優秀 60、稀有 180、史詩 600、傳說 2200、神話 9000。<br>
+      這樣倉庫不會爆掉，也能讓刷圖回收形成穩定資源循環。
+    </div>
+  `;
+  const target = eq.querySelector('.sg-card,.sg-panel') || eq.firstElementChild || eq;
+  target.parentNode.insertBefore(wrap, target);
+
+  wrap.querySelectorAll('button[data-show]').forEach(btn=>{
+    btn.onclick=()=>{
+      wrap.querySelectorAll('button[data-show]').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const box=wrap.querySelector('#v7EqShowcase');
+      box.className='v7-showcase ' + (btn.dataset.show === 'equipment' ? 'equipment' : 'characters');
+    };
+  });
+}
+
+function v7PatchWipeLogic(){
+  if(typeof battleTick !== 'function' || window.__v7WipePatched) return;
+  window.__v7WipePatched = true;
+  const _battleTick = battleTick;
+  battleTick = async function(){
+    const result = await _battleTick.apply(this, arguments);
+    if(typeof v6AllKo === 'function' && v6AllKo() && window.gameAdventurers && Array.isArray(gameAdventurers)){
+      // 自動重刷目前關卡：不降區域，只重置該次刷怪進度，並立刻復活回 70% 血量
+      const reviveRatio = 0.7;
+      const updates = [];
+      for(const a of gameAdventurers){
+        const max = (typeof v6HeroMaxHp === 'function') ? v6HeroMaxHp(a) : (a.max_hp || 100);
+        const hp = Math.round(max * reviveRatio);
+        a.knocked_out = false;
+        a.current_hp = hp;
+        a.max_hp = max;
+        a.injury_until = null;
+        if(window.sb && a.id){
+          updates.push(sb.from('game_adventurers').update({knocked_out:false,current_hp:hp,max_hp:max,injury_until:null}).eq('id', a.id));
+        }
+      }
+      try{ await Promise.all(updates); }catch(e){}
+      if(window.gameMeta){
+        gameMeta.stage_kills = 0;
+      }
+      if(typeof renderBattle === 'function') renderBattle();
+      if(typeof gameToastMsg === 'function') gameToastMsg('全隊倒下，已自動重刷目前關卡，可持續農金幣與裝備。');
+    }
+    return result;
+  }
+}
+
+function v7Boot(){
+  v7ApplyBattleArt();
+  v7SetupGuildPage();
+  v7SetupRecruitPage();
+  v7SetupEquipmentPage();
+  v7PatchWipeLogic();
+}
+document.addEventListener('DOMContentLoaded', ()=>setTimeout(v7Boot, 500));
+setTimeout(v7Boot, 2000);
+
+// 在既有 render 後再補一次
+if (typeof renderBattle === 'function') {
+  const _rb = renderBattle;
+  renderBattle = function(){ const r = _rb.apply(this, arguments); try{v7ApplyBattleArt();}catch(e){} return r; }
+}
+if (typeof render公會 === 'function') {
+  const _rg = render公會;
+  render公會 = function(){ const r = _rg.apply(this, arguments); setTimeout(v7SetupGuildPage, 50); return r; }
+}
+</script>
+
+
+<style id="v8-art-style">
+:root{
+  --v8-ornate:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.01));
+  --v8-gold:#dfb47a;
+  --v8-violet:#7b59ce;
+  --v8-panel:#0b1119;
+  --v8-panel-2:#0e1520;
+}
+.sg-page{background:
+  radial-gradient(circle at 82% 10%,rgba(127,87,192,.14),transparent 18%),
+  radial-gradient(circle at 12% 0%,rgba(228,129,157,.10),transparent 18%),
+  linear-gradient(180deg,#070b12,#0b1017 48%,#090d14 100%)}
+.sg-panel,.sg-card,.panel{box-shadow:0 14px 38px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.03);background:linear-gradient(180deg,rgba(15,22,34,.97),rgba(8,12,18,.98));border-color:#253246}
+.sg-view-head,.sg-topbar,.page .toolbar,.panel .toolbar{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));border-radius:16px}
+.sg-kicker{letter-spacing:.18em;color:#d7b9f4}
+.sg-btn,.v4Btn,.btn{box-shadow:0 8px 20px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.08)}
+.sg-btn.primary,.v4Btn.primary,.btn.green{background:linear-gradient(180deg,#9758d3,#6634a6);border-color:#9f69df}
+.sg-btn.blue{background:linear-gradient(180deg,#4d7bd0,#3156a9);border-color:#7aa2ef}
+.sg-btn.violet{background:linear-gradient(180deg,#ba68ca,#8543b2);border-color:#d792ec}
+.sg-btn.ghost,.btn{background:linear-gradient(180deg,#161e29,#0d1219)}
+.sg-panel-title span,.sg-view-head h2{font-family:Georgia,"Noto Serif TC",serif}
+.sg-view-head h2{font-size:42px;text-shadow:0 5px 18px rgba(0,0,0,.38)}
+.sg-view-head p{max-width:760px;color:#a8b5c6}
+
+/* actual art assets */
+.v8-art{display:grid;place-items:center;width:100%;height:100%}
+.v8-art img{display:block;width:100%;height:100%;object-fit:contain;image-rendering:auto}
+.v8-art.hero{pointer-events:none}
+.v8-art.hero.battle img{filter:drop-shadow(0 14px 22px rgba(0,0,0,.55));transform-origin:bottom center}
+.v8-art.hero.mini img{max-height:68px}
+.v8-art.hero.hub img{max-height:92px}
+.v8-art.gear,.v8-art.fashion{padding:8px}
+.v8-art.gear img,.v8-art.fashion img{filter:drop-shadow(0 8px 16px rgba(0,0,0,.38))}
+.v8-art.building img{filter:drop-shadow(0 12px 18px rgba(0,0,0,.5));object-fit:contain}
+.v8-art.monster img{filter:drop-shadow(0 10px 18px rgba(0,0,0,.55));object-fit:contain}
+.v4BattleHero .v8-art.hero{height:100%;align-items:end}
+.v4BattleHero .v8-art.hero img{max-width:110%;max-height:100%}
+.v4PartyAvatar .v8-art.hero img,.sg-roster-avatar .v8-art.hero img,.v4HeroPortrait .v8-art.hero img{max-height:100%}
+.v4Mob .v8-art.monster img{width:100%;height:100%;object-fit:contain}
+.v4BossMob .v8-art.monster img{width:100%;height:100%;object-fit:contain}
+.sg-item-icon .v8-art.gear img,.sg-gear-art .v8-art.gear img,.sg-item-icon .v8-art.fashion img,.sg-gear-art .v8-art.fashion img{max-width:100%;max-height:100%}
+
+/* recruit UI */
+.v8-recruit-tabs{position:absolute;left:26px;top:18px;display:flex;gap:8px;z-index:10}
+.v8-recruit-tabs button{border:1px solid #433057;background:linear-gradient(180deg,rgba(18,14,28,.96),rgba(12,10,19,.94));color:#cfd8e8;border-radius:999px;padding:8px 13px;font-size:10px;letter-spacing:.08em}
+.v8-recruit-tabs button.active{background:linear-gradient(180deg,#7f5fd0,#51329b);border-color:#b48cff;color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 10px 22px rgba(97,52,173,.32)}
+.v8-rate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px;max-width:560px}
+.v8-rate-pill{border:1px solid #463658;background:rgba(11,8,19,.7);border-radius:12px;padding:7px 10px;font-size:10px;color:#dfe6f1}
+.v8-rate-pill b{display:block;color:#fff;font-size:11px}
+.v8-recruit-note{margin-top:10px;font-size:10px;color:#bcc6d6;line-height:1.65;max-width:570px}
+.v8-summon-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.v8-recruit-side .sg-panel-title small{color:#8fa3ba}
+.v8-showcase-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-height:515px;overflow:auto;padding-right:2px}
+.v8-show-card{border:1px solid #2b3649;background:linear-gradient(180deg,#0f1620,#0a0f16);border-radius:12px;padding:8px;display:grid;grid-template-columns:64px 1fr;gap:9px;align-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+.v8-show-card .art{height:74px;display:grid;place-items:center;border-radius:10px;background:radial-gradient(circle at 50% 35%,rgba(122,89,206,.22),rgba(15,19,29,.92))}
+.v8-show-card .art img{max-width:100%;max-height:100%;object-fit:contain}
+.v8-show-card b{font-size:11px}
+.v8-show-card small{display:block;font-size:8px;color:#96a3b7;line-height:1.45}
+.v8-show-card .meta-2{color:#d7b57a!important}
+.recruitResults{grid-template-columns:repeat(4,1fr);gap:10px}
+.v8-result-card{position:relative;border:1px solid #3b2c52;background:linear-gradient(180deg,#0f1320,#0a0d15);border-radius:14px;padding:10px;text-align:center;overflow:hidden}
+.v8-result-card:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 15%,rgba(171,110,242,.20),transparent 45%);pointer-events:none}
+.v8-result-art{height:170px;display:grid;place-items:end center;margin-bottom:8px}
+.v8-result-art img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 16px 24px rgba(0,0,0,.45))}
+.v8-result-card b{display:block;font-size:13px;position:relative;z-index:1}
+.v8-result-card small{display:block;position:relative;z-index:1}
+
+/* guild + battle */
+.sg-base-map{background:
+ linear-gradient(180deg,rgba(6,10,18,.18),rgba(6,10,18,.72) 66%,rgba(5,8,14,.92)),
+ url('assets_v7/guild_main_bg.png') center/cover no-repeat !important}
+.sg-base-sky,.sg-base-hills,.sg-base-road{display:none!important}
+.v4BuildingNode{width:150px}
+.v4BuildingSprite{height:118px}
+.v4BuildingTag{font-size:9px;padding:5px 8px;border-radius:10px;background:rgba(4,7,12,.84);backdrop-filter:blur(4px);border-color:#46556d}
+.v4BuildingNode:hover .v4BuildingTag{border-color:#d3a96f;color:#fff}
+.v4BuildingCard,.sg-building-detail{background:linear-gradient(180deg,rgba(13,19,28,.96),rgba(9,13,20,.98));border:1px solid #273246;border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.26)}
+.v4BuildingCardHead h4{font-family:Georgia,serif;color:#fff}
+#v5BuildingDetail .sg-gear-art{background:radial-gradient(circle at 50% 30%,rgba(156,114,210,.16),rgba(9,12,18,.94))}
+#battleArena{border:1px solid #314055;box-shadow:0 18px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04)}
+#v7BattleOverlay{background:linear-gradient(180deg,rgba(8,12,18,.18),transparent 28%,rgba(8,12,18,.05) 70%,rgba(8,12,18,.58))}
+.v4SkillIcon{background:linear-gradient(180deg,rgba(111,72,185,.38),rgba(39,24,66,.76));border-color:#8e63d3}
+.v6-hp-row{background:linear-gradient(180deg,#0f1620,#091018);border:1px solid #253141;border-radius:10px}
+.v6-hp-track{background:#101720;border-color:#344055}
+
+/* equipment */
+.sg-item-icon,.sg-gear-art{background:radial-gradient(circle at 50% 30%,rgba(105,82,161,.16),rgba(10,14,20,.96));border:1px solid #2c3645}
+.sg-item-card{display:flex;flex-direction:column;gap:6px}
+.sg-item-card:hover,.sg-item-card.active{transform:translateY(-1px);border-color:#8b68cd;box-shadow:0 10px 24px rgba(86,58,148,.18)}
+.sg-item-card .small-actions{display:flex;gap:6px;margin-top:4px}
+.sg-item-card .small-actions button{flex:1}
+.sg-inventory{grid-template-columns:repeat(4,1fr)}
+
+/* world map */
+.v8-world-stage{position:relative;overflow:hidden;background:#0d1219;border:1px solid #283347;border-radius:14px;min-height:112px;padding:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+.v8-world-stage:before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,10,16,.22),rgba(7,10,16,.88)),var(--zone-bg) center/cover no-repeat;opacity:.98}
+.v8-world-stage>*{position:relative;z-index:1}
+.v8-world-stage.current{border-color:#d4a86b;box-shadow:0 0 0 1px rgba(212,168,107,.28),0 16px 28px rgba(0,0,0,.26)}
+.v8-world-stage.locked:before{filter:grayscale(.95) brightness(.55)}
+.v8-world-stage p,.v8-world-stage .bossName,.v8-world-stage .v6-zone-tag{max-width:75%}
+.v8-world-stage .v6-zone-tag{display:inline-flex;margin-top:4px;background:rgba(7,10,16,.8);border:1px solid #404c63;border-radius:999px;padding:4px 8px;font-size:9px}
+
+@media(max-width:960px){.recruitResults{grid-template-columns:repeat(2,1fr)}.v8-rate-grid{grid-template-columns:1fr 1fr}.sg-inventory{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.v8-showcase-grid{grid-template-columns:1fr}.v8-rate-grid{grid-template-columns:1fr}.v8-recruit-tabs{position:static;margin-bottom:14px;flex-wrap:wrap}.v8-result-art{height:120px}.sg-inventory{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script id="v8-art-script">
+(function(){
+  window.V8_RECRUIT_TAB = window.V8_RECRUIT_TAB || 'hero';
+  const HERO_POOLS={
+    warrior:['h01','h03','h04','h05','h06'],
+    mage:['h02','h07','h08','h09','h10','h11','h12'],
+    archer:['h13','h14','h15','h16','h17','h18'],
+    rogue:['h19','h20','h21','h22','h23','h24']
+  };
+  const MONSTER_POOLS={
+    1:['m01','m02','m03'],2:['m08','m09','m13'],3:['m06','m16','m18'],4:['m04','m10','m15'],
+    5:['m07','m12','m18'],6:['m11','m19','m20'],7:['m03','m12','m16'],8:['m05','m14','m17']
+  };
+  const BOSS_POOLS={1:'m08',2:'m07',3:'m18',4:'m10',5:'m18',6:'m20',7:'m19',8:'m23'};
+  const BUILDING_ART={guildhall:'b01',tavern:'b02',training:'b03',blacksmith:'b04',warehouse:'b05',arcane:'b06',portal:'b07',atelier:'b08'};
+  const GEAR_SLOT_POOLS={
+    '主武器':['g001','g002','g003','g004','g005','g006','g007','g013','g014','g015','g016'],
+    '副武器':['g008','g009','g010','g011','g012','g113','g114','g115','g116'],
+    '頭盔':['g017','g018','g019','g020','g021','g022','g023','g024','g025','g026','g027','g028','g029','g030','g031','g032'],
+    '盔甲':['g033','g034','g035','g036','g037','g038','g039','g040','g041','g042','g043','g044','g045','g046','g047','g048'],
+    '手套':['g049','g050','g051','g052','g053','g054','g055','g056','g057','g058','g059','g060','g061','g062','g063','g064'],
+    '腰帶':['g065','g066','g067','g068','g069','g070','g071','g072','g073','g074','g075','g076','g077','g078','g079','g080'],
+    '鞋子':['g081','g082','g083','g084','g085','g086','g087','g088','g089','g090','g091','g092','g093','g094','g095','g096'],
+    '項鍊':['g097','g098','g099','g100','g101','g102','g103','g104','g105','g106','g107','g108','g109','g110','g111','g112']
+  };
+  const FASHION_ART=['f01','f02','f03','f04','f05','f06','f07','f08','f09','f10','f11','f12','f13','f14','f15','f16','f17','f18','f19','f20','f21','f22','f23','f24','f25','f26','f27','f28','f29','f30','f31','f32'];
+  const ZONE_BG=['forest','mine','village','mist','fortress','frost','desert','abyss'];
+  const HERO_RATES=[['COMMON',0.48],['UNCOMMON',0.30],['RARE',0.14],['EPIC',0.055],['LEGENDARY',0.02],['MYTHIC',0.005]];
+  const GEAR_RATES=[['COMMON',0.50],['UNCOMMON',0.27],['RARE',0.14],['EPIC',0.06],['LEGENDARY',0.025],['MYTHIC',0.005]];
+  const FASHION_RATES=[['RARE',0.58],['EPIC',0.26],['LEGENDARY',0.13],['MYTHIC',0.03]];
+
+  function h(s){s=String(s||'');let x=0;for(let i=0;i<s.length;i++)x=((x<<5)-x)+s.charCodeAt(i),x|=0;return Math.abs(x)}
+  function pickWeighted(table){let r=Math.random(),acc=0;for(const [k,p] of table){acc+=p;if(r<=acc)return k}return table[table.length-1][0]}
+  function baseClass(name){const n=(typeof v4NormalizeClass==='function'?v4NormalizeClass(name||''):String(name||''));if(/法師|牧師/.test(n))return 'mage';if(/弓箭|遊俠/.test(n))return 'archer';if(/盜賊|刺客/.test(n))return 'rogue';return 'warrior'}
+  function heroArt(a){const cls=baseClass(a?.class_name);const pool=HERO_POOLS[cls]||HERO_POOLS.warrior;const key=[a?.name||'',a?.class_name||'',a?.rarity||''].join('|');return `assets_v8/heroes/${pool[h(key)%pool.length]}.png`}
+  function monsterArt(zone=1,kind=0,boss=false){if(boss)return `assets_v8/monsters/${BOSS_POOLS[zone]||'m23'}.png`;const pool=MONSTER_POOLS[zone]||MONSTER_POOLS[1];return `assets_v8/monsters/${pool[(Number(kind)||0)%pool.length]}.png`}
+  function gearSlot(slot){return (typeof v41SlotName==='function'?v41SlotName(slot):slot)||'主武器'}
+  function gearArt(x){const slot=gearSlot(x?.slot);const pool=GEAR_SLOT_POOLS[slot]||GEAR_SLOT_POOLS['主武器'];const seed=`${slot}|${x?.rarity||''}|${x?.item_level||1}|${x?.id||''}`;return `assets_v8/gear/${pool[h(seed)%pool.length]}.png`}
+  function fashionArt(x){const seed=`${x?.name||''}|${x?.fashion_type||''}|${x?.rarity||''}`;return `assets_v8/fashion/${FASHION_ART[h(seed)%FASHION_ART.length]}.png`}
+  function buildingArt(k){return `assets_v8/buildings/${BUILDING_ART[k]||'b01'}.png`}
+  function v8Rates(tab){return tab==='hero'?HERO_RATES:tab==='gear'?GEAR_RATES:FASHION_RATES}
+  function v8RateLabel(tab){return v8Rates(tab).map(([k,p])=>`<div class="v8-rate-pill"><b class="rar-${(V4_RARITY_ZH&&V4_RARITY_ZH[k])||k}">${(V4_RARITY_ZH&&V4_RARITY_ZH[k])||k}</b>${(p*100).toFixed(p<.01?1: p<.1?1:0)}%</div>`).join('')}
+  function v8TabMeta(tab){
+    if(tab==='gear')return {title:'鍛造成熟的戰利品',kicker:'裝備召喚 · 星痕軍備庫',desc:'裝備池不再使用硬保底。普通小怪掉落以普通／優秀為主；更高稀有主要來自高難度、Boss 與裝備召喚。',btn1:'裝備單抽 ◆100',btn10:'裝備十連 ◆900'};
+    if(tab==='fashion')return {title:'讓時裝點亮公會門面',kicker:'時裝召喚 · 星幕衣櫥',desc:'時裝偏向外觀與小幅被動加成。高稀有時裝能提升效率，但不會直接破壞長線養成。',btn1:'時裝單抽 ◆750',btn10:'時裝十連 ◆7500'};
+    return {title:'讓新的羈絆回應星痕',kicker:'角色召集 · 常駐星池',desc:'已取消硬保底，改為更平滑的長線機率曲線。高稀有角色可以加速推圖，但仍需透過掛機、技能與建築慢慢養成。',btn1:'角色單抽 ◆150',btn10:'角色十連 ◆1300'};
+  }
+
+  window.v4SvgHero=function(a,mode='card'){
+    const src=heroArt(a);const cls=baseClass(a?.class_name);
+    return `<div class="v8-art hero ${mode} ${cls}"><img src="${src}" alt="${(a&&a.name)||'hero'}"></div>`
+  };
+  window.v4MobSvg=function(kind=0,boss=false,zone=1){
+    const src=monsterArt(zone,kind,boss);return `<div class="v8-art monster ${boss?'boss':''}"><img src="${src}" alt="monster"></div>`
+  };
+  window.v4GearIcon=function(x){return `<div class="v8-art gear"><img src="${gearArt(x)}" alt="gear"></div>`};
+  window.v4BuildingSvg=function(key,tier=0){return `<div class="v8-art building tier-${tier}"><img src="${buildingArt(key)}" alt="${key}"></div>`};
+
+  window.showRecruitResults=function(results,type=window.V8_RECRUIT_TAB){
+    const box=document.getElementById('recruitResults');if(!box)return;
+    box.innerHTML=results.map(r=>{
+      if(type==='gear') return `<div class="v8-result-card"><div class="v8-result-art">${v4GearIcon(r)}</div><b>${v4GearName(r)}</b><small class="rar-${V4_RARITY_ZH[r.rarity]||'普通'}">${V4_RARITY_ZH[r.rarity]||r.rarity} · Lv.${r.item_level}</small><small>攻擊 +${r.atk}</small></div>`;
+      if(type==='fashion') return `<div class="v8-result-card"><div class="v8-result-art"><div class="v8-art fashion"><img src="${fashionArt(r)}"></div></div><b>${r.name}</b><small class="rar-${V4_RARITY_ZH[r.rarity]||'稀有'}">${V4_RARITY_ZH[r.rarity]||r.rarity} · ${r.fashion_type||'時裝'}</small><small>加成 ${(Math.min(.06,Number(r.power_bonus||0))*100).toFixed(1)}%</small></div>`;
+      return `<div class="v8-result-card"><div class="v8-result-art">${v4SvgHero({...r,id:r.name||'x',level:1},'battle')}</div><b>${r.name}</b><small class="rar-${r.rarity_zh||V4_RARITY_ZH[r.rarity]||r.rarity}">${r.rarity_zh||V4_RARITY_ZH[r.rarity]||r.rarity}</small><small>${r.class_name}</small></div>`;
+    }).join('');
+    recruitOverlay.classList.add('show');
+  };
+
+  window.doRecruit=async function(n){
+    const cost=n===10?1300:150;if(premiumAvailable()<cost)return gameToastMsg('星痕鑽石不足');
+    const res=[];for(let i=0;i<n;i++){const rank=pickWeighted(HERO_RATES);const pool=(window.V4_ROSTER||window.IDLE_ROSTER||[]).filter(x=>x.rarity===rank);const hero=pool.length?pool[h(String(Date.now())+i)%pool.length]:(window.V4_ROSTER||window.IDLE_ROSTER||[])[0];res.push(hero)}
+    const rows=res.map(h=>({room_id:roomId,name:h.name,class_name:h.class_name,rarity:h.rarity,level:1,xp:0,fatigue:0,traits:[]}));
+    const ins=await sb.from('game_adventurers').insert(rows);if(ins.error)return alert(ins.error.message);
+    const upd={premium_spent:Number(gameMeta.premium_spent||0)+cost,recruit_count:Number(gameMeta.recruit_count||0)+n,updated_at:new Date().toISOString()};
+    await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};await loadRoom();showRecruitResults(res,'hero');render公會();
+  };
+
+  window.v4GearRoll=function(isBoss=false,source='drop'){
+    const table=source==='gacha'?GEAR_RATES:(isBoss?[['UNCOMMON',.56],['RARE',.31],['EPIC',.10],['LEGENDARY',.025],['MYTHIC',.005]]:[['COMMON',.72],['UNCOMMON',.24],['RARE',.035],['EPIC',.004],['LEGENDARY',.001],['MYTHIC',.0002]]);
+    const rank=pickWeighted(table);
+    const slotPool=(window.V4_GEAR_CATALOG||[]).filter(x=>x.rarity===rank);
+    const t=slotPool.length?slotPool[h(String(Math.random()))%slotPool.length]:(window.V4_GEAR_CATALOG||[])[0];
+    const s=stageInfo(),diff=Number(gameMeta?.difficulty||1),itemLv=(diff-1)*100+(s.z-1)*10+s.n,mult=(window.V41_RARITY_MULT?.[rank]||1);
+    return {...t,item_level:itemLv,atk:Math.round((6+itemLv*1.08+t.base_atk*.30)*mult),atk_speed:Number((Math.random()*.0085*mult).toFixed(3)),crit:Number((Math.random()*.0055*mult).toFixed(3)),gold_find:Number((Math.random()*.007*mult).toFixed(3)),zone_set:s.zone.set};
+  };
+
+  window.doEquipmentGacha=async function(n){
+    const cost=n===10?900:100;if(premiumAvailable()<cost)return gameToastMsg('星痕鑽石不足');
+    const rolled=[];const rows=[];
+    for(let i=0;i<n;i++){const g=v4GearRoll(false,'gacha');rolled.push(g);rows.push({room_id:roomId,slot:g.slot,rarity:g.rarity,item_level:g.item_level,atk:g.atk,atk_speed:g.atk_speed,crit:g.crit,gold_find:g.gold_find,equipped:false})}
+    const ins=await sb.from('game_equipment').insert(rows);if(ins.error)return alert(ins.error.message);
+    const upd={premium_spent:Number(gameMeta.premium_spent||0)+cost};await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};await loadRoom();showRecruitResults(rolled,'gear');render公會();
+  };
+
+  window.doFashionGacha=async function(n=1){
+    const cost=750*n;if(premiumAvailable()<cost)return gameToastMsg('星痕鑽石不足');
+    const rolled=[];
+    for(let i=0;i<n;i++){
+      const rank=pickWeighted(FASHION_RATES);
+      const pool=(window.V4_FASHION_CATALOG||[]).filter(x=>x.rarity===rank);const base=(pool.length?pool[h(String(Date.now())+i)%pool.length]:(window.V4_FASHION_CATALOG||[])[0]);
+      rolled.push({...base,power_bonus:Math.min(.06,Number(base.bonus||base.power_bonus||0))});
+    }
+    const rows=rolled.map(f=>({room_id:roomId,fashion_type:f.type||f.fashion_type,name:f.name,rarity:f.rarity,power_bonus:Math.min(.06,Number(f.bonus||f.power_bonus||0)),equipped:false}));
+    const ins=await sb.from('game_fashion').insert(rows);if(ins.error)return alert(ins.error.message);
+    const upd={premium_spent:Number(gameMeta.premium_spent||0)+cost};await sb.from('game_meta').update(upd).eq('room_id',roomId);gameMeta={...gameMeta,...upd};await loadRoom();showRecruitResults(rows,'fashion');render公會();
+  };
+
+  window.v8SwitchRecruitTab=function(tab){window.V8_RECRUIT_TAB=tab;renderRecruit()};
+  window.v8RecruitAction=function(n=1){if(window.V8_RECRUIT_TAB==='gear')return doEquipmentGacha(n);if(window.V8_RECRUIT_TAB==='fashion')return doFashionGacha(n);return doRecruit(n)};
+
+  window.renderRecruit=function(){
+    if(!window.gameMeta)return; const meta=v8TabMeta(window.V8_RECRUIT_TAB);
+    const counter=document.getElementById('recruitCounter'); if(counter) counter.textContent=`累積 ${Number(gameMeta?.recruit_count||0)} 抽 · 可用 ◆ ${premiumAvailable().toLocaleString()}`;
+    const stage=document.querySelector('#ivRecruit .sg-summon-stage');
+    if(stage){stage.innerHTML=`<div class="v8-recruit-tabs"><button class="${window.V8_RECRUIT_TAB==='hero'?'active':''}" onclick="v8SwitchRecruitTab('hero')">冒險家</button><button class="${window.V8_RECRUIT_TAB==='gear'?'active':''}" onclick="v8SwitchRecruitTab('gear')">裝備</button><button class="${window.V8_RECRUIT_TAB==='fashion'?'active':''}" onclick="v8SwitchRecruitTab('fashion')">時裝</button></div><div class="sg-rune ring1"></div><div class="sg-rune ring2"></div><div class="sg-rune-core">✦</div><div class="sg-summon-copy"><span>${meta.kicker}</span><h3>${meta.title}</h3><p>${meta.desc}</p><div class="v8-rate-grid">${v8RateLabel(window.V8_RECRUIT_TAB)}</div><div class="v8-recruit-note">建議體驗：高稀有可明顯提升推圖效率，但仍需要掛機、建築升級、技能養成與裝備累積，不會因單一抽卡系統過快畢業。</div><div class="v8-summon-actions"><button class="sg-btn primary" onclick="v8RecruitAction(1)">${meta.btn1}</button><button class="sg-btn ${window.V8_RECRUIT_TAB==='hero'?'primary':window.V8_RECRUIT_TAB==='gear'?'blue':'violet'}" onclick="v8RecruitAction(10)">${meta.btn10}</button></div></div>`}
+    const asideTitle=document.querySelector('#ivRecruit aside .sg-panel-title span'); const asideSmall=document.querySelector('#ivRecruit aside .sg-panel-title small');
+    if(asideTitle) asideTitle.textContent=window.V8_RECRUIT_TAB==='hero'?'本期名單預覽':window.V8_RECRUIT_TAB==='gear'?'軍備圖鑑預覽':'時裝展櫃';
+    if(asideSmall) asideSmall.textContent=window.V8_RECRUIT_TAB==='hero'?`${(window.V4_ROSTER||[]).length||56} 名冒險家`:window.V8_RECRUIT_TAB==='gear'?'依部位分類展示':'翅膀 / 光環 / 武器外觀';
+    const box=document.getElementById('recruitShowcase'); if(!box) return;
+    box.className='v8-showcase-grid';
+    if(window.V8_RECRUIT_TAB==='gear'){
+      const sample=(window.V4_GEAR_CATALOG||[]).slice(0,16); box.innerHTML=sample.map(g=>`<div class="v8-show-card"><div class="art">${v4GearIcon({...g,item_level:1,atk:g.base_atk||12})}</div><div><b>${g.name||v4GearName(g)}</b><small>${V4_RARITY_ZH[g.rarity]||g.rarity} · ${v41SlotName(g.slot)}</small><small class="meta-2">高難度與 Boss 更容易取得高品質版本</small></div></div>`).join(''); return;
+    }
+    if(window.V8_RECRUIT_TAB==='fashion'){
+      const sample=(window.V4_FASHION_CATALOG||[]).slice(0,16); box.innerHTML=sample.map(f=>`<div class="v8-show-card"><div class="art"><div class="v8-art fashion"><img src="${fashionArt(f)}"></div></div><div><b>${f.name}</b><small>${V4_RARITY_ZH[f.rarity]||f.rarity} · ${f.type||f.fashion_type}</small><small class="meta-2">外觀為主，附帶小幅效率加成</small></div></div>`).join(''); return;
+    }
+    const sample=(window.V4_ROSTER||window.IDLE_ROSTER||[]).slice(0,16); box.innerHTML=sample.map(hh=>`<div class="v8-show-card"><div class="art">${v4SvgHero({...hh,id:hh.name,level:1},'mini')}</div><div><b>${hh.name}</b><small class="rar-${hh.rarity_zh||V4_RARITY_ZH[hh.rarity]||hh.rarity}">${hh.rarity_zh||V4_RARITY_ZH[hh.rarity]||hh.rarity} · ${hh.class_name}</small><small class="meta-2">高稀有可加快推圖，但仍需要長線養成</small></div></div>`).join('');
+  };
+
+  window.renderLoot=function(){
+    const inv=document.getElementById('lootInventory'),detail=document.getElementById('v5GearDetail');if(!inv||!detail)return;
+    if(window.v4LootMode==='fashion'){
+      inv.innerHTML=gameFashion.length?gameFashion.map(x=>`<div class="sg-item-card ${x.id===window.v5SelectedGearId?'active':''}" onclick="v5SelectedGearId='${x.id}';renderLoot()"><div class="sg-item-icon"><div class="v8-art fashion"><img src="${fashionArt(x)}"></div></div><b class="rar-${V4_RARITY_ZH[x.rarity]}">${x.name}</b><small>${V4_RARITY_ZH[x.rarity]} · ${x.fashion_type}</small><small>加成 ${(Math.min(.06,Number(x.power_bonus||0))*100).toFixed(1)}%</small></div>`).join(''):'<div class="heroMeta">尚未取得特殊時裝。</div>';
+      const f=gameFashion.find(x=>x.id===window.v5SelectedGearId)||gameFashion[0]; if(f) window.v5SelectedGearId=f.id;
+      detail.innerHTML=f?`<div class="sg-gear-art"><div class="v8-art fashion"><img src="${fashionArt(f)}"></div></div><h3>${f.name}</h3><p class="rar-${V4_RARITY_ZH[f.rarity]}">${V4_RARITY_ZH[f.rarity]} · 特殊時裝</p><div class="sg-gear-stats"><div><small>戰力加成</small><b>${(Math.min(.06,Number(f.power_bonus||0))*100).toFixed(1)}%</b></div><div><small>狀態</small><b>${f.equipped?'已裝備':'未裝備'}</b></div><div><small>定位</small><b>${f.fashion_type}</b></div><div><small>說明</small><b>美術外觀 + 小幅增益</b></div></div><button class="sg-btn primary full" onclick="v4EquipFashion('${f.id}')">裝給主力角色</button>`:'<div class="heroMeta">請取得時裝後再查看。</div>';
+      return;
+    }
+    if(!window.v5SelectedGearId||!gameEquipment.some(x=>x.id===window.v5SelectedGearId))window.v5SelectedGearId=gameEquipment[0]?.id||null;
+    inv.innerHTML=gameEquipment.length?gameEquipment.slice(0,220).map(x=>`<div class="sg-item-card ${x.id===window.v5SelectedGearId?'active':''}" onclick="v5SelectGear('${x.id}')"><div class="sg-item-icon">${v4GearIcon(x)}</div><b class="rar-${V4_RARITY_ZH[x.rarity]}">${v4GearName(x)}</b><small>${V4_RARITY_ZH[x.rarity]||'普通'} · Lv.${x.item_level}</small><small>攻擊 +${x.atk}${x.equipped?' · 使用中':''}</small></div>`).join(''):'<div class="heroMeta">尚未取得裝備。</div>';
+    const g=gameEquipment.find(x=>x.id===window.v5SelectedGearId);
+    if(!g){detail.innerHTML='<div class="heroMeta">選擇裝備後查看詳情。</div>';return}
+    detail.innerHTML=`<div class="sg-gear-art">${v4GearIcon(g)}</div><h3>${v4GearName(g)}</h3><p class="rar-${V4_RARITY_ZH[g.rarity]||'普通'}">${V4_RARITY_ZH[g.rarity]||'普通'} · ${v41SlotName(g.slot)} · Lv.${g.item_level}</p><div class="sg-gear-stats"><div><small>攻擊</small><b>+${g.atk}</b></div><div><small>攻速</small><b>+${Number(g.atk_speed||0).toFixed(3)}</b></div><div><small>暴擊</small><b>+${(Number(g.crit||0)*100).toFixed(1)}%</b></div><div><small>金幣掉落</small><b>+${(Number(g.gold_find||0)*100).toFixed(1)}%</b></div><div><small>售價</small><b>● ${v4SellValue(g).toLocaleString()}</b></div><div><small>狀態</small><b>${g.equipped?'已裝備':'未裝備'}</b></div></div><select id="v5EquipHero" class="sg-equip-target">${gameAdventurers.map(a=>`<option value="${a.id}">${esc(a.name)} · ${v4JobName(a)}</option>`).join('')}</select><button class="sg-btn primary full" onclick="v5EquipSelectedGear()">裝備給指定冒險家</button>${g.equipped?'':`<button class="sg-btn ghost full" onclick="v4SellGear('${g.id}')">售出裝備</button>`}`;
+  };
+
+  window.renderWorldIdle=function(){
+    const s=stageInfo(),bar=document.getElementById('v6DifficultyBar');
+    if(bar&&window.V6_DIFFICULTIES)bar.innerHTML=V6_DIFFICULTIES.map(d=>`<span class="${d.id===Number(gameMeta.difficulty||1)?'on':''}">${d.name}</span>`).join('');
+    let cards='';
+    (window.V6_ZONES||window.V4_ZONES||[]).forEach((z,zi)=>{for(let n=1;n<=10;n++){
+      const current=(zi+1===s.z&&n===s.n);
+      const unlocked=(zi+1<s.z)||(zi+1===s.z&&n<=s.n)||(Number(gameMeta.difficulty||1)>1);
+      const bg=ZONE_BG[zi]||ZONE_BG[0];
+      cards+=`<div class="v4WorldStage v8-world-stage ${unlocked?'':'locked'} ${current?'current':''}" style="--zone-bg:url('assets_v7/zone_${bg}.png')"><h4>${zi+1}-${n} · ${z.name}</h4><p>${z.subtitle}</p><span class="v6-zone-tag">${z.set} 裝備池</span><div class="bossName">首領：${z.bosses[n-1]}</div></div>`
+    }});
+    worldStages.innerHTML=cards;
+    idleMilestones.innerHTML=v4MilestoneData().map(m=>{const claimed=gameClaims.some(x=>x.milestone_key===m.key);return `<div class="v4Milestone ${m.ok?'done':''} ${claimed?'claimed':''}"><div style="display:flex;justify-content:space-between;gap:8px"><div><b>${m.name}</b><small>${m.cond}</small><small class="rar-史詩">獎勵 ◆${m.reward} 星痕鑽石</small></div>${m.ok&&!claimed?`<button class="sg-btn primary" onclick="v4ClaimMilestone('${m.key}')">領取</button>`:claimed?'<span>✓</span>':''}</div></div>`}).join('');
+  };
+
+  function refreshAll(){try{typeof render公會==='function'&&render公會()}catch(e){console.error(e)}try{typeof renderRecords==='function'&&renderRecords()}catch(e){}try{typeof renderHome==='function'&&renderHome()}catch(e){}}
+  document.addEventListener('DOMContentLoaded',()=>setTimeout(refreshAll,700));
+  setTimeout(refreshAll,2000);
+})();
 </script>
 
 </body>
