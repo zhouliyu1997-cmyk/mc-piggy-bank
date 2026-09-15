@@ -298,6 +298,90 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
   .v4LootGrid{grid-template-columns:repeat(2,1fr)}
 }
 
+
+/* ==========================================================
+   星痕公會 V5 — 真正網頁遊戲 UI
+   不使用「背景概念圖 + 疊按鈕」的做法
+   ========================================================== */
+.sg-page{padding:0!important}
+.sg-game{
+  --sg-bg:#070910;--sg-panel:#10141d;--sg-panel2:#151b26;--sg-panel3:#0c1017;
+  --sg-line:#293242;--sg-line2:#3a465a;--sg-text:#f2f4f8;--sg-muted:#929bad;
+  --sg-gold:#e8bd70;--sg-blue:#58bfff;--sg-purple:#b879ff;--sg-red:#f0616c;
+  --sg-green:#66c38b;
+  min-height:760px;background:
+  radial-gradient(circle at 52% -20%,#22213b 0,transparent 32%),
+  linear-gradient(180deg,#0d1018 0,#070910 100%);
+  color:var(--sg-text);border-radius:22px;overflow:hidden;
+  border:1px solid #232b39;box-shadow:0 22px 60px rgba(20,12,35,.24);
+  font-size:15px;line-height:1.45
+}
+.sg-topbar{height:86px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 20px;background:rgba(8,10,16,.95);border-bottom:1px solid var(--sg-line)}
+.sg-brand{display:flex;align-items:center;gap:12px;min-width:250px}.sg-crest{width:48px;height:48px;border:1px solid #6e5687;border-radius:14px;display:grid;place-items:center;color:#e2b8ff;font-size:23px;background:radial-gradient(circle,#39274c,#15121d);box-shadow:0 0 24px rgba(169,87,226,.14)}
+.sg-brand-en{font-size:10px;letter-spacing:.22em;color:#aa8ec8;font-weight:900}.sg-brand-cn{font-family:Georgia,"Noto Serif TC",serif;font-size:27px;font-weight:900;letter-spacing:.08em;background:linear-gradient(#fff3d9,#ddb675);-webkit-background-clip:text;color:transparent}
+.sg-resourcebar{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.sg-resource{min-width:126px;height:55px;border:1px solid var(--sg-line);border-radius:11px;background:#0f141e;display:flex;align-items:center;gap:9px;padding:7px 10px}.sg-resource>span{width:31px;height:31px;border-radius:9px;display:grid;place-items:center;background:#1b2332}.sg-resource b{display:block;font-size:17px}.sg-resource small{display:block;font-size:9px;color:var(--sg-muted)}.sg-resource.diamond>span{color:#67d4ff}.sg-resource.gold>span{color:#f0c464}.sg-resource.power>span{color:#ff777f}.sg-resource.guild>span{color:#c68aff}
+.sg-body{display:grid;grid-template-columns:126px minmax(0,1fr);min-height:675px}
+.sg-nav{background:#080b11;border-right:1px solid var(--sg-line);padding:12px 9px;display:flex;flex-direction:column;gap:7px}.sg-nav button{min-height:72px;border:1px solid transparent;border-radius:11px;background:transparent;color:#9199aa;display:grid;grid-template-columns:29px 1fr;text-align:left;align-items:center;padding:9px;transition:.15s}.sg-nav button>span{grid-row:1/3;font-size:19px;color:#667286}.sg-nav b{font-size:13px}.sg-nav small{font-size:8px;color:#697386}.sg-nav button:hover{background:#10151f;color:#e4e8ef}.sg-nav button.active{background:linear-gradient(135deg,#272037,#361c2f);border-color:#6a4564;color:#fff;box-shadow:inset 3px 0 #bd6ba6}.sg-nav button.active>span{color:#e6a3d9}
+.sg-content{min-width:0;padding:16px}.sg-view{display:none!important}.sg-view.active{display:block!important}.sg-view-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:13px}.sg-kicker{font-size:10px;letter-spacing:.17em;color:#9c83c0;font-weight:900}.sg-view-head h2{font-family:Georgia,"Noto Serif TC",serif;font-size:26px;margin:3px 0 2px}.sg-view-head p{font-size:11px;color:var(--sg-muted);margin:0}.sg-stage-chip{min-width:62px;text-align:center;border:1px solid #534263;border-radius:11px;padding:9px 12px;background:#1b1624;color:#e7d6f5;font-weight:900}
+.sg-panel{background:linear-gradient(180deg,#111620,#0b0f16);border:1px solid var(--sg-line);border-radius:14px;padding:12px;box-shadow:0 10px 28px rgba(0,0,0,.13)}.sg-panel-title{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:9px}.sg-panel-title>span{font-family:Georgia,"Noto Serif TC",serif;font-size:17px;font-weight:800}.sg-panel-title small{font-size:9px;color:var(--sg-muted)}
+.sg-btn{border:1px solid #384357;border-radius:9px;background:#151b25;color:#e9ecf2;padding:9px 12px;font-weight:900;font-size:11px}.sg-btn:hover{filter:brightness(1.12)}.sg-btn:disabled{opacity:.35}.sg-btn.primary{background:linear-gradient(135deg,#6e4495,#9a4261);border-color:#a75a81;color:#fff}.sg-btn.blue{background:linear-gradient(135deg,#275e88,#465c9e);border-color:#5378ae}.sg-btn.violet{background:linear-gradient(135deg,#4f3166,#80458c);border-color:#85609b}.sg-btn.danger{background:linear-gradient(135deg,#762f3b,#a2473c);border-color:#b85b4c}.sg-btn.ghost{background:#0e131b}.sg-btn.full{width:100%;margin-top:9px}
+.sg-inline-actions,.sg-actions{display:flex;gap:7px;flex-wrap:wrap}
+
+/* Battle */
+.sg-battle-layout{display:grid;grid-template-columns:minmax(0,1fr) 295px;gap:12px}.sg-battle-card{background:#0c1017;border:1px solid var(--sg-line);border-radius:15px;padding:10px}.sg-battlefield{height:510px;position:relative;overflow:hidden;border-radius:12px;border:1px solid #303949;background:linear-gradient(180deg,#293247 0%,#171f2b 50%,#10151c 51%,#11131a 100%)}
+.sg-sky-glow{position:absolute;inset:0;background:radial-gradient(circle at 74% 18%,rgba(158,101,223,.22),transparent 16%),radial-gradient(circle at 31% 35%,rgba(80,151,184,.12),transparent 21%)}
+.sg-mountain{position:absolute;bottom:43%;width:54%;height:45%;background:#111927;clip-path:polygon(0 100%,12% 54%,24% 79%,39% 27%,51% 71%,68% 12%,82% 63%,100% 32%,100% 100%)}.sg-mountain.m1{left:-5%;opacity:.85}.sg-mountain.m2{right:-10%;transform:scaleX(-1);opacity:.55;background:#171d2d}
+.sg-ruin{position:absolute;bottom:34%;width:120px;height:190px;opacity:.55;background:linear-gradient(90deg,#222936,#30384a);clip-path:polygon(10% 100%,10% 24%,23% 24%,23% 7%,38% 7%,50% 0,62% 7%,77% 7%,77% 24%,90% 24%,90% 100%)}.sg-ruin.r1{left:15%}.sg-ruin.r2{right:8%;transform:scale(.75);opacity:.35}
+.sg-ground{position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(180deg,#2a2a31,#15171d);clip-path:polygon(0 22%,17% 28%,32% 18%,49% 31%,66% 18%,82% 26%,100% 18%,100% 100%,0 100%)}
+.sg-combo{position:absolute;right:18px;top:15px;z-index:12;text-align:right}.sg-combo b{display:block;font-size:37px;font-style:italic;text-shadow:0 3px 4px #000}.sg-combo span{color:#ffb562;font-size:11px;font-weight:900}
+.sg-hero-lane{position:absolute;left:3%;right:47%;bottom:11%;height:57%;z-index:6;display:flex;align-items:flex-end;justify-content:space-around}.v4BattleHero{position:relative;width:82px;height:205px;display:flex;align-items:flex-end;justify-content:center;filter:drop-shadow(0 8px 6px rgba(0,0,0,.45))}.v4BattleHero svg{width:100%;height:100%}.v4BattleHero.attack{animation:sgSlash .3s ease-out}.v4BattleHero.cast{animation:sgCast .52s ease-out}.v4BattleHero.skill{animation:sgBurst .7s ease-out}@keyframes sgSlash{50%{transform:translateX(65px) scale(1.06)}}@keyframes sgCast{45%{transform:translateY(-10px);filter:drop-shadow(0 0 18px #79b9ff)}}@keyframes sgBurst{35%{transform:scale(1.17);filter:drop-shadow(0 0 30px #d46cff)}}.v4HeroLabel{position:absolute;bottom:-3px;left:50%;transform:translateX(-50%);white-space:nowrap;border:1px solid #333b4c;background:#080b10d9;border-radius:99px;padding:3px 7px;font-size:9px}
+.sg-monster-lane{position:absolute;left:51%;right:2%;bottom:10%;height:61%;z-index:5}.v4Mob{position:absolute;width:96px;height:140px;filter:drop-shadow(0 7px 5px rgba(0,0,0,.48))}.v4Mob svg{width:100%;height:100%}.v4Mob.hit{animation:sgHit .18s}.v4Mob.dead{animation:sgDead .34s forwards}@keyframes sgHit{50%{transform:translateX(7px);filter:brightness(1.7)}}@keyframes sgDead{to{transform:translateY(28px) rotate(15deg) scale(.3);opacity:0}}.v4BossMob{width:180px;height:250px!important}.v4BossHp{position:absolute;left:5%;right:5%;top:5%;z-index:9;text-align:center}.v4BossHp b{font-size:13px}.v4BossHp .bar{height:12px;background:#270e15;border:1px solid #8e3447;border-radius:99px;overflow:hidden}.v4BossHp i{display:block;height:100%;background:linear-gradient(90deg,#ad1e3d,#f06469)}
+.sg-skillbar{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:15;display:flex;gap:6px}.v4SkillIcon{width:49px;height:49px;border-radius:9px;border:1px solid #5b4774;background:radial-gradient(circle,#6a3c82,#191123);display:grid;place-items:center;font-size:19px;box-shadow:0 5px 12px #0008}.v4SkillIcon small{position:absolute;margin-top:60px;font-size:8px;white-space:nowrap;color:#c9bdd9}
+.damageLayer{position:absolute;inset:0;z-index:18;pointer-events:none}.dmg{position:absolute;font-size:22px;font-weight:1000;color:#fff0a3;text-shadow:0 2px 4px #000;animation:sgDmg .75s forwards}@keyframes sgDmg{to{transform:translateY(-60px) scale(1.16);opacity:0}}.dmg.crit{font-size:29px;color:#ff7ee8}.lootBurst{position:absolute;right:25%;top:45%;z-index:20;color:#ffd369;font-weight:1000;opacity:0}.lootBurst.show{animation:sgLoot 1s forwards}@keyframes sgLoot{20%{opacity:1}100%{transform:translateY(-65px);opacity:0}}
+.sg-battle-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}.sg-battle-metrics>div{background:#111620;border:1px solid #293141;border-radius:9px;padding:7px 9px}.sg-battle-metrics small{display:block;font-size:9px;color:var(--sg-muted)}.sg-battle-metrics b{display:block;font-size:15px;margin-top:2px}.sg-boss-progress{margin-top:8px}.sg-boss-progress>div:first-child{display:flex;justify-content:space-between;font-size:9px;color:#9ca4b4}.sg-progress-track{height:7px;background:#171c25;border-radius:99px;overflow:hidden;margin-top:5px}.sg-progress-track i{display:block;height:100%;background:linear-gradient(90deg,#8b3973,#ed9d56);width:0}.sg-actions{margin-top:8px}
+.sg-battle-side{display:flex;flex-direction:column;gap:12px}.sg-party-list{display:grid;gap:6px}.v4PartyItem{display:grid;grid-template-columns:44px 1fr auto;gap:7px;align-items:center;border:1px solid #283040;background:#0c1118;border-radius:9px;padding:6px}.v4PartyAvatar{height:49px}.v4PartyItem b{font-size:10px}.v4PartyItem small{display:block;font-size:8px;color:#8f98a8}.v4Power{font-size:9px;color:var(--sg-gold)}
+.sg-offline-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}.sg-offline-grid>div{background:#0c1118;border:1px solid #283040;border-radius:9px;padding:7px}.sg-offline-grid .wide{grid-column:1/3}.sg-offline-grid small{display:block;font-size:8px;color:var(--sg-muted)}.sg-offline-grid b{font-size:11px}
+
+/* Heroes */
+.sg-hero-layout{display:grid;grid-template-columns:390px minmax(0,1fr);gap:12px}.sg-roster-panel{min-height:600px}.sg-filter-row{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:9px}.sg-filter-row button,.sg-loot-tabs button{border:1px solid #2d3646;background:#0c1118;color:#9da5b3;border-radius:8px;padding:6px 9px;font-size:9px}.sg-filter-row button.active,.sg-loot-tabs button.active{background:#30233d;border-color:#6e4c7c;color:#fff}.sg-roster{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;max-height:610px;overflow:auto;padding-right:2px}.sg-roster-card{border:1px solid #283141;background:#0b1017;border-radius:10px;padding:7px;display:grid;grid-template-columns:52px 1fr;gap:7px;align-items:center;cursor:pointer}.sg-roster-card:hover,.sg-roster-card.active{border-color:#7d557b;background:#17131e}.sg-roster-avatar{height:65px}.sg-roster-card b{font-size:10px}.sg-roster-card small{display:block;font-size:8px;color:#929aaa}.sg-roster-power{color:var(--sg-gold)!important}
+.sg-hero-detail{min-height:600px}.sg-hero-showcase{display:grid;grid-template-columns:260px minmax(0,1fr);gap:15px}.sg-hero-paper{height:410px;border:1px solid #303949;border-radius:13px;background:radial-gradient(circle at 50% 30%,rgba(121,75,156,.25),transparent 28%),linear-gradient(160deg,#202638,#0d1118);display:grid;place-items:center;position:relative}.sg-hero-paper svg{height:95%;width:82%;filter:drop-shadow(0 13px 8px #0009)}.sg-hero-rarity{position:absolute;left:10px;top:10px;padding:4px 7px;border-radius:99px;background:#090c12cc;border:1px solid #394253;font-size:9px}.sg-hero-info h3{font-family:Georgia,"Noto Serif TC",serif;font-size:25px;margin:0}.sg-hero-info p{font-size:10px;color:var(--sg-muted)}.sg-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:10px 0}.sg-stat-grid div{border:1px solid #293141;background:#0c1118;border-radius:9px;padding:7px}.sg-stat-grid small{display:block;font-size:8px;color:var(--sg-muted)}.sg-stat-grid b{font-size:12px}.sg-subtitle{font-size:11px;font-weight:900;color:#d3c3e1;margin:11px 0 6px}.sg-job-line{border:1px solid #3a3047;background:#15101d;border-radius:9px;padding:7px;font-size:10px;color:#c4a7de}.sg-skill-list{display:grid;grid-template-columns:1fr 1fr;gap:6px}.sg-skill-row{border:1px solid #2c3443;background:#0c1118;border-radius:9px;padding:7px}.sg-skill-row b{font-size:10px}.sg-skill-row small{display:block;color:#8f98a7;font-size:8px;margin-top:2px}.sg-skill-row button{float:right;border:0;border-radius:6px;background:#46315a;color:#fff;font-size:8px;padding:4px 6px}.sg-equip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.sg-equip-slot{min-height:56px;border:1px solid #293141;border-radius:8px;background:#0a0e14;padding:5px;text-align:center;font-size:8px;color:#8f98a7}.sg-equip-slot.on{border-color:#746184;color:#eee3f5}.sg-equip-slot svg{width:35px;height:35px}
+
+/* Recruit */
+.sg-recruit-layout{display:grid;grid-template-columns:minmax(0,1.45fr) 340px;gap:12px}.sg-summon-stage{min-height:560px;position:relative;overflow:hidden;border:1px solid #3f3450;border-radius:15px;background:radial-gradient(circle at 72% 35%,rgba(165,80,216,.23),transparent 20%),radial-gradient(circle at 76% 36%,rgba(255,110,160,.10),transparent 11%),linear-gradient(145deg,#17121e,#0b0c12 68%);display:flex;align-items:flex-end;padding:26px}.sg-rune{position:absolute;border:1px solid rgba(193,130,255,.22);border-radius:50%;right:7%;top:7%;animation:sgRune 18s linear infinite}.sg-rune.ring1{width:370px;height:370px}.sg-rune.ring2{width:270px;height:270px;right:10.7%;top:15%;animation-direction:reverse;animation-duration:13s}.sg-rune:before,.sg-rune:after{content:"✦";position:absolute;color:rgba(227,190,255,.35);font-size:31px}.sg-rune:before{left:50%;top:-18px}.sg-rune:after{right:-13px;top:50%}@keyframes sgRune{to{transform:rotate(360deg)}}.sg-rune-core{position:absolute;right:18%;top:27%;font-size:110px;color:rgba(216,158,255,.34);text-shadow:0 0 55px rgba(201,106,255,.34)}.sg-summon-copy{max-width:600px;position:relative;z-index:4}.sg-summon-copy>span{font-size:10px;letter-spacing:.17em;color:#b89bd1}.sg-summon-copy h3{font-family:Georgia,"Noto Serif TC",serif;font-size:34px;margin:5px 0}.sg-summon-copy p{font-size:11px;color:#a4a8b3;line-height:1.65}.sg-pity-row{display:flex;gap:5px;flex-wrap:wrap;margin:12px 0}.sg-pity-row span{font-size:9px;border:1px solid #513f5f;background:#17111d;border-radius:99px;padding:5px 8px;color:#d0c0dc}.sg-summon-buttons{display:flex;gap:7px;flex-wrap:wrap}.sg-showcase{display:grid;grid-template-columns:1fr 1fr;gap:7px;max-height:515px;overflow:auto}.v4ShowHero,.sg-show-card{border:1px solid #2d3544;background:#0c1118;border-radius:9px;padding:7px;display:grid;grid-template-columns:48px 1fr;gap:7px;align-items:center}.v4ShowHero .avatar,.sg-show-avatar{height:54px}.v4ShowHero b,.sg-show-card b{font-size:10px}.v4ShowHero small,.sg-show-card small{display:block;font-size:8px}
+
+/* Guild base */
+.sg-guild-layout{display:grid;grid-template-columns:minmax(0,1.6fr) 285px;gap:12px}.sg-base-map{height:555px;border:1px solid #323b4b;border-radius:15px;overflow:hidden;position:relative;background:linear-gradient(180deg,#28364c 0,#1e2938 43%,#283026 44%,#171b17 100%)}.sg-base-sky{position:absolute;inset:0;background:radial-gradient(circle at 77% 14%,rgba(235,211,168,.16),transparent 12%),linear-gradient(180deg,rgba(113,94,153,.16),transparent 35%)}.sg-base-hills{position:absolute;bottom:42%;height:41%;width:72%;background:#121a25;clip-path:polygon(0 100%,10% 60%,24% 76%,36% 35%,49% 71%,65% 19%,78% 63%,100% 39%,100% 100%)}.sg-base-hills.h1{left:-8%;opacity:.8}.sg-base-hills.h2{right:-12%;transform:scaleX(-1);opacity:.52}.sg-base-road{position:absolute;left:8%;right:6%;bottom:-8%;height:61%;background:#403b32;clip-path:polygon(45% 0,58% 0,84% 100%,7% 100%);opacity:.6}.sg-map-label{position:absolute;left:13px;top:13px;border:1px solid #3e4858;background:#090d13d9;border-radius:9px;padding:6px 9px;font-size:10px}.sg-buildings{position:absolute;inset:0}.v4BuildingNode{position:absolute;width:115px;text-align:center;cursor:pointer;transition:.15s}.v4BuildingNode:hover{transform:translate(-50%,-50%) scale(1.08)!important}.v4BuildingSprite{height:100px;filter:drop-shadow(0 8px 6px #0008)}.v4BuildingTag{display:inline-block;background:#080b10e8;border:1px solid #3e4859;border-radius:7px;padding:3px 6px;font-size:8px}.sg-base-battle{position:absolute;left:4%;right:4%;bottom:2%;height:22%;display:flex;justify-content:space-between;align-items:flex-end;pointer-events:none}.hubHero,.hubMob{height:95px;width:63px}.hubHero{animation:sgHubHero 1.5s ease-in-out infinite}.hubMob{animation:sgHubMob 1.2s ease-in-out infinite}@keyframes sgHubHero{50%{transform:translateX(17px)}}@keyframes sgHubMob{50%{transform:translateX(-6px)}}
+.sg-building-detail{min-height:555px}.sg-building-hero{height:190px;display:grid;place-items:center;background:radial-gradient(circle,#252d3d,#0b1017);border:1px solid #2e3747;border-radius:12px}.sg-building-hero svg{height:170px}.sg-building-detail h3{font-family:Georgia,serif;font-size:21px;margin:10px 0 2px}.sg-building-detail p{font-size:10px;color:var(--sg-muted)}.sg-building-next{border:1px solid #453a52;background:#15111d;border-radius:9px;padding:8px;margin:9px 0;font-size:9px;color:#c6add9}.sg-guild-bottom{display:grid;grid-template-columns:1.35fr .65fr;gap:12px;margin-top:12px}.sg-building-list{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.v4BuildingCard,.sg-building-card{border:1px solid #2b3443;background:#0c1118;border-radius:9px;padding:7px;cursor:pointer}.v4BuildingCard:hover,.sg-building-card.active{border-color:#745773}.v4BuildingCard h4{font-size:10px}.v4BuildingCard small{font-size:8px}.v4Unlock{font-size:8px;color:#b89bd1}.idleMasters{display:grid;gap:7px}.masterIdle{border:1px solid #2b3443;background:#0c1118;border-radius:9px;padding:8px}.masterIdle b{font-size:11px}.masterIdle small{font-size:8px;color:#9099a9}
+
+/* Inventory */
+.sg-inventory-layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:12px}.sg-gear-detail{min-height:590px}.sg-gear-art{height:240px;border:1px solid #303949;border-radius:12px;background:radial-gradient(circle,#252c3a,#0a0e14);display:grid;place-items:center}.sg-gear-art svg{width:165px;height:165px}.sg-gear-detail h3{font-family:Georgia,serif;font-size:20px;margin:10px 0 3px}.sg-gear-detail p{font-size:9px;color:var(--sg-muted)}.sg-gear-stats{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:8px}.sg-gear-stats div{border:1px solid #293141;background:#0a0e14;border-radius:8px;padding:6px}.sg-gear-stats small{display:block;font-size:8px;color:#8d96a5}.sg-gear-stats b{font-size:10px}.sg-equip-target{width:100%;padding:8px;border:1px solid #364052;background:#0a0e14;color:#e8ebf1;border-radius:8px;margin:8px 0;font-size:10px}.sg-loot-tabs{display:flex;gap:5px;margin-bottom:8px}.sg-inventory{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;max-height:590px;overflow:auto}.v4LootCard,.sg-item-card{border:1px solid #2b3443;background:#0b1017;border-radius:9px;padding:7px;cursor:pointer}.v4LootCard:hover,.sg-item-card.active{border-color:#765d83;background:#14111b}.v4LootIcon,.sg-item-icon{height:72px;display:grid;place-items:center;background:#111720;border-radius:7px}.v4LootIcon svg,.sg-item-icon svg{width:60px;height:60px}.v4LootCard b,.sg-item-card b{display:block;font-size:9px}.v4LootCard small,.sg-item-card small{display:block;font-size:7px;color:#929aaa}.v4SellValue{color:var(--sg-gold)!important}
+
+/* World */
+.sg-world-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:12px}.sg-world-map{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.v4WorldStage,.sg-stage-card{position:relative;min-height:105px;border:1px solid #2b3443;background:linear-gradient(145deg,#151b25,#0b1017);border-radius:10px;padding:8px}.v4WorldStage.current,.sg-stage-card.current{border-color:#9c5c8f;box-shadow:inset 0 0 18px rgba(173,79,151,.1)}.v4WorldStage.locked,.sg-stage-card.locked{opacity:.38}.v4WorldStage h4,.sg-stage-card h4{font-size:10px;margin:0}.v4WorldStage p,.sg-stage-card p{font-size:8px;color:#8f98a7}.v4WorldStage .bossName,.sg-stage-boss{position:absolute;left:8px;bottom:7px;font-size:8px;color:#d78d87}.sg-milestones{display:grid;gap:6px;max-height:620px;overflow:auto}.v4Milestone,.sg-milestone{border:1px solid #2b3443;background:#0b1017;border-radius:9px;padding:7px}.v4Milestone.done,.sg-milestone.done{border-color:#6e577b}.v4Milestone.claimed,.sg-milestone.claimed{opacity:.6}.v4Milestone b{font-size:10px}.v4Milestone small{font-size:8px}
+
+/* Recruit modal */
+.recruitOverlay{position:fixed;inset:0;background:#05060be8;z-index:200;display:none;place-items:center;padding:16px}.recruitOverlay.show{display:grid}.sg-result-modal{width:min(900px,100%);max-height:90vh;overflow:auto;background:#0d1118;border:1px solid #4e3f5a;border-radius:16px;padding:15px;text-align:center}.recruitResultTitle{font-family:Georgia,serif;font-size:22px}.recruitResults{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:12px 0}.v4RecruitResult{border:1px solid #2e3747;background:#0b1017;border-radius:9px;padding:7px}.v4RecruitResult .avatar{height:115px}.v4RecruitResult b{font-size:9px}.v4RecruitResult small{font-size:8px}
+
+/* Rarity */
+.rar-普通{color:#c2c7cf}.rar-優秀{color:#72c98a}.rar-稀有{color:#69b5ff}.rar-史詩{color:#bf80ff}.rar-傳說{color:#efc46b}.rar-神話{color:#ff728e;text-shadow:0 0 8px #ff4e7855}
+
+/* Mobile/tablet */
+@media(max-width:1100px){
+  .sg-body{grid-template-columns:1fr}.sg-nav{flex-direction:row;overflow:auto;border-right:0;border-bottom:1px solid var(--sg-line);padding:8px}.sg-nav button{min-width:105px;min-height:54px;grid-template-columns:24px 1fr}.sg-nav small{display:none}
+  .sg-battle-layout,.sg-recruit-layout,.sg-guild-layout,.sg-guild-bottom,.sg-world-layout{grid-template-columns:1fr}
+  .sg-hero-layout,.sg-inventory-layout{grid-template-columns:1fr}
+  .sg-roster{grid-template-columns:repeat(4,1fr);max-height:300px}
+  .sg-hero-showcase{grid-template-columns:220px 1fr}
+  .sg-inventory{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:760px){
+  .sg-topbar{height:auto;align-items:flex-start;flex-direction:column;padding:12px}.sg-resourcebar{justify-content:flex-start}.sg-resource{min-width:108px}
+  .sg-content{padding:10px}.sg-view-head h2{font-size:22px}.sg-battlefield{height:410px}.sg-battle-metrics{grid-template-columns:repeat(2,1fr)}
+  .sg-roster{grid-template-columns:repeat(2,1fr)}.sg-hero-showcase{grid-template-columns:1fr}.sg-hero-paper{height:330px}
+  .sg-showcase{grid-template-columns:1fr 1fr}.sg-base-map{height:470px}.sg-building-list{grid-template-columns:1fr}
+  .sg-inventory{grid-template-columns:repeat(2,1fr)}.sg-world-map{grid-template-columns:1fr}.recruitResults{grid-template-columns:repeat(2,1fr)}
+}
+
 </style>
 </head>
 <body>
@@ -353,168 +437,212 @@ tr.checkedInRow{background:linear-gradient(90deg,rgba(83,167,114,.05),transparen
 
 
 
-<section id="guildPage" class="page">
-<div class="v4Shell">
-  <header class="v4Header">
-    <div class="v4Brand">
-      <div class="v4BrandMini">M&C · STARFALL GUILD</div>
-      <div class="v4BrandTitle">星痕公會</div>
-      <div class="v4BrandSub">把平凡的每一天，變成傳奇的一部分。</div>
-    </div>
-    <div class="v4Currencies">
-      <div class="v4Currency diamond"><span>◆</span><div><b id="idlePremium">0</b><small>星痕鑽石</small></div></div>
-      <div class="v4Currency gold"><span>●</span><div><b id="idleGold">0</b><small>遠征金幣</small></div></div>
-      <div class="v4Currency power"><span>⚔</span><div><b id="idleDps">0</b><small>每秒傷害</small></div></div>
-      <div class="v4Currency guild"><span>✦</span><div><b id="idleGuildLevel">Lv.1</b><small>公會等級</small></div></div>
-    </div>
-  </header>
 
-  <nav class="v4Tabs">
-    <button id="itBattle" class="active" onclick="showIdleTab('battle')">⚔ 戰鬥</button>
-    <button id="itHeroes" onclick="showIdleTab('heroes')">♟ 冒險家</button>
-    <button id="itRecruit" onclick="showIdleTab('recruit')">✦ 招募</button>
-    <button id="itGuild" onclick="showIdleTab('guild')">♜ 公會基地</button>
-    <button id="itLoot" onclick="showIdleTab('loot')">◇ 裝備・時裝</button>
-    <button id="itWorld" onclick="showIdleTab('world')">◎ 世界・里程碑</button>
-  </nav>
-
-  <div id="ivBattle" class="idleView active v4View">
-    <div class="v4BattleGrid">
-      <div class="v4BattlePanel">
-        <div class="v4StageTop">
-          <div><span class="v4Eyebrow">目前戰區</span><h2 id="stageName">翠谷森林 1-1</h2><p id="stageSub">怪物波次進行中</p></div>
-          <div class="v4StageBadge" id="stageBadge">1-1</div>
-        </div>
-
-        <div id="battleArena" class="v4Arena">
-          <div class="v4ArenaShade"></div>
-          <div class="v4Combo"><span id="v4ComboCount">0</span><small>連擊</small></div>
-          <div id="heroLane" class="v4HeroLane"></div>
-          <div id="monsterWrap" class="v4MonsterLane"></div>
-          <div id="damageLayer" class="damageLayer"></div>
-          <div id="lootBurst" class="lootBurst"></div>
-          <div class="v4SkillBar" id="v4SkillBar"></div>
-        </div>
-
-        <div class="v4BattleStats">
-          <div><small>本關擊殺</small><b id="battleKills">0</b></div>
-          <div><small>金幣 / 秒</small><b id="battleGps">0</b></div>
-          <div><small>裝備掉落</small><b id="battleDropRate">0%</b></div>
-          <div><small>怪物波次</small><b id="battleProgress">0 / 25</b></div>
-        </div>
-
-        <div class="v4ProgressRow">
-          <div><span>擊殺 25 隻後挑戰本關首領</span><span id="bossUnlockText">0 / 25</span></div>
-          <div class="v4Progress"><i id="bossTrackFill"></i></div>
-        </div>
-        <div class="v4BattleActions">
-          <button class="v4Btn" onclick="toggleBattlePause()" id="battlePauseBtn">暫停動畫</button>
-          <button class="v4Btn boss" onclick="challengeBoss()" id="bossBtn" disabled>挑戰本關首領</button>
+<section id="guildPage" class="page sg-page">
+  <div class="sg-game">
+    <header class="sg-topbar">
+      <div class="sg-brand">
+        <div class="sg-crest">✦</div>
+        <div>
+          <div class="sg-brand-en">M&amp;C · STARFALL GUILD</div>
+          <div class="sg-brand-cn">星痕公會</div>
         </div>
       </div>
+      <div class="sg-resourcebar">
+        <div class="sg-resource diamond"><span>◆</span><div><b id="idlePremium">0</b><small>星痕鑽石</small></div></div>
+        <div class="sg-resource gold"><span>●</span><div><b id="idleGold">0</b><small>遠征金幣</small></div></div>
+        <div class="sg-resource power"><span>⚔</span><div><b id="idleDps">0</b><small>每秒傷害</small></div></div>
+        <div class="sg-resource guild"><span>✦</span><div><b id="idleGuildLevel">Lv.1</b><small>公會等級</small></div></div>
+      </div>
+    </header>
 
-      <aside class="v4SideCol">
-        <div class="v4Panel">
-          <h3>離線遠征收益</h3>
-          <p>無離線時間上限。離線多久，就依當時隊伍效率計算多久。</p>
-          <div class="v4Offline">
-            <div><span>離線時間</span><b id="offlineDuration">—</b></div>
-            <div><span>遠征金幣</span><b id="offlineGold">0</b></div>
-            <div><span>裝備戰利品</span><b id="offlineLoot">—</b></div>
-          </div>
-          <button class="v4Btn primary wide" id="claimOfflineBtn" onclick="claimOfflineRewards()">領取全部收益</button>
-        </div>
-        <div class="v4Panel">
-          <h3>主力隊伍</h3>
-          <div id="battlePartyList" class="v4Party"></div>
-        </div>
+    <div class="sg-body">
+      <aside class="sg-nav">
+        <button id="itBattle" class="active" onclick="showIdleTab('battle')"><span>⚔</span><b>戰鬥</b><small>自動狩獵</small></button>
+        <button id="itHeroes" onclick="showIdleTab('heroes')"><span>♟</span><b>冒險家</b><small>角色養成</small></button>
+        <button id="itRecruit" onclick="showIdleTab('recruit')"><span>✦</span><b>招募</b><small>召集夥伴</small></button>
+        <button id="itGuild" onclick="showIdleTab('guild')"><span>♜</span><b>公會基地</b><small>建築經營</small></button>
+        <button id="itLoot" onclick="showIdleTab('loot')"><span>◇</span><b>裝備</b><small>背包整備</small></button>
+        <button id="itWorld" onclick="showIdleTab('world')"><span>◎</span><b>世界</b><small>關卡與里程碑</small></button>
       </aside>
-    </div>
-  </div>
 
-  <div id="ivHeroes" class="idleView v4View">
-    <div class="v4Panel">
-      <div class="v4PanelHead"><div><h3>冒險家名冊</h3><p>四大職業，Lv.30 / 60 / 90 / 120 轉職。每位冒險家都有獨立裝備與技能等級。</p></div><div class="v4Badge" id="heroCountBadge">0 名</div></div>
-      <div id="idleHeroGrid" class="v4HeroGrid"></div>
-    </div>
-  </div>
+      <main class="sg-content">
+        <!-- Battle -->
+        <section id="ivBattle" class="idleView active sg-view">
+          <div class="sg-view-head">
+            <div><span class="sg-kicker">自動狩獵中</span><h2 id="stageName">翠谷森林 1-1</h2><p id="stageSub">怪物波次進行中</p></div>
+            <div class="sg-stage-chip" id="stageBadge">1-1</div>
+          </div>
 
-  <div id="ivRecruit" class="idleView v4View">
-    <div class="v4RecruitGrid">
-      <div class="v4RecruitHero">
-        <div class="v4RecruitCopy">
-          <span class="v4Eyebrow">星夜召集</span>
-          <h2>讓新的羈絆回應星痕</h2>
-          <p>真實工作收入會轉換為星痕鑽石。鑽石可以用於角色、裝備與特殊時裝招募，但不會扣掉真正的存款。</p>
-        </div>
-        <div class="v4Pity"><span>10 抽至少稀有</span><span>40 抽至少史詩</span><span>100 抽至少傳說</span></div>
-        <div class="v4RecruitActions">
-          <button class="v4Btn primary" onclick="doRecruit(1)">角色單抽 ◆150</button>
-          <button class="v4Btn primary" onclick="doRecruit(10)">角色十連 ◆1300</button>
-          <button class="v4Btn blue" onclick="doEquipmentGacha(10)">裝備十連 ◆900</button>
-          <button class="v4Btn violet" onclick="doFashionGacha(1)">時裝召喚 ◆750</button>
-        </div>
-        <div class="v4RecruitCounter" id="recruitCounter">累積招募 0 次</div><div class="v4EconomyNote"><strong>平衡設計：</strong>平均時薪 A$25 時，工作 1 小時約獲得 50 星痕鑽石。角色單抽需要約 3 小時真實工作，十連約 26 小時；高稀有角色提供優勢，但角色等級、技能、建築與推圖仍必須依靠掛機資源。</div>
-      </div>
-      <div class="v4Panel">
-        <h3>召集名單預覽</h3>
-        <div id="recruitShowcase" class="v4Showcase"></div>
-      </div>
-    </div>
-  </div>
+          <div class="sg-battle-layout">
+            <section class="sg-battle-card">
+              <div id="battleArena" class="sg-battlefield">
+                <div class="sg-sky-glow"></div>
+                <div class="sg-mountain m1"></div><div class="sg-mountain m2"></div>
+                <div class="sg-ruin r1"></div><div class="sg-ruin r2"></div>
+                <div class="sg-ground"></div>
+                <div class="sg-combo"><b id="v4ComboCount">0</b><span>連擊</span></div>
+                <div id="heroLane" class="sg-hero-lane"></div>
+                <div id="monsterWrap" class="sg-monster-lane"></div>
+                <div id="damageLayer" class="damageLayer"></div>
+                <div id="lootBurst" class="lootBurst"></div>
+                <div id="v4SkillBar" class="sg-skillbar"></div>
+              </div>
 
-  <div id="ivGuild" class="idleView v4View">
-    <div class="v4GuildScene">
-      <img src="assets/guild_hub.jpg" alt="" class="v4GuildBg">
-      <div class="v4GuildOverlay"></div>
-      <div id="v4BuildingScene" class="v4BuildingScene"></div>
-      <div id="v4HubBattle" class="v4HubBattle"></div>
-      <div class="v4GuildSceneTitle"><span>星痕領・公會基地</span><small>建築每 10 級進化外觀；特定等級會解鎖永久能力。</small></div>
-    </div>
-    <div class="v4GuildBelow">
-      <div class="v4Panel"><h3>基地建設</h3><div id="idleBuildingList" class="v4BuildingList"></div></div>
-      <div class="v4Panel"><h3>雙公會長</h3><div id="idleMasters" class="idleMasters"></div></div>
-    </div>
-  </div>
+              <div class="sg-battle-metrics">
+                <div><small>本關擊殺</small><b id="battleKills">0</b></div>
+                <div><small>金幣 / 秒</small><b id="battleGps">0</b></div>
+                <div><small>裝備掉落率</small><b id="battleDropRate">0%</b></div>
+                <div><small>首領進度</small><b id="battleProgress">0 / 25</b></div>
+              </div>
 
-  <div id="ivLoot" class="idleView v4View">
-    <div class="v4LootTop">
-      <div><h3>裝備與時裝</h3><p>每位冒險家可以穿戴 8 個戰鬥裝備欄位。多餘裝備可以售出換成遠征金幣，避免背包無限堆積。</p></div>
-      <div class="v4BulkActions">
-        <button class="v4Btn" onclick="v4SellLowGear()">出售未裝備的普通／優秀裝備</button>
-        <button class="v4Btn primary" onclick="autoEquipBest()">一鍵配置主力裝備</button>
-      </div>
-    </div>
-    <div class="v4EconomyNote"><strong>經濟規則：</strong>真實工作只產生「星痕鑽石」，用於角色／裝備／時裝召喚；升角色、技能、公會建築與推圖仍主要依靠冒險家掛機取得的「遠征金幣」。鑽石無法直接購買金幣，因此不會靠真實收入瞬間跳過主要養成。</div>
-    <div class="v4LootTabs">
-      <button class="active" onclick="v4LootMode='gear';renderLoot()">戰鬥裝備</button>
-      <button onclick="v4LootMode='fashion';renderLoot()">特殊時裝</button>
-    </div>
-    <div id="lootInventory" class="v4LootGrid"></div>
-  </div>
+              <div class="sg-boss-progress">
+                <div><span>擊殺 25 隻後可挑戰首領</span><strong id="bossUnlockText">0 / 25</strong></div>
+                <div class="sg-progress-track"><i id="bossTrackFill"></i></div>
+              </div>
+              <div class="sg-actions">
+                <button class="sg-btn ghost" onclick="toggleBattlePause()" id="battlePauseBtn">暫停動畫</button>
+                <button class="sg-btn danger" onclick="challengeBoss()" id="bossBtn" disabled>挑戰本關首領</button>
+              </div>
+            </section>
 
-  <div id="ivWorld" class="idleView v4View">
-    <div class="v4WorldGrid">
-      <div class="v4Panel">
-        <h3>世界關卡</h3>
-        <p>每一關都有自己的怪物波次與首領；每個區域的小怪與首領風格不同。</p>
-        <div id="worldStages" class="v4WorldStages"></div>
-      </div>
-      <div class="v4Panel">
-        <h3>現實里程碑 → 世界事件</h3>
-        <p>只有「已簽到」的真實班次會觸發。達成後可以領取鑽石、限定裝備、稱號與特殊外觀。</p>
-        <div id="idleMilestones" class="v4Milestones"></div>
-      </div>
+            <aside class="sg-battle-side">
+              <div class="sg-panel">
+                <div class="sg-panel-title"><span>主力隊伍</span><small>自動取戰力最高 5 名</small></div>
+                <div id="battlePartyList" class="sg-party-list"></div>
+              </div>
+              <div class="sg-panel">
+                <div class="sg-panel-title"><span>離線遠征</span><small>無時間上限</small></div>
+                <div class="sg-offline-grid">
+                  <div><small>離線時間</small><b id="offlineDuration">—</b></div>
+                  <div><small>金幣</small><b id="offlineGold">0</b></div>
+                  <div class="wide"><small>裝備戰利品</small><b id="offlineLoot">—</b></div>
+                </div>
+                <button id="claimOfflineBtn" class="sg-btn primary full" onclick="claimOfflineRewards()">領取全部收益</button>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Heroes -->
+        <section id="ivHeroes" class="idleView sg-view">
+          <div class="sg-view-head">
+            <div><span class="sg-kicker">角色養成</span><h2>冒險家名冊</h2><p>四大職業、多段轉職、技能與八格裝備皆會影響戰鬥表現。</p></div>
+            <div class="sg-stage-chip" id="heroCountBadge">0 名</div>
+          </div>
+          <div class="sg-hero-layout">
+            <div class="sg-panel sg-roster-panel">
+              <div class="sg-filter-row">
+                <button class="active" onclick="v5SetHeroFilter('全部',this)">全部</button>
+                <button onclick="v5SetHeroFilter('戰士',this)">戰士</button>
+                <button onclick="v5SetHeroFilter('法師',this)">法師</button>
+                <button onclick="v5SetHeroFilter('弓箭手',this)">弓箭手</button>
+                <button onclick="v5SetHeroFilter('盜賊',this)">盜賊</button>
+              </div>
+              <div id="idleHeroGrid" class="sg-roster"></div>
+            </div>
+            <div id="v5HeroDetail" class="sg-panel sg-hero-detail"></div>
+          </div>
+        </section>
+
+        <!-- Recruit -->
+        <section id="ivRecruit" class="idleView sg-view">
+          <div class="sg-view-head">
+            <div><span class="sg-kicker">星夜召集</span><h2>回應星痕的夥伴</h2><p>真實工作換成星痕鑽石；鑽石用來加速收集，不直接購買遠征金幣。</p></div>
+            <div class="sg-stage-chip" id="recruitCounter">0 抽</div>
+          </div>
+          <div class="sg-recruit-layout">
+            <section class="sg-summon-stage">
+              <div class="sg-rune ring1"></div><div class="sg-rune ring2"></div><div class="sg-rune-core">✦</div>
+              <div class="sg-summon-copy">
+                <span>角色召集 · 常駐星池</span>
+                <h3>讓新的羈絆回應星痕</h3>
+                <p>10 抽至少稀有、40 抽至少史詩、100 抽至少傳說。高稀有角色能加速推圖，但仍需透過掛機、技能與建築長期養成。</p>
+                <div class="sg-pity-row"><span>10 抽保底稀有</span><span>40 抽保底史詩</span><span>100 抽保底傳說</span></div>
+                <div class="sg-summon-buttons">
+                  <button class="sg-btn primary" onclick="doRecruit(1)">角色單抽 ◆150</button>
+                  <button class="sg-btn primary" onclick="doRecruit(10)">角色十連 ◆1300</button>
+                  <button class="sg-btn blue" onclick="doEquipmentGacha(10)">裝備十連 ◆900</button>
+                  <button class="sg-btn violet" onclick="doFashionGacha(1)">時裝召喚 ◆750</button>
+                </div>
+              </div>
+            </section>
+            <aside class="sg-panel">
+              <div class="sg-panel-title"><span>本期名單預覽</span><small>56 名冒險家</small></div>
+              <div id="recruitShowcase" class="sg-showcase"></div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Guild -->
+        <section id="ivGuild" class="idleView sg-view">
+          <div class="sg-view-head">
+            <div><span class="sg-kicker">據點經營</span><h2>星痕領 · 公會基地</h2><p>建築是基地場景的一部分；每 10 級外觀進化，特定等級解鎖新能力。</p></div>
+          </div>
+          <div class="sg-guild-layout">
+            <section class="sg-base-map">
+              <div class="sg-base-sky"></div>
+              <div class="sg-base-hills h1"></div><div class="sg-base-hills h2"></div>
+              <div class="sg-base-road"></div>
+              <div id="v4BuildingScene" class="sg-buildings"></div>
+              <div id="v4HubBattle" class="sg-base-battle"></div>
+              <div class="sg-map-label">星痕領中央據點</div>
+            </section>
+            <aside id="v5BuildingDetail" class="sg-panel sg-building-detail"></aside>
+          </div>
+          <div class="sg-guild-bottom">
+            <div class="sg-panel"><div class="sg-panel-title"><span>基地建設</span><small>所有升級皆使用遠征金幣</small></div><div id="idleBuildingList" class="sg-building-list"></div></div>
+            <div class="sg-panel"><div class="sg-panel-title"><span>雙公會長</span><small>只計算已簽到班次</small></div><div id="idleMasters" class="idleMasters"></div></div>
+          </div>
+        </section>
+
+        <!-- Loot -->
+        <section id="ivLoot" class="idleView sg-view">
+          <div class="sg-view-head">
+            <div><span class="sg-kicker">背包整備</span><h2>裝備與時裝</h2><p>選擇裝備後可穿給指定冒險家、售出或比較數值。</p></div>
+            <div class="sg-inline-actions">
+              <button class="sg-btn ghost" onclick="v4SellLowGear()">出售普通／優秀未裝備</button>
+              <button class="sg-btn primary" onclick="autoEquipBest()">一鍵配置主力</button>
+            </div>
+          </div>
+          <div class="sg-inventory-layout">
+            <section id="v5GearDetail" class="sg-panel sg-gear-detail"></section>
+            <section class="sg-panel">
+              <div class="sg-loot-tabs">
+                <button class="active" onclick="v5SetLootMode('gear',this)">戰鬥裝備</button>
+                <button onclick="v5SetLootMode('fashion',this)">特殊時裝</button>
+              </div>
+              <div id="lootInventory" class="sg-inventory"></div>
+            </section>
+          </div>
+        </section>
+
+        <!-- World -->
+        <section id="ivWorld" class="idleView sg-view">
+          <div class="sg-view-head">
+            <div><span class="sg-kicker">世界探索</span><h2>關卡與現實里程碑</h2><p>每個區域有不同怪物與首領；只有簽到過的真實工作紀錄會觸發里程碑。</p></div>
+          </div>
+          <div class="sg-world-layout">
+            <section class="sg-panel">
+              <div class="sg-panel-title"><span>世界地圖</span><small>5 大區域 · 50 關</small></div>
+              <div id="worldStages" class="sg-world-map"></div>
+            </section>
+            <section class="sg-panel">
+              <div class="sg-panel-title"><span>現實里程碑</span><small>可領取星痕鑽石</small></div>
+              <div id="idleMilestones" class="sg-milestones"></div>
+            </section>
+          </div>
+        </section>
+      </main>
     </div>
   </div>
-</div>
 </section>
 
 <div id="recruitOverlay" class="recruitOverlay" onclick="if(event.target===this)closeRecruitOverlay()">
-  <div class="recruitResultCard">
+  <div class="recruitResultCard sg-result-modal">
     <div class="recruitResultTitle">星痕召集結果</div>
     <div id="recruitResults" class="recruitResults"></div>
-    <button class="v4Btn primary" onclick="closeRecruitOverlay()">收下</button>
+    <button class="sg-btn primary" onclick="closeRecruitOverlay()">收下</button>
   </div>
 </div>
 <section id="settingsPage" class="page">
@@ -1536,6 +1664,132 @@ function renderBattle(){
     offlineDuration.textContent=formatDuration(offlinePending.seconds);offlineGold.textContent=Math.floor(offlinePending.gold+offlinePending.salvageGold).toLocaleString();
     offlineLoot.textContent=offlinePending.salvaged?`${offlinePending.materialized} 件＋${offlinePending.salvaged} 件自動回收`:`${offlinePending.materialized} 件`;claimOfflineBtn.disabled=false
   }else{offlineDuration.textContent='—';offlineGold.textContent='0';offlineLoot.textContent='—';claimOfflineBtn.disabled=true}
+}
+
+
+/* ==========================================================
+   V5 真正網頁遊戲 UI：最終 render override
+   ========================================================== */
+let v5HeroFilter='全部',v5SelectedHeroId=null,v5SelectedGearId=null,v5SelectedBuildingKey='guildhall';
+
+function showIdleTab(t){
+  ['battle','heroes','recruit','guild','loot','world'].forEach(x=>{
+    document.getElementById('iv'+x[0].toUpperCase()+x.slice(1))?.classList.toggle('active',x===t);
+    document.getElementById('it'+x[0].toUpperCase()+x.slice(1))?.classList.toggle('active',x===t)
+  });
+  render公會()
+}
+function v5SetHeroFilter(f,btn){v5HeroFilter=f;document.querySelectorAll('.sg-filter-row button').forEach(x=>x.classList.remove('active'));btn?.classList.add('active');renderHeroes()}
+function v5SelectHero(id){v5SelectedHeroId=id;renderHeroes()}
+function v5SetLootMode(mode,btn){v4LootMode=mode;document.querySelectorAll('.sg-loot-tabs button').forEach(x=>x.classList.remove('active'));btn?.classList.add('active');renderLoot()}
+function v5SelectGear(id){v5SelectedGearId=id;renderLoot()}
+function v5SelectBuilding(k){v5SelectedBuildingKey=k;renderIdleGuild()}
+
+function render公會(){
+  if(!room||!gameMeta||!document.getElementById('guildPage'))return;
+  idlePremium.textContent=premiumAvailable().toLocaleString();
+  idleGold.textContent=Math.floor(currentGold()).toLocaleString();
+  idleDps.textContent=formatBig(partyDps());
+  idleGuildLevel.textContent=`Lv.${levelFromXp(Math.floor(realWorkedTotals().hours*10+realWorkedEntries().length*10))}`;
+  renderBattle();renderHeroes();renderRecruit();renderIdleGuild();renderLoot();renderWorldIdle()
+}
+
+function renderBattle(){
+  const s=stageInfo();v4EnsureWave();
+  stageName.textContent=`${s.zone.name} · ${s.label}`;
+  stageSub.textContent=`${s.zone.subtitle} · ${v4BossMode?s.boss:'怪物波次'}`;
+  stageBadge.textContent=s.label;
+  const kills=Number(gameMeta.stage_kills||0)+v4KillBuffer,k=kills%25;
+  battleKills.textContent=kills;battleGps.textContent=formatBig(stageGoldPerSec());battleDropRate.textContent=Math.round(dropChance()*100)+'%';battleProgress.textContent=`${k} / 25`;bossTrackFill.style.width=(k/25*100)+'%';
+  const ready=kills>0&&k===0;bossBtn.disabled=!ready||v4BossMode;bossUnlockText.textContent=v4BossMode?'首領戰鬥中':ready?'首領已出現！':`${k} / 25`;
+  document.getElementById('v4ComboCount').textContent=v4Combo;
+
+  heroLane.innerHTML=party().map(a=>`<div class="v4BattleHero" id="bh${a.id}">${v4SvgHero(a,'battle')}<div class="v4HeroLabel">${esc(a.name)} · Lv.${a.level}</div></div>`).join('');
+  if(v4BossMode){
+    monsterWrap.innerHTML=`<div class="v4BossHp"><b>${s.boss}</b><div class="bar"><i style="width:${Math.max(0,v4BossHp/v4BossMax*100)}%"></i></div></div><div class="v4Mob v4BossMob" id="v4boss" style="right:7%;bottom:0">${v4MobSvg(0,true,s.z)}</div>`
+  }else{
+    monsterWrap.innerHTML=v4Wave.map(m=>`<div class="v4Mob" id="${m.id}" style="left:${m.x}%;bottom:${m.y}%">${v4MobSvg(m.kind,false,s.z)}</div>`).join('')
+  }
+  const first=party()[0];
+  v4SkillBar.innerHTML=first?v4UnlockedSkills(first).slice(-5).map((sk,i)=>`<div class="v4SkillIcon" title="${sk.name}">${['✦','✧','✹','✷','✴'][i%5]}<small>${sk.name}</small></div>`).join(''):'';
+  battlePartyList.innerHTML=party().map(a=>`<div class="v4PartyItem"><div class="v4PartyAvatar">${v4SvgHero(a,'mini')}</div><div><b>${esc(a.name)} · ${v4JobName(a)}</b><small>Lv.${a.level} · ${V4_RARITY_ZH[a.rarity]||'普通'}</small></div><div class="v4Power">${formatBig(heroPower(a)*(v4HeroDef(a).speed||1))}</div></div>`).join('');
+  battlePauseBtn.textContent=battleAnimOn?'暫停動畫':'繼續動畫';
+  if(offlinePending){
+    offlineDuration.textContent=formatDuration(offlinePending.seconds);
+    offlineGold.textContent=Math.floor((offlinePending.gold||0)+(offlinePending.salvageGold||0)).toLocaleString();
+    offlineLoot.textContent=offlinePending.salvaged?`${offlinePending.materialized} 件＋${offlinePending.salvaged} 件自動回收`:`${offlinePending.materialized??offlinePending.items??0} 件`;
+    claimOfflineBtn.disabled=false
+  }else{offlineDuration.textContent='—';offlineGold.textContent='0';offlineLoot.textContent='—';claimOfflineBtn.disabled=true}
+}
+
+function renderHeroes(){
+  let list=[...gameAdventurers].sort((a,b)=>heroPower(b)-heroPower(a));
+  if(v5HeroFilter!=='全部')list=list.filter(a=>v4NormalizeClass(a.class_name)===v5HeroFilter);
+  if(!v5SelectedHeroId||!gameAdventurers.some(a=>a.id===v5SelectedHeroId))v5SelectedHeroId=(list[0]||gameAdventurers[0])?.id||null;
+  heroCountBadge.textContent=`${gameAdventurers.length} 名`;
+  idleHeroGrid.innerHTML=list.length?list.map(a=>{
+    const d=v4HeroDef(a),rar=V4_RARITY_ZH[a.rarity]||d.rarity_zh||'普通';
+    return `<div class="sg-roster-card ${a.id===v5SelectedHeroId?'active':''}" onclick="v5SelectHero('${a.id}')"><div class="sg-roster-avatar">${v4SvgHero(a,'mini')}</div><div><b>${esc(a.name)}</b><small>${v4JobName(a)} · Lv.${a.level}</small><small class="rar-${rar}">${rar}</small><small class="sg-roster-power">戰力 ${formatBig(heroPower(a))}</small></div></div>`
+  }).join(''):'<div class="heroMeta">這個職業目前沒有冒險家。</div>';
+  const box=document.getElementById('v5HeroDetail'),a=gameAdventurers.find(x=>x.id===v5SelectedHeroId);
+  if(!box)return;if(!a){box.innerHTML='<div class="heroMeta">尚未擁有冒險家。</div>';return}
+  const d=v4HeroDef(a),rar=V4_RARITY_ZH[a.rarity]||d.rarity_zh||'普通',next=v4NextJob(a),skills=v4UnlockedSkills(a),eq=v4EquippedGear(a);
+  box.innerHTML=`<div class="sg-hero-showcase">
+    <div class="sg-hero-paper"><span class="sg-hero-rarity rar-${rar}">${rar}</span>${v4SvgHero(a,'card')}</div>
+    <div class="sg-hero-info">
+      <h3>${esc(a.name)}</h3><p>${v4NormalizeClass(a.class_name)} · ${v4JobName(a)} · Lv.${a.level}</p>
+      <div class="sg-job-line">${next?`下一次轉職：Lv.${next[0]} → ${next[1]}`:'已達目前最高轉職階段'}</div>
+      <div class="sg-stat-grid"><div><small>戰力</small><b>${formatBig(heroPower(a))}</b></div><div><small>攻擊速度</small><b>${d.speed.toFixed(2)}</b></div><div><small>技能加成</small><b>${Math.round(v4SkillBonus(a)*100)}%</b></div><div><small>裝備攻擊</small><b>${formatBig(equippedAtk(a.id))}</b></div><div><small>時裝加成</small><b>${Math.round(v4FashionBonus(a)*100)}%</b></div><div><small>稀有度</small><b class="rar-${rar}">${rar}</b></div></div>
+      <div class="sg-subtitle">技能</div>
+      <div class="sg-skill-list">${skills.map(s=>{const lv=v4SkillLevel(a,s.key),cost=Math.round(4500*Math.pow(1.58,lv-1));return `<div class="sg-skill-row"><button onclick="v4UpgradeSkill('${a.id}','${s.key}')">升級</button><b>${s.name} Lv.${lv}</b><small>${s.kind} · ${s.desc}</small><small>需要 ● ${cost.toLocaleString()}</small></div>`}).join('')}</div>
+      <div class="sg-subtitle">八格裝備</div>
+      <div class="sg-equip-grid">${V4_SLOTS.map(slot=>{const g=eq.find(x=>v41SlotName(x.slot)===slot);return `<div class="sg-equip-slot ${g?'on':''}">${g?v4GearIcon(g):'◇'}<br>${slot}</div>`}).join('')}</div>
+      <button class="sg-btn primary full" onclick="levelHero('${a.id}')">升級角色 · ● ${heroLevelCost(a).toLocaleString()}</button>
+    </div>
+  </div>`
+}
+
+function renderRecruit(){
+  recruitCounter.textContent=`累積 ${Number(gameMeta?.recruit_count||0)} 抽 · 可用 ◆ ${premiumAvailable().toLocaleString()}`;
+  recruitShowcase.innerHTML=V4_ROSTER.filter((_,i)=>i%4===0).slice(0,14).map(h=>`<div class="v4ShowHero"><div class="avatar">${v4SvgHero({...h,id:h.name,level:1},'mini')}</div><div><b>${h.name}</b><small class="rar-${h.rarity_zh}">${h.rarity_zh} · ${h.class_name}</small></div></div>`).join('')
+}
+
+function renderIdleGuild(){
+  v4BuildingScene.innerHTML=V4_BUILDINGS.map(b=>{const lv=buildingLv(b.key),tier=Math.min(4,Math.floor(lv/10));return `<div class="v4BuildingNode" onclick="v5SelectBuilding('${b.key}')" style="left:${b.pos[0]}%;top:${b.pos[1]}%;transform:translate(-50%,-50%)"><div class="v4BuildingSprite">${v4BuildingSvg(b.key,tier)}</div><div class="v4BuildingTag">${b.name} · Lv.${lv}</div></div>`}).join('');
+  const ph=party();v4HubBattle.innerHTML=`<div style="display:flex;gap:8px">${ph.slice(0,3).map(a=>`<div class="hubHero">${v4SvgHero(a,'hub')}</div>`).join('')}</div><div style="display:flex;gap:4px">${[0,1,2,3].map((x,i)=>`<div class="hubMob">${v4MobSvg(i,false,stageInfo().z)}</div>`).join('')}</div>`;
+  idleBuildingList.innerHTML=V4_BUILDINGS.map(b=>{const lv=buildingLv(b.key),cost=v4BuildingCost(b.key,lv),next=b.abilities.find(x=>lv<x[0])||b.abilities[b.abilities.length-1];return `<div class="v4BuildingCard ${v5SelectedBuildingKey===b.key?'active':''}" onclick="v5SelectBuilding('${b.key}')"><div style="display:flex;justify-content:space-between;gap:8px"><div><h4>${b.name} · Lv.${lv}</h4><small>${b.desc}</small></div><button class="sg-btn primary" onclick="event.stopPropagation();upgradeIdleBuilding('${b.key}')">升級</button></div><div class="v4Unlock">下一能力：Lv.${next[0]} · ${next[1]}</div><small>升級 ● ${cost.toLocaleString()}</small></div>`}).join('');
+  idleMasters.innerHTML=workers.slice(0,2).map((w,i)=>{const t=realWorkedTotals(realWorkedEntries().filter(e=>e.worker_id===w.id)),lv=masterLevelFromXp(Math.floor(t.hours*10));return `<div class="masterIdle"><b>${i===0?'✦':'✧'} ${esc(w.name)} · 公會長 Lv.${lv}</b><small>已簽到真實工時 ${t.hours.toFixed(1)} 小時</small></div>`}).join('');
+  const b=V4_BUILDINGS.find(x=>x.key===v5SelectedBuildingKey)||V4_BUILDINGS[0],lv=buildingLv(b.key),tier=Math.min(4,Math.floor(lv/10)),cost=v4BuildingCost(b.key,lv),next=b.abilities.find(x=>lv<x[0])||b.abilities[b.abilities.length-1];
+  v5BuildingDetail.innerHTML=`<div class="sg-building-hero">${v4BuildingSvg(b.key,tier)}</div><h3>${b.name}</h3><p>${b.desc}</p><div class="sg-stat-grid"><div><small>目前等級</small><b>Lv.${lv}</b></div><div><small>外觀階段</small><b>${tier+1} / 5</b></div><div><small>下次升級</small><b>● ${cost.toLocaleString()}</b></div></div><div class="sg-building-next">下一能力：Lv.${next[0]} · ${next[1]}</div><div class="sg-subtitle">能力里程碑</div>${b.abilities.map(x=>`<div class="sg-skill-row" style="margin-bottom:5px"><b>Lv.${x[0]} · ${x[1]}</b><small>${lv>=x[0]?'✓ 已解鎖':'尚未解鎖'}</small></div>`).join('')}<button class="sg-btn primary full" onclick="upgradeIdleBuilding('${b.key}')">升級建築</button>`
+}
+
+function v5EquipSelectedGear(){
+  const g=gameEquipment.find(x=>x.id===v5SelectedGearId),heroId=document.getElementById('v5EquipHero')?.value;if(!g||!heroId)return;
+  const slot=v41SlotName(g.slot);
+  const same=gameEquipment.filter(x=>x.owner_adventurer_id===heroId&&x.equipped&&v41SlotName(x.slot)===slot);
+  Promise.all(same.map(x=>sb.from('game_equipment').update({equipped:false,owner_adventurer_id:null}).eq('id',x.id))).then(async()=>{
+    const r=await sb.from('game_equipment').update({equipped:true,owner_adventurer_id:heroId}).eq('id',g.id);if(r.error)return alert(r.error.message);await loadRoom();render公會();gameToastMsg('裝備完成')
+  })
+}
+function renderLoot(){
+  const inv=document.getElementById('lootInventory'),detail=document.getElementById('v5GearDetail');if(!inv||!detail)return;
+  if(v4LootMode==='fashion'){
+    inv.innerHTML=gameFashion.length?gameFashion.map(x=>`<div class="sg-item-card ${x.id===v5SelectedGearId?'active':''}" onclick="v5SelectedGearId='${x.id}';renderLoot()"><div class="sg-item-icon" style="font-size:30px">${x.fashion_type==='WINGS'?'✦':x.fashion_type==='AURA'?'◎':x.fashion_type==='WEAPON_SKIN'?'⚔':'♟'}</div><b class="rar-${V4_RARITY_ZH[x.rarity]}">${x.name}</b><small>${V4_RARITY_ZH[x.rarity]} · 加成 ${Math.round(Math.min(.06,Number(x.power_bonus||0))*100)}%</small></div>`).join(''):'<div class="heroMeta">尚未取得特殊時裝。</div>';
+    const f=gameFashion.find(x=>x.id===v5SelectedGearId)||gameFashion[0];if(f)v5SelectedGearId=f.id;
+    detail.innerHTML=f?`<div class="sg-gear-art" style="font-size:72px">${f.fashion_type==='WINGS'?'✦':f.fashion_type==='AURA'?'◎':f.fashion_type==='WEAPON_SKIN'?'⚔':'♟'}</div><h3>${f.name}</h3><p class="rar-${V4_RARITY_ZH[f.rarity]}">${V4_RARITY_ZH[f.rarity]} · 特殊時裝</p><div class="sg-gear-stats"><div><small>戰力加成</small><b>${Math.round(Math.min(.06,Number(f.power_bonus||0))*100)}%</b></div><div><small>狀態</small><b>${f.equipped?'已裝備':'未裝備'}</b></div></div><button class="sg-btn primary full" onclick="v4EquipFashion('${f.id}')">裝給主力角色</button>`:'<div class="heroMeta">請取得時裝後再查看。</div>';return
+  }
+  if(!v5SelectedGearId||!gameEquipment.some(x=>x.id===v5SelectedGearId))v5SelectedGearId=gameEquipment[0]?.id||null;
+  inv.innerHTML=gameEquipment.length?gameEquipment.slice(0,220).map(x=>`<div class="sg-item-card ${x.id===v5SelectedGearId?'active':''}" onclick="v5SelectGear('${x.id}')"><div class="sg-item-icon">${v4GearIcon(x)}</div><b class="rar-${V4_RARITY_ZH[x.rarity]}">${v4GearName(x)}</b><small>${V4_RARITY_ZH[x.rarity]||'普通'} · Lv.${x.item_level}</small><small>攻擊 +${x.atk}${x.equipped?' · 使用中':''}</small></div>`).join(''):'<div class="heroMeta">尚未取得裝備。</div>';
+  const g=gameEquipment.find(x=>x.id===v5SelectedGearId);
+  if(!g){detail.innerHTML='<div class="heroMeta">選擇裝備後查看詳情。</div>';return}
+  const sellButton=g.equipped?'':`<button class="sg-btn ghost full" onclick="v4SellGear('${g.id}')">售出裝備</button>`;
+  detail.innerHTML=`<div class="sg-gear-art">${v4GearIcon(g)}</div><h3>${v4GearName(g)}</h3><p class="rar-${V4_RARITY_ZH[g.rarity]}">${V4_RARITY_ZH[g.rarity]||'普通'} · ${v41SlotName(g.slot)} · Lv.${g.item_level}</p><div class="sg-gear-stats"><div><small>攻擊</small><b>+${g.atk}</b></div><div><small>攻速</small><b>+${Number(g.atk_speed||0).toFixed(3)}</b></div><div><small>暴擊</small><b>+${(Number(g.crit||0)*100).toFixed(1)}%</b></div><div><small>金幣掉落</small><b>+${(Number(g.gold_find||0)*100).toFixed(1)}%</b></div><div><small>售價</small><b>● ${v4SellValue(g).toLocaleString()}</b></div><div><small>狀態</small><b>${g.equipped?'已裝備':'未裝備'}</b></div></div><select id="v5EquipHero" class="sg-equip-target">${gameAdventurers.map(a=>`<option value="${a.id}">${esc(a.name)} · ${v4JobName(a)}</option>`).join('')}</select><button class="sg-btn primary full" onclick="v5EquipSelectedGear()">裝備給指定冒險家</button>${sellButton}`
+}
+
+function renderWorldIdle(){
+  const s=stageInfo();let cards='';
+  V4_ZONES.forEach((z,zi)=>{for(let n=1;n<=10;n++){const unlocked=(zi+1<s.z)||(zi+1===s.z&&n<=s.n),current=(zi+1===s.z&&n===s.n);cards+=`<div class="v4WorldStage ${unlocked?'':'locked'} ${current?'current':''}"><h4>${zi+1}-${n} · ${z.name}</h4><p>${z.subtitle}</p><div class="bossName">首領：${z.bosses[n-1]}</div></div>`}});worldStages.innerHTML=cards;
+  idleMilestones.innerHTML=v4MilestoneData().map(m=>{const claimed=gameClaims.some(x=>x.milestone_key===m.key);return `<div class="v4Milestone ${m.ok?'done':''} ${claimed?'claimed':''}"><div style="display:flex;justify-content:space-between;gap:8px"><div><b>${m.name}</b><small>${m.cond}</small><small class="rar-史詩">獎勵 ◆${m.reward} 星痕鑽石</small></div>${m.ok&&!claimed?`<button class="sg-btn primary" onclick="v4ClaimMilestone('${m.key}')">領取</button>`:claimed?'<span>✓</span>':''}</div></div>`}).join('')
 }
 
 function leaveRoom(){localStorage.removeItem('mc_room_id');location.reload()}
