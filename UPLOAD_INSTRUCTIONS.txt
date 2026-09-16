@@ -1,29 +1,28 @@
-M&C 星痕公會 V9.2 — 路徑 + 今日簽到修正版
+M&C：星痕公會 V9.3 — 編隊 + 復活修正版
 
-只需要覆蓋 GitHub repo 根目錄的 4 個檔案：
-1. index.html
-2. v9.js
-3. v9.css
-4. sw.js
+先做 1 次 Supabase：
+1. Supabase > SQL Editor > New query
+2. 貼上 V9_3_PARTY_MIGRATION.sql
+3. Run
+4. 看到 Success 即可
 
-不要刪除、不要重傳目前已存在的圖片資料夾：
-- v9_01_heroes
-- v9_02_monsters
-- v9_03_world
-- v9_04_gear_a
-- v9_05_gear_b
-- v9_06_fashion
+然後覆蓋 GitHub 根目錄：
+- index.html
+- v9.js
+- v9.css
+- sw.js
 
-這版修正：
-- V9 圖片改成明確相對路徑 ./v9_01_heroes/... 等。
-- 不再使用 assets_v9/... 舊路徑。
-- v9.css 招募背景改為 ./v9_03_world/recruit_reference.png。
-- Service Worker 快取版本升級，避免瀏覽器繼續吃舊 v9.js。
-- 簽到判斷改用 Australia/Sydney 日期。
-- 今天的班可以簽到；只有「明天之後」才會顯示未來班表並禁止簽到。
-- 不再用今天 23:59:59 當判斷點，因此不會發生今天的班被誤判成未來工作。
+圖片資料夾不用重傳。
 
-上傳後：
-- 等 GitHub Pages 部署完成。
-- Windows: Ctrl + Shift + R。
-- iPhone PWA 若仍是舊畫面，可先在 Safari 開網站一次，重新整理後再回主畫面 App。
+本版修正：
+- 可手動選擇最多 5 名冒險家上場。
+- 編隊保存在 Supabase，M/C 兩邊共用。
+- 可隨時恢復「戰力最高五人」自動編隊。
+- 單一冒險家倒地後約 3 秒自動復活。
+- 全隊死亡立即滿血復活。
+- 全滅後不退關；同一區、同一關重新從 0/50 小怪開始。
+- 修正 V9.2 雖然有 revive function，但 battleTick 根本沒有呼叫它的問題。
+
+目前抽卡程式：
+角色神話每抽 0.6%；角色十連至少一隻神話 = 5.84%。
+裝備神話每抽 0.7%；裝備十連至少一件神話 = 6.78%。

@@ -116,4 +116,256 @@
 
   function boot(){try{render公會()}catch(e){console.error('V9 render',e)}}
   document.addEventListener('DOMContentLoaded',()=>{setTimeout(boot,700);setTimeout(v9AssetPathCheck,900)});setTimeout(boot,1800);
+
+
+  /* ==========================================================
+     V9.3 主力隊伍選擇 + 即時復活
+     ========================================================== */
+
+  function v93PartySchemaReady(){
+    const heroReady=!gameAdventurers.length || Object.prototype.hasOwnProperty.call(gameAdventurers[0],'party_slot');
+    const metaReady=!!gameMeta && Object.prototype.hasOwnProperty.call(gameMeta,'party_manual');
+    return heroReady && metaReady;
+  }
+
+  function v93StrongestFive(){
+    return [...gameAdventurers].sort((a,b)=>heroPower(b)-heroPower(a)).slice(0,5);
+  }
+
+  function v93ManualParty(){
+    return [...gameAdventurers]
+      .filter(a=>Number(a.party_slot)>=1 && Number(a.party_slot)<=5)
+      .sort((a,b)=>Number(a.party_slot)-Number(b.party_slot))
+      .slice(0,5);
+  }
+
+  function v93CurrentParty(){
+    if(gameMeta?.party_manual && v93PartySchemaReady()) return v93ManualParty();
+    return v93StrongestFive();
+  }
+
+  // Override the original automatic "top 5 power" party function.
+  window.party=v93CurrentParty;
+
+  async function v93SaveWholeParty(ids){
+    if(!v93PartySchemaReady()){
+      alert('主力隊伍資料欄位尚未建立。請先在 Supabase SQL Editor 執行 V9_3_PARTY_MIGRATION.sql。');
+      return false;
+    }
+    const clean=[...new Set(ids)].slice(0,5);
+    const clear=await sb.from('game_adventurers').update({party_slot:null}).eq('room_id',roomId);
+    if(clear.error){alert(clear.error.message);return false}
+    const writes=clean.map((id,i)=>sb.from('game_adventurers').update({party_slot:i+1}).eq('id',id));
+    const results=await Promise.all(writes);
+    const bad=results.find(x=>x.error);
+    if(bad){alert(bad.error.message);return false}
+    const meta=await sb.from('game_meta').update({party_manual:true,updated_at:new Date().toISOString()}).eq('room_id',roomId);
+    if(meta.error){alert(meta.error.message);return false}
+    gameMeta.party_manual=true;
+    for(const a of gameAdventurers)a.party_slot=null;
+    clean.forEach((id,i)=>{const a=gameAdventurers.find(x=>x.id===id);if(a)a.party_slot=i+1});
+    return true;
+  }
+
+  window.v93ToggleParty=async function(id){
+    const target=gameAdventurers.find(a=>a.id===id);if(!target)return;
+    if(!v93PartySchemaReady()){
+      alert('請先執行 V9_3_PARTY_MIGRATION.sql，再使用手動編隊。');
+      return;
+    }
+
+    // First manual edit: start from the current automatic strongest-five team.
+    if(!gameMeta.party_manual){
+      let ids=v93StrongestFive().map(a=>a.id);
+      if(ids.includes(id)){
+        ids=ids.filter(x=>x!==id);
+      }else{
+        if(ids.length>=5) ids=ids.slice(0,4);
+        ids.push(id);
+      }
+      if(await v93SaveWholeParty(ids)){
+        gameToastMsg(`已切換為手動編隊，目前 ${ids.length}/5 人上場。`);
+        renderHeroes();renderBattle();
+      }
+      return;
+    }
+
+    const current=v93ManualParty();
+    const isOn=current.some(a=>a.id===id);
+    if(isOn){
+      const r=await sb.from('game_adventurers').update({party_slot:null}).eq('id',id);
+      if(r.error)return alert(r.error.message);
+      target.party_slot=null;
+      gameToastMsg(`${target.name} 已下場。`);
+    }else{
+      if(current.length>=5){
+        alert('主力隊伍最多 5 人。請先讓一名冒險家下場。');
+        return;
+      }
+      const used=new Set(current.map(a=>Number(a.party_slot)));
+      let slot=1;while(used.has(slot)&&slot<=5)slot++;
+      const r=await sb.from('game_adventurers').update({party_slot:slot}).eq('id',id);
+      if(r.error)return alert(r.error.message);
+      target.party_slot=slot;
+      gameToastMsg(`${target.name} 已加入主力隊伍。`);
+    }
+    renderHeroes();renderBattle();
+  };
+
+  window.v93AutoParty=async function(){
+    if(!v93PartySchemaReady()){
+      alert('請先執行 V9_3_PARTY_MIGRATION.sql。');
+      return;
+    }
+    const [a,b]=await Promise.all([
+      sb.from('game_adventurers').update({party_slot:null}).eq('room_id',roomId),
+      sb.from('game_meta').update({party_manual:false,updated_at:new Date().toISOString()}).eq('room_id',roomId)
+    ]);
+    if(a.error||b.error)return alert((a.error||b.error).message);
+    gameMeta.party_manual=false;
+    for(const h of gameAdventurers)h.party_slot=null;
+    gameToastMsg('已恢復自動編隊：戰力最高的 5 名冒險家上場。');
+    renderHeroes();renderBattle();
+  };
+
+  // Replace the hero list so users can choose who fights.
+  window.renderHeroes=function(){
+    let list=[...gameAdventurers].sort((a,b)=>heroPower(b)-heroPower(a));
+    if(v5HeroFilter!=='全部')list=list.filter(a=>v4NormalizeClass(a.class_name)===v5HeroFilter);
+    if(!v5SelectedHeroId||!gameAdventurers.some(a=>a.id===v5SelectedHeroId))v5SelectedHeroId=(list[0]||gameAdventurers[0])?.id||null;
+
+    const active=v93CurrentParty();
+    const activeIds=new Set(active.map(a=>a.id));
+    heroCountBadge.textContent=`${gameAdventurers.length} 名 · 出戰 ${active.length}/5`;
+
+    const toolbar=`<div class="v93-party-toolbar">
+      <span>${gameMeta?.party_manual?'手動編隊':'自動編隊'} · <b>${active.length}/5</b> 人上場</span>
+      <button onclick="v93AutoParty()">恢復最強五人自動編隊</button>
+    </div>
+    ${!v93PartySchemaReady()?'<div class="v93-party-warn">要使用手動上場功能，請先執行 V9_3_PARTY_MIGRATION.sql。</div>':''}`;
+
+    idleHeroGrid.innerHTML=toolbar+(list.length?list.map(a=>{
+      const on=activeIds.has(a.id);
+      const slot=Number(a.party_slot||0);
+      const label=on?(gameMeta?.party_manual?`上場 #${slot||'—'}`:'自動上場'):'待命';
+      return `<div class="v9-roster-card ${a.id===v5SelectedHeroId?'active':''}" onclick="v5SelectHero('${a.id}')">
+        <span class="v93-party-chip ${on?'on':''}">${label}</span>
+        <img src="${heroCard(a)}">
+        <div><b>${esc(a.name)}</b><small>${v4JobName(a)} · Lv.${a.level}</small><small class="rar-${rarityZh(a.rarity)}">${rarityZh(a.rarity)}</small><small>戰力 ${formatBig(heroPower(a))}</small></div>
+      </div>`
+    }).join(''):'<div class="heroMeta">目前沒有符合條件的冒險家。</div>');
+
+    const box=document.getElementById('v5HeroDetail'),a=gameAdventurers.find(x=>x.id===v5SelectedHeroId);if(!box)return;
+    if(!a){box.innerHTML='<div class="heroMeta">尚未擁有冒險家。</div>';return}
+    const d=v4HeroDef(a),rar=rarityZh(a.rarity),next=v4NextJob(a),skills=v4UnlockedSkills(a),eq=v4EquippedGear(a),isOn=activeIds.has(a.id);
+    box.innerHTML=`<div class="sg-hero-showcase">
+      <div class="v9-hero-detail-card"><img src="${heroCard(a)}"></div>
+      <div class="sg-hero-info">
+        <h3>${esc(a.name)}</h3>
+        <p>${v4NormalizeClass(a.class_name)} · ${v4JobName(a)} · Lv.${a.level}</p>
+        <button class="v93-party-btn ${isOn?'off':''}" onclick="v93ToggleParty('${a.id}')">${isOn?'讓此冒險家下場':'加入主力隊伍'}</button>
+        <div class="sg-job-line">${next?`下一次轉職：Lv.${next[0]} → ${next[1]}`:'已達目前最高轉職階段'}</div>
+        <div class="sg-stat-grid">
+          <div><small>戰力</small><b>${formatBig(heroPower(a))}</b></div>
+          <div><small>攻擊速度</small><b>${d.speed.toFixed(2)}</b></div>
+          <div><small>技能加成</small><b>${Math.round(v4SkillBonus(a)*100)}%</b></div>
+          <div><small>裝備攻擊</small><b>${formatBig(equippedAtk(a.id))}</b></div>
+          <div><small>時裝加成</small><b>${Math.round(v4FashionBonus(a)*100)}%</b></div>
+          <div><small>稀有度</small><b class="rar-${rar}">${rar}</b></div>
+        </div>
+        <div class="sg-subtitle">技能</div>
+        <div class="sg-skill-list">${skills.map(s=>{const lv=v4SkillLevel(a,s.key),cost=Math.round(4500*Math.pow(1.58,lv-1));return `<div class="sg-skill-row"><button onclick="v4UpgradeSkill('${a.id}','${s.key}')">升級</button><b>${s.name} Lv.${lv}</b><small>${s.kind} · ${s.desc}</small><small>需要 ● ${cost.toLocaleString()}</small></div>`}).join('')}</div>
+        <div class="sg-subtitle">八格裝備</div>
+        <div class="sg-equip-grid">${V4_SLOTS.map(slot=>{const g=eq.find(x=>slotName(x.slot)===slot);return `<div class="sg-equip-slot ${g?'on':''}">${g?`<img src="${gearCard(g)}" style="width:38px;height:38px;object-fit:cover;border-radius:6px">`:'◇'}<br>${slot}</div>`}).join('')}</div>
+        <button class="sg-btn primary full" onclick="levelHero('${a.id}')">升級角色 · ● ${heroLevelCost(a).toLocaleString()}</button>
+      </div>
+    </div>`;
+  };
+
+  // A single knocked-out adventurer comes back automatically after ~3 seconds.
+  const v93BaseDamageParty=window.v6DamageParty;
+  if(typeof v93BaseDamageParty==='function'){
+    window.v6DamageParty=async function(dt,boss=false){
+      await v93BaseDamageParty(dt,boss);
+      const now=Date.now();
+      const writes=[];
+      for(const a of v93CurrentParty()){
+        if(a.knocked_out || v6HeroHp(a)<=0){
+          const soon=new Date(now+3000).toISOString();
+          a.injury_until=soon;
+          writes.push(sb.from('game_adventurers').update({injury_until:soon}).eq('id',a.id));
+        }
+      }
+      if(writes.length)await Promise.allSettled(writes);
+    };
+  }
+
+  // Full party wipe = immediate full revive, same stage, 0/50 kills, keep farming.
+  window.v93InstantPartyRevive=async function(){
+    if(!gameMeta)return;
+    battleAnimOn=true;
+    v4BossMode=false;v4BossHp=0;v4BossMax=0;v4Wave=[];v4KillBuffer=0;lastBattleTick=Date.now();
+
+    const selected=v93CurrentParty();
+    const updates=[];
+    for(const a of selected){
+      const max=v6HeroMaxHp(a);
+      a.max_hp=max;a.current_hp=max;a.knocked_out=false;a.injury_until=null;
+      updates.push(sb.from('game_adventurers').update({
+        max_hp:max,current_hp:max,knocked_out:false,injury_until:null
+      }).eq('id',a.id));
+    }
+    gameMeta.stage_kills=0;
+    updates.push(sb.from('game_meta').update({
+      stage_kills:0,paused:false,updated_at:new Date().toISOString()
+    }).eq('room_id',roomId));
+    await Promise.allSettled(updates);
+    v4EnsureWave();
+    gameToastMsg('隊伍全滅：已立即滿血復活，重新刷目前同一關。');
+    renderBattle();
+  };
+  window.v81InstantRevive=window.v93InstantPartyRevive;
+
+  // Critical fix: V9.2 defined a revive function but never called it from battleTick.
+  window.battleTick=async function(){
+    if(!room||!gameMeta||!battleAnimOn||!document.getElementById('guildPage')?.classList.contains('active'))return;
+
+    await v6RecoverParty();
+    if(v6AllKo()){await v93InstantPartyRevive();return}
+
+    const now=Date.now(),dt=Math.min(1,(now-lastBattleTick)/1000);lastBattleTick=now;
+    const alive=v93CurrentParty().filter(a=>!a.knocked_out&&v6HeroHp(a)>0);
+    if(!alive.length){await v93InstantPartyRevive();return}
+
+    const attacker=alive[Math.floor(Math.random()*alive.length)],crit=Math.random()<.15,skill=Math.random()<.10;
+    let dmg=partyDps()*dt*(skill?1.65:1)*(crit?1.5:1);
+    v4AnimateHero(attacker,skill);v4SpawnDamage(dmg,crit);
+
+    if(v4BossMode){
+      v4BossHp-=dmg;
+      await v6DamageParty(dt,true);
+      if(v6AllKo()){await v93InstantPartyRevive();return}
+      if(v4BossHp<=0)await v4BossDefeated();else renderBattle();
+      return;
+    }
+
+    v4EnsureWave();
+    const target=v4Wave[Math.floor(Math.random()*v4Wave.length)];
+    if(!target){v6RefillWave();renderBattle();return}
+    if(skill)for(const m of v4Wave)m.hp-=dmg*.38;else target.hp-=dmg;
+
+    await v6DamageParty(dt,false);
+    if(v6AllKo()){await v93InstantPartyRevive();return}
+
+    for(const m of [...v4Wave])if(m.hp<=0)await v4MobDefeated(m);
+    v6RefillWave();
+
+    const totalKills=Number(gameMeta.stage_kills||0)+v4KillBuffer;
+    if(totalKills>0&&totalKills%50===0){
+      await v4FlushBattle();await challengeBoss();return;
+    }
+    renderBattle();
+    if(now-v4LastFlush>10000)await v4FlushBattle();
+  };
+
 })();

@@ -108,3 +108,44 @@
 .v9-card-art img,.v9-roster-card>img,.v9-hero-detail-card img,.v9-show-card>img,.sg-item-icon>img,.sg-gear-art>img,.v4BuildingSprite>img,.v9-building-list-card>img,.v9-building-detail-image>img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .v4BuildingSprite>img,.v9-building-list-card>img,.v9-building-detail-image>img{object-fit:contain}
 .v9-party-mini img{object-fit:cover;object-position:center}
+
+
+/* ===== V9.3 主力隊伍選擇 ===== */
+.v93-party-toolbar{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  margin:0 0 10px;padding:9px 11px;border:1px solid #2f3a4d;border-radius:11px;
+  background:linear-gradient(180deg,#101722,#0a1018)
+}
+.v93-party-toolbar span{font-size:10px;color:#aeb9ca}
+.v93-party-toolbar b{color:#f3e5ff}
+.v93-party-toolbar button{
+  border:1px solid #4a3b61;background:#1a1325;color:#e8daf7;border-radius:9px;
+  padding:6px 9px;font-size:9px;cursor:pointer
+}
+.v9-roster-card{position:relative}
+.v93-party-chip{
+  position:absolute;right:7px;top:7px;z-index:4;
+  padding:3px 7px;border-radius:999px;border:1px solid #46556d;
+  background:rgba(7,10,15,.88);font-size:8px;color:#aeb8c7
+}
+.v93-party-chip.on{
+  border-color:#a977dc;background:rgba(77,42,107,.88);color:#fff;
+  box-shadow:0 0 12px rgba(165,100,220,.20)
+}
+.v93-party-btn{
+  width:100%;margin-top:8px;border:1px solid #6e5296;border-radius:10px;
+  padding:9px 11px;background:linear-gradient(180deg,#7047a1,#4a2f72);
+  color:#fff;font-weight:900;cursor:pointer
+}
+.v93-party-btn.off{
+  border-color:#5b4854;background:linear-gradient(180deg,#372933,#241d25)
+}
+.v93-party-warn{
+  margin:8px 0;padding:8px 10px;border-radius:9px;
+  background:#2a2113;border:1px solid #59431f;color:#e8cca0;font-size:9px
+}
+.v9-combat-card.v93-reviving{animation:v93Revive .55s ease}
+@keyframes v93Revive{
+  0%{filter:brightness(2.4);transform:scale(.93);opacity:.35}
+  100%{filter:none;transform:none;opacity:1}
+}
