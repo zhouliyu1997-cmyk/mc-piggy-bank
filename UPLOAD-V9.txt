@@ -1,0 +1,8 @@
+M&C：星痕公會 V9 GitHub 上傳
+
+1. 保留你 GitHub 目前的 config.js（V9 ZIP 不會覆蓋它）。
+2. 覆蓋：index.html、sw.js、README.md。
+3. 新增：v9.css、v9.js、assets_v9/。
+4. 原本 assets、assets_v7、assets_v8 都保留，V9 仍會使用區域背景與舊資料相容層。
+5. 不需要再跑任何 SQL。
+6. GitHub Pages 部署完成後，Ctrl + Shift + R 強制重新整理。

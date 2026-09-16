@@ -1,9 +1,11 @@
 
-const CACHE = "mc-piggy-pwa-v17-v81-p1-p2-final";
+const CACHE = "mc-piggy-pwa-v18-v9-card-battle";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./v4.js",
+  "./v9.css",
+  "./v9.js",
   "./assets/guild_hub.jpg",
   "./assets/battle_bg.jpg",
   "./assets/recruit_bg.jpg",
