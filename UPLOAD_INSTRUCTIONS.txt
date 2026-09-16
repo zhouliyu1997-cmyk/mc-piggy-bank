@@ -1,28 +1,50 @@
-M&C：星痕公會 V9.3 — 編隊 + 復活修正版
+M&C 小豬撲滿 V9.5 — 網站關閉也能在下午 3 點自動鎖匯率
 
-先做 1 次 Supabase：
-1. Supabase > SQL Editor > New query
-2. 貼上 V9_3_PARTY_MIGRATION.sql
-3. Run
-4. 看到 Success 即可
+這版跟 V9.4 最大差別：
+- 自動匯率更新已移到 Supabase PostgreSQL。
+- GitHub Pages / 手機 / PWA 全部關閉也沒關係。
+- 工作日以 Australia/Sydney 當地時間為準。
+- 下午 15:00 開始自動處理。
+- 成功後 fx_status = LOCKED，永久不再自動變。
+- 若 Frankfurter 暫時失敗，之後每小時重試，直到成功。
+- 夏令時間 AEDT / AEST 不需要你手動改排程。
 
-然後覆蓋 GitHub 根目錄：
+【第一步：Supabase】
+只要執行：
+V9_5_FX_3PM_SERVER.sql
+
+這份 SQL 已包含 V9.4 所需欄位，所以即使你還沒執行 V9.4，也直接跑 V9.5 即可。
+
+成功後最後應看到：
+jobname = mc-fx-sydney-1500
+schedule = 0 * * * *
+active = true
+
+為什麼 schedule 看起來是「每小時」？
+因為 Supabase DB 建議保持 UTC。
+程式每個整點醒來一次，但「今天的工作」在雪梨 15:00 前一定不會鎖。
+這種做法可以自動處理 Sydney 夏令時間，不會每年差一小時。
+如果 15:00 第一次成功，後面的 run 沒有 PENDING 資料，所以不會重複改。
+若 15:00 API 剛好故障，16:00、17:00... 會自動重試。
+
+【第二步：GitHub 根目錄覆蓋】
 - index.html
 - v9.js
 - v9.css
 - sw.js
 
-圖片資料夾不用重傳。
+V9.5 前端的角色：
+- 建立未來班表：保存建立時暫估匯率。
+- 15:00 前：今天班表仍保持 PENDING。
+- 15:00 後：正常情況 Supabase cron 已處理。
+- 若 cron 暫時沒處理，網站開啟時仍有 client fallback 可補救。
+- 🔒 後不再改。
 
-本版修正：
-- 可手動選擇最多 5 名冒險家上場。
-- 編隊保存在 Supabase，M/C 兩邊共用。
-- 可隨時恢復「戰力最高五人」自動編隊。
-- 單一冒險家倒地後約 3 秒自動復活。
-- 全隊死亡立即滿血復活。
-- 全滅後不退關；同一區、同一關重新從 0/50 小怪開始。
-- 修正 V9.2 雖然有 revive function，但 battleTick 根本沒有呼叫它的問題。
+【V9.5 的「下午 3 點匯率」定義】
+工作日 Sydney 15:00 時，抓 Frankfurter「當下最新可用 AUD→TWD 匯率」。
+它不等同於當天收盤價；Frankfurter 是每日參考/中間價資料，不是即時外匯交易報價。
+這符合你指定的「下午三點刷新一次，然後不要再動」。
 
-目前抽卡程式：
-角色神話每抽 0.6%；角色十連至少一隻神話 = 5.84%。
-裝備神話每抽 0.7%；裝備十連至少一件神話 = 6.78%。
+【測試】
+需要檢查時可以跑：
+V9_5_FX_TEST.sql

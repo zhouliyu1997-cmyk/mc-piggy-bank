@@ -1,5 +1,5 @@
 
-const CACHE = "mc-piggy-pwa-v22-v9-3-party-revive";
+const CACHE = "mc-piggy-pwa-v24-v9-5-fx-3pm-server";
 const APP_SHELL = [
   "./",
   "./index.html",

@@ -535,7 +535,7 @@ body{
 
 
 </style>
-<link rel="stylesheet" href="./v9.css?v=9.3-party-revive">
+<link rel="stylesheet" href="./v9.css?v=9.5-fx-3pm-server">
 </head>
 <body>
 <div id="gate" class="gate">
@@ -813,7 +813,7 @@ body{
     <div class="notice" style="margin-top:10px">目前內建規則版本：2026-07-01 Fair Work。此版本處理你要求的 Weekday / Saturday / Sunday / Public Holiday。夜間 loading、overtime、split shift 等不在這個簡化版自動計算範圍。</div>
     <button class="btn" style="margin-top:10px" onclick="addJob()">新增工作</button><div id="jobList" class="stack"></div>
   </div>
-  <div class="panel"><h3>💱 匯率</h3><p>每次新增紀錄會從 Frankfurter 免費 API 取得 AUD→TWD；每筆紀錄會把該匯率快照保存，不會因未來匯率變動而重算。</p><div class="value" id="fxNow">—</div></div>
+  <div class="panel"><h3>💱 匯率</h3><p>未來班表建立時先使用建立當下的參考匯率；工作日雪梨時間下午 3:00 起，由 Supabase 伺服器自動抓取當下最新可用 AUD→TWD 匯率並鎖定，就算網站沒開也會執行。已鎖定的歷史班表不再變動。</p><div class="value" id="fxNow">—</div></div>
   <div class="panel"><div class="toolbar"><div><h3>🔐 共同撲滿</h3><p id="shareText"></p></div><button class="btn red" onclick="leaveRoom()">離開此裝置</button></div></div>
 </section>
 </div>
@@ -828,7 +828,7 @@ body{
   <div class="field"><label>工作</label><select id="eJob" onchange="preview()"></select></div>
   <div class="field"><label>日別</label><select id="eDay" onchange="preview()"><option value="WEEKDAY">平日</option><option value="SATURDAY">週六</option><option value="SUNDAY">週日</option><option value="PUBLIC_HOLIDAY">Public Holiday</option></select></div>
   <div class="field"><label>工時</label><input id="eHours" type="number" step="0.25" oninput="preview()"></div>
-  <div class="field"><label>AUD→TWD 匯率</label><input id="eFx" type="number" step="0.0001" oninput="preview()"></div>
+  <div class="field"><label>AUD→TWD 匯率</label><input id="eFx" type="number" step="0.0001" oninput="preview()"><small id="eFxHint" style="display:block;margin-top:5px;color:var(--muted)">—</small></div>
 </div>
 <div class="totals"><div class="total"><span>倍率</span><strong id="pMult">×1.00</strong></div><div class="total"><span>套用時薪</span><strong id="pRate">A$0</strong></div><div class="total"><span>預估收入</span><strong id="pIncome">A$0 / NT$0</strong></div></div>
 <div class="actions"><button class="btn secondary" onclick="closeEntry()">取消</button><button class="btn green" onclick="saveEntry()">儲存</button></div>
@@ -837,7 +837,7 @@ body{
 <script>
 const RULE_VERSION='FWO_2026-07-01';
 const cfg=window.MC_CONFIG||{};
-let sb,roomId=null,room=null,workers=[],jobs=[],entries=[],gameState=null,gameBuildings=[],gameAdventurers=[],gameExpeditions=[],gameSpend=[],gameMeta=null,gameEquipment=[],gameFashion=[],gameSkills=[],gameClaims=[],channel=null,chart=null,viewMonth=new Date();viewMonth.setDate(1);let gateMode='join';let selectedBuildingId=null,buildCatalogOpen=true,guildTicker=null;let idleTicker=null,battleAnimOn=true,currentMonsterHp=0,currentMonsterMaxHp=0,offlinePending=null,lastBattleTick=Date.now();
+let sb,roomId=null,room=null,workers=[],jobs=[],entries=[],gameState=null,gameBuildings=[],gameAdventurers=[],gameExpeditions=[],gameSpend=[],gameMeta=null,gameEquipment=[],gameFashion=[],gameSkills=[],gameClaims=[],channel=null,chart=null,viewMonth=new Date(),fxTicker=null,fxRefreshBusy=false,entryFxMeta=null;viewMonth.setDate(1);let gateMode='join';let selectedBuildingId=null,buildCatalogOpen=true,guildTicker=null;let idleTicker=null,battleAnimOn=true,currentMonsterHp=0,currentMonsterMaxHp=0,offlinePending=null,lastBattleTick=Date.now();
 
 function moneyAUD(v){return new Intl.NumberFormat('en-AU',{style:'currency',currency:'AUD'}).format(Number(v)||0)}
 function moneyTWD(v){return new Intl.NumberFormat('zh-TW',{style:'currency',currency:'TWD',maximumFractionDigits:0}).format(Number(v)||0)}
@@ -853,6 +853,17 @@ function sydneyWorkDate(){
     return `${o.year}-${o.month}-${o.day}`;
   }catch(_){
     return localDate();
+  }
+}
+function sydneyWorkHour(){
+  try{
+    const parts=new Intl.DateTimeFormat('en-AU',{
+      timeZone:'Australia/Sydney',
+      hour:'2-digit',hour12:false
+    }).formatToParts(new Date());
+    return Number(parts.find(p=>p.type==='hour')?.value||0);
+  }catch(_){
+    return new Date().getHours();
   }
 }
 function mk(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`}
@@ -925,7 +936,17 @@ async function loadRoom(){
   gameMeta=gm.data||null;gameEquipment=ge.data||[];gameFashion=gf.data||[];gameSkills=gsk.data||[];gameClaims=gc.data||[];
   return true;
 }
-async function enterApp(){gate.style.display='none';app.style.display='block';bottom.style.display='';roomTitle.textContent=room.name;roomCode.textContent='房間：'+room.code;shareText.textContent=`分享網站網址給女友，輸入房間代碼「${room.code}」與你們的共同密碼即可加入。`;goalInput.value=room.goal_twd||'';dateInput.value=room.target_date||'';await ensureGameInitialized();renderAll();subscribe();start公會Ticker()}
+async function enterApp(){
+  gate.style.display='none';app.style.display='block';bottom.style.display='';
+  roomTitle.textContent=room.name;roomCode.textContent='房間：'+room.code;
+  shareText.textContent=`分享網站網址給女友，輸入房間代碼「${room.code}」與你們的共同密碼即可加入。`;
+  goalInput.value=room.goal_twd||'';dateInput.value=room.target_date||'';
+  await ensureGameInitialized();
+  await finalizeDueFxRates(false);
+  renderAll();subscribe();start公會Ticker();
+  if(fxTicker)clearInterval(fxTicker);
+  fxTicker=setInterval(()=>finalizeDueFxRates(true),10*60*1000);
+}
 function subscribe(){
   if(channel)sb.removeChannel(channel);
   channel=sb.channel('mc-'+roomId).on('postgres_changes',{event:'*',schema:'public',table:'entries',filter:'room_id=eq.'+roomId},reload)
@@ -1560,6 +1581,12 @@ async function toggleCheckin(entryId,shouldCheckIn){
       return;
     }
     if(!confirm(`確認這班真的有去上班嗎？\n\n${e.work_date} · ${Number(e.hours||0).toFixed(2)} 小時\n\n簽到後才會計入《星痕公會》的真實工作資料。`))return;
+    if(e.fx_status==='PENDING'||!e.fx_status){
+      await finalizeEntryFx(e);
+      if(e.fx_status==='PENDING'||!e.fx_status){
+        gameToastMsg?.('這筆仍是暫估匯率；雪梨時間 15:00 後會由伺服器自動更新並鎖定。');
+      }
+    }
     const {data:{user}}=await sb.auth.getUser();
     const now=new Date().toISOString();
     const r=await sb.from('entries').update({
@@ -1621,9 +1648,9 @@ function renderRecords(){
       <td>×${Number(e.penalty_multiplier||1).toFixed(2)}</td>
       <td>$${Number(e.applied_hourly_rate||0).toFixed(2)}</td>
       <td>$${Number(e.aud_income||0).toFixed(2)}</td>
-      <td>${Number(e.fx_aud_twd||0).toFixed(4)}</td>
+      <td title="${e.fx_status==='PENDING'?'目前為建立時參考匯率；工作日雪梨時間 15:00 後自動更新':`已鎖定 · 匯率日期 ${e.fx_rate_date||e.work_date||''}`}">${Number(e.fx_aud_twd||0).toFixed(4)} ${e.fx_status==='PENDING'?'⏳':'🔒'}</td>
       <td>$${Math.round(Number(e.twd_income||0)).toLocaleString()}</td>
-      <td><span class="statusTag ${e.checked_in?'worked':'planned'}">${e.checked_in?'已出勤':'預排'}</span></td>
+      <td><span class="statusTag ${e.checked_in?'worked':'planned'}">${e.checked_in?'已出勤':'預排'}${e.fx_status==='PENDING'?' · 匯率待更新':''}</span></td>
       <td><button class="btn red small" onclick="deleteEntry('${e.id}')">刪除</button></td>
     </tr>`
   }).join(''):`<tr><td colspan="15" class="empty">這個月份還沒有紀錄。</td></tr>`;
@@ -1645,12 +1672,153 @@ async function delWorker(id){if(entries.some(e=>e.worker_id===id))return alert('
 async function addJob(){if(!jStore.value.trim()||!jRole.value.trim()||!Number(jRate.value))return alert('請填完整工作資料');await sb.from('jobs').insert({room_id:roomId,store:jStore.value.trim(),role:jRole.value.trim(),base_rate:Number(jRate.value),award_code:jAward.value,employment_type:jEmp.value,level_no:Number(jLevel.value)});jStore.value='';jRole.value='';jRate.value=''}
 async function delJob(id){if(entries.some(e=>e.job_id===id))return alert('這份工作已有歷史紀錄，為避免破壞資料，目前不允許刪除。');await sb.from('jobs').delete().eq('id',id)}
 
-async function fetchFx(date=null){
-  try{
-    let url=date?`https://api.frankfurter.dev/v2/rate/aud/twd?date=${date}`:`https://api.frankfurter.dev/v2/rate/aud/twd`;
-    const r=await fetch(url);if(!r.ok)throw 0;const j=await r.json(),rate=Number(j.rate);if(!rate)throw 0;fxNow.textContent=`1 AUD = ${rate.toFixed(4)} TWD`;return rate;
-  }catch(e){alert('目前無法取得自動匯率，請稍後再試或手動輸入。');return null}
+function isoDateShift(date,days){
+  const [y,m,d]=String(date).slice(0,10).split('-').map(Number);
+  const x=new Date(Date.UTC(y,m-1,d));
+  x.setUTCDate(x.getUTCDate()+days);
+  return x.toISOString().slice(0,10);
 }
+function isWeekendDate(date){
+  const [y,m,d]=String(date).slice(0,10).split('-').map(Number);
+  const day=new Date(Date.UTC(y,m-1,d)).getUTCDay();
+  return day===0||day===6;
+}
+async function fetchFxSnapshot(date=null,silent=false){
+  try{
+    const url=date
+      ? `https://api.frankfurter.dev/v2/rate/aud/twd?date=${date}`
+      : `https://api.frankfurter.dev/v2/rate/aud/twd`;
+    const r=await fetch(url,{cache:'no-store'});
+    if(!r.ok)throw new Error('FX HTTP '+r.status);
+    const j=await r.json(),rate=Number(j.rate);
+    if(!rate)throw new Error('FX missing rate');
+    const rateDate=String(j.date||date||sydneyWorkDate()).slice(0,10);
+    if(!silent)fxNow.textContent=`1 AUD = ${rate.toFixed(4)} TWD · ${rateDate}`;
+    return {rate,date:rateDate};
+  }catch(err){
+    if(!silent)alert('目前無法取得自動匯率，請稍後再試或手動輸入。');
+    return null;
+  }
+}
+async function fetchPreviousPublishedFx(date){
+  for(let i=1;i<=7;i++){
+    const candidate=isoDateShift(date,-i);
+    const snap=await fetchFxSnapshot(candidate,true);
+    if(snap?.rate)return snap;
+  }
+  return null;
+}
+async function fetchFx(date=null){
+  const x=await fetchFxSnapshot(date,false);
+  return x?.rate||null;
+}
+async function refreshEntryFormFx(){
+  const date=eDate.value;
+  if(!date)return;
+  const today=sydneyWorkDate();
+  let snap=null,status='PENDING';
+
+  if(date>today){
+    snap=await fetchFxSnapshot(null,true);
+    status='PENDING';
+  }else{
+    const holiday=await isNSWPublicHoliday(date);
+    if(isWeekendDate(date)||holiday){
+      snap=await fetchPreviousPublishedFx(date);
+      status='LOCKED';
+    }else{
+      const exact=await fetchFxSnapshot(date,true);
+      if(exact?.rate && exact.date===date){
+        snap=exact;status='LOCKED';
+      }else if(date<today){
+        snap=exact?.rate?exact:await fetchPreviousPublishedFx(date);
+        status='LOCKED';
+      }else{
+        snap=await fetchFxSnapshot(null,true);
+        status='PENDING';
+      }
+    }
+  }
+
+  if(snap?.rate){
+    entryFxMeta={...snap,status};
+    eFx.value=snap.rate.toFixed(4);
+    if(eFxHint){
+      if(date>today)eFxHint.textContent=`暫用 ${snap.date} 匯率；${date} 雪梨時間 15:00 後由伺服器自動更新並鎖定`;
+      else if(status==='LOCKED')eFxHint.textContent=`將以 ${snap.date} 匯率鎖定`;
+      else eFxHint.textContent=`${date} 15:00 前先保持暫估；15:00 後會自動鎖定最新可用匯率`;
+    }
+    fxNow.textContent=`1 AUD = ${snap.rate.toFixed(4)} TWD · ${snap.date}`;
+    preview();
+  }
+}
+async function finalizeEntryFx(e){
+  if(!e||e.fx_status==='LOCKED'||e.fx_status==='MANUAL')return false;
+  const workDate=String(e.work_date||'').slice(0,10),today=sydneyWorkDate();
+  if(!workDate||workDate>today)return false;
+
+  let snap=null;
+
+  if(workDate===today){
+    // V9.5: work-day FX is a 15:00 Sydney snapshot.
+    // Before 15:00 it must remain provisional even if the website is open.
+    if(sydneyWorkHour()<15)return false;
+    snap=await fetchFxSnapshot(null,true);
+  }else{
+    // Catch-up for an older PENDING entry: use its historical date.
+    snap=await fetchFxSnapshot(workDate,true);
+    if(!snap?.rate)snap=await fetchPreviousPublishedFx(workDate);
+  }
+
+  if(!snap?.rate)return false;
+
+  const twd=Number(e.aud_income||0)*Number(snap.rate);
+  const now=new Date().toISOString();
+  const r=await sb.from('entries').update({
+    fx_aud_twd:snap.rate,
+    twd_income:twd,
+    fx_status:'LOCKED',
+    fx_rate_date:snap.date,
+    fx_finalized_at:now,
+    fx_lock_source:'CLIENT_FALLBACK_15_SYDNEY'
+  }).eq('id',e.id);
+
+  if(r.error){
+    console.error('FX finalize failed',e.id,r.error);
+    return false;
+  }
+
+  e.fx_aud_twd=snap.rate;
+  e.twd_income=twd;
+  e.fx_status='LOCKED';
+  e.fx_rate_date=snap.date;
+  e.fx_finalized_at=now;
+  e.fx_lock_source='CLIENT_FALLBACK_15_SYDNEY';
+  return true;
+}
+async function finalizeDueFxRates(shouldRender=true){
+  if(fxRefreshBusy||!sb||!roomId)return 0;
+  fxRefreshBusy=true;
+  let changed=0;
+  try{
+    const today=sydneyWorkDate(),hour=sydneyWorkHour();
+    const due=entries.filter(e=>{
+      if(e.fx_status!=='PENDING'&&e.fx_status)return false;
+      const d=String(e.work_date||'').slice(0,10);
+      if(!d||d>today)return false;
+      if(d===today&&hour<15)return false;
+      return true;
+    });
+    for(const e of due){
+      if(await finalizeEntryFx(e))changed++;
+    }
+    if(changed&&shouldRender)renderAll();
+    return changed;
+  }finally{
+    fxRefreshBusy=false;
+  }
+}
+
 async function isNSWPublicHoliday(date){
   try{
     const y=date.slice(0,4),r=await fetch(`https://date.nager.at/api/v3/PublicHolidays/${y}/AU`);if(!r.ok)return false;
@@ -1659,25 +1827,64 @@ async function isNSWPublicHoliday(date){
 }
 async function autoDayType(){
   const date=eDate.value;if(!date)return;
-  const ph=await isNSWPublicHoliday(date);if(ph)eDay.value='PUBLIC_HOLIDAY';else{const d=new Date(date+'T12:00:00').getDay();eDay.value=d===6?'SATURDAY':d===0?'SUNDAY':'WEEKDAY'}preview()
+  const ph=await isNSWPublicHoliday(date);
+  if(ph)eDay.value='PUBLIC_HOLIDAY';
+  else{const d=new Date(date+'T12:00:00').getDay();eDay.value=d===6?'SATURDAY':d===0?'SUNDAY':'WEEKDAY'}
+  await refreshEntryFormFx();
+  preview();
 }
 async function openEntry(){
   if(!workers.length||!jobs.length)return alert('請先新增打工人與工作設定');
-  eDate.value=localDate();eWorker.innerHTML=workers.map(w=>`<option value="${w.id}">${esc(w.name)}</option>`).join('');eJob.innerHTML=jobs.map(j=>`<option value="${j.id}">${esc(j.store)} · ${esc(j.role)}</option>`).join('');eHours.value='';await autoDayType();eFx.value=(await fetchFx(eDate.value))||'';preview();modalBg.classList.add('show')
+  eDate.value=sydneyWorkDate();
+  eWorker.innerHTML=workers.map(w=>`<option value="${w.id}">${esc(w.name)}</option>`).join('');
+  eJob.innerHTML=jobs.map(j=>`<option value="${j.id}">${esc(j.store)} · ${esc(j.role)}</option>`).join('');
+  eHours.value='';entryFxMeta=null;
+  await autoDayType();
+  preview();modalBg.classList.add('show');
 }
 function closeEntry(){modalBg.classList.remove('show')}
 function preview(){
   const j=jobs.find(x=>x.id===eJob.value);if(!j)return;const mult=penaltyMultiplier(j.award_code,j.employment_type,j.level_no,eDay.value),rate=Number(j.base_rate)*mult,h=Number(eHours.value)||0,fx=Number(eFx.value)||0;pMult.textContent='×'+mult.toFixed(2);pRate.textContent=moneyAUD(rate);pIncome.textContent=`${moneyAUD(rate*h)} / ${moneyTWD(rate*h*fx)}`
 }
 async function saveEntry(){
-  const w=workers.find(x=>x.id===eWorker.value),j=jobs.find(x=>x.id===eJob.value),h=Number(eHours.value),fx=Number(eFx.value);if(!w||!j||!eDate.value||!h||!fx)return alert('請填完整');
-  const mult=penaltyMultiplier(j.award_code,j.employment_type,j.level_no,eDay.value),rate=Number(j.base_rate)*mult,audN=rate*h,twdN=audN*fx;
+  const w=workers.find(x=>x.id===eWorker.value),j=jobs.find(x=>x.id===eJob.value),h=Number(eHours.value),fx=Number(eFx.value);
+  if(!w||!j||!eDate.value||!h||!fx)return alert('請填完整');
+
+  const mult=penaltyMultiplier(j.award_code,j.employment_type,j.level_no,eDay.value),
+        rate=Number(j.base_rate)*mult,audN=rate*h,twdN=audN*fx;
   const {data:{user}}=await sb.auth.getUser();
-  const payload={room_id:roomId,worker_id:w.id,job_id:j.id,work_date:eDate.value,hours:h,day_type:eDay.value,fx_aud_twd:fx,worker_name:w.name,store:j.store,role:j.role,base_rate:j.base_rate,award_code:j.award_code,employment_type:j.employment_type,level_no:j.level_no,rule_version:RULE_VERSION,penalty_multiplier:mult,applied_hourly_rate:rate,aud_income:audN,twd_income:twdN,created_by:user.id};
-  const r=await sb.from('entries').insert(payload);if(r.error)return alert(r.error.message);
+  const today=sydneyWorkDate(),hour=sydneyWorkHour();
+  const shouldStayPending=eDate.value>today||(eDate.value===today&&hour<15);
+  const status=shouldStayPending?'PENDING':(entryFxMeta?.status==='LOCKED'?'LOCKED':'PENDING');
+  const rateDate=entryFxMeta?.date||today;
+
+  const payload={
+    room_id:roomId,worker_id:w.id,job_id:j.id,work_date:eDate.value,hours:h,day_type:eDay.value,
+    fx_aud_twd:fx,
+    fx_initial_aud_twd:fx,
+    fx_initial_rate_date:rateDate,
+    fx_status:status,
+    fx_rate_date:rateDate,
+    fx_finalized_at:status==='LOCKED'?new Date().toISOString():null,
+    fx_lock_source:status==='LOCKED'?'CLIENT_CREATED_AFTER_15':null,
+    worker_name:w.name,store:j.store,role:j.role,base_rate:j.base_rate,
+    award_code:j.award_code,employment_type:j.employment_type,level_no:j.level_no,
+    rule_version:RULE_VERSION,penalty_multiplier:mult,applied_hourly_rate:rate,
+    aud_income:audN,twd_income:twdN,created_by:user.id
+  };
+
+  const r=await sb.from('entries').insert(payload);
+  if(r.error){
+    if(String(r.error.message||'').includes('fx_')){
+      return alert('請先到 Supabase 執行 V9_4_FX_MIGRATION.sql，再新增班表。');
+    }
+    return alert(r.error.message);
+  }
+
   closeEntry();
   const[y,m]=eDate.value.split('-').map(Number);viewMonth=new Date(y,m-1,1);
   await loadRoom();
+  await finalizeDueFxRates(false);
   renderAll();
 }
 async function deleteEntry(id){if(confirm('確定刪除這筆紀錄？')){const r=await sb.from('entries').delete().eq('id',id);if(r.error)return alert(r.error.message);await loadRoom();renderAll()}}
@@ -2747,6 +2954,6 @@ if (typeof render公會 === 'function') {
 
 
 
-<script src="./v9.js?v=9.3-party-revive"></script>
+<script src="./v9.js?v=9.5-fx-3pm-server"></script>
 </body>
 </html>
