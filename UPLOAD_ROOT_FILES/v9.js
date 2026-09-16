@@ -1,7 +1,9 @@
 /* ==========================================================
-   M&C：星痕公會 V9 — functional UI overrides
+   M&C：星痕公會 V9.1 — production flat-assets build
+   GitHub-friendly: every asset folder stays under 90 files.
    ========================================================== */
 (function(){
+  const V9_ASSET={hero:'v9_01_heroes',monster:'v9_02_monsters',world:'v9_03_world',gearA:'v9_04_gear_a',gearB:'v9_05_gear_b',fashion:'v9_06_fashion'};
   const ZONE_BG=['forest','mine','village','mist','fortress','frost','desert','abyss'];
   const HERO_POOLS={warrior:['h01','h03','h04','h05','h06','h20','h21','h23'],mage:['h02','h07','h08','h09','h10','h11','h12','h22'],archer:['h13','h14','h15','h16','h17','h18'],rogue:['h19','h20','h21','h23','h24','h16']};
   const MONSTER_POOLS={1:['m01','m02','m03','m13'],2:['m04','m05','m07','m14'],3:['m06','m09','m13','m15'],4:['m02','m10','m11','m17'],5:['m05','m07','m15','m18'],6:['m10','m11','m20','m24'],7:['m03','m12','m14','m19'],8:['m06','m17','m23','m24']};
@@ -12,17 +14,23 @@
   const GEAR_RATES=[['COMMON',.42],['UNCOMMON',.30],['RARE',.18],['EPIC',.065],['LEGENDARY',.028],['MYTHIC',.007]];
   const FASHION_RATES=[['RARE',.55],['EPIC',.28],['LEGENDARY',.13],['MYTHIC',.04]];
 
+
+  function v9Img(src,alt='',cls=''){
+    const safeAlt=(typeof esc==='function'?esc(alt):String(alt).replace(/[<>&"']/g,''));
+    return `<img ${cls?`class="${cls}"`:''} src="${src}" alt="${safeAlt}" onerror="this.classList.add('v9-img-error');this.removeAttribute('src');this.alt='素材未載入：${safeAlt}'">`;
+  }
+  window.V9_ASSET=V9_ASSET;
   function hash(s){s=String(s||'');let x=0;for(let i=0;i<s.length;i++){x=((x<<5)-x)+s.charCodeAt(i);x|=0}return Math.abs(x)}
   function cls(v){const n=(typeof v4NormalizeClass==='function'?v4NormalizeClass(v||''):String(v||''));if(/法師|牧師/.test(n))return'mage';if(/弓箭|遊俠/.test(n))return'archer';if(/盜賊|刺客/.test(n))return'rogue';return'warrior'}
   function heroKey(a){const p=HERO_POOLS[cls(a?.class_name)]||HERO_POOLS.warrior;return p[hash(`${a?.name}|${a?.class_name}|${a?.rarity}`)%p.length]}
-  function heroCard(a){return `v9_01_heroes/${heroKey(a)}.png`}
+  function heroCard(a){return `${V9_ASSET.hero}/${heroKey(a)}.png`}
   function monsterKey(zone=1,kind=0,boss=false){if(boss)return BOSS_POOLS[zone]||'m23';const p=MONSTER_POOLS[zone]||MONSTER_POOLS[1];return p[(Number(kind)||0)%p.length]}
-  function monsterCard(zone,kind,boss=false){return `v9_02_monsters/${monsterKey(zone,kind,boss)}.png`}
-  function buildingCard(key){return `v9_03_world/${BUILDING_ART[key]||'b01'}.png`}
+  function monsterCard(zone,kind,boss=false){return `${V9_ASSET.monster}/${monsterKey(zone,kind,boss)}.png`}
+  function buildingCard(key){return `${V9_ASSET.world}/${BUILDING_ART[key]||'b01'}.png`}
   function slotName(s){return (typeof v41SlotName==='function'?v41SlotName(s):s)||'主武器'}
   function gearNum(g){const name=typeof v4GearName==='function'?v4GearName(g):'';if(name.includes('星蝕巨劍'))return 2;const pool=GEAR_POOLS[slotName(g?.slot)]||GEAR_POOLS['主武器'];return pool[hash(`${name}|${g?.id}|${g?.rarity}|${g?.item_level}`)%pool.length]}
-  function gearCard(g){const n=gearNum(g),folder=n<=72?'v9_04_gear_a':'v9_05_gear_b';return `${folder}/g${String(n).padStart(3,'0')}.png`}
-  function fashionCard(f){const n=1+(hash(`${f?.name}|${f?.fashion_type}|${f?.rarity}`)%32);return `v9_06_fashion/f${String(n).padStart(2,'0')}.png`}
+  function gearCard(g){const n=gearNum(g),folder=n<=72?V9_ASSET.gearA:V9_ASSET.gearB;return `${folder}/g${String(n).padStart(3,'0')}.png`}
+  function fashionCard(f){const n=1+(hash(`${f?.name}|${f?.fashion_type}|${f?.rarity}`)%32);return `${V9_ASSET.fashion}/f${String(n).padStart(2,'0')}.png`}
   function weighted(table){let r=Math.random(),a=0;for(const [k,p] of table){a+=p;if(r<=a)return k}return table[table.length-1][0]}
   function roster(){return typeof V4_ROSTER!=='undefined'?V4_ROSTER:(typeof IDLE_ROSTER!=='undefined'?IDLE_ROSTER:[])}
   function gearCatalog(){return typeof V4_GEAR_CATALOG!=='undefined'?V4_GEAR_CATALOG:[]}
@@ -30,10 +38,10 @@
   function rarityZh(r){return (typeof V4_RARITY_ZH!=='undefined'&&V4_RARITY_ZH[r])||r||'普通'}
   function rateHtml(table){return table.map(([r,p])=>`<div class="v9-rate"><b class="rar-${rarityZh(r)}">${rarityZh(r)}</b>${(p*100).toFixed(p<.01?1:0)}%</div>`).join('')}
 
-  window.v4SvgHero=function(a,mode='card'){return `<img src="${heroCard(a)}" alt="${esc(a?.name||'冒險家')}">`};
-  window.v4MobSvg=function(kind=0,boss=false,zone=1){return `<img src="${monsterCard(zone,kind,boss)}" alt="${boss?'首領':'怪物'}">`};
-  window.v4GearIcon=function(g){return `<img src="${gearCard(g)}" alt="${esc(typeof v4GearName==='function'?v4GearName(g):'裝備')}">`};
-  window.v4BuildingSvg=function(key){return `<img src="${buildingCard(key)}" alt="${key}">`};
+  window.v4SvgHero=function(a,mode='card'){return v9Img(heroCard(a),a?.name||'冒險家',`v9-asset-${mode}`)};
+  window.v4MobSvg=function(kind=0,boss=false,zone=1){return v9Img(monsterCard(zone,kind,boss),boss?'首領':'怪物','v9-asset-monster')};
+  window.v4GearIcon=function(g){return v9Img(gearCard(g),typeof v4GearName==='function'?v4GearName(g):'裝備','v9-asset-gear')};
+  window.v4BuildingSvg=function(key){return v9Img(buildingCard(key),key,'v9-asset-building')};
 
   function hpPct(now,max){return max?Math.max(0,Math.min(100,Number(now||0)/Number(max)*100)):0}
   function mobName(s,m,boss){if(boss)return s.boss;const arr=s.zone?.mobs||['異變怪物','森林獸','毒孢妖','腐化守衛'];return arr[(Number(m?.kind)||0)%arr.length]||'異變怪物'}
@@ -62,7 +70,7 @@
     if(offlinePending){offlineDuration.textContent=formatDuration(offlinePending.seconds);offlineGold.textContent=Math.floor((offlinePending.gold||0)+(offlinePending.salvageGold||0)).toLocaleString();offlineLoot.textContent=`預估 ${offlinePending.materialized??0} 件`;claimOfflineBtn.disabled=false}else{offlineDuration.textContent='—';offlineGold.textContent='0';offlineLoot.textContent='—';claimOfflineBtn.disabled=true}
   };
 
-  function fxFor(a,skill){const c=cls(a?.class_name);if(c==='mage')return'v9_03_world/magic_violet.png';if(c==='archer')return'v9_03_world/arrow_green.png';if(c==='rogue')return'v9_03_world/shadow_blue.png';return skill?'v9_03_world/slash_crimson.png':'v9_03_world/slash_violet.png'}
+  function fxFor(a,skill){const c=cls(a?.class_name);if(c==='mage')return V9_ASSET.world+'/magic_violet.png';if(c==='archer')return V9_ASSET.world+'/arrow_green.png';if(c==='rogue')return V9_ASSET.world+'/shadow_blue.png';return skill?V9_ASSET.world+'/slash_crimson.png':V9_ASSET.world+'/slash_violet.png'}
   function playFx(a,skill){const box=document.getElementById('v9SkillFx');if(!box)return;box.innerHTML=`<img src="${fxFor(a,skill)}">`;box.classList.remove('show');void box.offsetWidth;box.classList.add('show')}
   window.v4AnimateHero=function(a,skill=false){const el=document.getElementById('bh'+a.id);if(el){el.classList.add('attack');setTimeout(()=>el.classList.remove('attack'),300)}playFx(a,skill)};
   window.v4SpawnDamage=function(dmg,crit=false){const layer=document.getElementById('damageLayer');if(!layer)return;const d=document.createElement('div');d.className='v9-dmg'+(crit?' crit':'');d.textContent=Math.max(1,Math.round(dmg)).toLocaleString();layer.appendChild(d);setTimeout(()=>d.remove(),720)};
@@ -95,6 +103,17 @@
   /* equipment */
   window.renderLoot=function(){const inv=document.getElementById('lootInventory'),detail=document.getElementById('v5GearDetail');if(!inv||!detail)return;if(v4LootMode==='fashion'){if(!v5SelectedGearId||!gameFashion.some(x=>x.id===v5SelectedGearId))v5SelectedGearId=gameFashion[0]?.id||null;inv.innerHTML=gameFashion.length?gameFashion.map(x=>`<div class="sg-item-card ${x.id===v5SelectedGearId?'active':''}" onclick="v5SelectedGearId='${x.id}';renderLoot()"><div class="sg-item-icon"><img src="${fashionCard(x)}"></div><b class="rar-${rarityZh(x.rarity)}">${x.name}</b><small>${rarityZh(x.rarity)} · ${x.fashion_type}</small></div>`).join(''):'<div class="heroMeta">尚未取得特殊時裝。</div>';const f=gameFashion.find(x=>x.id===v5SelectedGearId);detail.innerHTML=f?`<div class="sg-gear-art"><img src="${fashionCard(f)}"></div><h3>${f.name}</h3><p class="rar-${rarityZh(f.rarity)}">${rarityZh(f.rarity)} · ${f.fashion_type}</p><div class="sg-gear-stats"><div><small>戰力加成</small><b>${(Math.min(.06,Number(f.power_bonus||0))*100).toFixed(1)}%</b></div><div><small>狀態</small><b>${f.equipped?'已裝備':'未裝備'}</b></div></div><button class="sg-btn primary full" onclick="v4EquipFashion('${f.id}')">裝給主力角色</button>`:'<div class="heroMeta">選擇一件時裝。</div>';return}if(!v5SelectedGearId||!gameEquipment.some(x=>x.id===v5SelectedGearId))v5SelectedGearId=gameEquipment[0]?.id||null;inv.innerHTML=gameEquipment.length?gameEquipment.slice(0,220).map(x=>`<div class="sg-item-card ${x.id===v5SelectedGearId?'active':''}" onclick="v5SelectGear('${x.id}')"><div class="sg-item-icon"><img src="${gearCard(x)}"></div><b class="rar-${rarityZh(x.rarity)}">${v4GearName(x)}</b><small>${rarityZh(x.rarity)} · Lv.${x.item_level}</small><small>攻擊 +${x.atk}${x.equipped?' · 使用中':''}</small></div>`).join(''):'<div class="heroMeta">尚未取得裝備。</div>';const g=gameEquipment.find(x=>x.id===v5SelectedGearId);if(!g){detail.innerHTML='<div class="heroMeta">選擇裝備後查看詳情。</div>';return}detail.innerHTML=`<div class="sg-gear-art"><img src="${gearCard(g)}"></div><h3>${v4GearName(g)}</h3><p class="rar-${rarityZh(g.rarity)}">${rarityZh(g.rarity)} · ${slotName(g.slot)} · Lv.${g.item_level}</p><div class="sg-gear-stats"><div><small>攻擊</small><b>+${g.atk}</b></div><div><small>攻速</small><b>+${Number(g.atk_speed||0).toFixed(3)}</b></div><div><small>暴擊</small><b>+${(Number(g.crit||0)*100).toFixed(1)}%</b></div><div><small>金幣掉落</small><b>+${(Number(g.gold_find||0)*100).toFixed(1)}%</b></div><div><small>售價</small><b>● ${v4SellValue(g).toLocaleString()}</b></div><div><small>狀態</small><b>${g.equipped?'已裝備':'未裝備'}</b></div></div><select id="v5EquipHero" class="sg-equip-target">${gameAdventurers.map(a=>`<option value="${a.id}">${esc(a.name)} · ${v4JobName(a)}</option>`).join('')}</select><button class="sg-btn primary full" onclick="v5EquipSelectedGear()">裝備給指定冒險家</button>${g.equipped?'':`<button class="sg-btn ghost full" onclick="v4SellGear('${g.id}')">售出裝備</button>`}`};
 
+
+  async function v9AssetPathCheck(){
+    const probes=[
+      `${V9_ASSET.hero}/h01.png`,`${V9_ASSET.monster}/m01.png`,`${V9_ASSET.world}/b01.png`,
+      `${V9_ASSET.world}/slash_crimson.png`,`${V9_ASSET.gearA}/g001.png`,`${V9_ASSET.gearB}/g073.png`,`${V9_ASSET.fashion}/f01.png`
+    ];
+    const results=await Promise.all(probes.map(async p=>{try{const r=await fetch(p,{cache:'no-store'});return [p,r.ok]}catch(e){return [p,false]}}));
+    const failed=results.filter(x=>!x[1]).map(x=>x[0]);
+    if(failed.length)console.error('V9 asset path check failed:',failed); else console.info('V9 asset path check: OK');
+  }
+
   function boot(){try{render公會()}catch(e){console.error('V9 render',e)}}
-  document.addEventListener('DOMContentLoaded',()=>setTimeout(boot,700));setTimeout(boot,1800);
+  document.addEventListener('DOMContentLoaded',()=>{setTimeout(boot,700);setTimeout(v9AssetPathCheck,900)});setTimeout(boot,1800);
 })();

@@ -1,0 +1,20 @@
+M&C 星痕公會 V9.1 — GitHub 上傳方式
+
+1. 先把 UPLOAD_ROOT_FILES 裡面的檔案上傳到 repo 根目錄並覆蓋同名檔案。
+   不要覆蓋你現有的 config.js；本包沒有放 config.js。
+2. 再把以下六個資料夾直接丟到 repo 根目錄：
+   v9_01_heroes
+   v9_02_monsters
+   v9_03_world
+   v9_04_gear_a
+   v9_05_gear_b
+   v9_06_fashion
+3. 每個資料夾都少於 90 個檔案，不需要自己建立第二層資料夾。
+4. 不需要跑 SQL。
+5. GitHub Pages 綠燈後，Ctrl+Shift+R。
+
+本版修正：
+- v9.js 全面使用平面資料夾路徑。
+- 清除 index.html 中 V8/V8.1 美術 override，避免和 V9 打架。
+- Service Worker 改為核心程式 network-first，降低舊 JS/CSS 黏住的機率。
+- 啟動後會在 console 自動檢查 7 個代表性素材路徑。

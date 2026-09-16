@@ -101,3 +101,10 @@
 
 @media(max-width:1020px){.v9-combat-card.enemy{width:min(31%,200px);height:220px}.v9-combat-card.hero{width:min(31%,170px);height:205px}.v9-hero-row{flex-wrap:wrap}.sg-inventory{grid-template-columns:repeat(3,1fr)!important}.sg-building-list{grid-template-columns:repeat(2,1fr)!important}}
 @media(max-width:760px){#battleArena.v9-battlefield{height:760px!important}.v9-battle-board{grid-template-rows:1fr 72px 1fr;padding:12px}.v9-enemy-row{gap:6px}.v9-combat-card.enemy{width:32%;height:210px}.v9-combat-card.hero{width:46%;height:210px}.v9-hero-row{gap:7px}.sg-inventory-layout{grid-template-columns:1fr!important}.sg-inventory{grid-template-columns:repeat(2,1fr)!important}.v9-rate-grid{grid-template-columns:repeat(2,1fr)}.v9-showcase{grid-template-columns:1fr}.sg-world-map{grid-template-columns:1fr!important}}
+
+
+/* V9.1 production asset normalization */
+.v9-img-error{display:grid!important;place-items:center!important;background:linear-gradient(135deg,#151827,#090c12)!important;color:#b7c0d3!important;min-height:80px!important;border:1px dashed #53617a!important}
+.v9-card-art img,.v9-roster-card>img,.v9-hero-detail-card img,.v9-show-card>img,.sg-item-icon>img,.sg-gear-art>img,.v4BuildingSprite>img,.v9-building-list-card>img,.v9-building-detail-image>img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.v4BuildingSprite>img,.v9-building-list-card>img,.v9-building-detail-image>img{object-fit:contain}
+.v9-party-mini img{object-fit:cover;object-position:center}

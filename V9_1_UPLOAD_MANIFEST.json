@@ -1,0 +1,26 @@
+{
+  "version": "9.1-production-path-fixed",
+  "asset_folders": {
+    "v9_01_heroes": 24,
+    "v9_02_monsters": 24,
+    "v9_03_world": 18,
+    "v9_04_gear_a": 72,
+    "v9_05_gear_b": 72,
+    "v9_06_fashion": 32
+  },
+  "max_files_per_asset_folder": 72,
+  "root_files": [
+    "v9.css",
+    "v9.js",
+    "README.md",
+    "index.html",
+    "manifest.webmanifest",
+    "v4.js",
+    "sw.js"
+  ],
+  "notes": [
+    "flat asset paths only",
+    "no assets_v9 path remains in v9.js",
+    "V8/V8.1 art override blocks removed from index.html"
+  ]
+}
