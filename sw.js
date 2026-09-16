@@ -1,5 +1,5 @@
 
-const CACHE = "mc-piggy-pwa-v18-v9-card-battle";
+const CACHE = "mc-piggy-pwa-v21-v9-2-path-checkin";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -40,5 +40,14 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  event.respondWith(caches.match(req).then(cached => cached || fetch(req)));
+  const core = /\/(?:index\.html|v9\.js|v9\.css|v4\.js|sw\.js)(?:\?|$)/.test(url.pathname + url.search);
+  if (core) {
+    event.respondWith(fetch(req).then(res => {
+      const copy = res.clone(); caches.open(CACHE).then(c => c.put(req, copy)); return res;
+    }).catch(() => caches.match(req)));
+    return;
+  }
+  event.respondWith(caches.match(req).then(cached => cached || fetch(req).then(res => {
+    const copy = res.clone(); caches.open(CACHE).then(c => c.put(req, copy)); return res;
+  })));
 });

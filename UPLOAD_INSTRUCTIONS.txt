@@ -1,0 +1,29 @@
+M&C 星痕公會 V9.2 — 路徑 + 今日簽到修正版
+
+只需要覆蓋 GitHub repo 根目錄的 4 個檔案：
+1. index.html
+2. v9.js
+3. v9.css
+4. sw.js
+
+不要刪除、不要重傳目前已存在的圖片資料夾：
+- v9_01_heroes
+- v9_02_monsters
+- v9_03_world
+- v9_04_gear_a
+- v9_05_gear_b
+- v9_06_fashion
+
+這版修正：
+- V9 圖片改成明確相對路徑 ./v9_01_heroes/... 等。
+- 不再使用 assets_v9/... 舊路徑。
+- v9.css 招募背景改為 ./v9_03_world/recruit_reference.png。
+- Service Worker 快取版本升級，避免瀏覽器繼續吃舊 v9.js。
+- 簽到判斷改用 Australia/Sydney 日期。
+- 今天的班可以簽到；只有「明天之後」才會顯示未來班表並禁止簽到。
+- 不再用今天 23:59:59 當判斷點，因此不會發生今天的班被誤判成未來工作。
+
+上傳後：
+- 等 GitHub Pages 部署完成。
+- Windows: Ctrl + Shift + R。
+- iPhone PWA 若仍是舊畫面，可先在 Safari 開網站一次，重新整理後再回主畫面 App。
