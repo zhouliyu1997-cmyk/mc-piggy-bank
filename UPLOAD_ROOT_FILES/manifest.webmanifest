@@ -1,0 +1,25 @@
+{
+  "name": "M&C的小豬撲滿",
+  "short_name": "M&C撲滿",
+  "description": "M&C 在雪梨打工與共同存錢的小工具",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff8f2",
+  "theme_color": "#fff8f2",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
