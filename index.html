@@ -919,7 +919,7 @@ async function loadRoom(){
   const [w,j,e,gs,gb,ga,gx,gsp,gm,ge,gf,gsk,gc]=await Promise.all([
     sb.from('workers').select('*').eq('room_id',roomId).order('created_at'),
     sb.from('jobs').select('*').eq('room_id',roomId).order('created_at'),
-    sb.from('entries').select('*').eq('room_id',roomId).order('work_date'),
+    sb.from('entries').select('*').eq('room_id',roomId).order('work_date',{ascending:false}).order('created_at',{ascending:false}),
     sb.from('game_state').select('*').eq('room_id',roomId).maybeSingle(),
     sb.from('game_buildings').select('*').eq('room_id',roomId).order('built_at'),
     sb.from('game_adventurers').select('*').eq('room_id',roomId).order('recruited_at'),
@@ -1618,7 +1618,13 @@ function realWorkedTotals(list=null){
 
 function renderRecords(){
   const y=viewMonth.getFullYear(),m=viewMonth.getMonth(),monthKey=`${y}-${String(m+1).padStart(2,'0')}`;
-  const rows=entries.filter(e=>String(e.work_date||'').startsWith(monthKey));
+  const rows=entries
+    .filter(e=>String(e.work_date||'').startsWith(monthKey))
+    .sort((a,b)=>{
+      const byWorkDate=String(b.work_date||'').localeCompare(String(a.work_date||''));
+      if(byWorkDate!==0)return byWorkDate;
+      return new Date(b.created_at||0)-new Date(a.created_at||0);
+    });
 
   if(document.getElementById('monthTitle')) monthTitle.textContent=`${y} 年 ${m+1} 月`;
   if(document.getElementById('monthPick')) monthPick.value=monthKey;
