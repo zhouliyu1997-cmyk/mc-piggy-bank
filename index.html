@@ -572,7 +572,7 @@ body{
     <div class="card"><div class="label">📅 本月收入</div><div class="value" id="kMonth">A$0</div><div class="sub" id="kMonthTwd">NT$0</div></div>
   </div>
   <div id="people" class="people"></div>
-  <div class="panel"><h3>📈 每月薪資</h3><p>最近 6 個月，依打工人比較 AUD 收入。</p><div class="chart"><canvas id="salaryChart"></canvas></div></div>
+  <div class="panel"><h3>📈 每月薪資趨勢</h3><p>最近 6 個月，依打工人比較實際簽到後的 AUD 收入。縱軸會依最高收入自動留出空間，不會再貼著圖表天花板。</p><div class="chart"><canvas id="salaryChart"></canvas></div></div>
 </section>
 
 <section id="recordsPage" class="page">
@@ -1551,22 +1551,70 @@ function renderHome(){
   drawChart();
 }
 
+function niceChartCeiling(maxValue){
+  const v=Math.max(0,Number(maxValue)||0);
+  if(v<=0)return 100;
+  const target=v*1.18;
+  const roughStep=target/5;
+  const magnitude=Math.pow(10,Math.floor(Math.log10(Math.max(roughStep,1))));
+  const normalized=roughStep/magnitude;
+  const niceNormalized=normalized<=1?1:normalized<=2?2:normalized<=2.5?2.5:normalized<=5?5:10;
+  const step=niceNormalized*magnitude;
+  return Math.ceil(target/step)*step;
+}
+
 function drawChart(){
   const worked=realWorkedEntries();
   const months=[...new Set(worked.map(e=>String(e.work_date||'').slice(0,7)).filter(Boolean))].sort().slice(-6);
   const ctx=document.getElementById('salaryChart');
   if(!ctx)return;
   if(chart)chart.destroy();
+
+  const datasets=workers.slice(0,4).map(w=>({
+    label:w.name,
+    data:months.map(m=>realWorkedTotals(
+      worked.filter(e=>e.worker_id===w.id&&String(e.work_date||'').startsWith(m))
+    ).aud),
+    tension:.32,
+    pointRadius:4,
+    pointHoverRadius:6,
+    borderWidth:2.5,
+    fill:false
+  }));
+
+  const allValues=datasets.flatMap(d=>d.data.map(Number)).filter(Number.isFinite);
+  const highest=allValues.length?Math.max(...allValues):0;
+  const yMax=niceChartCeiling(highest);
+
   chart=new Chart(ctx,{
-    type:'bar',
+    type:'line',
     data:{
       labels:months.map(x=>x.slice(5)+'月'),
-      datasets:workers.slice(0,4).map(w=>({
-        label:w.name,
-        data:months.map(m=>realWorkedTotals(worked.filter(e=>e.worker_id===w.id&&String(e.work_date||'').startsWith(m))).aud)
-      }))
+      datasets
     },
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},scales:{y:{beginAtZero:true}}}
+    options:{
+      responsive:true,
+      maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{position:'bottom'},
+        tooltip:{
+          callbacks:{
+            label:(c)=>`${c.dataset.label}: A$${Number(c.parsed.y||0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}`
+          }
+        }
+      },
+      scales:{
+        y:{
+          beginAtZero:true,
+          suggestedMax:yMax,
+          grace:'8%',
+          ticks:{
+            callback:(v)=>'A$'+Number(v).toLocaleString()
+          }
+        }
+      }
+    }
   })
 }
 
