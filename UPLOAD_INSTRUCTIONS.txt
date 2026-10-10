@@ -1,8 +1,9 @@
-M&C 小豬撲滿 V9.5.3 — 歷史時薪調整
+V9.5.4 工作設定修改時薪 + 紀錄表頭凍結
 
-紀錄頁每筆新增「調整時薪」。
-只改該筆 base_rate，沿用原 penalty_multiplier，重算 applied_hourly_rate、AUD、TWD。
-不會修改 fx_aud_twd / fx_rate_date / fx_status / fx_finalized_at，因此原本匯率保持鎖定。
+上傳 GitHub 根目錄：index.html、sw.js
+不需 SQL。
 
-覆蓋 GitHub 根目錄：index.html、sw.js
-不用 SQL。
+設定 → 已新增工作 → 修改時薪：只改 jobs.base_rate，影響未來新建紀錄。
+舊紀錄仍維持建立時的時薪、收入和匯率；請到紀錄頁逐筆使用「調整時薪」修改。
+
+紀錄表格最多顯示視窗高度的 65%，超過會在表格內捲動，表頭固定。
