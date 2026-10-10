@@ -1,5 +1,5 @@
 
-const CACHE = "mc-piggy-pwa-v26-v9-5-2-salary-trend";
+const CACHE = "mc-piggy-pwa-v27-v9-5-3-rate-adjust";
 const APP_SHELL = [
   "./",
   "./index.html",
